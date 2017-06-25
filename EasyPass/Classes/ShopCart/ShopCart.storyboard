@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Bex-1o-My7">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="qZp-fw-Zij">
+            <objects>
+                <viewController id="zX6-yA-SnO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H8P-yK-ZAD"/>
+                        <viewControllerLayoutGuide type="bottom" id="CGk-gY-Uit"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vsR-Tt-OGc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pwr-Hg-6bZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JHX-Ef-iLe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1455.2" y="129.98500749625188"/>
+        </scene>
+        <!--购物车-->
+        <scene sceneID="OLI-oF-xgw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bex-1o-My7" customClass="AntNavController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="购物车" image="shopCart_icon" selectedImage="shopCart_icon_select" id="5ek-Ie-c8W"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qua-DC-MYe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zX6-yA-SnO" kind="relationship" relationship="rootViewController" id="e9X-p3-nMZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wbI-Gg-iSm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="129.98500749625188"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="shopCart_icon" width="25" height="25"/>
+        <image name="shopCart_icon_select" width="25" height="25"/>
+    </resources>
+</document>

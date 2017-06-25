@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yLV-Oq-T2s">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--主页-->
+        <scene sceneID="BMO-z4-gAw">
+            <objects>
+                <navigationController id="yLV-Oq-T2s" customClass="AntNavController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="主页" image="home_icon" selectedImage="home_icon_select" id="3jb-Ki-1Q6"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zS7-uT-MCj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mAm-fe-4NV" kind="relationship" relationship="rootViewController" id="tOz-2d-yip"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5hb-GZ-mp6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-447" y="121"/>
+        </scene>
+        <!--主页-->
+        <scene sceneID="bLK-HA-7tl">
+            <objects>
+                <viewController title="主页" id="mAm-fe-4NV" customClass="HomeController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aUR-ki-9Ns"/>
+                        <viewControllerLayoutGuide type="bottom" id="Chd-LG-SXF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L09-jV-Qg0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="4CM-Pz-tgV">
+                                <rect key="frame" x="0.0" y="44" width="375" height="141"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4CM-Pz-tgV" firstAttribute="width" secondItem="L09-jV-Qg0" secondAttribute="width" id="0rt-gl-OZd"/>
+                            <constraint firstItem="4CM-Pz-tgV" firstAttribute="top" secondItem="aUR-ki-9Ns" secondAttribute="bottom" constant="-20" id="FmF-5l-DiW"/>
+                            <constraint firstItem="4CM-Pz-tgV" firstAttribute="centerX" secondItem="L09-jV-Qg0" secondAttribute="centerX" id="LFK-9C-8zO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gKf-ZD-FZl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xx6-K2-ErL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="121"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="home_bg" width="375" height="141"/>
+        <image name="home_icon" width="24" height="24"/>
+        <image name="home_icon_select" width="24" height="24"/>
+    </resources>
+</document>

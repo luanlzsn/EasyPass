@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cdf-AH-y59">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="KuU-t2-V6t">
+            <objects>
+                <viewController id="BsW-Lm-Dgp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rVb-Ht-mAu"/>
+                        <viewControllerLayoutGuide type="bottom" id="kfv-J3-JFb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GjQ-7P-zCo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7qd-XK-NeZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2FP-fN-Fin" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1472.8" y="132.68365817091455"/>
+        </scene>
+        <!--预约-->
+        <scene sceneID="tUE-nC-Cqw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cdf-AH-y59" customClass="AntNavController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="预约" image="reservation_icon" selectedImage="reservation_icon_select" id="Ncm-b5-88f"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="chs-gi-7Tw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BsW-Lm-Dgp" kind="relationship" relationship="rootViewController" id="VKf-6x-Tg2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="skj-cr-sUW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="533.60000000000002" y="132.68365817091455"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="reservation_icon" width="25" height="23"/>
+        <image name="reservation_icon_select" width="25" height="23"/>
+    </resources>
+</document>

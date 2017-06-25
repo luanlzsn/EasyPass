@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0F6C61CF1EFFCA800079B2F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C61CE1EFFCA800079B2F2 /* AppDelegate.swift */; };
-		0F6C61D11EFFCA800079B2F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C61D01EFFCA800079B2F2 /* ViewController.swift */; };
 		0F6C61D41EFFCA800079B2F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C61D21EFFCA800079B2F2 /* Main.storyboard */; };
 		0F6C61D61EFFCA800079B2F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C61D51EFFCA800079B2F2 /* Assets.xcassets */; };
 		0F6C61D91EFFCA800079B2F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C61D71EFFCA800079B2F2 /* LaunchScreen.storyboard */; };
@@ -18,12 +17,21 @@
 		0F6C61E91EFFCDB10079B2F2 /* MJExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6C61E81EFFCDB10079B2F2 /* MJExtension.framework */; };
 		0F6C61EB1EFFCDB60079B2F2 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6C61EA1EFFCDB60079B2F2 /* SDWebImage.framework */; };
 		0F6C61ED1EFFCDB90079B2F2 /* YYCategories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6C61EC1EFFCDB90079B2F2 /* YYCategories.framework */; };
+		0F6C61FE1EFFD1D40079B2F2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C61FD1EFFD1D40079B2F2 /* Home.storyboard */; };
+		0F6C62001EFFD1DD0079B2F2 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C61FF1EFFD1DD0079B2F2 /* Mine.storyboard */; };
+		0F6C62021EFFD1E70079B2F2 /* Reservation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C62011EFFD1E70079B2F2 /* Reservation.storyboard */; };
+		0F6C62041EFFD1F10079B2F2 /* ShopCart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C62031EFFD1F10079B2F2 /* ShopCart.storyboard */; };
+		0F6C62061EFFD47C0079B2F2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C62051EFFD47C0079B2F2 /* Common.swift */; };
+		0F6C620B1EFFD4860079B2F2 /* AntController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C62071EFFD4860079B2F2 /* AntController.swift */; };
+		0F6C620C1EFFD4860079B2F2 /* AntDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C62081EFFD4860079B2F2 /* AntDefault.swift */; };
+		0F6C620D1EFFD4860079B2F2 /* AntNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C62091EFFD4860079B2F2 /* AntNavController.swift */; };
+		0F6C620E1EFFD4860079B2F2 /* AntSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C620A1EFFD4860079B2F2 /* AntSingleton.swift */; };
+		0F6C62141EFFD7730079B2F2 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C62131EFFD7730079B2F2 /* HomeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0F6C61CB1EFFCA800079B2F2 /* EasyPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F6C61CE1EFFCA800079B2F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0F6C61D01EFFCA800079B2F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0F6C61D31EFFCA800079B2F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F6C61D51EFFCA800079B2F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F6C61D81EFFCA800079B2F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -34,6 +42,17 @@
 		0F6C61E81EFFCDB10079B2F2 /* MJExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJExtension.framework; path = Carthage/Build/iOS/MJExtension.framework; sourceTree = "<group>"; };
 		0F6C61EA1EFFCDB60079B2F2 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		0F6C61EC1EFFCDB90079B2F2 /* YYCategories.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYCategories.framework; path = Carthage/Build/iOS/YYCategories.framework; sourceTree = "<group>"; };
+		0F6C61FD1EFFD1D40079B2F2 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		0F6C61FF1EFFD1DD0079B2F2 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
+		0F6C62011EFFD1E70079B2F2 /* Reservation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Reservation.storyboard; sourceTree = "<group>"; };
+		0F6C62031EFFD1F10079B2F2 /* ShopCart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShopCart.storyboard; sourceTree = "<group>"; };
+		0F6C62051EFFD47C0079B2F2 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		0F6C62071EFFD4860079B2F2 /* AntController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntController.swift; sourceTree = "<group>"; };
+		0F6C62081EFFD4860079B2F2 /* AntDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntDefault.swift; sourceTree = "<group>"; };
+		0F6C62091EFFD4860079B2F2 /* AntNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntNavController.swift; sourceTree = "<group>"; };
+		0F6C620A1EFFD4860079B2F2 /* AntSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntSingleton.swift; sourceTree = "<group>"; };
+		0F6C620F1EFFD64C0079B2F2 /* EasyPass-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyPass-Bridging-Header.h"; sourceTree = "<group>"; };
+		0F6C62131EFFD7730079B2F2 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +75,7 @@
 		0F6C61C21EFFCA800079B2F2 = {
 			isa = PBXGroup;
 			children = (
+				0F6C61EE1EFFD0F70079B2F2 /* Classes */,
 				0F6C61CD1EFFCA800079B2F2 /* EasyPass */,
 				0F6C61CC1EFFCA800079B2F2 /* Products */,
 				0F6C61E11EFFCDA30079B2F2 /* Frameworks */,
@@ -74,11 +94,11 @@
 			isa = PBXGroup;
 			children = (
 				0F6C61CE1EFFCA800079B2F2 /* AppDelegate.swift */,
-				0F6C61D01EFFCA800079B2F2 /* ViewController.swift */,
 				0F6C61D21EFFCA800079B2F2 /* Main.storyboard */,
 				0F6C61D51EFFCA800079B2F2 /* Assets.xcassets */,
 				0F6C61D71EFFCA800079B2F2 /* LaunchScreen.storyboard */,
 				0F6C61DA1EFFCA800079B2F2 /* Info.plist */,
+				0F6C620F1EFFD64C0079B2F2 /* EasyPass-Bridging-Header.h */,
 			);
 			path = EasyPass;
 			sourceTree = "<group>";
@@ -94,6 +114,135 @@
 				0F6C61E21EFFCDA30079B2F2 /* AFNetworking.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0F6C61EE1EFFD0F70079B2F2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0F6C61EF1EFFD0F70079B2F2 /* Ant */,
+				0F6C61F01EFFD0F70079B2F2 /* Common */,
+				0F6C61F11EFFD0F70079B2F2 /* Home */,
+				0F6C61F41EFFD0F70079B2F2 /* Mine */,
+				0F6C61F71EFFD0F70079B2F2 /* Reservation */,
+				0F6C61FA1EFFD0F70079B2F2 /* ShopCart */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		0F6C61EF1EFFD0F70079B2F2 /* Ant */ = {
+			isa = PBXGroup;
+			children = (
+				0F6C62071EFFD4860079B2F2 /* AntController.swift */,
+				0F6C62081EFFD4860079B2F2 /* AntDefault.swift */,
+				0F6C62091EFFD4860079B2F2 /* AntNavController.swift */,
+				0F6C620A1EFFD4860079B2F2 /* AntSingleton.swift */,
+			);
+			path = Ant;
+			sourceTree = "<group>";
+		};
+		0F6C61F01EFFD0F70079B2F2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0F6C62051EFFD47C0079B2F2 /* Common.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0F6C61F11EFFD0F70079B2F2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0F6C61F21EFFD0F70079B2F2 /* Controller */,
+				0F6C61F31EFFD0F70079B2F2 /* View */,
+				0F6C61FD1EFFD1D40079B2F2 /* Home.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0F6C61F21EFFD0F70079B2F2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F6C62131EFFD7730079B2F2 /* HomeController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0F6C61F31EFFD0F70079B2F2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0F6C61F41EFFD0F70079B2F2 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				0F6C61F51EFFD0F70079B2F2 /* Controller */,
+				0F6C61F61EFFD0F70079B2F2 /* View */,
+				0F6C61FF1EFFD1DD0079B2F2 /* Mine.storyboard */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		0F6C61F51EFFD0F70079B2F2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0F6C61F61EFFD0F70079B2F2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0F6C61F71EFFD0F70079B2F2 /* Reservation */ = {
+			isa = PBXGroup;
+			children = (
+				0F6C61F81EFFD0F70079B2F2 /* Controller */,
+				0F6C61F91EFFD0F70079B2F2 /* View */,
+				0F6C62011EFFD1E70079B2F2 /* Reservation.storyboard */,
+			);
+			path = Reservation;
+			sourceTree = "<group>";
+		};
+		0F6C61F81EFFD0F70079B2F2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0F6C61F91EFFD0F70079B2F2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0F6C61FA1EFFD0F70079B2F2 /* ShopCart */ = {
+			isa = PBXGroup;
+			children = (
+				0F6C61FB1EFFD0F70079B2F2 /* Controller */,
+				0F6C61FC1EFFD0F70079B2F2 /* View */,
+				0F6C62031EFFD1F10079B2F2 /* ShopCart.storyboard */,
+			);
+			path = ShopCart;
+			sourceTree = "<group>";
+		};
+		0F6C61FB1EFFD0F70079B2F2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0F6C61FC1EFFD0F70079B2F2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +279,7 @@
 					0F6C61CA1EFFCA800079B2F2 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 4AK99QTKB7;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -159,7 +309,11 @@
 			files = (
 				0F6C61D91EFFCA800079B2F2 /* LaunchScreen.storyboard in Resources */,
 				0F6C61D61EFFCA800079B2F2 /* Assets.xcassets in Resources */,
+				0F6C62001EFFD1DD0079B2F2 /* Mine.storyboard in Resources */,
+				0F6C62021EFFD1E70079B2F2 /* Reservation.storyboard in Resources */,
 				0F6C61D41EFFCA800079B2F2 /* Main.storyboard in Resources */,
+				0F6C62041EFFD1F10079B2F2 /* ShopCart.storyboard in Resources */,
+				0F6C61FE1EFFD1D40079B2F2 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,8 +346,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F6C61D11EFFCA800079B2F2 /* ViewController.swift in Sources */,
+				0F6C620B1EFFD4860079B2F2 /* AntController.swift in Sources */,
+				0F6C62061EFFD47C0079B2F2 /* Common.swift in Sources */,
+				0F6C62141EFFD7730079B2F2 /* HomeController.swift in Sources */,
 				0F6C61CF1EFFCA800079B2F2 /* AppDelegate.swift in Sources */,
+				0F6C620C1EFFD4860079B2F2 /* AntDefault.swift in Sources */,
+				0F6C620D1EFFD4860079B2F2 /* AntNavController.swift in Sources */,
+				0F6C620E1EFFD4860079B2F2 /* AntSingleton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +475,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 4AK99QTKB7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -325,6 +485,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aurora.EasyPass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyPass/EasyPass-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -333,6 +495,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 4AK99QTKB7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -342,6 +505,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aurora.EasyPass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyPass/EasyPass-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
