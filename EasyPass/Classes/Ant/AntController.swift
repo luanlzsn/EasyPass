@@ -12,6 +12,7 @@ class AntController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        automaticallyAdjustsScrollViewInsets = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {

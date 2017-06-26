@@ -5,6 +5,9 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -38,27 +41,207 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="4CM-Pz-tgV">
-                                <rect key="frame" x="0.0" y="44" width="375" height="141"/>
-                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0ze-5U-CS7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="de5-5q-4dX">
+                                    <size key="itemSize" width="375" height="200"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeHeaderCell" id="yWk-jS-Dqw" customClass="HomeHeaderCell" customModule="EasyPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="a7u-XQ-waJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="141"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xka-gM-ypo">
+                                                    <rect key="frame" x="160.5" y="30" width="53" height="53"/>
+                                                    <state key="normal" backgroundImage="head_defaults"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8R0-Ic-yxD">
+                                                    <rect key="frame" x="168.5" y="93" width="38" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVT-eS-nlO" customClass="HomeMenuButton" customModule="EasyPass" customModuleProvider="target">
+                                                    <rect key="frame" x="31" y="117" width="88" height="39"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="关于我们" image="about_us">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="menuClick:" destination="yWk-jS-Dqw" eventType="touchUpInside" id="7gt-mQ-PmW"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fj-Gk-cF0" customClass="HomeMenuButton" customModule="EasyPass" customModuleProvider="target">
+                                                    <rect key="frame" x="106" y="127" width="88" height="39"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="课程搜索" image="course_search">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6Z-Xf-UrP" customClass="HomeMenuButton" customModule="EasyPass" customModuleProvider="target">
+                                                    <rect key="frame" x="181" y="127" width="88" height="39"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="我的课程" image="my_course">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDH-Q2-ywz" customClass="HomeMenuButton" customModule="EasyPass" customModuleProvider="target">
+                                                    <rect key="frame" x="268.5" y="117" width="63" height="39"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="消息" image="message">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zla-59-Avi" customClass="CycleScrollView" customModule="EasyPass" customModuleProvider="target">
+                                                    <rect key="frame" x="14.5" y="186" width="345" height="150"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Zla-59-Avi" secondAttribute="height" multiplier="23:10" id="d00-OT-3be"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="—— 课程分类 ——" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oG4-b5-PX3">
+                                                    <rect key="frame" x="127.5" y="351" width="120" height="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Always remember that you are absolutely unique" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55f-Oz-CU7">
+                                                    <rect key="frame" x="14.5" y="378" width="345" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="p6A-ws-NPH"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="0.5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="EVT-eS-nlO" firstAttribute="centerX" secondItem="yWk-jS-Dqw" secondAttribute="centerX" multiplier="0.4" id="0eV-AO-Lud"/>
+                                            <constraint firstItem="L6Z-Xf-UrP" firstAttribute="bottom" secondItem="0fj-Gk-cF0" secondAttribute="bottom" id="3Dp-HT-dX0"/>
+                                            <constraint firstItem="a7u-XQ-waJ" firstAttribute="centerX" secondItem="yWk-jS-Dqw" secondAttribute="centerX" id="8ct-ye-mje"/>
+                                            <constraint firstItem="0fj-Gk-cF0" firstAttribute="bottom" secondItem="a7u-XQ-waJ" secondAttribute="bottom" constant="25" id="9FL-fI-BoP"/>
+                                            <constraint firstItem="xka-gM-ypo" firstAttribute="centerY" secondItem="a7u-XQ-waJ" secondAttribute="centerY" multiplier="0.8" id="JeF-D6-ihW"/>
+                                            <constraint firstItem="0fj-Gk-cF0" firstAttribute="centerX" secondItem="yWk-jS-Dqw" secondAttribute="centerX" multiplier="0.8" id="NyX-7E-fzm"/>
+                                            <constraint firstItem="a7u-XQ-waJ" firstAttribute="width" secondItem="yWk-jS-Dqw" secondAttribute="width" id="O3P-Kk-Cgq"/>
+                                            <constraint firstItem="QDH-Q2-ywz" firstAttribute="centerX" secondItem="yWk-jS-Dqw" secondAttribute="centerX" multiplier="1.6" id="O5x-hv-tgr"/>
+                                            <constraint firstItem="55f-Oz-CU7" firstAttribute="top" secondItem="oG4-b5-PX3" secondAttribute="bottom" constant="10" id="PqB-ad-EVJ"/>
+                                            <constraint firstItem="xka-gM-ypo" firstAttribute="centerX" secondItem="yWk-jS-Dqw" secondAttribute="centerX" id="UOa-5T-tI6"/>
+                                            <constraint firstItem="8R0-Ic-yxD" firstAttribute="centerX" secondItem="yWk-jS-Dqw" secondAttribute="centerX" id="Vr1-BJ-fj2"/>
+                                            <constraint firstItem="55f-Oz-CU7" firstAttribute="width" secondItem="Zla-59-Avi" secondAttribute="width" id="WJR-jk-F66"/>
+                                            <constraint firstItem="Zla-59-Avi" firstAttribute="top" secondItem="L6Z-Xf-UrP" secondAttribute="bottom" constant="20" id="XuQ-xB-mJu"/>
+                                            <constraint firstItem="Zla-59-Avi" firstAttribute="centerX" secondItem="yWk-jS-Dqw" secondAttribute="centerX" id="avR-yp-FBD"/>
+                                            <constraint firstItem="QDH-Q2-ywz" firstAttribute="bottom" secondItem="EVT-eS-nlO" secondAttribute="bottom" id="cs3-Qa-6yy"/>
+                                            <constraint firstItem="oG4-b5-PX3" firstAttribute="top" secondItem="Zla-59-Avi" secondAttribute="bottom" constant="15" id="g80-yW-MMv"/>
+                                            <constraint firstItem="8R0-Ic-yxD" firstAttribute="top" secondItem="xka-gM-ypo" secondAttribute="bottom" constant="10" id="kjN-Be-qZQ"/>
+                                            <constraint firstItem="oG4-b5-PX3" firstAttribute="centerX" secondItem="yWk-jS-Dqw" secondAttribute="centerX" id="mCW-o4-pWw"/>
+                                            <constraint firstItem="a7u-XQ-waJ" firstAttribute="top" secondItem="yWk-jS-Dqw" secondAttribute="topMargin" constant="-8" id="oaP-iE-YaU"/>
+                                            <constraint firstItem="EVT-eS-nlO" firstAttribute="bottom" secondItem="a7u-XQ-waJ" secondAttribute="bottom" constant="15" id="qu9-Zp-ENO"/>
+                                            <constraint firstItem="L6Z-Xf-UrP" firstAttribute="centerX" secondItem="yWk-jS-Dqw" secondAttribute="centerX" multiplier="1.2" id="sMC-vv-Cfc"/>
+                                            <constraint firstItem="Zla-59-Avi" firstAttribute="width" secondItem="yWk-jS-Dqw" secondAttribute="width" constant="-30" id="tFg-9b-86E"/>
+                                            <constraint firstItem="55f-Oz-CU7" firstAttribute="centerX" secondItem="yWk-jS-Dqw" secondAttribute="centerX" id="zoB-ZX-3br"/>
+                                        </constraints>
+                                        <size key="customSize" width="375" height="440"/>
+                                        <connections>
+                                            <outlet property="bannerView" destination="Zla-59-Avi" id="Lqj-a9-SLG"/>
+                                            <outlet property="famousAphorism" destination="55f-Oz-CU7" id="tbp-Hf-v9S"/>
+                                            <outlet property="headImage" destination="xka-gM-ypo" id="gaC-Xp-aBX"/>
+                                            <outlet property="nickName" destination="8R0-Ic-yxD" id="7Fg-qR-GJz"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCourseCell" id="Ry2-oJ-dfT" customClass="HomeCourseCell" customModule="EasyPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="450" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="physical_science" translatesAutoresizingMaskIntoConstraints="NO" id="lh3-yT-xta">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="物理科学" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOm-E0-ZdF">
+                                                    <rect key="frame" x="147" y="88" width="82" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_select" translatesAutoresizingMaskIntoConstraints="NO" id="734-eg-Bo0">
+                                                    <rect key="frame" x="125" y="93" width="17" height="14"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="734-eg-Bo0" firstAttribute="centerY" secondItem="Ry2-oJ-dfT" secondAttribute="centerY" id="BCR-Ge-Uke"/>
+                                            <constraint firstItem="yOm-E0-ZdF" firstAttribute="leading" secondItem="734-eg-Bo0" secondAttribute="trailing" constant="5" id="EWW-P4-0Xt"/>
+                                            <constraint firstItem="lh3-yT-xta" firstAttribute="width" secondItem="Ry2-oJ-dfT" secondAttribute="width" id="IhT-Vq-fs4"/>
+                                            <constraint firstItem="lh3-yT-xta" firstAttribute="centerY" secondItem="Ry2-oJ-dfT" secondAttribute="centerY" id="KLj-8k-f4F"/>
+                                            <constraint firstItem="yOm-E0-ZdF" firstAttribute="centerX" secondItem="Ry2-oJ-dfT" secondAttribute="centerX" id="VDx-xd-2Gi"/>
+                                            <constraint firstItem="lh3-yT-xta" firstAttribute="height" secondItem="Ry2-oJ-dfT" secondAttribute="height" id="mmy-vr-TBP"/>
+                                            <constraint firstItem="lh3-yT-xta" firstAttribute="centerX" secondItem="Ry2-oJ-dfT" secondAttribute="centerX" id="rSU-lf-DZo"/>
+                                            <constraint firstItem="yOm-E0-ZdF" firstAttribute="centerY" secondItem="Ry2-oJ-dfT" secondAttribute="centerY" id="vVI-13-lvv"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="courseTitle" destination="yOm-E0-ZdF" id="ccu-pG-hUF"/>
+                                            <outlet property="imgView" destination="lh3-yT-xta" id="xF3-eT-w5e"/>
+                                            <outlet property="selectImage" destination="734-eg-Bo0" id="9rp-N1-IvI"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="mAm-fe-4NV" id="JHE-Wq-dqc"/>
+                                    <outlet property="delegate" destination="mAm-fe-4NV" id="bc5-Mv-TjB"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4CM-Pz-tgV" firstAttribute="width" secondItem="L09-jV-Qg0" secondAttribute="width" id="0rt-gl-OZd"/>
-                            <constraint firstItem="4CM-Pz-tgV" firstAttribute="top" secondItem="aUR-ki-9Ns" secondAttribute="bottom" constant="-20" id="FmF-5l-DiW"/>
-                            <constraint firstItem="4CM-Pz-tgV" firstAttribute="centerX" secondItem="L09-jV-Qg0" secondAttribute="centerX" id="LFK-9C-8zO"/>
+                            <constraint firstItem="0ze-5U-CS7" firstAttribute="top" secondItem="L09-jV-Qg0" secondAttribute="top" id="cW0-kC-YtX"/>
+                            <constraint firstItem="0ze-5U-CS7" firstAttribute="centerX" secondItem="L09-jV-Qg0" secondAttribute="centerX" id="fk7-8Z-JWb"/>
+                            <constraint firstItem="Chd-LG-SXF" firstAttribute="top" secondItem="0ze-5U-CS7" secondAttribute="bottom" id="ukc-HQ-zUu"/>
+                            <constraint firstItem="0ze-5U-CS7" firstAttribute="width" secondItem="L09-jV-Qg0" secondAttribute="width" id="yGT-nS-0Jk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gKf-ZD-FZl"/>
+                    <connections>
+                        <outlet property="collection" destination="0ze-5U-CS7" id="kbq-jE-eK2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xx6-K2-ErL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="516" y="121"/>
+            <point key="canvasLocation" x="516" y="120.98950524737631"/>
         </scene>
     </scenes>
     <resources>
+        <image name="about_us" width="38" height="39"/>
+        <image name="course_search" width="38" height="39"/>
+        <image name="head_defaults" width="53" height="53"/>
         <image name="home_bg" width="375" height="141"/>
         <image name="home_icon" width="24" height="24"/>
         <image name="home_icon_select" width="24" height="24"/>
+        <image name="home_select" width="17" height="14"/>
+        <image name="message" width="38" height="39"/>
+        <image name="my_course" width="38" height="39"/>
+        <image name="physical_science" width="166" height="101"/>
     </resources>
 </document>

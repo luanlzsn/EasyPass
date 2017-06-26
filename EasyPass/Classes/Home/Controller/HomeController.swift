@@ -8,8 +8,12 @@
 
 import UIKit
 
-class HomeController: AntController {
+class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var collection: UICollectionView!
+    let courseImageArray = ["physical_science","it","finance","preschool_education"]
+    let courseTitleArray = ["物理科学","IT","金融系","学前教育"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,8 +23,55 @@ class HomeController: AntController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = .default
     }
 
+    // MARK: - UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if section == 0 {
+            return UIEdgeInsets.zero
+        } else {
+            return UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 0 {
+            var height = #imageLiteral(resourceName: "home_bg").size.height + 50 + 20 + 15 + 50
+            height += (kScreenWidth - 30) / 23.0 * 10.0
+            return CGSize(width: kScreenWidth, height: height)
+        } else {
+            let width = (kScreenWidth - 30 - 10) / 2.0
+            return CGSize(width: width, height: width / 165.0 * 100.0)
+        }
+    }
+    
+    // MARK: - UICollectionViewDelegate,UICollectionViewDataSource
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return section == 0 ? 1 : courseImageArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.section == 0 {
+            let cell: HomeHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeHeaderCell", for: indexPath) as! HomeHeaderCell
+            return cell
+        } else {
+            let cell: HomeCourseCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCourseCell", for: indexPath) as! HomeCourseCell
+            cell.imgView.image = UIImage(named: courseImageArray[indexPath.row])
+            cell.courseTitle.text = courseTitleArray[indexPath.row]
+            return cell
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
