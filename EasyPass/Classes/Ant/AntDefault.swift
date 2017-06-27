@@ -21,7 +21,7 @@ let kWindow = UIApplication.shared.keyWindow
 let kScreenBounds = UIScreen.main.bounds
 let kScreenWidth = kScreenBounds.width
 let kScreenHeight = kScreenBounds.height
-let MainColor = Common.colorWithHexString(colorStr: "80D3CB")
+let MainColor = Common.colorWithHexString(colorStr: "63BEB7")
 let LeomanManager = AntSingleton.sharedInstance
 let kIphone4 = kScreenHeight == 480
 let kIpad = UIDevice.current.userInterfaceIdiom == .pad

@@ -16,8 +16,6 @@ class CycleScrollView: UIView,UIScrollViewDelegate {
     
     var totalPage = 0//图片总张数
     var curPage = 0//当前滚的是第几张
-    var bannerWidth : CGFloat = kScreenWidth//宽度
-    var bannerHeight : CGFloat = 0//高度
     var scrollTimer : Timer?
     var scrollView = UIScrollView()
     var imagesArray = [String]()
@@ -28,14 +26,13 @@ class CycleScrollView: UIView,UIScrollViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        bannerHeight = height
         scrollView.backgroundColor = UIColor.clear
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true
         scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: kScreenWidth * 3.0, height: 0)
-        addSubview(scrollView)
+        scrollView.contentSize = CGSize(width: width * 3.0, height: 0)
+        insertSubview(scrollView, at: 0)
         
         pageControl.pageIndicatorTintColor = UIColor.gray
         pageControl.currentPageIndicatorTintColor = MainColor
@@ -45,10 +42,8 @@ class CycleScrollView: UIView,UIScrollViewDelegate {
     }
     
     //MARK: - 设置banner数据
-    func setBannerWithUrlArry(urlArry: [String], bannerWidth: CGFloat, bannerHeight: CGFloat) {
+    func setBannerWithUrlArry(urlArry: [String]) {
         totalPage = urlArry.count
-        self.bannerWidth = bannerWidth
-        self.bannerHeight = bannerHeight
         curPage = 1
         imagesArray = urlArry
         pageControl.numberOfPages = totalPage
@@ -79,14 +74,14 @@ class CycleScrollView: UIView,UIScrollViewDelegate {
         getDisplayImagesWithCurpage(page: curPage)
         
         for i in 0..<3 {
-            let imageView = UIImageView(frame: CGRect(x: kScreenWidth * CGFloat(i) + (kScreenWidth - bannerWidth) / 2.0, y: (height - bannerHeight) / 2.0, width: bannerWidth, height: bannerHeight))
+            let imageView = UIImageView(frame: CGRect(x: width * CGFloat(i), y: 0, width: width, height: height))
             imageView.isUserInteractionEnabled = true
             imageView.sd_setImage(with: URL(string: curImages[i]), placeholderImage: UIImage(named: "not_loaded"))
             let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
             imageView.addGestureRecognizer(singleTap)
             scrollView.addSubview(imageView)
         }
-        scrollView.setContentOffset(CGPoint(x: kScreenWidth, y: 0), animated: false)
+        scrollView.setContentOffset(CGPoint(x: width, y: 0), animated: false)
     }
     
     func getDisplayImagesWithCurpage(page: Int) {
@@ -130,13 +125,13 @@ class CycleScrollView: UIView,UIScrollViewDelegate {
     func createTimer() {
         weak var weakSelf = self
         scrollTimer = Timer.scheduledTimer(withTimeInterval: 2, block: { (_) in
-            weakSelf?.scrollView.setContentOffset(CGPoint(x: kScreenWidth * 2, y: 0), animated: true)
+            weakSelf?.scrollView.setContentOffset(CGPoint(x: weakSelf!.width * 2, y: 0), animated: true)
         }, repeats: true)
     }
     
     //MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x >= kScreenWidth * 2 {
+        if scrollView.contentOffset.x >= width * 2 {
             curPage = validPageValue(value: curPage + 1)
             refreshScrollView()
         }
@@ -160,7 +155,7 @@ class CycleScrollView: UIView,UIScrollViewDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
         scrollView.frame = bounds
-        pageControl.frame = CGRect(x: 0, y: height - 30, width: kScreenWidth, height: 30)
+        pageControl.frame = CGRect(x: 0, y: height - 30, width: width, height: 30)
     }
 
     /*

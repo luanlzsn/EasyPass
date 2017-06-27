@@ -31,6 +31,9 @@
 		0F83A6481F00B7BA00088B5F /* HomeCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F83A6471F00B7BA00088B5F /* HomeCourseCell.swift */; };
 		0F9A8EC81F0149ED006B495D /* HomeMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A8EC71F0149ED006B495D /* HomeMenuButton.swift */; };
 		0F9A8ECA1F014E73006B495D /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A8EC91F014E73006B495D /* CycleScrollView.swift */; };
+		0FB34AB41F02532300480E6C /* MineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB31F02532300480E6C /* MineController.swift */; };
+		0FB34AB61F02611100480E6C /* MineHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB51F02611100480E6C /* MineHeadCell.swift */; };
+		0FB34AB81F02613B00480E6C /* MineLearnRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +64,9 @@
 		0F83A6471F00B7BA00088B5F /* HomeCourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCourseCell.swift; sourceTree = "<group>"; };
 		0F9A8EC71F0149ED006B495D /* HomeMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMenuButton.swift; sourceTree = "<group>"; };
 		0F9A8EC91F014E73006B495D /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
+		0FB34AB31F02532300480E6C /* MineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineController.swift; sourceTree = "<group>"; };
+		0FB34AB51F02611100480E6C /* MineHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeadCell.swift; sourceTree = "<group>"; };
+		0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineLearnRecordCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +204,7 @@
 		0F6C61F51EFFD0F70079B2F2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0FB34AB31F02532300480E6C /* MineController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -205,6 +212,8 @@
 		0F6C61F61EFFD0F70079B2F2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0FB34AB51F02611100480E6C /* MineHeadCell.swift */,
+				0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -358,10 +367,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FB34AB41F02532300480E6C /* MineController.swift in Sources */,
 				0F83A6481F00B7BA00088B5F /* HomeCourseCell.swift in Sources */,
 				0F6C620B1EFFD4860079B2F2 /* AntController.swift in Sources */,
 				0F83A6461F00B03800088B5F /* HomeHeaderCell.swift in Sources */,
+				0FB34AB81F02613B00480E6C /* MineLearnRecordCell.swift in Sources */,
 				0F6C62061EFFD47C0079B2F2 /* Common.swift in Sources */,
+				0FB34AB61F02611100480E6C /* MineHeadCell.swift in Sources */,
 				0F6C62141EFFD7730079B2F2 /* HomeController.swift in Sources */,
 				0F6C61CF1EFFCA800079B2F2 /* AppDelegate.swift in Sources */,
 				0F6C620C1EFFD4860079B2F2 /* AntDefault.swift in Sources */,
