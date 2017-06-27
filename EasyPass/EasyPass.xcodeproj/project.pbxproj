@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F07736D1F02998600EF8EEF /* ShopCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F07736C1F02998600EF8EEF /* ShopCartCell.swift */; };
 		0F6C61CF1EFFCA800079B2F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C61CE1EFFCA800079B2F2 /* AppDelegate.swift */; };
 		0F6C61D41EFFCA800079B2F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C61D21EFFCA800079B2F2 /* Main.storyboard */; };
 		0F6C61D61EFFCA800079B2F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C61D51EFFCA800079B2F2 /* Assets.xcassets */; };
@@ -34,9 +35,11 @@
 		0FB34AB41F02532300480E6C /* MineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB31F02532300480E6C /* MineController.swift */; };
 		0FB34AB61F02611100480E6C /* MineHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB51F02611100480E6C /* MineHeadCell.swift */; };
 		0FB34AB81F02613B00480E6C /* MineLearnRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */; };
+		0FB34ABA1F028D6E00480E6C /* ShopCartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB91F028D6E00480E6C /* ShopCartController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F07736C1F02998600EF8EEF /* ShopCartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCartCell.swift; sourceTree = "<group>"; };
 		0F6C61CB1EFFCA800079B2F2 /* EasyPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F6C61CE1EFFCA800079B2F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F6C61D31EFFCA800079B2F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 		0FB34AB31F02532300480E6C /* MineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineController.swift; sourceTree = "<group>"; };
 		0FB34AB51F02611100480E6C /* MineHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeadCell.swift; sourceTree = "<group>"; };
 		0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineLearnRecordCell.swift; sourceTree = "<group>"; };
+		0FB34AB91F028D6E00480E6C /* ShopCartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCartController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +259,7 @@
 		0F6C61FB1EFFD0F70079B2F2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0FB34AB91F028D6E00480E6C /* ShopCartController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 		0F6C61FC1EFFD0F70079B2F2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0F07736C1F02998600EF8EEF /* ShopCartCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FB34AB41F02532300480E6C /* MineController.swift in Sources */,
+				0F07736D1F02998600EF8EEF /* ShopCartCell.swift in Sources */,
 				0F83A6481F00B7BA00088B5F /* HomeCourseCell.swift in Sources */,
 				0F6C620B1EFFD4860079B2F2 /* AntController.swift in Sources */,
 				0F83A6461F00B03800088B5F /* HomeHeaderCell.swift in Sources */,
@@ -379,6 +386,7 @@
 				0F6C620C1EFFD4860079B2F2 /* AntDefault.swift in Sources */,
 				0F9A8EC81F0149ED006B495D /* HomeMenuButton.swift in Sources */,
 				0F6C620D1EFFD4860079B2F2 /* AntNavController.swift in Sources */,
+				0FB34ABA1F028D6E00480E6C /* ShopCartController.swift in Sources */,
 				0F9A8ECA1F014E73006B495D /* CycleScrollView.swift in Sources */,
 				0F6C620E1EFFD4860079B2F2 /* AntSingleton.swift in Sources */,
 			);
