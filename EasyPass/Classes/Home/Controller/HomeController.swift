@@ -28,6 +28,7 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
         UIApplication.shared.statusBarStyle = .default
     }
 
@@ -51,6 +52,14 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
         }
     }
     
+    // MARK: - 跳转
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CourseList" {
+            let courseList = segue.destination as! CourseListController
+            courseList.navigationItem.title = sender as? String
+        }
+    }
+    
     // MARK: - UICollectionViewDelegate,UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -70,6 +79,10 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
             cell.courseTitle.text = courseTitleArray[indexPath.row]
             return cell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "CourseList", sender: courseTitleArray[indexPath.row])
     }
     
     override func didReceiveMemoryWarning() {

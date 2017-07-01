@@ -1,17 +1,17 @@
 //
-//  ReservationController.swift
+//  CourseListController.swift
 //  EasyPass
 //
-//  Created by luan on 2017/6/27.
+//  Created by luan on 2017/7/1.
 //  Copyright © 2017年 luan. All rights reserved.
 //
 
 import UIKit
 
-class ReservationController: AntController,UITableViewDelegate,UITableViewDataSource {
+class CourseListController: AntController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet var menuBtnArray: [UIButton]!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet var sortBtnArray: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +23,20 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
         
     }
 
-    @IBAction func sortClick(_ sender: UIButton) {
-        for btn in sortBtnArray {
+    @IBAction func menuClick(_ sender: UIButton) {
+        for btn in menuBtnArray {
             btn.isSelected = sender == btn
+        }
+        if sender.tag == 10 {
+            performSegue(withIdentifier: "CourseMenu", sender: nil)
+        }
+    }
+    
+    // MARK: - 跳转
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CourseMenu" {
+            let courseMenu = segue.destination as! CourseMenuController
+            courseMenu.selectType = navigationItem.title!
         }
     }
     
@@ -43,7 +54,7 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: ReservationCell = tableView.dequeueReusableCell(withIdentifier: "ReservationCell", for: indexPath) as! ReservationCell
+        let cell: CourseCell = tableView.dequeueReusableCell(withIdentifier: "CourseCell", for: indexPath) as! CourseCell
         return cell
     }
     

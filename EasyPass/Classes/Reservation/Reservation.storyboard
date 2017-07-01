@@ -122,7 +122,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReservationCell" rowHeight="100" id="veW-zs-Vsi" customClass="ReservationCell" customModule="EasyPass" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="100"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="veW-zs-Vsi" id="1mr-RO-fDR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
@@ -285,9 +285,7 @@
                             <constraint firstItem="Hkv-3i-Sm0" firstAttribute="top" secondItem="jKP-EQ-b6F" secondAttribute="bottom" id="pa9-ye-u6p"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="线下预约" id="7qd-XK-NeZ">
-                        <barButtonItem key="rightBarButtonItem" image="search_icon" id="d1c-cH-5CT"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="线下预约" id="7qd-XK-NeZ"/>
                     <connections>
                         <outlet property="tableView" destination="Hkv-3i-Sm0" id="Kay-ck-e3K"/>
                         <outletCollection property="sortBtnArray" destination="yHM-kR-nZo" collectionClass="NSMutableArray" id="Rmt-ny-TbY"/>
@@ -328,7 +326,6 @@
         <image name="down_arrow_two_gray" width="8" height="13"/>
         <image name="reservation_icon" width="25" height="23"/>
         <image name="reservation_icon_select" width="25" height="23"/>
-        <image name="search_icon" width="23" height="24"/>
         <image name="star_select" width="17" height="16"/>
         <image name="star_unselect" width="17" height="16"/>
         <image name="up_arrow_one_gray" width="11" height="6"/>
