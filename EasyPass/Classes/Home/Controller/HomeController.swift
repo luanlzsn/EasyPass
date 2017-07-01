@@ -43,7 +43,7 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
-            var height = #imageLiteral(resourceName: "home_bg").size.height + 50 + 40 + 15 + 50
+            var height = #imageLiteral(resourceName: "home_bg").size.height + 60 + 40 + 15 + 50
             height += (kScreenWidth - 30) / 23.0 * 10.0
             return CGSize(width: kScreenWidth, height: height)
         } else {

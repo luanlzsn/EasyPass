@@ -15,6 +15,7 @@
 		0F5FE0671F0776CD00B8DD09 /* CourseMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE0661F0776CD00B8DD09 /* CourseMenuController.swift */; };
 		0F5FE0691F077E4100B8DD09 /* CourseTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE0681F077E4100B8DD09 /* CourseTypeCell.swift */; };
 		0F5FE06B1F077E6000B8DD09 /* CourseGradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE06A1F077E6000B8DD09 /* CourseGradeCell.swift */; };
+		0F5FE06D1F0785B600B8DD09 /* CourseDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE06C1F0785B600B8DD09 /* CourseDetailController.swift */; };
 		0F6C61CF1EFFCA800079B2F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C61CE1EFFCA800079B2F2 /* AppDelegate.swift */; };
 		0F6C61D41EFFCA800079B2F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C61D21EFFCA800079B2F2 /* Main.storyboard */; };
 		0F6C61D61EFFCA800079B2F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C61D51EFFCA800079B2F2 /* Assets.xcassets */; };
@@ -43,6 +44,9 @@
 		0FB34AB61F02611100480E6C /* MineHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB51F02611100480E6C /* MineHeadCell.swift */; };
 		0FB34AB81F02613B00480E6C /* MineLearnRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */; };
 		0FB34ABA1F028D6E00480E6C /* ShopCartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB91F028D6E00480E6C /* ShopCartController.swift */; };
+		0FD76B601F07E4D200A04F7A /* CourseCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD76B5E1F07E4D200A04F7A /* CourseCommentCell.swift */; };
+		0FD76B611F07E4D200A04F7A /* CourseCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD76B5F1F07E4D200A04F7A /* CourseCommentCell.xib */; };
+		0FD76B631F07F00700A04F7A /* CustomerServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +58,7 @@
 		0F5FE0661F0776CD00B8DD09 /* CourseMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMenuController.swift; sourceTree = "<group>"; };
 		0F5FE0681F077E4100B8DD09 /* CourseTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTypeCell.swift; sourceTree = "<group>"; };
 		0F5FE06A1F077E6000B8DD09 /* CourseGradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseGradeCell.swift; sourceTree = "<group>"; };
+		0F5FE06C1F0785B600B8DD09 /* CourseDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailController.swift; sourceTree = "<group>"; };
 		0F6C61CB1EFFCA800079B2F2 /* EasyPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F6C61CE1EFFCA800079B2F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F6C61D31EFFCA800079B2F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,6 +90,9 @@
 		0FB34AB51F02611100480E6C /* MineHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeadCell.swift; sourceTree = "<group>"; };
 		0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineLearnRecordCell.swift; sourceTree = "<group>"; };
 		0FB34AB91F028D6E00480E6C /* ShopCartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCartController.swift; sourceTree = "<group>"; };
+		0FD76B5E1F07E4D200A04F7A /* CourseCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCommentCell.swift; sourceTree = "<group>"; };
+		0FD76B5F1F07E4D200A04F7A /* CourseCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseCommentCell.xib; sourceTree = "<group>"; };
+		0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerServiceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +205,8 @@
 				0F6C62131EFFD7730079B2F2 /* HomeController.swift */,
 				0F5FE0621F076D7F00B8DD09 /* CourseListController.swift */,
 				0F5FE0661F0776CD00B8DD09 /* CourseMenuController.swift */,
+				0F5FE06C1F0785B600B8DD09 /* CourseDetailController.swift */,
+				0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -210,6 +220,8 @@
 				0F5FE0641F0770AC00B8DD09 /* CourseCell.swift */,
 				0F5FE0681F077E4100B8DD09 /* CourseTypeCell.swift */,
 				0F5FE06A1F077E6000B8DD09 /* CourseGradeCell.swift */,
+				0FD76B5E1F07E4D200A04F7A /* CourseCommentCell.swift */,
+				0FD76B5F1F07E4D200A04F7A /* CourseCommentCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,6 +369,7 @@
 			files = (
 				0F6C61D91EFFCA800079B2F2 /* LaunchScreen.storyboard in Resources */,
 				0F6C61D61EFFCA800079B2F2 /* Assets.xcassets in Resources */,
+				0FD76B611F07E4D200A04F7A /* CourseCommentCell.xib in Resources */,
 				0F6C62001EFFD1DD0079B2F2 /* Mine.storyboard in Resources */,
 				0F6C62021EFFD1E70079B2F2 /* Reservation.storyboard in Resources */,
 				0F6C61D41EFFCA800079B2F2 /* Main.storyboard in Resources */,
@@ -407,6 +420,7 @@
 				0FB34AB61F02611100480E6C /* MineHeadCell.swift in Sources */,
 				0F6C62141EFFD7730079B2F2 /* HomeController.swift in Sources */,
 				0F5FE06B1F077E6000B8DD09 /* CourseGradeCell.swift in Sources */,
+				0FD76B631F07F00700A04F7A /* CustomerServiceController.swift in Sources */,
 				0F07736F1F029FC300EF8EEF /* ReservationController.swift in Sources */,
 				0F6C61CF1EFFCA800079B2F2 /* AppDelegate.swift in Sources */,
 				0F6C620C1EFFD4860079B2F2 /* AntDefault.swift in Sources */,
@@ -417,6 +431,8 @@
 				0F9A8ECA1F014E73006B495D /* CycleScrollView.swift in Sources */,
 				0F5FE0631F076D7F00B8DD09 /* CourseListController.swift in Sources */,
 				0F6C620E1EFFD4860079B2F2 /* AntSingleton.swift in Sources */,
+				0F5FE06D1F0785B600B8DD09 /* CourseDetailController.swift in Sources */,
+				0FD76B601F07E4D200A04F7A /* CourseCommentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

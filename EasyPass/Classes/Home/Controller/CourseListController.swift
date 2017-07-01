@@ -60,6 +60,7 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "CourseDetail", sender: indexPath.row)
     }
     
     override func didReceiveMemoryWarning() {

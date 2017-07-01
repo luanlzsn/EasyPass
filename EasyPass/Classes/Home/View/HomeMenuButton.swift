@@ -12,8 +12,9 @@ class HomeMenuButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        titleEdgeInsets = UIEdgeInsetsMake(0, -(currentImage?.size.width)!, -(currentImage?.size.height)! - 20, 0)
+        titleEdgeInsets = UIEdgeInsetsMake(0, -(currentImage?.size.width)!, -(currentImage?.size.height)!, 0)
         imageView?.centerX = width / 2.0
+        imageView?.centerY = height / 2.0 - 10
     }
 
     /*
