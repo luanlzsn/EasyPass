@@ -49,6 +49,9 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let courseDetail = UIStoryboard(name: "Home", bundle: Bundle.main).instantiateViewController(withIdentifier: "CourseDetail") as! CourseDetailController
+        courseDetail.isCourse = false
+        navigationController?.pushViewController(courseDetail, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

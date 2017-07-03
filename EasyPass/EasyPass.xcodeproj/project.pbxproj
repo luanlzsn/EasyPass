@@ -38,6 +38,7 @@
 		0F6C62141EFFD7730079B2F2 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C62131EFFD7730079B2F2 /* HomeController.swift */; };
 		0F83A6461F00B03800088B5F /* HomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F83A6451F00B03800088B5F /* HomeHeaderCell.swift */; };
 		0F83A6481F00B7BA00088B5F /* HomeCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F83A6471F00B7BA00088B5F /* HomeCourseCell.swift */; };
+		0F85E0731F09D9F50084AA1B /* CourseOutlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85E0721F09D9F50084AA1B /* CourseOutlineCell.swift */; };
 		0F9A8EC81F0149ED006B495D /* HomeMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A8EC71F0149ED006B495D /* HomeMenuButton.swift */; };
 		0F9A8ECA1F014E73006B495D /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A8EC91F014E73006B495D /* CycleScrollView.swift */; };
 		0FB34AB41F02532300480E6C /* MineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB31F02532300480E6C /* MineController.swift */; };
@@ -84,6 +85,7 @@
 		0F6C62131EFFD7730079B2F2 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		0F83A6451F00B03800088B5F /* HomeHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderCell.swift; sourceTree = "<group>"; };
 		0F83A6471F00B7BA00088B5F /* HomeCourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCourseCell.swift; sourceTree = "<group>"; };
+		0F85E0721F09D9F50084AA1B /* CourseOutlineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseOutlineCell.swift; sourceTree = "<group>"; };
 		0F9A8EC71F0149ED006B495D /* HomeMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMenuButton.swift; sourceTree = "<group>"; };
 		0F9A8EC91F014E73006B495D /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
 		0FB34AB31F02532300480E6C /* MineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineController.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				0F5FE06A1F077E6000B8DD09 /* CourseGradeCell.swift */,
 				0FD76B5E1F07E4D200A04F7A /* CourseCommentCell.swift */,
 				0FD76B5F1F07E4D200A04F7A /* CourseCommentCell.xib */,
+				0F85E0721F09D9F50084AA1B /* CourseOutlineCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			files = (
 				0F2F811C1F035728005E68C0 /* ReservationCell.swift in Sources */,
 				0FB34AB41F02532300480E6C /* MineController.swift in Sources */,
+				0F85E0731F09D9F50084AA1B /* CourseOutlineCell.swift in Sources */,
 				0F07736D1F02998600EF8EEF /* ShopCartCell.swift in Sources */,
 				0F83A6481F00B7BA00088B5F /* HomeCourseCell.swift in Sources */,
 				0F5FE0671F0776CD00B8DD09 /* CourseMenuController.swift in Sources */,
