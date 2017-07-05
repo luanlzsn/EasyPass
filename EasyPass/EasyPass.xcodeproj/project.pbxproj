@@ -39,12 +39,23 @@
 		0F83A6461F00B03800088B5F /* HomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F83A6451F00B03800088B5F /* HomeHeaderCell.swift */; };
 		0F83A6481F00B7BA00088B5F /* HomeCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F83A6471F00B7BA00088B5F /* HomeCourseCell.swift */; };
 		0F85E0731F09D9F50084AA1B /* CourseOutlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85E0721F09D9F50084AA1B /* CourseOutlineCell.swift */; };
+		0F85E0751F09E3CD0084AA1B /* MyCourseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85E0741F09E3CD0084AA1B /* MyCourseController.swift */; };
+		0F85E0771F09E69E0084AA1B /* MyCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85E0761F09E69E0084AA1B /* MyCourseCell.swift */; };
+		0F85E0791F09ECCA0084AA1B /* MyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85E0781F09ECCA0084AA1B /* MyCollectionCell.swift */; };
+		0F85E07B1F09ECDF0084AA1B /* MyCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85E07A1F09ECDF0084AA1B /* MyCollectionController.swift */; };
+		0F85E07D1F09F0F50084AA1B /* MyOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85E07C1F09F0F50084AA1B /* MyOrderController.swift */; };
+		0F85E07F1F09F1090084AA1B /* MyOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85E07E1F09F1090084AA1B /* MyOrderCell.swift */; };
+		0F85E0811F0A47D30084AA1B /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85E0801F0A47D30084AA1B /* MessageCell.swift */; };
+		0F85E0831F0A47E40084AA1B /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85E0821F0A47E40084AA1B /* MessageController.swift */; };
+		0F85E0851F0A62AD0084AA1B /* CommonProblemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85E0841F0A62AD0084AA1B /* CommonProblemController.swift */; };
+		0F85E0871F0A63340084AA1B /* AboutUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85E0861F0A63340084AA1B /* AboutUsController.swift */; };
 		0F9A8EC81F0149ED006B495D /* HomeMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A8EC71F0149ED006B495D /* HomeMenuButton.swift */; };
 		0F9A8ECA1F014E73006B495D /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A8EC91F014E73006B495D /* CycleScrollView.swift */; };
 		0FB34AB41F02532300480E6C /* MineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB31F02532300480E6C /* MineController.swift */; };
 		0FB34AB61F02611100480E6C /* MineHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB51F02611100480E6C /* MineHeadCell.swift */; };
 		0FB34AB81F02613B00480E6C /* MineLearnRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */; };
 		0FB34ABA1F028D6E00480E6C /* ShopCartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB91F028D6E00480E6C /* ShopCartController.swift */; };
+		0FBA09981F0CB84200B544DC /* SystemSetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA09971F0CB84200B544DC /* SystemSetupController.swift */; };
 		0FD76B601F07E4D200A04F7A /* CourseCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD76B5E1F07E4D200A04F7A /* CourseCommentCell.swift */; };
 		0FD76B611F07E4D200A04F7A /* CourseCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD76B5F1F07E4D200A04F7A /* CourseCommentCell.xib */; };
 		0FD76B631F07F00700A04F7A /* CustomerServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */; };
@@ -86,12 +97,23 @@
 		0F83A6451F00B03800088B5F /* HomeHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderCell.swift; sourceTree = "<group>"; };
 		0F83A6471F00B7BA00088B5F /* HomeCourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCourseCell.swift; sourceTree = "<group>"; };
 		0F85E0721F09D9F50084AA1B /* CourseOutlineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseOutlineCell.swift; sourceTree = "<group>"; };
+		0F85E0741F09E3CD0084AA1B /* MyCourseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCourseController.swift; sourceTree = "<group>"; };
+		0F85E0761F09E69E0084AA1B /* MyCourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCourseCell.swift; sourceTree = "<group>"; };
+		0F85E0781F09ECCA0084AA1B /* MyCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionCell.swift; sourceTree = "<group>"; };
+		0F85E07A1F09ECDF0084AA1B /* MyCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionController.swift; sourceTree = "<group>"; };
+		0F85E07C1F09F0F50084AA1B /* MyOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrderController.swift; sourceTree = "<group>"; };
+		0F85E07E1F09F1090084AA1B /* MyOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrderCell.swift; sourceTree = "<group>"; };
+		0F85E0801F0A47D30084AA1B /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		0F85E0821F0A47E40084AA1B /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
+		0F85E0841F0A62AD0084AA1B /* CommonProblemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonProblemController.swift; sourceTree = "<group>"; };
+		0F85E0861F0A63340084AA1B /* AboutUsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsController.swift; sourceTree = "<group>"; };
 		0F9A8EC71F0149ED006B495D /* HomeMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMenuButton.swift; sourceTree = "<group>"; };
 		0F9A8EC91F014E73006B495D /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
 		0FB34AB31F02532300480E6C /* MineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineController.swift; sourceTree = "<group>"; };
 		0FB34AB51F02611100480E6C /* MineHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeadCell.swift; sourceTree = "<group>"; };
 		0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineLearnRecordCell.swift; sourceTree = "<group>"; };
 		0FB34AB91F028D6E00480E6C /* ShopCartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCartController.swift; sourceTree = "<group>"; };
+		0FBA09971F0CB84200B544DC /* SystemSetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemSetupController.swift; sourceTree = "<group>"; };
 		0FD76B5E1F07E4D200A04F7A /* CourseCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCommentCell.swift; sourceTree = "<group>"; };
 		0FD76B5F1F07E4D200A04F7A /* CourseCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseCommentCell.xib; sourceTree = "<group>"; };
 		0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerServiceController.swift; sourceTree = "<group>"; };
@@ -243,6 +265,13 @@
 			isa = PBXGroup;
 			children = (
 				0FB34AB31F02532300480E6C /* MineController.swift */,
+				0F85E0741F09E3CD0084AA1B /* MyCourseController.swift */,
+				0F85E07A1F09ECDF0084AA1B /* MyCollectionController.swift */,
+				0F85E07C1F09F0F50084AA1B /* MyOrderController.swift */,
+				0F85E0821F0A47E40084AA1B /* MessageController.swift */,
+				0F85E0841F0A62AD0084AA1B /* CommonProblemController.swift */,
+				0F85E0861F0A63340084AA1B /* AboutUsController.swift */,
+				0FBA09971F0CB84200B544DC /* SystemSetupController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -252,6 +281,10 @@
 			children = (
 				0FB34AB51F02611100480E6C /* MineHeadCell.swift */,
 				0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */,
+				0F85E0761F09E69E0084AA1B /* MyCourseCell.swift */,
+				0F85E0781F09ECCA0084AA1B /* MyCollectionCell.swift */,
+				0F85E07E1F09F1090084AA1B /* MyOrderCell.swift */,
+				0F85E0801F0A47D30084AA1B /* MessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -412,31 +445,42 @@
 			files = (
 				0F2F811C1F035728005E68C0 /* ReservationCell.swift in Sources */,
 				0FB34AB41F02532300480E6C /* MineController.swift in Sources */,
+				0F85E0831F0A47E40084AA1B /* MessageController.swift in Sources */,
 				0F85E0731F09D9F50084AA1B /* CourseOutlineCell.swift in Sources */,
 				0F07736D1F02998600EF8EEF /* ShopCartCell.swift in Sources */,
 				0F83A6481F00B7BA00088B5F /* HomeCourseCell.swift in Sources */,
 				0F5FE0671F0776CD00B8DD09 /* CourseMenuController.swift in Sources */,
 				0F5FE0651F0770AC00B8DD09 /* CourseCell.swift in Sources */,
+				0F85E07F1F09F1090084AA1B /* MyOrderCell.swift in Sources */,
 				0F6C620B1EFFD4860079B2F2 /* AntController.swift in Sources */,
 				0F83A6461F00B03800088B5F /* HomeHeaderCell.swift in Sources */,
 				0FB34AB81F02613B00480E6C /* MineLearnRecordCell.swift in Sources */,
 				0F6C62061EFFD47C0079B2F2 /* Common.swift in Sources */,
 				0FB34AB61F02611100480E6C /* MineHeadCell.swift in Sources */,
+				0F85E0851F0A62AD0084AA1B /* CommonProblemController.swift in Sources */,
+				0F85E0811F0A47D30084AA1B /* MessageCell.swift in Sources */,
 				0F6C62141EFFD7730079B2F2 /* HomeController.swift in Sources */,
 				0F5FE06B1F077E6000B8DD09 /* CourseGradeCell.swift in Sources */,
+				0F85E0751F09E3CD0084AA1B /* MyCourseController.swift in Sources */,
 				0FD76B631F07F00700A04F7A /* CustomerServiceController.swift in Sources */,
 				0F07736F1F029FC300EF8EEF /* ReservationController.swift in Sources */,
 				0F6C61CF1EFFCA800079B2F2 /* AppDelegate.swift in Sources */,
 				0F6C620C1EFFD4860079B2F2 /* AntDefault.swift in Sources */,
 				0F9A8EC81F0149ED006B495D /* HomeMenuButton.swift in Sources */,
+				0F85E0771F09E69E0084AA1B /* MyCourseCell.swift in Sources */,
 				0F5FE0691F077E4100B8DD09 /* CourseTypeCell.swift in Sources */,
+				0F85E07B1F09ECDF0084AA1B /* MyCollectionController.swift in Sources */,
+				0F85E0871F0A63340084AA1B /* AboutUsController.swift in Sources */,
 				0F6C620D1EFFD4860079B2F2 /* AntNavController.swift in Sources */,
+				0F85E07D1F09F0F50084AA1B /* MyOrderController.swift in Sources */,
 				0FB34ABA1F028D6E00480E6C /* ShopCartController.swift in Sources */,
 				0F9A8ECA1F014E73006B495D /* CycleScrollView.swift in Sources */,
+				0FBA09981F0CB84200B544DC /* SystemSetupController.swift in Sources */,
 				0F5FE0631F076D7F00B8DD09 /* CourseListController.swift in Sources */,
 				0F6C620E1EFFD4860079B2F2 /* AntSingleton.swift in Sources */,
 				0F5FE06D1F0785B600B8DD09 /* CourseDetailController.swift in Sources */,
 				0FD76B601F07E4D200A04F7A /* CourseCommentCell.swift in Sources */,
+				0F85E0791F09ECCA0084AA1B /* MyCollectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     let imageArray = ["mine_my_course","mine_my_collection","mine_my_order","mine_message_center","mine_common_problem","mine_about_us","mine_system_setup"]
+    let identifierArray = ["MyCourse","MyCollection","MyOrder","Message","CommonProblem","AboutUs","SystemSetup"]
     let titleArray = ["我的课程","我的收藏","我的订单","消息中心","常见问题","关于我们","系统设置"]
     
     override func viewDidLoad() {
@@ -69,6 +70,7 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: identifierArray[indexPath.row], sender: nil)
     }
     
     override func didReceiveMemoryWarning() {
