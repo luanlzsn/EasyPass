@@ -10,6 +10,14 @@
 		0F07736D1F02998600EF8EEF /* ShopCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F07736C1F02998600EF8EEF /* ShopCartCell.swift */; };
 		0F07736F1F029FC300EF8EEF /* ReservationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F07736E1F029FC300EF8EEF /* ReservationController.swift */; };
 		0F2F811C1F035728005E68C0 /* ReservationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2F811B1F035728005E68C0 /* ReservationCell.swift */; };
+		0F3838951F0D07B8003C800A /* MyAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838941F0D07B8003C800A /* MyAccountController.swift */; };
+		0F3838971F0D09AB003C800A /* MyAccountHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838961F0D09AB003C800A /* MyAccountHeadCell.swift */; };
+		0F3838991F0D09BC003C800A /* MyAccountTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838981F0D09BC003C800A /* MyAccountTextFieldCell.swift */; };
+		0F38389B1F0D1EC4003C800A /* CourseSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38389A1F0D1EC3003C800A /* CourseSearchController.swift */; };
+		0F38389D1F0D1FCB003C800A /* PaymentResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38389C1F0D1FCB003C800A /* PaymentResultsController.swift */; };
+		0F3838A11F0D25A5003C800A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F3838A01F0D25A5003C800A /* Login.storyboard */; };
+		0F3838A31F0D2639003C800A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838A21F0D2639003C800A /* LoginController.swift */; };
+		0F3838A51F0D2881003C800A /* PerfectInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838A41F0D2881003C800A /* PerfectInfoController.swift */; };
 		0F5FE0631F076D7F00B8DD09 /* CourseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE0621F076D7F00B8DD09 /* CourseListController.swift */; };
 		0F5FE0651F0770AC00B8DD09 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE0641F0770AC00B8DD09 /* CourseCell.swift */; };
 		0F5FE0671F0776CD00B8DD09 /* CourseMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE0661F0776CD00B8DD09 /* CourseMenuController.swift */; };
@@ -65,6 +73,14 @@
 		0F07736C1F02998600EF8EEF /* ShopCartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCartCell.swift; sourceTree = "<group>"; };
 		0F07736E1F029FC300EF8EEF /* ReservationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationController.swift; sourceTree = "<group>"; };
 		0F2F811B1F035728005E68C0 /* ReservationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationCell.swift; sourceTree = "<group>"; };
+		0F3838941F0D07B8003C800A /* MyAccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountController.swift; sourceTree = "<group>"; };
+		0F3838961F0D09AB003C800A /* MyAccountHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountHeadCell.swift; sourceTree = "<group>"; };
+		0F3838981F0D09BC003C800A /* MyAccountTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTextFieldCell.swift; sourceTree = "<group>"; };
+		0F38389A1F0D1EC3003C800A /* CourseSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseSearchController.swift; sourceTree = "<group>"; };
+		0F38389C1F0D1FCB003C800A /* PaymentResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentResultsController.swift; sourceTree = "<group>"; };
+		0F3838A01F0D25A5003C800A /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		0F3838A21F0D2639003C800A /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		0F3838A41F0D2881003C800A /* PerfectInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfectInfoController.swift; sourceTree = "<group>"; };
 		0F5FE0621F076D7F00B8DD09 /* CourseListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseListController.swift; sourceTree = "<group>"; };
 		0F5FE0641F0770AC00B8DD09 /* CourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		0F5FE0661F0776CD00B8DD09 /* CourseMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMenuController.swift; sourceTree = "<group>"; };
@@ -136,6 +152,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F38389E1F0D259B003C800A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0F38389F1F0D259B003C800A /* Controller */,
+				0F3838A01F0D25A5003C800A /* Login.storyboard */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		0F38389F1F0D259B003C800A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F3838A21F0D2639003C800A /* LoginController.swift */,
+				0F3838A41F0D2881003C800A /* PerfectInfoController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		0F6C61C21EFFCA800079B2F2 = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +217,7 @@
 		0F6C61EE1EFFD0F70079B2F2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0F38389E1F0D259B003C800A /* Login */,
 				0F6C61EF1EFFD0F70079B2F2 /* Ant */,
 				0F6C61F01EFFD0F70079B2F2 /* Common */,
 				0F6C61F11EFFD0F70079B2F2 /* Home */,
@@ -231,6 +266,7 @@
 				0F5FE0661F0776CD00B8DD09 /* CourseMenuController.swift */,
 				0F5FE06C1F0785B600B8DD09 /* CourseDetailController.swift */,
 				0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */,
+				0F38389C1F0D1FCB003C800A /* PaymentResultsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -272,6 +308,8 @@
 				0F85E0841F0A62AD0084AA1B /* CommonProblemController.swift */,
 				0F85E0861F0A63340084AA1B /* AboutUsController.swift */,
 				0FBA09971F0CB84200B544DC /* SystemSetupController.swift */,
+				0F3838941F0D07B8003C800A /* MyAccountController.swift */,
+				0F38389A1F0D1EC3003C800A /* CourseSearchController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -285,6 +323,8 @@
 				0F85E0781F09ECCA0084AA1B /* MyCollectionCell.swift */,
 				0F85E07E1F09F1090084AA1B /* MyOrderCell.swift */,
 				0F85E0801F0A47D30084AA1B /* MessageCell.swift */,
+				0F3838961F0D09AB003C800A /* MyAccountHeadCell.swift */,
+				0F3838981F0D09BC003C800A /* MyAccountTextFieldCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -411,6 +451,7 @@
 				0F6C61D41EFFCA800079B2F2 /* Main.storyboard in Resources */,
 				0F6C62041EFFD1F10079B2F2 /* ShopCart.storyboard in Resources */,
 				0F6C61FE1EFFD1D40079B2F2 /* Home.storyboard in Resources */,
+				0F3838A11F0D25A5003C800A /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,23 +496,30 @@
 				0F6C620B1EFFD4860079B2F2 /* AntController.swift in Sources */,
 				0F83A6461F00B03800088B5F /* HomeHeaderCell.swift in Sources */,
 				0FB34AB81F02613B00480E6C /* MineLearnRecordCell.swift in Sources */,
+				0F3838991F0D09BC003C800A /* MyAccountTextFieldCell.swift in Sources */,
 				0F6C62061EFFD47C0079B2F2 /* Common.swift in Sources */,
 				0FB34AB61F02611100480E6C /* MineHeadCell.swift in Sources */,
 				0F85E0851F0A62AD0084AA1B /* CommonProblemController.swift in Sources */,
+				0F38389D1F0D1FCB003C800A /* PaymentResultsController.swift in Sources */,
 				0F85E0811F0A47D30084AA1B /* MessageCell.swift in Sources */,
 				0F6C62141EFFD7730079B2F2 /* HomeController.swift in Sources */,
 				0F5FE06B1F077E6000B8DD09 /* CourseGradeCell.swift in Sources */,
 				0F85E0751F09E3CD0084AA1B /* MyCourseController.swift in Sources */,
 				0FD76B631F07F00700A04F7A /* CustomerServiceController.swift in Sources */,
+				0F3838A51F0D2881003C800A /* PerfectInfoController.swift in Sources */,
 				0F07736F1F029FC300EF8EEF /* ReservationController.swift in Sources */,
 				0F6C61CF1EFFCA800079B2F2 /* AppDelegate.swift in Sources */,
 				0F6C620C1EFFD4860079B2F2 /* AntDefault.swift in Sources */,
+				0F3838971F0D09AB003C800A /* MyAccountHeadCell.swift in Sources */,
 				0F9A8EC81F0149ED006B495D /* HomeMenuButton.swift in Sources */,
 				0F85E0771F09E69E0084AA1B /* MyCourseCell.swift in Sources */,
 				0F5FE0691F077E4100B8DD09 /* CourseTypeCell.swift in Sources */,
 				0F85E07B1F09ECDF0084AA1B /* MyCollectionController.swift in Sources */,
 				0F85E0871F0A63340084AA1B /* AboutUsController.swift in Sources */,
 				0F6C620D1EFFD4860079B2F2 /* AntNavController.swift in Sources */,
+				0F3838951F0D07B8003C800A /* MyAccountController.swift in Sources */,
+				0F3838A31F0D2639003C800A /* LoginController.swift in Sources */,
+				0F38389B1F0D1EC4003C800A /* CourseSearchController.swift in Sources */,
 				0F85E07D1F09F0F50084AA1B /* MyOrderController.swift in Sources */,
 				0FB34ABA1F028D6E00480E6C /* ShopCartController.swift in Sources */,
 				0F9A8ECA1F014E73006B495D /* CycleScrollView.swift in Sources */,

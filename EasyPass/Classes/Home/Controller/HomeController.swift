@@ -24,6 +24,9 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
         UIApplication.shared.statusBarStyle = .lightContent
+        if !AntManage.isLogin {
+            present(UIStoryboard(name: "Login", bundle: Bundle.main).instantiateInitialViewController()!, animated: true, completion: nil)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

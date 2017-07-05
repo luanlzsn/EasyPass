@@ -70,7 +70,13 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: identifierArray[indexPath.row], sender: nil)
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                performSegue(withIdentifier: "MyAccount", sender: nil)
+            }
+        } else {
+            performSegue(withIdentifier: identifierArray[indexPath.row], sender: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {

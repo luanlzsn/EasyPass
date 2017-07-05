@@ -83,7 +83,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
 
     // MARK: - 购买课程
     @IBAction func buyCourseClick(_ sender: UIButton) {
-        
+        performSegue(withIdentifier: "PaymentResults", sender: nil)
     }
     
     // MARK: - 发布评论

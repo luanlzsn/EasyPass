@@ -14,6 +14,8 @@ class HomeHeaderCell: UICollectionViewCell,CycleScrollView_Delegate {
     @IBOutlet weak var nickName: UILabel!//昵称
     @IBOutlet weak var bannerView: CycleScrollView!//banner
     @IBOutlet weak var famousAphorism: UILabel!//名言警句
+    let menuIdentifierArray = ["AboutUs","CourseSearch","MyCourse","Message"]
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +24,9 @@ class HomeHeaderCell: UICollectionViewCell,CycleScrollView_Delegate {
     }
     
     @IBAction func menuClick(_ sender: HomeMenuButton) {
-        
+        let identifier = menuIdentifierArray[sender.tag / 10 - 1]
+        let controller = UIStoryboard(name: "Mine", bundle: Bundle.main).instantiateViewController(withIdentifier: identifier)
+        viewController()?.navigationController?.pushViewController(controller, animated: true)
     }
     
     // MARK: - CycleScrollView_Delegate
