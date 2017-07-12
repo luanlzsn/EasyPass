@@ -63,7 +63,16 @@
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xka-gM-ypo">
                                                     <rect key="frame" x="160.5" y="30" width="53" height="53"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="53" id="7fw-KB-ytY"/>
+                                                        <constraint firstAttribute="height" constant="53" id="MpK-tD-F5U"/>
+                                                    </constraints>
                                                     <state key="normal" backgroundImage="head_defaults"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="26.5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8R0-Ic-yxD">
                                                     <rect key="frame" x="168.5" y="93" width="38" height="19.5"/>
@@ -196,9 +205,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="physical_science" translatesAutoresizingMaskIntoConstraints="NO" id="lh3-yT-xta">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="physical_science" translatesAutoresizingMaskIntoConstraints="NO" id="lh3-yT-xta">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoQ-kc-aWK">
+                                                    <rect key="frame" x="-0.5" y="0.0" width="375" height="200"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="物理科学" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOm-E0-ZdF">
                                                     <rect key="frame" x="147" y="88" width="82" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
@@ -211,11 +224,15 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="YoQ-kc-aWK" firstAttribute="centerY" secondItem="lh3-yT-xta" secondAttribute="centerY" id="Avr-7t-GCf"/>
                                             <constraint firstItem="734-eg-Bo0" firstAttribute="centerY" secondItem="Ry2-oJ-dfT" secondAttribute="centerY" id="BCR-Ge-Uke"/>
                                             <constraint firstItem="yOm-E0-ZdF" firstAttribute="leading" secondItem="734-eg-Bo0" secondAttribute="trailing" constant="5" id="EWW-P4-0Xt"/>
                                             <constraint firstItem="lh3-yT-xta" firstAttribute="width" secondItem="Ry2-oJ-dfT" secondAttribute="width" id="IhT-Vq-fs4"/>
                                             <constraint firstItem="lh3-yT-xta" firstAttribute="centerY" secondItem="Ry2-oJ-dfT" secondAttribute="centerY" id="KLj-8k-f4F"/>
+                                            <constraint firstItem="YoQ-kc-aWK" firstAttribute="centerX" secondItem="lh3-yT-xta" secondAttribute="centerX" id="V4D-M2-3jc"/>
                                             <constraint firstItem="yOm-E0-ZdF" firstAttribute="centerX" secondItem="Ry2-oJ-dfT" secondAttribute="centerX" id="VDx-xd-2Gi"/>
+                                            <constraint firstItem="YoQ-kc-aWK" firstAttribute="width" secondItem="lh3-yT-xta" secondAttribute="width" id="XG0-0e-9j5"/>
+                                            <constraint firstItem="YoQ-kc-aWK" firstAttribute="height" secondItem="lh3-yT-xta" secondAttribute="height" id="lyO-it-3xc"/>
                                             <constraint firstItem="lh3-yT-xta" firstAttribute="height" secondItem="Ry2-oJ-dfT" secondAttribute="height" id="mmy-vr-TBP"/>
                                             <constraint firstItem="lh3-yT-xta" firstAttribute="centerX" secondItem="Ry2-oJ-dfT" secondAttribute="centerX" id="rSU-lf-DZo"/>
                                             <constraint firstItem="yOm-E0-ZdF" firstAttribute="centerY" secondItem="Ry2-oJ-dfT" secondAttribute="centerY" id="vVI-13-lvv"/>
@@ -376,7 +393,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大学一年级Mathematics Level One" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsy-7G-MCO">
-                                                    <rect key="frame" x="114.5" y="10" width="279.5" height="17"/>
+                                                    <rect key="frame" x="114.5" y="10" width="240.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -412,7 +429,7 @@
                                                     <rect key="frame" x="289" y="29.5" width="17" height="16"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDj-jD-Co0">
-                                                    <rect key="frame" x="114.5" y="49.5" width="279.5" height="0.5"/>
+                                                    <rect key="frame" x="114.5" y="49.5" width="240.5" height="0.5"/>
                                                     <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="iwj-0I-bMy"/>
@@ -1006,19 +1023,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="课程01 平面向量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZC-Yt-mvs">
-                                                    <rect key="frame" x="20" y="10" width="241.5" height="17"/>
+                                                    <rect key="frame" x="20" y="10" width="202.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="平面向量平面向量平面向量平面向量平面向量平面向量平面向量平面向量" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajH-dH-VrS">
-                                                    <rect key="frame" x="20" y="32" width="241.5" height="37.5"/>
+                                                    <rect key="frame" x="20" y="32" width="202.5" height="37.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.57647058823529407" green="0.58431372549019611" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6N-1g-vrf">
-                                                    <rect key="frame" x="334" y="27.5" width="60" height="25"/>
+                                                    <rect key="frame" x="295" y="27.5" width="60" height="25"/>
                                                     <color key="backgroundColor" red="0.97647058819999999" green="0.74117647060000003" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="LWQ-ik-UPW"/>
@@ -1036,13 +1053,13 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="/课时" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5x-VJ-uea">
-                                                    <rect key="frame" x="300" y="33.5" width="29" height="14.5"/>
+                                                    <rect key="frame" x="261" y="33.5" width="29" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.57647058819999997" green="0.58431372550000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="$ 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZC-4A-Z16">
-                                                    <rect key="frame" x="271.5" y="29.5" width="28.5" height="21"/>
+                                                    <rect key="frame" x="232.5" y="29.5" width="28.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -1419,7 +1436,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大学一年级" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQN-X3-b0q">
-                                                            <rect key="frame" x="25" y="5" width="180" height="34"/>
+                                                            <rect key="frame" x="25" y="5" width="156.5" height="34"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>

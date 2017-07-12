@@ -7,17 +7,21 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CycleScrollView_Delegate {
 
     @IBOutlet weak var collection: UICollectionView!
-    let courseImageArray = ["physical_science","it","finance","preschool_education"]
-    let courseTitleArray = ["物理科学","IT","金融系","学前教育"]
+    var bannerArray = [BannerModel]()
+    var famousAphorism = ""
+    var classifyList = [ClassifyModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        findBannerList()
+        getFamousAphorism()
+        findClassifyList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,6 +30,8 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
         UIApplication.shared.statusBarStyle = .lightContent
         if !AntManage.isLogin {
             present(UIStoryboard(name: "Login", bundle: Bundle.main).instantiateInitialViewController()!, animated: true, completion: nil)
+        } else {
+            collection.reloadData()
         }
     }
     
@@ -33,6 +39,32 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
         super.viewWillDisappear(animated)
         navigationController?.isNavigationBarHidden = false
         UIApplication.shared.statusBarStyle = .default
+    }
+    
+    // MARK: - 获取banner信息
+    func findBannerList() {
+        weak var weakSelf = self
+        AntManage.postRequest(path: "advertise/findBannerList", params: nil, successResult: { (response) in
+            weakSelf?.bannerArray = Mapper<BannerModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            weakSelf?.collection.reloadData()
+        }, failureResult: {})
+    }
+    
+    // MARK: - 名言警句
+    func getFamousAphorism() {
+//        weak var weakSelf = self
+//        AntManage.postRequest(path: "setting/findBrochureByType", params: ["type":"tags"], successResult: { (response) in
+//            
+//        }, failureResult: {})
+    }
+    
+    // MARK: - 获取专业分类
+    func findClassifyList() {
+        weak var weakSelf = self
+        AntManage.postRequest(path: "course/findClassifyList", params: nil, successResult: { (response) in
+            weakSelf?.classifyList = Mapper<ClassifyModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            weakSelf?.collection.reloadData()
+        }, failureResult: {})
     }
 
     // MARK: - UICollectionViewDelegateFlowLayout
@@ -59,8 +91,14 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CourseList" {
             let courseList = segue.destination as! CourseListController
-            courseList.navigationItem.title = sender as? String
+            let model = sender as! ClassifyModel
+            courseList.navigationItem.title = model.name
         }
+    }
+    
+    // MARK: - CycleScrollView_Delegate
+    func didSelectBanner(index: Int) {
+        
     }
     
     // MARK: - UICollectionViewDelegate,UICollectionViewDataSource
@@ -69,23 +107,36 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return section == 0 ? 1 : courseImageArray.count
+        return section == 0 ? 1 : classifyList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell: HomeHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeHeaderCell", for: indexPath) as! HomeHeaderCell
+            if AntManage.isLogin {
+                cell.headImage.sd_setImage(with: URL(string: AntManage.userModel!.headImg!), for: .normal, placeholderImage: UIImage(named: "head_defaults"))
+            } else {
+                cell.headImage.setImage(UIImage(named: "head_defaults"), for: .normal)
+            }
+            cell.nickName.text = AntManage.userModel?.nickName
+            cell.bannerView.delegate = self
+            var imgArray = [String]()
+            for model in self.bannerArray {
+                imgArray.append(model.img!)
+            }
+            cell.bannerView.setBannerWithUrlArry(urlArry: imgArray)
             return cell
         } else {
             let cell: HomeCourseCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCourseCell", for: indexPath) as! HomeCourseCell
-            cell.imgView.image = UIImage(named: courseImageArray[indexPath.row])
-            cell.courseTitle.text = courseTitleArray[indexPath.row]
+            let model = classifyList[indexPath.row]
+            cell.imgView.sd_setImage(with: URL(string: model.img!))
+            cell.courseTitle.text = model.name
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "CourseList", sender: courseTitleArray[indexPath.row])
+        performSegue(withIdentifier: "CourseList", sender: classifyList[indexPath.row])
     }
     
     override func didReceiveMemoryWarning() {

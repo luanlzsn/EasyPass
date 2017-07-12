@@ -30,7 +30,21 @@ class PerfectInfoController: AntController {
     }
 
     @IBAction func confirmClick(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        kWindow?.endEditing(true)
+        if !Common.isValidateEmail(email: emailField.text!) {
+            AntManage.showDelayToast(message: "请输入正确的邮箱号！")
+            return
+        }
+        if (phoneField.text?.isEmpty)! {
+            AntManage.showDelayToast(message: "请输入手机号码！")
+            return
+        }
+        weak var weakSelf = self
+        AntManage.postRequest(path: "appAuth/updateAppUser", params: ["token":AntManage.userModel!.token!, "email":emailField.text!, "phone":phoneField.text!], successResult: { (response) in
+            AntManage.userModel?.email = weakSelf?.emailField.text
+            AntManage.userModel?.phone = weakSelf?.phoneField.text
+            weakSelf?.dismiss(animated: true, completion: nil)
+        }, failureResult: {})
     }
     
     @IBAction func skipClick(_ sender: UIButton) {

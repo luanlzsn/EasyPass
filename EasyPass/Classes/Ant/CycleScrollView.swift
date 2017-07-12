@@ -76,6 +76,7 @@ class CycleScrollView: UIView,UIScrollViewDelegate {
         for i in 0..<3 {
             let imageView = UIImageView(frame: CGRect(x: width * CGFloat(i), y: 0, width: width, height: height))
             imageView.isUserInteractionEnabled = true
+            imageView.contentMode = .scaleAspectFill
             imageView.sd_setImage(with: URL(string: curImages[i]), placeholderImage: UIImage(named: "not_loaded"))
             let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
             imageView.addGestureRecognizer(singleTap)

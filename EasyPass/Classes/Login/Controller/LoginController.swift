@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class LoginController: AntController {
 
@@ -27,8 +28,16 @@ class LoginController: AntController {
     }
 
     @IBAction func weChatLoginClick(_ sender: UIButton) {
-        AntManage.isLogin = true
-        performSegue(withIdentifier: "PerfectInfo", sender: nil)
+        weak var weakSelf = self
+        AntManage.postRequest(path: "appAuth/login", params: ["loginType":1, "headImg":"http://img2.imgtn.bdimg.com/it/u=3832975718,1305428434&fm=26&gp=0.jpg", "nicName":"luan", "thirdId":18971506420], successResult: { (response) in
+            AntManage.isLogin = true
+            AntManage.userModel = Mapper<UserModel>().map(JSON: response)
+            if AntManage.userModel?.email == nil, AntManage.userModel?.phone == nil {
+                weakSelf?.performSegue(withIdentifier: "PerfectInfo", sender: nil)
+            } else {
+                weakSelf?.dismiss(animated: true, completion: nil)
+            }
+        }, failureResult: {})
     }
     
     override func didReceiveMemoryWarning() {

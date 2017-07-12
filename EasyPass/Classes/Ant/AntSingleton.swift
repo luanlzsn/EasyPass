@@ -17,11 +17,11 @@ class AntSingleton: NSObject {
     
     static let sharedInstance = AntSingleton()
     var manager = AFHTTPSessionManager()
-    var requestBaseUrl = "http://pos.auroraeducationonline.info/api/"
+    var requestBaseUrl = "http://175.102.18.73:8083/easypass-app/"
     var progress : MBProgressHUD?
     var progressCount = 0//转圈数量
     var isLogin = false//是否登录
-//    var userModel: UserModel?
+    var userModel: UserModel?
     
     private override init () {
         manager.responseSerializer.acceptableContentTypes = Set(arrayLiteral: "application/json","text/json","text/javascript","text/html")
@@ -64,26 +64,22 @@ class AntSingleton: NSObject {
         hideMessage()
         if let data = response as? [String : Any] {
             if let status = data["status"] {
-                if status as! String == "success" {
-                    if let success = data["data"] as? [String : Any] {
-                        successResult(success)
-                    } else {
-                        successResult(data)
-                    }
+                if status as! Int == 0 {
+                    successResult((data["data"] as? [String : Any])!)
                 } else {
-                    if let error = data["data"] as? [String : Any] {
-                        if let message = error["message"] as? String {
-                            showDelayToast(message: message)
-                        }
-                    } else if let message = data["message"] as? String {
-                        showDelayToast(message: message)
+                    if status as! Int == 1, let msg = data["msg"] as? String {
+                        showDelayToast(message: msg)
+                    } else {
+                        showDelayToast(message: "未知错误，请重试！")
                     }
                     failureResult()
                 }
             } else {
+                showDelayToast(message: "未知错误，请重试！")
                 failureResult()
             }
         } else {
+            showDelayToast(message: "未知错误，请重试！")
             failureResult()
         }
     }
