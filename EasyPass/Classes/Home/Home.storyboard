@@ -496,6 +496,11 @@
                                             <outlet property="courseName" destination="hsy-7G-MCO" id="dEf-DX-6hf"/>
                                             <outlet property="money" destination="pAV-yc-Eiz" id="DLQ-WN-gwC"/>
                                             <outlet property="teacher" destination="9DA-bI-ICs" id="QdO-QF-Nxh"/>
+                                            <outletCollection property="starArray" destination="fQ4-qd-1xM" collectionClass="NSMutableArray" id="nNK-WX-YXu"/>
+                                            <outletCollection property="starArray" destination="22c-Uz-4pE" collectionClass="NSMutableArray" id="f3U-j5-8MW"/>
+                                            <outletCollection property="starArray" destination="Gvl-KH-oRk" collectionClass="NSMutableArray" id="Sqe-6l-nkG"/>
+                                            <outletCollection property="starArray" destination="HYf-qg-XKa" collectionClass="NSMutableArray" id="oh2-9X-j1R"/>
+                                            <outletCollection property="starArray" destination="VZD-wx-6pW" collectionClass="NSMutableArray" id="zm2-qa-TBq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

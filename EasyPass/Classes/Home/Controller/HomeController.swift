@@ -13,8 +13,9 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
 
     @IBOutlet weak var collection: UICollectionView!
     var bannerArray = [BannerModel]()
-    var famousAphorism = ""
+    var famousAphorism = ""//名言警句
     var classifyList = [ClassifyModel]()
+    var selectClassify: ClassifyModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +53,11 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     
     // MARK: - 名言警句
     func getFamousAphorism() {
-//        weak var weakSelf = self
-//        AntManage.postRequest(path: "setting/findBrochureByType", params: ["type":"tags"], successResult: { (response) in
-//            
-//        }, failureResult: {})
+        weak var weakSelf = self
+        AntManage.postRequest(path: "setting/findBrochureByType", params: ["type":"tags"], successResult: { (response) in
+            weakSelf?.famousAphorism = response["data"] as! String
+            weakSelf?.collection.reloadData()
+        }, failureResult: {})
     }
     
     // MARK: - 获取专业分类
@@ -92,7 +94,7 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
         if segue.identifier == "CourseList" {
             let courseList = segue.destination as! CourseListController
             let model = sender as! ClassifyModel
-            courseList.navigationItem.title = model.name
+            courseList.classifyModel = model
         }
     }
     
@@ -125,18 +127,22 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
                 imgArray.append(model.img!)
             }
             cell.bannerView.setBannerWithUrlArry(urlArry: imgArray)
+            cell.famousAphorism.text = famousAphorism
             return cell
         } else {
             let cell: HomeCourseCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCourseCell", for: indexPath) as! HomeCourseCell
             let model = classifyList[indexPath.row]
             cell.imgView.sd_setImage(with: URL(string: model.img!))
             cell.courseTitle.text = model.name
+            cell.selectImage.isHidden = (selectClassify != model)
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "CourseList", sender: classifyList[indexPath.row])
+        selectClassify = classifyList[indexPath.row]
+        collectionView.reloadData()
+        performSegue(withIdentifier: "CourseList", sender: selectClassify)
     }
     
     override func didReceiveMemoryWarning() {

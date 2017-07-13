@@ -1,0 +1,198 @@
+//
+//	RootClass.swift
+//	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
+
+import Foundation 
+import ObjectMapper
+
+
+class CourseModel : NSObject, NSCoding, Mappable{
+
+	var classHour : Int?
+	var classifyId : Int?
+	var collectFlag : Bool?
+	var collectNum : Int?
+	var courseDetail : String?
+	var courseName : String?
+	var createTime : String?
+	var credit : Int?
+	var difficulty : Int?
+	var forCrowd : String?
+	var grade : Int?
+	var id : Int?
+	var modifyTime : String?
+	var offset : Int?
+	var onTax : Int?
+	var photo : String?
+	var price : Int?
+	var shoppingCartPrice : Double?
+	var shoppingCartQuantity : Int?
+	var studyGoal : String?
+	var tag : Int?
+	var teacher : String?
+	var teacherDesc : String?
+	var term : Int?
+	var video : String?
+	var videoHttpUrl : String?
+
+
+	class func newInstance(map: Map) -> Mappable?{
+		return CourseModel()
+	}
+	required init?(map: Map){}
+	private override init(){}
+
+	func mapping(map: Map)
+	{
+		classHour <- map["classHour"]
+		classifyId <- map["classifyId"]
+		collectFlag <- map["collectFlag"]
+		collectNum <- map["collectNum"]
+		courseDetail <- map["courseDetail"]
+		courseName <- map["courseName"]
+		createTime <- map["createTime"]
+		credit <- map["credit"]
+		difficulty <- map["difficulty"]
+		forCrowd <- map["forCrowd"]
+		grade <- map["grade"]
+		id <- map["id"]
+		modifyTime <- map["modifyTime"]
+		offset <- map["offset"]
+		onTax <- map["onTax"]
+		photo <- map["photo"]
+		price <- map["price"]
+		shoppingCartPrice <- map["shoppingCartPrice"]
+		shoppingCartQuantity <- map["shoppingCartQuantity"]
+		studyGoal <- map["studyGoal"]
+		tag <- map["tag"]
+		teacher <- map["teacher"]
+		teacherDesc <- map["teacherDesc"]
+		term <- map["term"]
+		video <- map["video"]
+		videoHttpUrl <- map["videoHttpUrl"]
+		
+	}
+
+    /**
+    * NSCoding required initializer.
+    * Fills the data from the passed decoder
+    */
+    @objc required init(coder aDecoder: NSCoder)
+	{
+         classHour = aDecoder.decodeObject(forKey: "classHour") as? Int
+         classifyId = aDecoder.decodeObject(forKey: "classifyId") as? Int
+         collectFlag = aDecoder.decodeObject(forKey: "collectFlag") as? Bool
+         collectNum = aDecoder.decodeObject(forKey: "collectNum") as? Int
+         courseDetail = aDecoder.decodeObject(forKey: "courseDetail") as? String
+         courseName = aDecoder.decodeObject(forKey: "courseName") as? String
+         createTime = aDecoder.decodeObject(forKey: "createTime") as? String
+         credit = aDecoder.decodeObject(forKey: "credit") as? Int
+         difficulty = aDecoder.decodeObject(forKey: "difficulty") as? Int
+         forCrowd = aDecoder.decodeObject(forKey: "forCrowd") as? String
+         grade = aDecoder.decodeObject(forKey: "grade") as? Int
+         id = aDecoder.decodeObject(forKey: "id") as? Int
+         modifyTime = aDecoder.decodeObject(forKey: "modifyTime") as? String
+         offset = aDecoder.decodeObject(forKey: "offset") as? Int
+         onTax = aDecoder.decodeObject(forKey: "onTax") as? Int
+         photo = aDecoder.decodeObject(forKey: "photo") as? String
+         price = aDecoder.decodeObject(forKey: "price") as? Int
+         shoppingCartPrice = aDecoder.decodeObject(forKey: "shoppingCartPrice") as? Double
+         shoppingCartQuantity = aDecoder.decodeObject(forKey: "shoppingCartQuantity") as? Int
+         studyGoal = aDecoder.decodeObject(forKey: "studyGoal") as? String
+         tag = aDecoder.decodeObject(forKey: "tag") as? Int
+         teacher = aDecoder.decodeObject(forKey: "teacher") as? String
+         teacherDesc = aDecoder.decodeObject(forKey: "teacherDesc") as? String
+         term = aDecoder.decodeObject(forKey: "term") as? Int
+         video = aDecoder.decodeObject(forKey: "video") as? String
+         videoHttpUrl = aDecoder.decodeObject(forKey: "videoHttpUrl") as? String
+
+	}
+
+    /**
+    * NSCoding required method.
+    * Encodes mode properties into the decoder
+    */
+    @objc func encode(with aCoder: NSCoder)
+	{
+		if classHour != nil{
+			aCoder.encode(classHour, forKey: "classHour")
+		}
+		if classifyId != nil{
+			aCoder.encode(classifyId, forKey: "classifyId")
+		}
+		if collectFlag != nil{
+			aCoder.encode(collectFlag, forKey: "collectFlag")
+		}
+		if collectNum != nil{
+			aCoder.encode(collectNum, forKey: "collectNum")
+		}
+		if courseDetail != nil{
+			aCoder.encode(courseDetail, forKey: "courseDetail")
+		}
+		if courseName != nil{
+			aCoder.encode(courseName, forKey: "courseName")
+		}
+		if createTime != nil{
+			aCoder.encode(createTime, forKey: "createTime")
+		}
+		if credit != nil{
+			aCoder.encode(credit, forKey: "credit")
+		}
+		if difficulty != nil{
+			aCoder.encode(difficulty, forKey: "difficulty")
+		}
+		if forCrowd != nil{
+			aCoder.encode(forCrowd, forKey: "forCrowd")
+		}
+		if grade != nil{
+			aCoder.encode(grade, forKey: "grade")
+		}
+		if id != nil{
+			aCoder.encode(id, forKey: "id")
+		}
+		if modifyTime != nil{
+			aCoder.encode(modifyTime, forKey: "modifyTime")
+		}
+		if offset != nil{
+			aCoder.encode(offset, forKey: "offset")
+		}
+		if onTax != nil{
+			aCoder.encode(onTax, forKey: "onTax")
+		}
+		if photo != nil{
+			aCoder.encode(photo, forKey: "photo")
+		}
+		if price != nil{
+			aCoder.encode(price, forKey: "price")
+		}
+		if shoppingCartPrice != nil{
+			aCoder.encode(shoppingCartPrice, forKey: "shoppingCartPrice")
+		}
+		if shoppingCartQuantity != nil{
+			aCoder.encode(shoppingCartQuantity, forKey: "shoppingCartQuantity")
+		}
+		if studyGoal != nil{
+			aCoder.encode(studyGoal, forKey: "studyGoal")
+		}
+		if tag != nil{
+			aCoder.encode(tag, forKey: "tag")
+		}
+		if teacher != nil{
+			aCoder.encode(teacher, forKey: "teacher")
+		}
+		if teacherDesc != nil{
+			aCoder.encode(teacherDesc, forKey: "teacherDesc")
+		}
+		if term != nil{
+			aCoder.encode(term, forKey: "term")
+		}
+		if video != nil{
+			aCoder.encode(video, forKey: "video")
+		}
+		if videoHttpUrl != nil{
+			aCoder.encode(videoHttpUrl, forKey: "videoHttpUrl")
+		}
+
+	}
+
+}

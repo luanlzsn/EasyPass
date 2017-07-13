@@ -65,7 +65,11 @@ class AntSingleton: NSObject {
         if let data = response as? [String : Any] {
             if let status = data["status"] {
                 if status as! Int == 0 {
-                    successResult((data["data"] as? [String : Any])!)
+                    if let content = data["data"] as? [String : Any] {
+                        successResult(content)
+                    } else {
+                        successResult(data)
+                    }
                 } else {
                     if status as! Int == 1, let msg = data["msg"] as? String {
                         showDelayToast(message: msg)
