@@ -10,10 +10,10 @@ class ClassifyModel : NSObject, NSCoding, Mappable{
 
 	var createTime : String?
 	var id : Int?
-	var img : String?
+	var img : String?//封面图片
 	var modifyTime : String?
-	var name : String?
-	var sort : Int?
+	var name : String?//专业名称
+	var sort : Int?//排序
 
 
 	class func newInstance(map: Map) -> Mappable?{

@@ -69,6 +69,11 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
         if segue.identifier == "CourseMenu" {
             let courseMenu = segue.destination as! CourseMenuController
             courseMenu.selectType = navigationItem.title!
+        } else if segue.identifier == "CourseDetail" {
+            let courseDetail = segue.destination as! CourseDetailController
+            let courseModel = sender as! CourseModel
+            courseDetail.navigationItem.title = courseModel.courseName
+            courseDetail.courseId = courseModel.id!
         }
     }
     
@@ -105,7 +110,7 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "CourseDetail", sender: indexPath.row)
+        performSegue(withIdentifier: "CourseDetail", sender: courseArray[indexPath.row])
     }
     
     override func didReceiveMemoryWarning() {

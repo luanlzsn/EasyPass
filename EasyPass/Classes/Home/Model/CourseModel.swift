@@ -8,32 +8,32 @@ import ObjectMapper
 
 class CourseModel : NSObject, NSCoding, Mappable{
 
-	var classHour : Int?
-	var classifyId : Int?
-	var collectFlag : Bool?
-	var collectNum : Int?
-	var courseDetail : String?
-	var courseName : String?
-	var createTime : String?
-	var credit : Int?
-	var difficulty : Int?
-	var forCrowd : String?
-	var grade : Int?
+	var classHour : Int?//课时
+	var classifyId : Int?//所属专业分类
+	var collectFlag : Bool?//(ture:已收藏flase：没收藏)
+	var collectNum : Int?//收藏人气
+	var courseDetail : String?//课程详情
+	var courseName : String?//课程名称
+	var createTime : String?//创建时间
+	var credit : Int?//学分
+	var difficulty : Int?//难度（五颗星表示）
+	var forCrowd : String?//适合人群
+	var grade : Int?//年级
 	var id : Int?
-	var modifyTime : String?
-	var offset : Int?
-	var onTax : Int?
-	var photo : String?
-	var price : Int?
-	var shoppingCartPrice : Double?
-	var shoppingCartQuantity : Int?
-	var studyGoal : String?
-	var tag : Int?
-	var teacher : String?
-	var teacherDesc : String?
-	var term : Int?
-	var video : String?
-	var videoHttpUrl : String?
+	var modifyTime : String?//修改时间
+	var offset : Int?//折扣（0-100）
+	var onTax : Int?//税额
+	var photo : String?//课程封面图片
+	var price : Int?//价格
+	var shoppingCartPrice : Double?//购物车总价格
+	var shoppingCartQuantity : Int?//购物车数量
+	var studyGoal : String?//学习目标
+	var tag : Int?//标签（0：预约课程1：学习小组）
+	var teacher : String?//课程老师
+	var teacherDesc : String?//老师描述
+	var term : Int?//学期
+	var video : String?//课程视频
+	var videoHttpUrl : String?//视频外链
 
 
 	class func newInstance(map: Map) -> Mappable?{

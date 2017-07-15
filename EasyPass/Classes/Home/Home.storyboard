@@ -910,6 +910,9 @@
                                         <state key="normal" title="更多评论">
                                             <color key="titleColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <connections>
+                                            <action selector="moreCommectClick:" destination="rHd-nQ-knA" eventType="touchUpInside" id="b6p-bf-rX1"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4IA-aJ-3H0">
                                         <rect key="frame" x="14.5" y="410" width="345" height="75"/>
@@ -942,7 +945,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="publishCommontClick:" destination="rHd-nQ-knA" eventType="touchUpInside" id="ffe-ty-YVc"/>
+                                                    <action selector="publishCommentClick:" destination="rHd-nQ-knA" eventType="touchUpInside" id="qmN-Ph-9LU"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1126,8 +1129,8 @@
                         <outlet property="buyBtn" destination="qHm-m9-6vW" id="GNW-CB-JA3"/>
                         <outlet property="classHour" destination="45f-m7-HCG" id="WbE-WI-fC9"/>
                         <outlet property="collectionBtn" destination="91n-pe-Ll2" id="N0G-w4-yXh"/>
-                        <outlet property="commontNum" destination="ett-7q-j5W" id="Hc6-5D-YPk"/>
-                        <outlet property="commontTextView" destination="Pba-sz-juy" id="oVq-dM-0Hk"/>
+                        <outlet property="commentNum" destination="ett-7q-j5W" id="yzq-4q-P8F"/>
+                        <outlet property="commentTextView" destination="Pba-sz-juy" id="5zs-GQ-X5h"/>
                         <outlet property="courseName" destination="d9W-rf-EVo" id="1SQ-E6-6XY"/>
                         <outlet property="credit" destination="gDT-Lp-cG8" id="b58-zO-eGo"/>
                         <outlet property="customerServiceBtn" destination="OpY-E6-uCH" id="FJl-NX-HS3"/>

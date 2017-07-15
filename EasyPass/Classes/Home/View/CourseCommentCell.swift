@@ -12,14 +12,11 @@ class CourseCommentCell: UITableViewCell {
 
     @IBOutlet weak var headPortrait: UIImageView!
     @IBOutlet weak var nickName: UILabel!
-    @IBOutlet weak var age: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var commont: UILabel!
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        headPortrait.sd_setImage(with: URL(string: "http://www.qq745.com/uploads/allimg/140928/1-14092PRT2-50.jpg")!)
+        super.awakeFromNib()        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
