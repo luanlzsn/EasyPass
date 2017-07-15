@@ -14,7 +14,6 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     @IBOutlet weak var collection: UICollectionView!
     var bannerArray = [BannerModel]()
     var famousAphorism = ""//名言警句
-    var classifyList = [ClassifyModel]()
     var selectClassify: ClassifyModel?
     
     override func viewDidLoad() {
@@ -64,7 +63,7 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     func findClassifyList() {
         weak var weakSelf = self
         AntManage.postRequest(path: "course/findClassifyList", params: nil, successResult: { (response) in
-            weakSelf?.classifyList = Mapper<ClassifyModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            AntManage.classifyList = Mapper<ClassifyModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
             weakSelf?.collection.reloadData()
         }, failureResult: {})
     }
@@ -109,7 +108,7 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return section == 0 ? 1 : classifyList.count
+        return section == 0 ? 1 : AntManage.classifyList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -131,7 +130,7 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
             return cell
         } else {
             let cell: HomeCourseCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCourseCell", for: indexPath) as! HomeCourseCell
-            let model = classifyList[indexPath.row]
+            let model = AntManage.classifyList[indexPath.row]
             cell.imgView.sd_setImage(with: URL(string: model.img!))
             cell.courseTitle.text = model.name
             cell.selectImage.isHidden = (selectClassify != model)
@@ -140,7 +139,7 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectClassify = classifyList[indexPath.row]
+        selectClassify = AntManage.classifyList[indexPath.row]
         collectionView.reloadData()
         performSegue(withIdentifier: "CourseList", sender: selectClassify)
     }

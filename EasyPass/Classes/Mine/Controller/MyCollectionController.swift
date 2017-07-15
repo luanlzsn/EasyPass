@@ -7,21 +7,50 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var allCourseBtn: UIButton!
     @IBOutlet weak var timeBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
-
+    var collectArray = [CourseModel]()
+    var collectPage = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search_icon")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .plain, target: self, action: #selector(searchClick))
+        weak var weakSelf = self
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { 
+            weakSelf?.getCourseCollectByPage(pageNo: 1)
+        })
+        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: { 
+            weakSelf?.getCourseCollectByPage(pageNo: weakSelf!.collectPage + 1)
+        })
+        getCourseCollectByPage(pageNo: 1)
     }
     
     func searchClick() {
         
+    }
+    
+    func getCourseCollectByPage(pageNo: Int) {
+        weak var weakSelf = self
+        AntManage.postRequest(path: "collect/getCourseCollectByPage", params: ["token":AntManage.userModel!.token!, "pageNo":pageNo, "pageSize":20], successResult: { (response) in
+            weakSelf?.collectPage = response["pageNo"] as! Int
+            if weakSelf?.collectPage == 1 {
+                weakSelf?.collectArray.removeAll()
+            }
+            weakSelf?.collectArray += Mapper<CourseModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            weakSelf?.tableView.mj_header.endRefreshing()
+            weakSelf?.tableView.mj_footer.endRefreshing()
+            weakSelf?.tableView.mj_footer.isHidden = (weakSelf!.collectPage >= (response["totalPage"] as! Int))
+            weakSelf?.tableView.reloadData()
+        }, failureResult: {
+            weakSelf?.tableView.mj_header.endRefreshing()
+            weakSelf?.tableView.mj_footer.endRefreshing()
+        })
     }
     
     @IBAction func allCourseClick(_ sender: UIButton) {
@@ -38,7 +67,7 @@ class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataS
     
     // MARK: - UITableViewDelegate,UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return collectArray.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,13 +84,27 @@ class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MyCollectionCell = tableView.dequeueReusableCell(withIdentifier: "MyCollectionCell", for: indexPath) as! MyCollectionCell
+        let courseModel = collectArray[indexPath.row]
+        cell.courseImage.sd_setImage(with: URL(string: courseModel.photo!))
+        cell.courseName.text = courseModel.courseName
+        cell.courseCredit.text = "学分\(courseModel.credit!)"
+        cell.money.text = "$" + "\(courseModel.price!)"
+        cell.classHour.text = "/\(courseModel.classHour!)课时"
+        for image in cell.starArray {
+            if courseModel.difficulty! > image.tag - 100 {
+                image.image = UIImage(named: "star_select")
+            } else {
+                image.image = UIImage(named: "star_unselect")
+            }
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let courseDetail = UIStoryboard(name: "Home", bundle: Bundle.main).instantiateViewController(withIdentifier: "CourseDetail") as! CourseDetailController
-        courseDetail.isCourse = (indexPath.row % 2 == 0)
+        courseDetail.isCourse = true
+        courseDetail.courseId = collectArray[indexPath.row].id!
         navigationController?.pushViewController(courseDetail, animated: true)
     }
 

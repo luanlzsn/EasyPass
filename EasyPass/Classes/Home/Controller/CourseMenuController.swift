@@ -12,10 +12,10 @@ class CourseMenuController: AntController,UITableViewDelegate,UITableViewDataSou
 
     @IBOutlet weak var typeTableView: UITableView!
     @IBOutlet weak var gradeTableView: UITableView!
-    var typeArray = ["物理科学","IT","金融系","学前教育"]
     var gradeArray = ["大学一年级","大学二年级","大学三年级","大学四年级"]
-    var selectType = ""
-    var selectGrade = ""
+    var selectClassify: ClassifyModel!
+    var selectGrade = 0
+    var changeSelect: ConfirmBlock?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,10 @@ class CourseMenuController: AntController,UITableViewDelegate,UITableViewDataSou
     }
 
     @IBAction func dismissClick(_ sender: UITapGestureRecognizer) {
+        if changeSelect != nil {
+            changeSelect!(["Classify":selectClassify, "Grade":selectGrade])
+            changeSelect = nil
+        }
         dismiss(animated: true, completion: nil)
     }
     
@@ -38,7 +42,7 @@ class CourseMenuController: AntController,UITableViewDelegate,UITableViewDataSou
     
     // MARK: - UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableView == typeTableView ? typeArray.count : gradeArray.count
+        return tableView == typeTableView ? AntManage.classifyList.count : gradeArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -52,26 +56,33 @@ class CourseMenuController: AntController,UITableViewDelegate,UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == typeTableView {
             let cell: CourseTypeCell = tableView.dequeueReusableCell(withIdentifier: "CourseTypeCell", for: indexPath) as! CourseTypeCell
-            cell.courseType.text = typeArray[indexPath.row]
-            cell.courseType.textColor = (typeArray[indexPath.row] == selectType) ? MainColor : Common.colorWithHexString(colorStr: "969696")
-            cell.arrowImage.isHidden = typeArray[indexPath.row] != selectType
+            let classify = AntManage.classifyList[indexPath.row]
+            cell.courseType.text = classify.name
+            cell.courseType.textColor = (classify == selectClassify) ? MainColor : Common.colorWithHexString(colorStr: "969696")
+            cell.arrowImage.isHidden = classify != selectClassify
             return cell
         } else {
             let cell: CourseGradeCell = tableView.dequeueReusableCell(withIdentifier: "CourseGradeCell", for: indexPath) as! CourseGradeCell
             cell.courseGrade.text = gradeArray[indexPath.row]
-            cell.courseGrade.textColor = (gradeArray[indexPath.row] == selectGrade) ? UIColor.white : Common.colorWithHexString(colorStr: "969696")
-            cell.courseGrade.backgroundColor = (gradeArray[indexPath.row] == selectGrade) ? MainColor : UIColor.white
+            cell.courseGrade.textColor = (indexPath.row + 1 == selectGrade) ? UIColor.white : Common.colorWithHexString(colorStr: "969696")
+            cell.courseGrade.backgroundColor = (indexPath.row + 1 == selectGrade) ? MainColor : UIColor.white
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == typeTableView {
-            selectType = typeArray[indexPath.row]
+            selectClassify = AntManage.classifyList[indexPath.row]
+            tableView.reloadData()
         } else {
-            selectGrade = gradeArray[indexPath.row]
+            selectGrade = indexPath.row + 1
+            tableView.reloadData()
+            if changeSelect != nil {
+                changeSelect!(["Classify":selectClassify, "Grade":selectGrade])
+                changeSelect = nil
+            }
+            dismiss(animated: true, completion: nil)
         }
-        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {

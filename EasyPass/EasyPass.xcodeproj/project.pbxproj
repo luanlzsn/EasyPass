@@ -93,6 +93,7 @@
 		0FD76B611F07E4D200A04F7A /* CourseCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD76B5F1F07E4D200A04F7A /* CourseCommentCell.xib */; };
 		0FD76B631F07F00700A04F7A /* CustomerServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */; };
 		0FE902F81F19F7C000C84392 /* ClassHourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE902F71F19F7C000C84392 /* ClassHourModel.swift */; };
+		0FE902FA1F1A123700C84392 /* CourseTermController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE902F91F1A123700C84392 /* CourseTermController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -206,6 +207,7 @@
 		0FD76B5F1F07E4D200A04F7A /* CourseCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseCommentCell.xib; sourceTree = "<group>"; };
 		0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerServiceController.swift; sourceTree = "<group>"; };
 		0FE902F71F19F7C000C84392 /* ClassHourModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassHourModel.swift; sourceTree = "<group>"; };
+		0FE902F91F1A123700C84392 /* CourseTermController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTermController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,6 +358,7 @@
 				0F5FE06C1F0785B600B8DD09 /* CourseDetailController.swift */,
 				0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */,
 				0F38389C1F0D1FCB003C800A /* PaymentResultsController.swift */,
+				0FE902F91F1A123700C84392 /* CourseTermController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 			files = (
 				0F2F811C1F035728005E68C0 /* ReservationCell.swift in Sources */,
 				0FB34AB41F02532300480E6C /* MineController.swift in Sources */,
+				0FE902FA1F1A123700C84392 /* CourseTermController.swift in Sources */,
 				0F85E0831F0A47E40084AA1B /* MessageController.swift in Sources */,
 				0F8ABDC01F17256800659962 /* MJRefreshGifHeader.m in Sources */,
 				0F85E0731F09D9F50084AA1B /* CourseOutlineCell.swift in Sources */,

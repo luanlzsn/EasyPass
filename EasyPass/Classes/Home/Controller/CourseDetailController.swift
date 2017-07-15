@@ -202,7 +202,10 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     
     // MARK: - 加入购物车
     @IBAction func addShopCartClick(_ sender: UIButton) {
-        
+//        weak var weakSelf = self
+        AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "price":courseModel!.price!, "quantity":1], successResult: { (_) in
+            AntManage.showDelayToast(message: "加入购物车成功！")
+        }, failureResult: {})
     }
     
     // MARK: - 跳转

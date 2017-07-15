@@ -13,7 +13,11 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
 
     @IBOutlet var menuBtnArray: [UIButton]!
     @IBOutlet weak var tableView: UITableView!
-    var classifyModel: ClassifyModel!
+    var classifyModel: ClassifyModel!//选择的专业
+    var grade = 0//年级
+    var term = -1//学期
+    var timeSort = "desc"//时间排序
+    var priceSort = "desc"//价格排序
     var courseArray = [CourseModel]()
     var pageNo = 1
     
@@ -38,7 +42,13 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
     
     func getCourseByPage(pageNo: Int) {
         weak var weakSelf = self
-        let params = ["pageNo":pageNo, "pageSize":20, "classifyId":classifyModel.id!]
+        var params = ["pageNo":pageNo, "pageSize":20, "classifyId":classifyModel.id!, "timeSort":timeSort, "priceSort":priceSort] as [String : Any]
+        if grade != 0 {
+            params["grade"] = grade
+        }
+        if term != -1 {
+            params["term"] = term
+        }
         AntManage.postRequest(path: "course/getCourseByPage", params: params, successResult: { (response) in
             weakSelf?.pageNo = response["pageNo"] as! Int
             if weakSelf?.pageNo == 1 {
@@ -56,11 +66,22 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
     }
 
     @IBAction func menuClick(_ sender: UIButton) {
-        for btn in menuBtnArray {
-            btn.isSelected = sender == btn
-        }
-        if sender.tag == 10 {
+        if sender == menuBtnArray[0] {
+            sender.isSelected = true
+            menuBtnArray[1].isSelected = false
             performSegue(withIdentifier: "CourseMenu", sender: nil)
+        } else if sender == menuBtnArray[1] {
+            sender.isSelected = true
+            menuBtnArray[0].isSelected = false
+//            performSegue(withIdentifier: "CourseTerm", sender: nil)
+        } else if sender == menuBtnArray[2] {
+            sender.isSelected = !sender.isSelected
+            timeSort = sender.isSelected ? "asc" : "desc"
+            getCourseByPage(pageNo: 1)
+        } else if sender == menuBtnArray[3] {
+            sender.isSelected = !sender.isSelected
+            priceSort = sender.isSelected ? "asc" : "desc"
+            getCourseByPage(pageNo: 1)
         }
     }
     
@@ -68,7 +89,14 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CourseMenu" {
             let courseMenu = segue.destination as! CourseMenuController
-            courseMenu.selectType = navigationItem.title!
+            courseMenu.selectClassify = classifyModel
+            courseMenu.selectGrade = grade
+            weak var weakSelf = self
+            courseMenu.changeSelect = {(response) -> () in
+                weakSelf?.classifyModel = (response as! [String : Any])["Classify"] as? ClassifyModel
+                weakSelf?.grade = (response as! [String : Any])["Grade"] as! Int
+                weakSelf?.getCourseByPage(pageNo: 1)
+            }
         } else if segue.identifier == "CourseDetail" {
             let courseDetail = segue.destination as! CourseDetailController
             let courseModel = sender as! CourseModel
@@ -98,6 +126,7 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
         cell.courseCredit.text = "学分\(model.credit!)"
         cell.teacher.text = model.teacher! + model.teacherDesc!
         cell.money.text = "$" + "\(model.price!)"
+        cell.classHour.text = "/\(model.classHour!)课时"
         for image in cell.starArray {
             if model.difficulty! > image.tag - 100 {
                 image.image = UIImage(named: "star_select")

@@ -321,7 +321,7 @@
                                         <state key="normal" title="时间" image="down_arrow_two_gray">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="down_arrow_two_blue">
+                                        <state key="selected" image="up_arrow_two_blue">
                                             <color key="titleColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -336,7 +336,7 @@
                                         <state key="normal" title="价格" image="down_arrow_two_gray">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="down_arrow_two_blue">
+                                        <state key="selected" image="up_arrow_two_blue">
                                             <color key="titleColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -491,6 +491,7 @@
                                             <constraint firstItem="W7r-Ja-PK8" firstAttribute="leading" secondItem="5tI-Ma-S81" secondAttribute="leading" constant="15" id="bDr-3l-R5K"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="classHour" destination="Thr-WT-grA" id="2BH-Ne-sVO"/>
                                             <outlet property="courseCredit" destination="7Cw-mx-3O6" id="npN-qc-yaZ"/>
                                             <outlet property="courseImage" destination="W7r-Ja-PK8" id="Lfm-AU-DBe"/>
                                             <outlet property="courseName" destination="hsy-7G-MCO" id="dEf-DX-6hf"/>
@@ -529,6 +530,7 @@
                         <outletCollection property="menuBtnArray" destination="oPd-9s-cXB" collectionClass="NSMutableArray" id="Oh1-Vb-t38"/>
                         <segue destination="Neu-yI-w6i" kind="presentation" identifier="CourseMenu" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="qMp-pS-vWv"/>
                         <segue destination="rHd-nQ-knA" kind="show" identifier="CourseDetail" id="w2h-Pv-rpH"/>
+                        <segue destination="56g-tW-iHX" kind="presentation" identifier="CourseTerm" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="33K-8Y-GaO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePf-r6-RX6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1370,6 +1372,24 @@
             </objects>
             <point key="canvasLocation" x="2481" y="862"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="E19-A9-MqS">
+            <objects>
+                <viewController id="56g-tW-iHX" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rtw-68-Abd"/>
+                        <viewControllerLayoutGuide type="bottom" id="MyT-s1-P4p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qES-I1-iOP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.30435739439999998" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c5R-bZ-RQP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2481" y="-657"/>
+        </scene>
         <!--Course Menu Controller-->
         <scene sceneID="gRL-bw-1Ea">
             <objects>
@@ -1539,7 +1559,6 @@
         <image name="course_uncollection" width="25" height="23"/>
         <image name="difficulty_bg" width="41" height="19"/>
         <image name="down_arrow_one_blue" width="11" height="6"/>
-        <image name="down_arrow_two_blue" width="8" height="13"/>
         <image name="down_arrow_two_gray" width="8" height="13"/>
         <image name="email_icon" width="20" height="13"/>
         <image name="head_defaults" width="53" height="53"/>
@@ -1559,5 +1578,6 @@
         <image name="star_select" width="17" height="16"/>
         <image name="star_unselect" width="17" height="16"/>
         <image name="up_arrow_one_gray" width="11" height="6"/>
+        <image name="up_arrow_two_blue" width="8" height="13"/>
     </resources>
 </document>

@@ -22,6 +22,7 @@ class AntSingleton: NSObject {
     var progressCount = 0//转圈数量
     var isLogin = false//是否登录
     var userModel: UserModel?
+    var classifyList = [ClassifyModel]()//专业数组
     
     private override init () {
         manager.responseSerializer.acceptableContentTypes = Set(arrayLiteral: "application/json","text/json","text/javascript","text/html")

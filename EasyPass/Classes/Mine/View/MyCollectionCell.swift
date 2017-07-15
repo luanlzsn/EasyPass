@@ -20,8 +20,6 @@ class MyCollectionCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        courseImage.setImageWith(URL(string: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498639227000&di=90a7936124fdde941224563e472c6623&imgtype=0&src=http%3A%2F%2Fwww.moore8.com%2Fassets%2Fimg%2Fcampaign%2FshortVideo%2Flw.jpg")!)
     }
 
     @IBAction func buyClick(_ sender: UIButton) {

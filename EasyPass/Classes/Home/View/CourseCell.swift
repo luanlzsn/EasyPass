@@ -16,6 +16,7 @@ class CourseCell: UITableViewCell {
     @IBOutlet weak var teacher: UILabel!
     @IBOutlet weak var money: UILabel!
     @IBOutlet var starArray: [UIImageView]!
+    @IBOutlet weak var classHour: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
