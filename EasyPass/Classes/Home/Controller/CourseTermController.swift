@@ -8,14 +8,52 @@
 
 import UIKit
 
-class CourseTermController: AntController {
+class CourseTermController: AntController,UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet var termArray: [UIButton]!
+    var term = -1
+    var changeTerm: ConfirmBlock?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        for button in termArray {
+            button.isSelected = button.tag == term
+            button.backgroundColor = button.isSelected ? MainColor : UIColor.white
+        }
     }
 
+    @IBAction func termClick(_ sender: UIButton) {
+        for button in termArray {
+            button.isSelected = (button == sender)
+            button.backgroundColor = button.isSelected ? MainColor : UIColor.white
+            if button.isSelected {
+                term = button.tag
+            }
+        }
+        if changeTerm != nil {
+            changeTerm!(term)
+            changeTerm = nil
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func dismissClick(_ sender: UITapGestureRecognizer) {
+        if changeTerm != nil {
+            changeTerm = nil
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - UIGestureRecognizerDelegate
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view == contentView {
+            return false
+        }
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
