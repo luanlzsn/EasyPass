@@ -8,6 +8,10 @@
 
 import UIKit
 
+@objc protocol CourseOutline_Delegate {
+    func checkCourseOutline(section: Int)
+}
+
 class CourseOutlineCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
@@ -15,6 +19,7 @@ class CourseOutlineCell: UITableViewCell {
     @IBOutlet weak var watchBtn: UIButton!
     @IBOutlet weak var money: UILabel!
     @IBOutlet weak var classHour: UILabel!
+    weak var delegate : CourseOutline_Delegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +27,7 @@ class CourseOutlineCell: UITableViewCell {
     }
 
     @IBAction func watchClick(_ sender: UIButton) {
-        
+        delegate?.checkCourseOutline(section: tag)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

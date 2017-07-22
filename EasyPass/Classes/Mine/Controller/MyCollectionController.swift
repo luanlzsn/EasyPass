@@ -85,7 +85,7 @@ class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MyCollectionCell = tableView.dequeueReusableCell(withIdentifier: "MyCollectionCell", for: indexPath) as! MyCollectionCell
         let courseModel = collectArray[indexPath.row]
-        cell.courseImage.sd_setImage(with: URL(string: courseModel.photo!))
+        cell.courseImage.sd_setImage(with: URL(string: courseModel.photo!), placeholderImage: UIImage(named: "default_image"))
         cell.courseName.text = courseModel.courseName
         cell.courseCredit.text = "学分\(courseModel.credit!)"
         cell.money.text = "$" + "\(courseModel.price!)"
@@ -103,7 +103,6 @@ class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let courseDetail = UIStoryboard(name: "Home", bundle: Bundle.main).instantiateViewController(withIdentifier: "CourseDetail") as! CourseDetailController
-        courseDetail.isCourse = true
         courseDetail.courseId = collectArray[indexPath.row].id!
         navigationController?.pushViewController(courseDetail, animated: true)
     }

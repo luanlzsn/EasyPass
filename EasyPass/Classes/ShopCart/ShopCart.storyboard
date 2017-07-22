@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="120" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mvd-7n-t2e">
-                                <rect key="frame" x="-0.5" y="64" width="375" height="419"/>
+                                <rect key="frame" x="-0.5" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShopCartCell" rowHeight="120" id="W2f-j5-jMs" customClass="ShopCartCell" customModule="EasyPass" customModuleProvider="target">
@@ -32,7 +32,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xRt-Fe-DmX">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_image" translatesAutoresizingMaskIntoConstraints="NO" id="xRt-Fe-DmX">
                                                     <rect key="frame" x="15" y="9.5" width="99.5" height="99.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="xRt-Fe-DmX" secondAttribute="height" id="SWU-DD-yHl"/>
@@ -64,7 +64,7 @@ Mathematics Level Two
                                                         <action selector="reduceNumberClick" destination="W2f-j5-jMs" eventType="touchUpInside" id="MLt-sb-cZH"/>
                                                     </connections>
                                                 </button>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j8E-Tp-yFo">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j8E-Tp-yFo">
                                                     <rect key="frame" x="203.5" y="62" width="60" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="XA2-4R-5bh"/>
@@ -82,7 +82,7 @@ Mathematics Level Two
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDH-Zj-KGY">
-                                                    <rect key="frame" x="241.5" y="84" width="46.5" height="19.5"/>
+                                                    <rect key="frame" x="129.5" y="89" width="46.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -98,21 +98,40 @@ Mathematics Level Two
                                                         <action selector="cancelClick" destination="W2f-j5-jMs" eventType="touchUpInside" id="V2K-Ed-Wpc"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6U-MH-kfv">
+                                                    <rect key="frame" x="201" y="86" width="84" height="25"/>
+                                                    <color key="backgroundColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="0i8-Xr-58Q"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <state key="normal" title="  Check Out  "/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="checkOutClick:" destination="W2f-j5-jMs" eventType="touchUpInside" id="aW7-dq-fAv"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="xRt-Fe-DmX" firstAttribute="height" secondItem="Qkm-Hl-WCt" secondAttribute="height" constant="-20" id="0fc-40-Gf5"/>
+                                                <constraint firstItem="M6U-MH-kfv" firstAttribute="centerY" secondItem="lDH-Zj-KGY" secondAttribute="centerY" id="BTR-gv-3mC"/>
                                                 <constraint firstItem="Mrj-tr-qh5" firstAttribute="leading" secondItem="hob-fl-uHp" secondAttribute="trailing" constant="15" id="ENM-HY-IA9"/>
                                                 <constraint firstItem="IG0-c8-TyO" firstAttribute="centerY" secondItem="Aih-Il-KrL" secondAttribute="centerY" id="EgB-CA-VBb"/>
                                                 <constraint firstItem="hob-fl-uHp" firstAttribute="top" secondItem="xRt-Fe-DmX" secondAttribute="top" id="F5p-kS-feY"/>
                                                 <constraint firstItem="hob-fl-uHp" firstAttribute="leading" secondItem="xRt-Fe-DmX" secondAttribute="trailing" constant="15" id="Hpm-6F-h26"/>
+                                                <constraint firstItem="M6U-MH-kfv" firstAttribute="leading" secondItem="lDH-Zj-KGY" secondAttribute="trailing" constant="25" id="IDU-y9-GDu"/>
                                                 <constraint firstItem="xRt-Fe-DmX" firstAttribute="centerY" secondItem="Qkm-Hl-WCt" secondAttribute="centerY" id="KiN-N8-iVA"/>
-                                                <constraint firstItem="lDH-Zj-KGY" firstAttribute="top" secondItem="IG0-c8-TyO" secondAttribute="bottom" id="SAv-MR-jeR"/>
                                                 <constraint firstItem="Mrj-tr-qh5" firstAttribute="centerY" secondItem="Qkm-Hl-WCt" secondAttribute="centerY" id="X6t-dR-tKX"/>
                                                 <constraint firstItem="j8E-Tp-yFo" firstAttribute="centerY" secondItem="Aih-Il-KrL" secondAttribute="centerY" id="Xy6-OB-JVk"/>
                                                 <constraint firstItem="IG0-c8-TyO" firstAttribute="height" secondItem="kzE-YY-FCu" secondAttribute="height" id="YHX-41-L3o"/>
                                                 <constraint firstItem="kzE-YY-FCu" firstAttribute="centerY" secondItem="Aih-Il-KrL" secondAttribute="centerY" id="bRr-5B-Dbu"/>
+                                                <constraint firstItem="lDH-Zj-KGY" firstAttribute="leading" secondItem="Aih-Il-KrL" secondAttribute="leading" id="jWh-XN-UIM"/>
                                                 <constraint firstItem="Aih-Il-KrL" firstAttribute="leading" secondItem="hob-fl-uHp" secondAttribute="leading" id="kvW-7q-CmS"/>
-                                                <constraint firstItem="lDH-Zj-KGY" firstAttribute="trailing" secondItem="IG0-c8-TyO" secondAttribute="trailing" id="lS7-17-6J9"/>
+                                                <constraint firstItem="lDH-Zj-KGY" firstAttribute="bottom" secondItem="xRt-Fe-DmX" secondAttribute="bottom" id="pg0-8G-naW"/>
                                                 <constraint firstItem="kzE-YY-FCu" firstAttribute="leading" secondItem="Aih-Il-KrL" secondAttribute="trailing" id="rQ0-Y8-ffR"/>
                                                 <constraint firstItem="IG0-c8-TyO" firstAttribute="leading" secondItem="j8E-Tp-yFo" secondAttribute="trailing" id="rq7-tK-rQe"/>
                                                 <constraint firstItem="j8E-Tp-yFo" firstAttribute="leading" secondItem="kzE-YY-FCu" secondAttribute="trailing" id="tRS-0f-vx9"/>
@@ -137,7 +156,7 @@ Mathematics Level Two
                                     <outlet property="delegate" destination="zX6-yA-SnO" id="TTg-Xw-fUN"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aqk-Oc-RBo">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aqk-Oc-RBo">
                                 <rect key="frame" x="-0.5" y="483" width="375" height="135"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品总额：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDk-TT-ITS">
@@ -212,7 +231,7 @@ Mathematics Level Two
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Aqk-Oc-RBo" firstAttribute="top" secondItem="mvd-7n-t2e" secondAttribute="bottom" id="7z2-9j-szO"/>
+                            <constraint firstItem="CGk-gY-Uit" firstAttribute="top" secondItem="mvd-7n-t2e" secondAttribute="bottom" id="84F-mO-b9Y"/>
                             <constraint firstItem="CGk-gY-Uit" firstAttribute="top" secondItem="Aqk-Oc-RBo" secondAttribute="bottom" id="8sd-ya-U80"/>
                             <constraint firstItem="Aqk-Oc-RBo" firstAttribute="centerX" secondItem="vsR-Tt-OGc" secondAttribute="centerX" id="EHf-W3-R5T"/>
                             <constraint firstItem="mvd-7n-t2e" firstAttribute="width" secondItem="vsR-Tt-OGc" secondAttribute="width" id="OA7-D3-9pf"/>
@@ -256,6 +275,7 @@ Mathematics Level Two
     </scenes>
     <resources>
         <image name="add_number" width="18" height="18"/>
+        <image name="default_image" width="150" height="150"/>
         <image name="reduce_number" width="18" height="18"/>
         <image name="shopCart_cancel" width="17" height="17"/>
         <image name="shopCart_icon" width="25" height="25"/>

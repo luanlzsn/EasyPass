@@ -25,7 +25,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         
+        initializationShareSDK()
+        
         return true
+    }
+    
+    func initializationShareSDK() {
+        ShareSDK.registerActivePlatforms([/*SSDKPlatformType.typeSinaWeibo.rawValue,*/SSDKPlatformType.typeWechat.rawValue/*,SSDKPlatformType.typeQQ.rawValue*/], onImport: {(platform : SSDKPlatformType) -> Void in
+                switch platform {
+                    case SSDKPlatformType.typeSinaWeibo:
+                        ShareSDKConnector.connectWeibo(WeiboSDK.classForCoder())
+                    case SSDKPlatformType.typeWechat:
+                        ShareSDKConnector.connectWeChat(WXApi.classForCoder())
+                    case SSDKPlatformType.typeQQ:
+                        ShareSDKConnector.connectQQ(QQApiInterface.classForCoder(), tencentOAuthClass: TencentOAuth.classForCoder())
+                    default:
+                        break
+                }
+        }, onConfiguration: {(platform : SSDKPlatformType , appInfo : NSMutableDictionary?) -> Void in
+                switch platform {
+//                    case SSDKPlatformType.typeSinaWeibo:
+//                    //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
+//                        appInfo?.ssdkSetupSinaWeibo(byAppKey: "568898243", appSecret: "38a4f8204cc784f81f9f0daaf31e02e3", redirectUri: "http://www.sharesdk.cn", authType: SSDKAuthTypeBoth)
+                    case SSDKPlatformType.typeWechat:
+                    //设置微信应用信息
+                        appInfo?.ssdkSetupWeChat(byAppId: "wx8c30d0100c7d105e", appSecret: "63b7556c2808b26423e66d44c4c4d9f1")
+//                    case SSDKPlatformType.typeQQ:
+//                    //设置QQ应用信息
+//                        appInfo?.ssdkSetupQQ(byAppId: "100371282",  appKey: "aed9b0303e3ed1e27bae87c33761161d", authType: SSDKAuthTypeBoth)
+                    default:
+                        break
+                }
+        })
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

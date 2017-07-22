@@ -21,11 +21,11 @@ class CourseModel : NSObject, NSCoding, Mappable{
 	var grade : Int?//年级
 	var id : Int?
 	var modifyTime : String?//修改时间
-	var offset : Int?//折扣（0-100）
-	var onTax : Int?//税额
+	var offset : Float?//折扣（0-100）
+	var onTax : Float?//税额
 	var photo : String?//课程封面图片
-	var price : Int?//价格
-	var shoppingCartPrice : Double?//购物车总价格
+	var price : Float?//价格
+	var shoppingCartPrice : Float?//购物车总价格
 	var shoppingCartQuantity : Int?//购物车数量
 	var studyGoal : String?//学习目标
 	var tag : Int?//标签（0：预约课程1：学习小组）
@@ -34,7 +34,8 @@ class CourseModel : NSObject, NSCoding, Mappable{
 	var term : Int?//学期
 	var video : String?//课程视频
 	var videoHttpUrl : String?//视频外链
-
+    var appleProductId : String?//苹果商店ID
+    var buyFlag : Bool?//(ture:已购买flase：未购买)
 
 	class func newInstance(map: Map) -> Mappable?{
 		return CourseModel()
@@ -70,6 +71,8 @@ class CourseModel : NSObject, NSCoding, Mappable{
 		term <- map["term"]
 		video <- map["video"]
 		videoHttpUrl <- map["videoHttpUrl"]
+        appleProductId <- map["appleProductId"]
+        buyFlag <- map["buyFlag"]
 		
 	}
 
@@ -92,11 +95,11 @@ class CourseModel : NSObject, NSCoding, Mappable{
          grade = aDecoder.decodeObject(forKey: "grade") as? Int
          id = aDecoder.decodeObject(forKey: "id") as? Int
          modifyTime = aDecoder.decodeObject(forKey: "modifyTime") as? String
-         offset = aDecoder.decodeObject(forKey: "offset") as? Int
-         onTax = aDecoder.decodeObject(forKey: "onTax") as? Int
+         offset = aDecoder.decodeObject(forKey: "offset") as? Float
+         onTax = aDecoder.decodeObject(forKey: "onTax") as? Float
          photo = aDecoder.decodeObject(forKey: "photo") as? String
-         price = aDecoder.decodeObject(forKey: "price") as? Int
-         shoppingCartPrice = aDecoder.decodeObject(forKey: "shoppingCartPrice") as? Double
+         price = aDecoder.decodeObject(forKey: "price") as? Float
+         shoppingCartPrice = aDecoder.decodeObject(forKey: "shoppingCartPrice") as? Float
          shoppingCartQuantity = aDecoder.decodeObject(forKey: "shoppingCartQuantity") as? Int
          studyGoal = aDecoder.decodeObject(forKey: "studyGoal") as? String
          tag = aDecoder.decodeObject(forKey: "tag") as? Int
@@ -105,6 +108,8 @@ class CourseModel : NSObject, NSCoding, Mappable{
          term = aDecoder.decodeObject(forKey: "term") as? Int
          video = aDecoder.decodeObject(forKey: "video") as? String
          videoHttpUrl = aDecoder.decodeObject(forKey: "videoHttpUrl") as? String
+         appleProductId = aDecoder.decodeObject(forKey: "appleProductId") as? String
+         buyFlag = aDecoder.decodeObject(forKey: "buyFlag") as? Bool
 
 	}
 
@@ -192,6 +197,12 @@ class CourseModel : NSObject, NSCoding, Mappable{
 		if videoHttpUrl != nil{
 			aCoder.encode(videoHttpUrl, forKey: "videoHttpUrl")
 		}
+        if appleProductId != nil {
+            aCoder.encode(appleProductId, forKey: "appleProductId")
+        }
+        if buyFlag != nil{
+            aCoder.encode(buyFlag, forKey: "buyFlag")
+        }
 
 	}
 

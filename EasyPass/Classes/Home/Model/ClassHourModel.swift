@@ -13,14 +13,15 @@ class ClassHourModel : NSObject, NSCoding, Mappable{
 	var courseId : Int?//课程id
 	var createTime : String?//创建时间
 	var id : Int?
-	var lessionPeriod : String?//课时章节
+	var lessonPeriod : String?//课时章节
 	var modifyTime : String?//修改时间
-	var price : Int?//课时价格
-	var shoppingCartPrice : Double?//购物车总价格
+	var price : Float?//课时价格
+	var shoppingCartPrice : Float?//购物车总价格
 	var shoppingCartQuantity : Int?//购物车数量
 	var video : String?//课时视频
 	var videoHttpUrl : String?//课时视频外部链接地址
-
+    var buyFlag : Bool?//(ture:已购买flase：未购买)
+    
 
 	class func newInstance(map: Map) -> Mappable?{
 		return ClassHourModel()
@@ -35,13 +36,14 @@ class ClassHourModel : NSObject, NSCoding, Mappable{
 		courseId <- map["courseId"]
 		createTime <- map["createTime"]
 		id <- map["id"]
-		lessionPeriod <- map["lessionPeriod"]
+		lessonPeriod <- map["lessonPeriod"]
 		modifyTime <- map["modifyTime"]
 		price <- map["price"]
 		shoppingCartPrice <- map["shoppingCartPrice"]
 		shoppingCartQuantity <- map["shoppingCartQuantity"]
 		video <- map["video"]
 		videoHttpUrl <- map["videoHttpUrl"]
+        buyFlag <- map["buyFlag"]
 		
 	}
 
@@ -56,13 +58,14 @@ class ClassHourModel : NSObject, NSCoding, Mappable{
          courseId = aDecoder.decodeObject(forKey: "courseId") as? Int
          createTime = aDecoder.decodeObject(forKey: "createTime") as? String
          id = aDecoder.decodeObject(forKey: "id") as? Int
-         lessionPeriod = aDecoder.decodeObject(forKey: "lessionPeriod") as? String
+         lessonPeriod = aDecoder.decodeObject(forKey: "lessonPeriod") as? String
          modifyTime = aDecoder.decodeObject(forKey: "modifyTime") as? String
-         price = aDecoder.decodeObject(forKey: "price") as? Int
-         shoppingCartPrice = aDecoder.decodeObject(forKey: "shoppingCartPrice") as? Double
+         price = aDecoder.decodeObject(forKey: "price") as? Float
+         shoppingCartPrice = aDecoder.decodeObject(forKey: "shoppingCartPrice") as? Float
          shoppingCartQuantity = aDecoder.decodeObject(forKey: "shoppingCartQuantity") as? Int
          video = aDecoder.decodeObject(forKey: "video") as? String
          videoHttpUrl = aDecoder.decodeObject(forKey: "videoHttpUrl") as? String
+         buyFlag = aDecoder.decodeObject(forKey: "buyFlag") as? Bool
 
 	}
 
@@ -87,8 +90,8 @@ class ClassHourModel : NSObject, NSCoding, Mappable{
 		if id != nil{
 			aCoder.encode(id, forKey: "id")
 		}
-		if lessionPeriod != nil{
-			aCoder.encode(lessionPeriod, forKey: "lessionPeriod")
+		if lessonPeriod != nil{
+			aCoder.encode(lessonPeriod, forKey: "lessonPeriod")
 		}
 		if modifyTime != nil{
 			aCoder.encode(modifyTime, forKey: "modifyTime")
@@ -108,6 +111,9 @@ class ClassHourModel : NSObject, NSCoding, Mappable{
 		if videoHttpUrl != nil{
 			aCoder.encode(videoHttpUrl, forKey: "videoHttpUrl")
 		}
+        if buyFlag != nil{
+            aCoder.encode(buyFlag, forKey: "buyFlag")
+        }
 
 	}
 

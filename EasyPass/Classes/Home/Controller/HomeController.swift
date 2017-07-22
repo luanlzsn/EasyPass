@@ -131,7 +131,7 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
         } else {
             let cell: HomeCourseCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCourseCell", for: indexPath) as! HomeCourseCell
             let model = AntManage.classifyList[indexPath.row]
-            cell.imgView.sd_setImage(with: URL(string: model.img!))
+            cell.imgView.sd_setImage(with: URL(string: model.img!), placeholderImage: UIImage(named: "default_image"))
             cell.courseTitle.text = model.name
             cell.selectImage.isHidden = (selectClassify != model)
             return cell

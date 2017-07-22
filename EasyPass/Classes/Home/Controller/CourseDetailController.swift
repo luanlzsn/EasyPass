@@ -9,7 +9,7 @@
 import UIKit
 import ObjectMapper
 
-class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataSource {
+class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataSource,CourseOutline_Delegate {
 
     @IBOutlet weak var playBtn: UIButton!//播放按钮
     @IBOutlet weak var infoBtn: UIButton!//简介按钮
@@ -32,7 +32,6 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableHeight: NSLayoutConstraint!
     @IBOutlet weak var commentTextView: UITextView!//评论输入框
-    var isCourse = true
     var courseId = 0//课程id
     var courseModel: CourseModel?
     var commentArray = [CommentModel]()
@@ -42,10 +41,6 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if !isCourse {
-            buyBtn.setTitle("预约", for: .normal)
-            outlineBtn.isHidden = true
-        }
         tableView.register(UINib(nibName: "CourseCommentCell", bundle: Bundle.main), forCellReuseIdentifier: "CourseCommentCell")
         tableView.estimatedRowHeight = 60.0
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -113,6 +108,10 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     
     // MARK: - 刷新课程信息
     func refreshCourseInfo() {
+        if courseModel?.tag == 1 {
+            buyBtn.setTitle("预约", for: .normal)
+            outlineBtn.isHidden = true
+        }
         courseName.text = courseModel?.courseName
         credit.text = "学分\(courseModel!.credit!)"
         for star in levelImageArray {
@@ -158,12 +157,8 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
 
     // MARK: - 购买课程
     @IBAction func buyCourseClick(_ sender: UIButton) {
-        performSegue(withIdentifier: "PaymentResults", sender: nil)
-    }
-    
-    // MARK: - 更多评论
-    @IBAction func moreCommectClick(_ sender: UIButton) {
-        
+        //performSegue(withIdentifier: "PaymentResults", sender: nil)
+        addShopCartClick(sender)
     }
     
     // MARK: - 发布评论
@@ -202,9 +197,13 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     
     // MARK: - 加入购物车
     @IBAction func addShopCartClick(_ sender: UIButton) {
-//        weak var weakSelf = self
-        AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "price":courseModel!.price!, "quantity":1], successResult: { (_) in
+        if (courseModel?.buyFlag)! {
+            AntManage.showDelayToast(message: "您已购买过该课程,无需重复购买")
+            return
+        }
+        AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "number":1, "add":true], successResult: { (_) in
             AntManage.showDelayToast(message: "加入购物车成功！")
+            NotificationCenter.default.post(name: NSNotification.Name(kAddShopCartSuccess), object: nil)
         }, failureResult: {})
     }
     
@@ -213,6 +212,22 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
         if segue.identifier == "CustomerService" {
             let customerService = segue.destination as! CustomerServiceController
             customerService.customerServiceBtn = customerServiceBtn
+        } else if segue.identifier == "CommentList" {
+            let commentList = segue.destination as! CommentListController
+            commentList.courseId = courseId
+        }
+    }
+    
+    // MARK: - CourseOutline_Delegate
+    func checkCourseOutline(section: Int) {
+        let classHourModel = classHourArray[section]
+        if classHourModel.buyFlag! {
+            
+        } else {
+            AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "classHourId":classHourModel.id!, "number":1, "add":true], successResult: { (_) in
+                AntManage.showDelayToast(message: "加入购物车成功！")
+                NotificationCenter.default.post(name: NSNotification.Name(kAddShopCartSuccess), object: nil)
+            }, failureResult: {})
         }
     }
     
@@ -236,26 +251,32 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == outlineTableView {
             let cell: CourseOutlineCell = tableView.dequeueReusableCell(withIdentifier: "CourseOutlineCell", for: indexPath) as! CourseOutlineCell
+            cell.delegate = self
+            cell.tag = indexPath.section
             let classHourModel = classHourArray[indexPath.section]
-            cell.name.text = classHourModel.classHourName
+            cell.name.text = classHourModel.lessonPeriod! + " " + classHourModel.classHourName!
             cell.info.text = classHourModel.content
-            if classHourModel.price! > 0 {
+            if classHourModel.buyFlag! {
+                cell.money.isHidden = true
+                cell.classHour.isHidden = true
+                cell.watchBtn.backgroundColor = Common.colorWithHexString(colorStr: "f9bd53")
+                cell.watchBtn.setTitle("观看", for: .normal)
+            } else {
                 cell.money.text = "$ \(classHourModel.price!)"
                 cell.money.isHidden = false
                 cell.classHour.isHidden = false
                 cell.watchBtn.backgroundColor = MainColor
                 cell.watchBtn.setTitle("购买", for: .normal)
-            } else {
-                cell.money.isHidden = true
-                cell.classHour.isHidden = true
-                cell.watchBtn.backgroundColor = Common.colorWithHexString(colorStr: "f9bd53")
-                cell.watchBtn.setTitle("观看", for: .normal)
             }
             return cell
         } else {
             let cell: CourseCommentCell = tableView.dequeueReusableCell(withIdentifier: "CourseCommentCell", for: indexPath) as! CourseCommentCell
             let comment = commentArray[indexPath.row]
-            cell.headPortrait.sd_setImage(with: URL(string: comment.headImg!))
+            if comment.headImg != nil {
+                cell.headPortrait.sd_setImage(with: URL(string: comment.headImg!), placeholderImage: UIImage(named: "default_image"))
+            } else {
+                cell.headPortrait.image = UIImage(named: "default_image")
+            }
             cell.nickName.text = comment.nickName
             cell.commont.text = comment.content
             cell.time.text = comment.createTime?.components(separatedBy: " ").first

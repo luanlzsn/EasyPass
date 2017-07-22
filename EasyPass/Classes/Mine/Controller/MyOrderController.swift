@@ -53,7 +53,6 @@ class MyOrderController: AntController,UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let courseDetail = UIStoryboard(name: "Home", bundle: Bundle.main).instantiateViewController(withIdentifier: "CourseDetail") as! CourseDetailController
-        courseDetail.isCourse = (indexPath.row % 2 == 0)
         navigationController?.pushViewController(courseDetail, animated: true)
     }
 

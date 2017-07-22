@@ -32,6 +32,8 @@ let kAppDownloadURL = "https://itunes.apple.com/cn/app/id1107512125"//下载地�
 let kUserName = "kUserName"
 let kPassWord = "kPassWord"
 
+let kAddShopCartSuccess = "kAddShopCartSuccess"//添加购物车成功通知
+
 
 struct Platform {
     static let isSimulator: Bool = {
