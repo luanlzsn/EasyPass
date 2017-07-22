@@ -8,8 +8,9 @@
 
 import UIKit
 import ObjectMapper
+import StoreKit
 
-class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSource,ShopCart_Delegate {
+class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSource,ShopCart_Delegate,SKPaymentTransactionObserver,SKProductsRequestDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var totalMoney: UILabel!
@@ -17,15 +18,20 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var orderMoney: UILabel!
     var shopCartArray = [ShopCartModel]()
     var pageNo = 1
+    var receipt = ""//支付凭证
+    var orderNo = ""//支付订单号
+    var orderNum = 0//订单商品的数量
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        SKPaymentQueue.default().remove(self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         NotificationCenter.default.addObserver(self, selector: #selector(refreshShopCart), name: NSNotification.Name(kAddShopCartSuccess), object: nil)
+        SKPaymentQueue.default().add(self)
         weak var weakSelf = self
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { 
             weakSelf?.getShoppingCartList(pageNo: 1)
@@ -57,9 +63,40 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
     func refreshShopCart() {
         getShoppingCartList(pageNo: 1)
     }
+    
+    // MARK: - 内购
+    func buyCourseWithIAP(appleProductId: String) {
+        if SKPaymentQueue.canMakePayments() {
+            let set = NSSet(object: "EasyPass0001")
+            let request = SKProductsRequest(productIdentifiers: set as! Set<String>)
+            request.delegate = self
+            request.start()
+            AntManage.showDelayToast(message: "正在获取商品信息，请稍后")
+        } else {
+            AntManage.showDelayToast(message: "您禁止了应用内付费购买！")
+        }
+    }
+    
+    // MARK: - 二次校验
+    func checkReceiptIsValid() {
+        weak var weakSelf = self
+        AntManage.postRequest(path: "applePay/setIapCertificate", params: ["token":AntManage.userModel!.token!, "orderNo":orderNo, "receipt":receipt, "receipt":false], successResult: { (response) in
+            weakSelf?.performSegue(withIdentifier: "PaymentResults", sender: true)
+        }, failureResult: {
+            weakSelf?.performSegue(withIdentifier: "PaymentResults", sender: false)
+        })
+    }
 
     @IBAction func checkOutClick() {
         
+    }
+    
+    // MARK: - 跳转
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PaymentResults" {
+            let paymentResults = segue.destination as! PaymentResultsController
+            paymentResults.resultsStatus = sender as! Bool
+        }
     }
     
     // MARK: - ShopCart_Delegate
@@ -102,7 +139,29 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
     }
     
     func checkOut(row: Int) {
-        
+//        let shopCartModel = shopCartArray[row]
+//        var totalPrice: Float = 0.0
+//        var totalOnTax: Float = 0.0
+//        var orderItemList = ["courseId":shopCartModel.courseId!, "quantity":shopCartModel.quantity!] as [String : Any]
+//        if shopCartModel.courseHourId == nil {
+//            orderItemList["price"] = shopCartModel.coursePrice!
+//            orderItemList["onTax"] = shopCartModel.courseOnTax!
+//            totalPrice = shopCartModel.coursePrice! * Float.init(shopCartModel.quantity!)
+//            totalOnTax = shopCartModel.courseOnTax! * Float.init(shopCartModel.quantity!)
+//        } else {
+//            orderItemList["price"] = shopCartModel.courseHourPrice!
+//            orderItemList["onTax"] = shopCartModel.courseHourOnTax!
+//            orderItemList["courseClassHourId"] = shopCartModel.courseHourId!
+//        }
+//        weak var weakSelf = self
+//        AntManage.postSumbitOrder(body: ["orderItemList":[orderItemList], "totalPrice":totalPrice, "totalOnTax":totalOnTax, "orderTotalPrice":totalPrice + totalOnTax], successResult: { (response) in
+//            AntManage.showDelayToast(message: "订单提交成功！")
+//            weakSelf?.orderNo = response["orderNo"] as! String
+//            weakSelf?.orderNum = shopCartModel.quantity!
+//            weakSelf?.shopCartArray.remove(at: row)
+//            weakSelf?.tableView.reloadData()
+//            weakSelf?.buyCourseWithIAP(appleProductId: shopCartModel.appleProductId!)
+//        }, failureResult: {})
     }
     
     // MARK: - UITableViewDelegate,UITableViewDataSource
@@ -147,6 +206,67 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         let courseDetail = UIStoryboard(name: "Home", bundle: Bundle.main).instantiateViewController(withIdentifier: "CourseDetail") as! CourseDetailController
         courseDetail.courseId = shopCartArray[indexPath.row].courseId!
         navigationController?.pushViewController(courseDetail, animated: true)
+    }
+    
+    // MARK: - SKProductsRequestDelegate
+    // MARK: - 查询成功回调
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        AntManage.hideMessage()
+        if response.products.count == 0 {
+            AntManage.showDelayToast(message: "无法获取产品信息，请重试！")
+            return
+        }
+        let payment = SKMutablePayment(product: response.products.first!)
+        payment.quantity = orderNum
+        SKPaymentQueue.default().add(payment)
+    }
+    
+    // MARK: - 查询失败回调
+    func request(_ request: SKRequest, didFailWithError error: Error) {
+        AntManage.hideMessage()
+        AntManage.showDelayToast(message: error.localizedDescription)
+    }
+    
+    // MARK: - SKPaymentTransactionObserver
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        AntManage.hideMessage()
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case .purchased:
+                completeTransaction(transaction: transaction)
+                receipt = try! Data(contentsOf: Bundle.main.appStoreReceiptURL!).base64EncodedString()
+                break
+            case .failed:
+                failedTransaction(transaction: transaction)
+                break
+            case .restored:
+                restoreTransaction(transaction: transaction)
+                break
+            case .purchasing:
+                AntManage.showDelayToast(message: "正在请求付费信息，请稍后")
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func completeTransaction(transaction: SKPaymentTransaction) {
+        SKPaymentQueue.default().finishTransaction(transaction)
+    }
+    
+    func failedTransaction(transaction: SKPaymentTransaction) {
+        let error = transaction.error! as NSError
+        if error.code != SKError.paymentCancelled.rawValue {
+            performSegue(withIdentifier: "PaymentResults", sender: false)
+        } else {
+            AntManage.showDelayToast(message: "取消交易")
+        }
+        SKPaymentQueue.default().finishTransaction(transaction)
+    }
+    
+    func restoreTransaction(transaction: SKPaymentTransaction) {
+        SKPaymentQueue.default().finishTransaction(transaction)
     }
     
     override func didReceiveMemoryWarning() {

@@ -13,7 +13,7 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
 
     @IBOutlet weak var collection: UICollectionView!
     var bannerArray = [BannerModel]()
-    var famousAphorism = ""//名言警句
+    var famousAphorism = NSMutableAttributedString(string: "")//名言警句
     var selectClassify: ClassifyModel?
     
     override func viewDidLoad() {
@@ -54,7 +54,9 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     func getFamousAphorism() {
         weak var weakSelf = self
         AntManage.postRequest(path: "setting/findBrochureByType", params: ["type":"tags"], successResult: { (response) in
-            weakSelf?.famousAphorism = response["data"] as! String
+            weakSelf?.famousAphorism = try! NSMutableAttributedString(data: (response["data"] as! String).data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
+            weakSelf?.famousAphorism.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSMakeRange(0, weakSelf!.famousAphorism.length))
+            weakSelf?.famousAphorism.addAttribute(NSForegroundColorAttributeName, value: MainColor, range: NSMakeRange(0, weakSelf!.famousAphorism.length))
             weakSelf?.collection.reloadData()
         }, failureResult: {})
     }
@@ -126,7 +128,8 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
                 imgArray.append(model.img!)
             }
             cell.bannerView.setBannerWithUrlArry(urlArry: imgArray)
-            cell.famousAphorism.text = famousAphorism
+            cell.famousAphorism.attributedText = famousAphorism
+            cell.famousAphorism.textAlignment = .center
             return cell
         } else {
             let cell: HomeCourseCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCourseCell", for: indexPath) as! HomeCourseCell

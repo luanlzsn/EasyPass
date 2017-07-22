@@ -14,11 +14,22 @@ class PaymentResultsController: AntController {
     @IBOutlet weak var statusTitle: UILabel!
     @IBOutlet weak var oneBtn: UIButton!
     @IBOutlet weak var twoBtn: UIButton!
+    var resultsStatus = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if resultsStatus {
+            statusImage.image = UIImage(named: "payment_successful")
+            statusTitle.text = "支付已成功！"
+            oneBtn.setTitle("查看订单", for: .normal)
+            twoBtn.setTitle("返回首页", for: .normal)
+        } else {
+            statusImage.image = UIImage(named: "payment_failure")
+            statusTitle.text = "支付失败！"
+            oneBtn.setTitle("重新支付", for: .normal)
+            twoBtn.setTitle("返回购物车", for: .normal)
+        }
     }
 
     @IBAction func oneBtnClick(_ sender: UIButton) {
@@ -26,7 +37,12 @@ class PaymentResultsController: AntController {
     }
     
     @IBAction func twoBtnClick(_ sender: UIButton) {
-        navigationController?.popToRootViewController(animated: true)
+        if resultsStatus {
+            tabBarController?.selectedIndex = 0
+            navigationController?.popToRootViewController(animated: false)
+        } else {
+            navigationController?.popToRootViewController(animated: true)
+        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -22,7 +22,15 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
     }
 
     @IBAction func logoutClick() {
-        
+        weak var weakSelf = self
+        AntManage.postRequest(path: "appAuth/logout", params: ["token":AntManage.userModel!.token!], successResult: { (_) in
+            AntManage.showDelayToast(message: "退出成功！")
+            AntManage.isLogin = false
+            AntManage.userModel = nil
+            UserDefaults.standard.removeObject(forKey: kUserInfo)
+            UserDefaults.standard.synchronize()
+            weakSelf?.tabBarController?.selectedIndex = 0
+        }, failureResult: {})
     }
     
     // MARK: - UITableViewDelegate,UITableViewDataSource
@@ -54,6 +62,8 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 let cell: MineHeadCell = tableView.dequeueReusableCell(withIdentifier: "MineHeadCell", for: indexPath) as! MineHeadCell
+                cell.headImage.sd_setImage(with: URL(string: AntManage.userModel!.headImg!), placeholderImage: UIImage(named: "default_image"))
+                cell.nickName.text = AntManage.userModel?.nickName
                 return cell
             } else {
                 let cell: MineLearnRecordCell = tableView.dequeueReusableCell(withIdentifier: "MineLearnRecordCell", for: indexPath) as! MineLearnRecordCell
@@ -63,7 +73,7 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
             let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
             cell.imageView?.image = UIImage(named: imageArray[indexPath.row])
             cell.textLabel?.text = titleArray[indexPath.row]
-            cell.detailTextLabel?.text = (indexPath.row == 2) ? "5" : ""
+            cell.detailTextLabel?.text = (indexPath.row == 2) ? "" : ""
             return cell
         }
     }

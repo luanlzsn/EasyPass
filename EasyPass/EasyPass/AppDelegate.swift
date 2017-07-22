@@ -25,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         
+        if UserDefaults.standard.object(forKey: kUserInfo) != nil {
+            AntManage.isLogin = true
+            AntManage.userModel = NSKeyedUnarchiver.unarchiveObject(with: UserDefaults.standard.object(forKey: kUserInfo) as! Data) as? UserModel
+        }
+        
         initializationShareSDK()
         
         return true

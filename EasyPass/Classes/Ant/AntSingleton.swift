@@ -44,6 +44,35 @@ class AntSingleton: NSObject {
         }
     }
     
+    func postSumbitOrder(body:[String : Any]?, successResult:@escaping ([String : Any]) -> Void, failureResult:@escaping () -> Void) {
+        AntLog(message: "请求接口：order/sumbitOrder,请求参数：\(String(describing: body))")
+        showMessage(message: "")
+        
+        let sarequestUrl = requestBaseUrl + "order/sumbitOrder?token=\(userModel!.token!)"
+        
+        let manager = AFURLSessionManager(sessionConfiguration: URLSessionConfiguration.default)
+        
+        let request = AFHTTPRequestSerializer.init().request(withMethod: "POST", urlString: sarequestUrl, parameters: nil, error: nil)
+        request.timeoutInterval = kRequestTimeOut
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = (body! as NSDictionary).mj_JSONData()
+        
+        let responseSerializer = AFHTTPResponseSerializer.init()
+        responseSerializer.acceptableContentTypes = Set(arrayLiteral: "application/json","text/json","text/javascript","text/html")
+        manager.responseSerializer = responseSerializer
+        
+        weak var weakSelf = self
+        manager.dataTask(with: request as URLRequest) { (response, nil, error) in
+            if error == nil {
+                weakSelf?.requestSuccess(response: response, successResult: successResult, failureResult: failureResult)
+            } else {
+                weakSelf?.hideMessage()
+                weakSelf?.showDelayToast(message: "未知错误，请重试！")
+                failureResult()
+            }
+        }
+    }
+    
     //MARK: - get请求
     func getRequest(path:String, params:[String : Any]?, successResult:@escaping ([String : Any]) -> Void, failureResult:@escaping () -> Void) {
         AntLog(message: "请求接口：\(path),请求参数：\(String(describing: params))")

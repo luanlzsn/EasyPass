@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SDWebImage
 import YYCategories
+import MJExtension
 
 func AntLog<N>(message:N,fileName:String = #file,methodName:String = #function,lineNumber:Int = #line){
     #if DEBUG
@@ -29,8 +30,7 @@ let kAppDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
 let kAppVersion_URL = "http://itunes.apple.com/lookup?id=1107512125"//获取版本信息
 let kAppDownloadURL = "https://itunes.apple.com/cn/app/id1107512125"//下载地址
 
-let kUserName = "kUserName"
-let kPassWord = "kPassWord"
+let kUserInfo = "kUserInfo"//登录用户的信息
 
 let kAddShopCartSuccess = "kAddShopCartSuccess"//添加购物车成功通知
 

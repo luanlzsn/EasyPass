@@ -738,7 +738,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHr-ai-hnS">
+                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHr-ai-hnS">
                                 <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about_us_icon" translatesAutoresizingMaskIntoConstraints="NO" id="vhS-Vy-KU2">
@@ -889,15 +889,29 @@
                                     <constraint firstItem="vhS-Vy-KU2" firstAttribute="centerX" secondItem="fHr-ai-hnS" secondAttribute="centerX" id="y67-ZS-q6F"/>
                                 </constraints>
                             </scrollView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQh-sr-OX1">
+                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="4o6-h8-5Pf" id="bnI-0t-MYH"/>
+                                </connections>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fHr-ai-hnS" firstAttribute="centerX" secondItem="q3k-Ye-1S7" secondAttribute="centerX" id="2n9-Sz-CNZ"/>
                             <constraint firstItem="fHr-ai-hnS" firstAttribute="centerY" secondItem="q3k-Ye-1S7" secondAttribute="centerY" id="3KG-PM-wPD"/>
+                            <constraint firstItem="NQh-sr-OX1" firstAttribute="width" secondItem="q3k-Ye-1S7" secondAttribute="width" id="BZE-XH-QNS"/>
+                            <constraint firstItem="NQh-sr-OX1" firstAttribute="centerX" secondItem="q3k-Ye-1S7" secondAttribute="centerX" id="RTR-nD-mjX"/>
                             <constraint firstItem="fHr-ai-hnS" firstAttribute="height" secondItem="q3k-Ye-1S7" secondAttribute="height" id="SDV-Kc-VPW"/>
+                            <constraint firstItem="NQh-sr-OX1" firstAttribute="height" secondItem="q3k-Ye-1S7" secondAttribute="height" id="WF4-qt-SJz"/>
+                            <constraint firstItem="NQh-sr-OX1" firstAttribute="centerY" secondItem="q3k-Ye-1S7" secondAttribute="centerY" id="YNA-2g-VcD"/>
                             <constraint firstItem="fHr-ai-hnS" firstAttribute="width" secondItem="q3k-Ye-1S7" secondAttribute="width" id="ltV-O0-S0F"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="NQh-sr-OX1" id="8Br-64-Xj2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YPG-Os-Jsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -914,8 +928,26 @@
                     <view key="view" contentMode="scaleToFill" id="CP7-44-eDu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MpU-VB-xcw">
+                                <rect key="frame" x="-0.5" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="W94-Eh-pLw" id="IpZ-4O-4bn"/>
+                                </connections>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MpU-VB-xcw" firstAttribute="centerX" secondItem="CP7-44-eDu" secondAttribute="centerX" id="Jgm-nZ-Or0"/>
+                            <constraint firstItem="MpU-VB-xcw" firstAttribute="height" secondItem="CP7-44-eDu" secondAttribute="height" id="dTS-oa-qHE"/>
+                            <constraint firstItem="MpU-VB-xcw" firstAttribute="width" secondItem="CP7-44-eDu" secondAttribute="width" id="jKg-mH-qWs"/>
+                            <constraint firstItem="MpU-VB-xcw" firstAttribute="centerY" secondItem="CP7-44-eDu" secondAttribute="centerY" id="vfy-0p-NOM"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="MpU-VB-xcw" id="pJH-Z2-u9V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iK-Nd-X2G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

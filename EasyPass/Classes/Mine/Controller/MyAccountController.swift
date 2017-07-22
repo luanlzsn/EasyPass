@@ -20,7 +20,16 @@ class MyAccountController: AntController,UITableViewDelegate,UITableViewDataSour
     }
 
     @IBAction func logoutClick(_ sender: UIButton) {
-        
+        weak var weakSelf = self
+        AntManage.postRequest(path: "appAuth/logout", params: ["token":AntManage.userModel!.token!], successResult: { (_) in
+            AntManage.showDelayToast(message: "退出成功！")
+            AntManage.isLogin = false
+            AntManage.userModel = nil
+            UserDefaults.standard.removeObject(forKey: kUserInfo)
+            UserDefaults.standard.synchronize()
+            weakSelf?.navigationController?.popToRootViewController(animated: false)
+            weakSelf?.tabBarController?.selectedIndex = 0
+        }, failureResult: {})
     }
     
     // MARK: - UITableViewDelegate,UITableViewDataSource

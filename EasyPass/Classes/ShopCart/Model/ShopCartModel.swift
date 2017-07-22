@@ -11,6 +11,7 @@ class ShopCartModel : NSObject, NSCoding, Mappable{
 	var classHourName : String?
 	var courseHourId : Int?
 	var courseHourPrice : Float?
+    var courseHourOnTax : Float?
 	var courseId : Int?
 	var courseName : String?
 	var courseOnTax : Float?
@@ -24,7 +25,7 @@ class ShopCartModel : NSObject, NSCoding, Mappable{
 	var tag : Int?
 	var tagName : String?
 	var teacher : String?
-
+    var appleProductId : String?
 
 	class func newInstance(map: Map) -> Mappable?{
 		return ShopCartModel()
@@ -37,6 +38,7 @@ class ShopCartModel : NSObject, NSCoding, Mappable{
 		classHourName <- map["classHourName"]
 		courseHourId <- map["courseHourId"]
 		courseHourPrice <- map["courseHourPrice"]
+        courseHourOnTax <- map["courseHourOnTax"]
 		courseId <- map["courseId"]
 		courseName <- map["courseName"]
 		courseOnTax <- map["courseOnTax"]
@@ -50,6 +52,7 @@ class ShopCartModel : NSObject, NSCoding, Mappable{
 		tag <- map["tag"]
 		tagName <- map["tagName"]
 		teacher <- map["teacher"]
+        appleProductId <- map["appleProductId"]
 		
 	}
 
@@ -62,6 +65,7 @@ class ShopCartModel : NSObject, NSCoding, Mappable{
          classHourName = aDecoder.decodeObject(forKey: "classHourName") as? String
          courseHourId = aDecoder.decodeObject(forKey: "courseHourId") as? Int
          courseHourPrice = aDecoder.decodeObject(forKey: "courseHourPrice") as? Float
+         courseHourOnTax = aDecoder.decodeObject(forKey: "courseHourOnTax") as? Float
          courseId = aDecoder.decodeObject(forKey: "courseId") as? Int
          courseName = aDecoder.decodeObject(forKey: "courseName") as? String
          courseOnTax = aDecoder.decodeObject(forKey: "courseOnTax") as? Float
@@ -75,6 +79,7 @@ class ShopCartModel : NSObject, NSCoding, Mappable{
          tag = aDecoder.decodeObject(forKey: "tag") as? Int
          tagName = aDecoder.decodeObject(forKey: "tagName") as? String
          teacher = aDecoder.decodeObject(forKey: "teacher") as? String
+         appleProductId = aDecoder.decodeObject(forKey: "appleProductId") as? String
 
 	}
 
@@ -93,6 +98,9 @@ class ShopCartModel : NSObject, NSCoding, Mappable{
 		if courseHourPrice != nil{
 			aCoder.encode(courseHourPrice, forKey: "courseHourPrice")
 		}
+        if courseHourOnTax != nil{
+            aCoder.encode(courseHourOnTax, forKey: "courseHourOnTax")
+        }
 		if courseId != nil{
 			aCoder.encode(courseId, forKey: "courseId")
 		}
@@ -132,6 +140,9 @@ class ShopCartModel : NSObject, NSCoding, Mappable{
 		if teacher != nil{
 			aCoder.encode(teacher, forKey: "teacher")
 		}
+        if appleProductId != nil{
+            aCoder.encode(appleProductId, forKey: "appleProductId")
+        }
 
 	}
 

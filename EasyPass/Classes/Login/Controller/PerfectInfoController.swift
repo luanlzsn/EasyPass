@@ -43,6 +43,8 @@ class PerfectInfoController: AntController {
         AntManage.postRequest(path: "appAuth/updateAppUser", params: ["token":AntManage.userModel!.token!, "email":emailField.text!, "phone":phoneField.text!], successResult: { (response) in
             AntManage.userModel?.email = weakSelf?.emailField.text
             AntManage.userModel?.phone = weakSelf?.phoneField.text
+            UserDefaults.standard.setValue(NSKeyedArchiver.archivedData(withRootObject: AntManage.userModel!), forKey: kUserInfo)
+            UserDefaults.standard.synchronize()
             weakSelf?.dismiss(animated: true, completion: nil)
         }, failureResult: {})
     }

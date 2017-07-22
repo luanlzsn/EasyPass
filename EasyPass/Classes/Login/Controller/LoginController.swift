@@ -34,6 +34,8 @@ class LoginController: AntController {
                 AntManage.postRequest(path: "appAuth/login", params: ["loginType":1, "headImg":user!.icon, "nicName":user!.nickname, "thirdId":user!.uid], successResult: { (response) in
                     AntManage.isLogin = true
                     AntManage.userModel = Mapper<UserModel>().map(JSON: response)
+                    UserDefaults.standard.setValue(NSKeyedArchiver.archivedData(withRootObject: AntManage.userModel!), forKey: kUserInfo)
+                    UserDefaults.standard.synchronize()
                     if AntManage.userModel?.email == nil, AntManage.userModel?.phone == nil {
                         weakSelf?.performSegue(withIdentifier: "PerfectInfo", sender: nil)
                     } else {

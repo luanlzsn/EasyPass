@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -246,6 +247,7 @@ Mathematics Level Two
                         <outlet property="orderMoney" destination="DwM-zl-rHR" id="b2e-IP-suU"/>
                         <outlet property="tableView" destination="mvd-7n-t2e" id="IDQ-ZL-sk6"/>
                         <outlet property="totalMoney" destination="7go-fV-Vsg" id="GbP-dW-fUc"/>
+                        <segue destination="X3K-Fx-E6N" kind="show" identifier="PaymentResults" id="yhX-v3-j4l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JHX-Ef-iLe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -272,10 +274,90 @@ Mathematics Level Two
             </objects>
             <point key="canvasLocation" x="516" y="129.98500749625188"/>
         </scene>
+        <!--支付结果-->
+        <scene sceneID="pa1-Pg-KX7">
+            <objects>
+                <viewController title="支付结果" hidesBottomBarWhenPushed="YES" id="X3K-Fx-E6N" customClass="PaymentResultsController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="76H-zM-MwS"/>
+                        <viewControllerLayoutGuide type="bottom" id="SeQ-f8-bNr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cMR-yR-3Qn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="payment_successful" translatesAutoresizingMaskIntoConstraints="NO" id="SA2-Ms-rE7">
+                                <rect key="frame" x="151" y="130.5" width="73" height="73"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3i-V0-gIJ">
+                                <rect key="frame" x="155" y="233.5" width="65.5" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeC-Q3-SGM">
+                                <rect key="frame" x="34.5" y="293.5" width="305" height="42.5"/>
+                                <color key="backgroundColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42.5" id="7Pr-vX-kUy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="查看订单"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="oneBtnClick:" destination="X3K-Fx-E6N" eventType="touchUpInside" id="I6f-Ji-jzw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPL-lC-gfq">
+                                <rect key="frame" x="35" y="346" width="305" height="42.5"/>
+                                <color key="backgroundColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="返回首页"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="twoBtnClick:" destination="X3K-Fx-E6N" eventType="touchUpInside" id="qf9-Vn-F9g"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SA2-Ms-rE7" firstAttribute="centerY" secondItem="cMR-yR-3Qn" secondAttribute="centerY" multiplier="0.5" id="4Z9-HP-jg8"/>
+                            <constraint firstItem="t3i-V0-gIJ" firstAttribute="centerX" secondItem="cMR-yR-3Qn" secondAttribute="centerX" id="9h1-aJ-ppA"/>
+                            <constraint firstItem="SA2-Ms-rE7" firstAttribute="centerX" secondItem="cMR-yR-3Qn" secondAttribute="centerX" id="KCW-Lo-xpK"/>
+                            <constraint firstItem="t3i-V0-gIJ" firstAttribute="top" secondItem="SA2-Ms-rE7" secondAttribute="bottom" constant="30" id="Oxz-SG-ezK"/>
+                            <constraint firstItem="UPL-lC-gfq" firstAttribute="top" secondItem="oeC-Q3-SGM" secondAttribute="bottom" constant="10" id="PxH-74-CLl"/>
+                            <constraint firstItem="oeC-Q3-SGM" firstAttribute="width" secondItem="cMR-yR-3Qn" secondAttribute="width" constant="-70" id="YHu-17-iWL"/>
+                            <constraint firstItem="oeC-Q3-SGM" firstAttribute="top" secondItem="t3i-V0-gIJ" secondAttribute="bottom" constant="40" id="Zkg-IH-s8C"/>
+                            <constraint firstItem="UPL-lC-gfq" firstAttribute="height" secondItem="oeC-Q3-SGM" secondAttribute="height" id="iv5-pk-wAM"/>
+                            <constraint firstItem="oeC-Q3-SGM" firstAttribute="centerX" secondItem="cMR-yR-3Qn" secondAttribute="centerX" id="j9D-dZ-UKb"/>
+                            <constraint firstItem="UPL-lC-gfq" firstAttribute="width" secondItem="oeC-Q3-SGM" secondAttribute="width" id="mYI-sT-B2a"/>
+                            <constraint firstItem="UPL-lC-gfq" firstAttribute="centerX" secondItem="cMR-yR-3Qn" secondAttribute="centerX" id="uSe-XH-Ax8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="oneBtn" destination="oeC-Q3-SGM" id="mdR-Fa-Ebc"/>
+                        <outlet property="statusImage" destination="SA2-Ms-rE7" id="fpe-v5-RL5"/>
+                        <outlet property="statusTitle" destination="t3i-V0-gIJ" id="EYR-df-G74"/>
+                        <outlet property="twoBtn" destination="UPL-lC-gfq" id="Y88-mQ-rLv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="olG-C4-n4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2439" y="130"/>
+        </scene>
     </scenes>
     <resources>
         <image name="add_number" width="18" height="18"/>
         <image name="default_image" width="150" height="150"/>
+        <image name="payment_successful" width="73" height="73"/>
         <image name="reduce_number" width="18" height="18"/>
         <image name="shopCart_cancel" width="17" height="17"/>
         <image name="shopCart_icon" width="25" height="25"/>

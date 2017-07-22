@@ -18,7 +18,6 @@
 		0F3838971F0D09AB003C800A /* MyAccountHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838961F0D09AB003C800A /* MyAccountHeadCell.swift */; };
 		0F3838991F0D09BC003C800A /* MyAccountTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838981F0D09BC003C800A /* MyAccountTextFieldCell.swift */; };
 		0F38389B1F0D1EC4003C800A /* CourseSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38389A1F0D1EC3003C800A /* CourseSearchController.swift */; };
-		0F38389D1F0D1FCB003C800A /* PaymentResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38389C1F0D1FCB003C800A /* PaymentResultsController.swift */; };
 		0F3838A11F0D25A5003C800A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F3838A01F0D25A5003C800A /* Login.storyboard */; };
 		0F3838A31F0D2639003C800A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838A21F0D2639003C800A /* LoginController.swift */; };
 		0F3838A51F0D2881003C800A /* PerfectInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838A41F0D2881003C800A /* PerfectInfoController.swift */; };
@@ -120,6 +119,9 @@
 		0FE902F81F19F7C000C84392 /* ClassHourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE902F71F19F7C000C84392 /* ClassHourModel.swift */; };
 		0FE902FA1F1A123700C84392 /* CourseTermController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE902F91F1A123700C84392 /* CourseTermController.swift */; };
 		0FEAFB841F2307F000ED29AE /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC71A701F22117600FAD254 /* libsqlite3.tbd */; };
+		0FEAFB861F232D5D00ED29AE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEAFB851F232D5D00ED29AE /* StoreKit.framework */; };
+		0FEAFB881F234DA500ED29AE /* PaymentResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEAFB871F234DA500ED29AE /* PaymentResultsController.swift */; };
+		0FEAFB8A1F23551B00ED29AE /* MJExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEAFB891F23551B00ED29AE /* MJExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,7 +136,6 @@
 		0F3838961F0D09AB003C800A /* MyAccountHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountHeadCell.swift; sourceTree = "<group>"; };
 		0F3838981F0D09BC003C800A /* MyAccountTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTextFieldCell.swift; sourceTree = "<group>"; };
 		0F38389A1F0D1EC3003C800A /* CourseSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseSearchController.swift; sourceTree = "<group>"; };
-		0F38389C1F0D1FCB003C800A /* PaymentResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentResultsController.swift; sourceTree = "<group>"; };
 		0F3838A01F0D25A5003C800A /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		0F3838A21F0D2639003C800A /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0F3838A41F0D2881003C800A /* PerfectInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfectInfoController.swift; sourceTree = "<group>"; };
@@ -153,7 +154,6 @@
 		0F6C61E21EFFCDA30079B2F2 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
 		0F6C61E41EFFCDA80079B2F2 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = Carthage/Build/iOS/IQKeyboardManagerSwift.framework; sourceTree = "<group>"; };
 		0F6C61E61EFFCDAC0079B2F2 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
-		0F6C61E81EFFCDB10079B2F2 /* MJExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJExtension.framework; path = Carthage/Build/iOS/MJExtension.framework; sourceTree = "<group>"; };
 		0F6C61EA1EFFCDB60079B2F2 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		0F6C61EC1EFFCDB90079B2F2 /* YYCategories.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYCategories.framework; path = Carthage/Build/iOS/YYCategories.framework; sourceTree = "<group>"; };
 		0F6C61FD1EFFD1D40079B2F2 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -268,6 +268,9 @@
 		0FE902F71F19F7C000C84392 /* ClassHourModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassHourModel.swift; sourceTree = "<group>"; };
 		0FE902F91F1A123700C84392 /* CourseTermController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTermController.swift; sourceTree = "<group>"; };
 		0FEAFB821F23076D00ED29AE /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		0FEAFB851F232D5D00ED29AE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0FEAFB871F234DA500ED29AE /* PaymentResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentResultsController.swift; sourceTree = "<group>"; };
+		0FEAFB891F23551B00ED29AE /* MJExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJExtension.framework; path = Carthage/Build/iOS/MJExtension.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +278,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FEAFB861F232D5D00ED29AE /* StoreKit.framework in Frameworks */,
 				0FEAFB841F2307F000ED29AE /* libsqlite3.tbd in Frameworks */,
 				0FC71A6F1F22116800FAD254 /* ImageIO.framework in Frameworks */,
 				0FC71A6D1F22115E00FAD254 /* JavaScriptCore.framework in Frameworks */,
@@ -288,6 +292,7 @@
 				0FC71A571F22111D00FAD254 /* ShareSDKConfigFile.framework in Frameworks */,
 				0F6C61E51EFFCDA80079B2F2 /* IQKeyboardManagerSwift.framework in Frameworks */,
 				0F6C61ED1EFFCDB90079B2F2 /* YYCategories.framework in Frameworks */,
+				0FEAFB8A1F23551B00ED29AE /* MJExtension.framework in Frameworks */,
 				0FC71A651F22111E00FAD254 /* ShareSDKConnector.framework in Frameworks */,
 				0FC71A551F22111D00FAD254 /* ShareSDK.framework in Frameworks */,
 				0FC6635D1F161E8D00C06F0E /* ObjectMapper.framework in Frameworks */,
@@ -378,6 +383,8 @@
 		0F6C61E11EFFCDA30079B2F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FEAFB891F23551B00ED29AE /* MJExtension.framework */,
+				0FEAFB851F232D5D00ED29AE /* StoreKit.framework */,
 				0FEAFB821F23076D00ED29AE /* libc++abi.tbd */,
 				0FC71A701F22117600FAD254 /* libsqlite3.tbd */,
 				0FC71A6E1F22116800FAD254 /* ImageIO.framework */,
@@ -388,7 +395,6 @@
 				0FC6635C1F161E8D00C06F0E /* ObjectMapper.framework */,
 				0F6C61EC1EFFCDB90079B2F2 /* YYCategories.framework */,
 				0F6C61EA1EFFCDB60079B2F2 /* SDWebImage.framework */,
-				0F6C61E81EFFCDB10079B2F2 /* MJExtension.framework */,
 				0F6C61E61EFFCDAC0079B2F2 /* MBProgressHUD.framework */,
 				0F6C61E41EFFCDA80079B2F2 /* IQKeyboardManagerSwift.framework */,
 				0F6C61E21EFFCDA30079B2F2 /* AFNetworking.framework */,
@@ -450,7 +456,6 @@
 				0F5FE0661F0776CD00B8DD09 /* CourseMenuController.swift */,
 				0F5FE06C1F0785B600B8DD09 /* CourseDetailController.swift */,
 				0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */,
-				0F38389C1F0D1FCB003C800A /* PaymentResultsController.swift */,
 				0FE902F91F1A123700C84392 /* CourseTermController.swift */,
 				0FE4BD491F1F67BA006A2EB5 /* CommentListController.swift */,
 			);
@@ -555,6 +560,7 @@
 		0F6C61FB1EFFD0F70079B2F2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0FEAFB871F234DA500ED29AE /* PaymentResultsController.swift */,
 				0FB34AB91F028D6E00480E6C /* ShopCartController.swift */,
 			);
 			path = Controller;
@@ -888,6 +894,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/YYCategories.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MJExtension.framework",
 			);
 			outputPaths = (
 			);
@@ -932,8 +939,8 @@
 				0FB34AB61F02611100480E6C /* MineHeadCell.swift in Sources */,
 				0F8ABDC41F17256800659962 /* MJRefreshConst.m in Sources */,
 				0F85E0851F0A62AD0084AA1B /* CommonProblemController.swift in Sources */,
+				0FEAFB881F234DA500ED29AE /* PaymentResultsController.swift in Sources */,
 				0F0739101F162FA400217CC6 /* BannerModel.swift in Sources */,
-				0F38389D1F0D1FCB003C800A /* PaymentResultsController.swift in Sources */,
 				0F8ABDC51F17256800659962 /* NSBundle+MJRefresh.m in Sources */,
 				0F85E0811F0A47D30084AA1B /* MessageCell.swift in Sources */,
 				0F8ABDC61F17256800659962 /* UIScrollView+MJExtension.m in Sources */,
