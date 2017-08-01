@@ -33,7 +33,12 @@ class PaymentResultsController: AntController {
     }
 
     @IBAction func oneBtnClick(_ sender: UIButton) {
-        
+        if resultsStatus {
+            
+        } else {
+            tabBarController?.selectedIndex = 0
+            navigationController?.popToRootViewController(animated: false)
+        }
     }
     
     @IBAction func twoBtnClick(_ sender: UIButton) {

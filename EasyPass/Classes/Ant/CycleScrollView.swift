@@ -31,7 +31,7 @@ class CycleScrollView: UIView,UIScrollViewDelegate {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true
         scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: width * 3.0, height: 0)
+        scrollView.contentSize = CGSize(width: (kScreenWidth - 30) * 3.0, height: 0)
         insertSubview(scrollView, at: 0)
         
         pageControl.pageIndicatorTintColor = UIColor.gray
@@ -74,7 +74,7 @@ class CycleScrollView: UIView,UIScrollViewDelegate {
         getDisplayImagesWithCurpage(page: curPage)
         
         for i in 0..<3 {
-            let imageView = UIImageView(frame: CGRect(x: width * CGFloat(i), y: 0, width: width, height: height))
+            let imageView = UIImageView(frame: CGRect(x: (kScreenWidth - 30) * CGFloat(i), y: 0, width: (kScreenWidth - 30), height: height))
             imageView.isUserInteractionEnabled = true
             imageView.contentMode = .scaleAspectFill
             imageView.sd_setImage(with: URL(string: curImages[i]), placeholderImage: UIImage(named: "default_image"))
@@ -82,7 +82,7 @@ class CycleScrollView: UIView,UIScrollViewDelegate {
             imageView.addGestureRecognizer(singleTap)
             scrollView.addSubview(imageView)
         }
-        scrollView.setContentOffset(CGPoint(x: width, y: 0), animated: false)
+        scrollView.setContentOffset(CGPoint(x: (kScreenWidth - 30), y: 0), animated: false)
     }
     
     func getDisplayImagesWithCurpage(page: Int) {
@@ -126,13 +126,13 @@ class CycleScrollView: UIView,UIScrollViewDelegate {
     func createTimer() {
         weak var weakSelf = self
         scrollTimer = Timer.scheduledTimer(withTimeInterval: 2, block: { (_) in
-            weakSelf?.scrollView.setContentOffset(CGPoint(x: weakSelf!.width * 2, y: 0), animated: true)
+            weakSelf?.scrollView.setContentOffset(CGPoint(x: (kScreenWidth - 30) * 2, y: 0), animated: true)
         }, repeats: true)
     }
     
     //MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x >= width * 2 {
+        if scrollView.contentOffset.x >= (kScreenWidth - 30) * 2 {
             curPage = validPageValue(value: curPage + 1)
             refreshScrollView()
         }
@@ -156,7 +156,7 @@ class CycleScrollView: UIView,UIScrollViewDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
         scrollView.frame = bounds
-        pageControl.frame = CGRect(x: 0, y: height - 30, width: width, height: 30)
+        pageControl.frame = CGRect(x: 0, y: height - 30, width: (kScreenWidth - 30), height: 30)
     }
 
     /*

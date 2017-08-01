@@ -25,6 +25,8 @@ class MyAccountController: AntController,UITableViewDelegate,UITableViewDataSour
             AntManage.showDelayToast(message: "退出成功！")
             AntManage.isLogin = false
             AntManage.userModel = nil
+            NotificationCenter.default.post(name: NSNotification.Name(kLoginStatusUpdate), object: nil)
+            ShareSDK.cancelAuthorize(SSDKPlatformType.typeWechat)
             UserDefaults.standard.removeObject(forKey: kUserInfo)
             UserDefaults.standard.synchronize()
             weakSelf?.navigationController?.popToRootViewController(animated: false)

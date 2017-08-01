@@ -25,7 +25,8 @@ class ShopCartModel : NSObject, NSCoding, Mappable{
 	var tag : Int?
 	var tagName : String?
 	var teacher : String?
-    var appleProductId : String?
+    var appleProductIdForCourse : String?
+    var appleProductIdForCourseHour : String?
 
 	class func newInstance(map: Map) -> Mappable?{
 		return ShopCartModel()
@@ -52,8 +53,9 @@ class ShopCartModel : NSObject, NSCoding, Mappable{
 		tag <- map["tag"]
 		tagName <- map["tagName"]
 		teacher <- map["teacher"]
-        appleProductId <- map["appleProductId"]
-		
+        appleProductIdForCourse <- map["appleProductIdForCourse"]
+		appleProductIdForCourseHour <- map["appleProductIdForCourseHour"]
+        
 	}
 
     /**
@@ -79,7 +81,8 @@ class ShopCartModel : NSObject, NSCoding, Mappable{
          tag = aDecoder.decodeObject(forKey: "tag") as? Int
          tagName = aDecoder.decodeObject(forKey: "tagName") as? String
          teacher = aDecoder.decodeObject(forKey: "teacher") as? String
-         appleProductId = aDecoder.decodeObject(forKey: "appleProductId") as? String
+         appleProductIdForCourse = aDecoder.decodeObject(forKey: "appleProductIdForCourse") as? String
+         appleProductIdForCourseHour = aDecoder.decodeObject(forKey: "appleProductIdForCourseHour") as? String
 
 	}
 
@@ -140,8 +143,11 @@ class ShopCartModel : NSObject, NSCoding, Mappable{
 		if teacher != nil{
 			aCoder.encode(teacher, forKey: "teacher")
 		}
-        if appleProductId != nil{
-            aCoder.encode(appleProductId, forKey: "appleProductId")
+        if appleProductIdForCourse != nil{
+            aCoder.encode(appleProductIdForCourse, forKey: "appleProductIdForCourse")
+        }
+        if appleProductIdForCourseHour != nil{
+            aCoder.encode(appleProductIdForCourseHour, forKey: "appleProductIdForCourseHour")
         }
 
 	}

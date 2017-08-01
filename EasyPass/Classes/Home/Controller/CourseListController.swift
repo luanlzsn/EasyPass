@@ -119,7 +119,6 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
         } else if segue.identifier == "CourseDetail" {
             let courseDetail = segue.destination as! CourseDetailController
             let courseModel = sender as! CourseModel
-            courseDetail.navigationItem.title = courseModel.courseName
             courseDetail.courseId = courseModel.id!
         }
     }

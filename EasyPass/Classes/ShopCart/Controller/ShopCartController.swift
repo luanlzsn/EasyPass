@@ -67,11 +67,11 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
     // MARK: - 内购
     func buyCourseWithIAP(appleProductId: String) {
         if SKPaymentQueue.canMakePayments() {
-            let set = NSSet(object: "EasyPass0001")
+            let set = NSSet(object: appleProductId)
             let request = SKProductsRequest(productIdentifiers: set as! Set<String>)
             request.delegate = self
             request.start()
-            AntManage.showDelayToast(message: "正在获取商品信息，请稍后")
+            AntManage.showMessage(message: "正在获取商品信息，请稍后")
         } else {
             AntManage.showDelayToast(message: "您禁止了应用内付费购买！")
         }
@@ -80,7 +80,7 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
     // MARK: - 二次校验
     func checkReceiptIsValid() {
         weak var weakSelf = self
-        AntManage.postRequest(path: "applePay/setIapCertificate", params: ["token":AntManage.userModel!.token!, "orderNo":orderNo, "receipt":receipt, "receipt":false], successResult: { (response) in
+        AntManage.postRequest(path: "applePay/setIapCertificate", params: ["token":AntManage.userModel!.token!, "orderNo":orderNo, "receipt":receipt, "chooseEnv":false], successResult: { (response) in
             weakSelf?.performSegue(withIdentifier: "PaymentResults", sender: true)
         }, failureResult: {
             weakSelf?.performSegue(withIdentifier: "PaymentResults", sender: false)
@@ -139,29 +139,32 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
     }
     
     func checkOut(row: Int) {
-//        let shopCartModel = shopCartArray[row]
-//        var totalPrice: Float = 0.0
-//        var totalOnTax: Float = 0.0
-//        var orderItemList = ["courseId":shopCartModel.courseId!, "quantity":shopCartModel.quantity!] as [String : Any]
-//        if shopCartModel.courseHourId == nil {
-//            orderItemList["price"] = shopCartModel.coursePrice!
-//            orderItemList["onTax"] = shopCartModel.courseOnTax!
-//            totalPrice = shopCartModel.coursePrice! * Float.init(shopCartModel.quantity!)
-//            totalOnTax = shopCartModel.courseOnTax! * Float.init(shopCartModel.quantity!)
-//        } else {
-//            orderItemList["price"] = shopCartModel.courseHourPrice!
-//            orderItemList["onTax"] = shopCartModel.courseHourOnTax!
-//            orderItemList["courseClassHourId"] = shopCartModel.courseHourId!
-//        }
-//        weak var weakSelf = self
-//        AntManage.postSumbitOrder(body: ["orderItemList":[orderItemList], "totalPrice":totalPrice, "totalOnTax":totalOnTax, "orderTotalPrice":totalPrice + totalOnTax], successResult: { (response) in
-//            AntManage.showDelayToast(message: "订单提交成功！")
-//            weakSelf?.orderNo = response["orderNo"] as! String
-//            weakSelf?.orderNum = shopCartModel.quantity!
-//            weakSelf?.shopCartArray.remove(at: row)
-//            weakSelf?.tableView.reloadData()
-//            weakSelf?.buyCourseWithIAP(appleProductId: shopCartModel.appleProductId!)
-//        }, failureResult: {})
+        let shopCartModel = shopCartArray[row]
+        var totalPrice: Float = 0.0
+        var totalOnTax: Float = 0.0
+        var orderItemList = ["shoppingCartId":shopCartModel.id! ,"courseId":shopCartModel.courseId!, "quantity":shopCartModel.quantity!] as [String : Any]
+        var appleProductId = ""
+        if shopCartModel.courseHourId == nil {
+            orderItemList["price"] = shopCartModel.coursePrice!
+            orderItemList["onTax"] = shopCartModel.courseOnTax!
+            totalPrice = shopCartModel.coursePrice! * Float.init(shopCartModel.quantity!)
+            totalOnTax = shopCartModel.courseOnTax! * Float.init(shopCartModel.quantity!)
+            appleProductId = shopCartModel.appleProductIdForCourse!
+        } else {
+            orderItemList["price"] = shopCartModel.courseHourPrice!
+            orderItemList["onTax"] = shopCartModel.courseHourOnTax!
+            orderItemList["courseClassHourId"] = shopCartModel.courseHourId!
+            appleProductId = shopCartModel.appleProductIdForCourseHour!
+        }
+        weak var weakSelf = self
+        AntManage.postSumbitOrder(body: ["orderItemList":[orderItemList], "totalPrice":totalPrice, "totalOnTax":totalOnTax, "orderTotalPrice":totalPrice + totalOnTax], successResult: { (response) in
+            AntManage.showDelayToast(message: "订单提交成功！")
+            weakSelf?.orderNo = response["orderNo"] as! String
+            weakSelf?.orderNum = shopCartModel.quantity!
+            weakSelf?.shopCartArray.remove(at: row)
+            weakSelf?.tableView.reloadData()
+            weakSelf?.buyCourseWithIAP(appleProductId: appleProductId)
+        }, failureResult: {})
     }
     
     // MARK: - UITableViewDelegate,UITableViewDataSource
@@ -233,17 +236,21 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         for transaction in transactions {
             switch transaction.transactionState {
             case .purchased:
+                AntManage.hideMessage()
                 completeTransaction(transaction: transaction)
                 receipt = try! Data(contentsOf: Bundle.main.appStoreReceiptURL!).base64EncodedString()
+                checkReceiptIsValid()
                 break
             case .failed:
+                AntManage.hideMessage()
                 failedTransaction(transaction: transaction)
                 break
             case .restored:
+                AntManage.hideMessage()
                 restoreTransaction(transaction: transaction)
                 break
             case .purchasing:
-                AntManage.showDelayToast(message: "正在请求付费信息，请稍后")
+                AntManage.showMessage(message: "正在请求付费信息，请稍后")
                 break
             default:
                 break

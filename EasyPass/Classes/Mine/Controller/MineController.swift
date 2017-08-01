@@ -27,6 +27,8 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
             AntManage.showDelayToast(message: "退出成功！")
             AntManage.isLogin = false
             AntManage.userModel = nil
+            NotificationCenter.default.post(name: NSNotification.Name(kLoginStatusUpdate), object: nil)
+            ShareSDK.cancelAuthorize(SSDKPlatformType.typeWechat)
             UserDefaults.standard.removeObject(forKey: kUserInfo)
             UserDefaults.standard.synchronize()
             weakSelf?.tabBarController?.selectedIndex = 0
@@ -63,7 +65,7 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
             if indexPath.row == 0 {
                 let cell: MineHeadCell = tableView.dequeueReusableCell(withIdentifier: "MineHeadCell", for: indexPath) as! MineHeadCell
                 cell.headImage.sd_setImage(with: URL(string: AntManage.userModel!.headImg!), placeholderImage: UIImage(named: "default_image"))
-                cell.nickName.text = AntManage.userModel?.nickName
+                cell.nickName.text = AntManage.userModel?.nickName?.removingPercentEncoding
                 return cell
             } else {
                 let cell: MineLearnRecordCell = tableView.dequeueReusableCell(withIdentifier: "MineLearnRecordCell", for: indexPath) as! MineLearnRecordCell

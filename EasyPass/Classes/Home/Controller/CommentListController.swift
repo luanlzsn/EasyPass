@@ -73,7 +73,7 @@ class CommentListController: AntController,UITableViewDelegate,UITableViewDataSo
         } else {
             cell.headPortrait.image = UIImage(named: "default_image")
         }
-        cell.nickName.text = comment.nickName
+        cell.nickName.text = comment.nickName?.removingPercentEncoding
         cell.commont.text = comment.content
         cell.time.text = comment.createTime?.components(separatedBy: " ").first
         return cell

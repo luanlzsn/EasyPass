@@ -9,7 +9,7 @@
 import UIKit
 import ObjectMapper
 
-class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataSource,CourseOutline_Delegate {
+class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataSource,CourseOutline_Delegate,UITextViewDelegate {
 
     @IBOutlet weak var playBtn: UIButton!//播放按钮
     @IBOutlet weak var infoBtn: UIButton!//简介按钮
@@ -32,14 +32,21 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableHeight: NSLayoutConstraint!
     @IBOutlet weak var commentTextView: UITextView!//评论输入框
+    @IBOutlet weak var commentPlaceholder: UILabel!
     var courseId = 0//课程id
     var courseModel: CourseModel?
     var commentArray = [CommentModel]()
     var classHourPageNo = 1//课时分页信息
     var classHourArray = [ClassHourModel]()
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(kLoginStatusUpdate), object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loginStatusUpdate), name: NSNotification.Name(kLoginStatusUpdate), object: nil)
 
         tableView.register(UINib(nibName: "CourseCommentCell", bundle: Bundle.main), forCellReuseIdentifier: "CourseCommentCell")
         tableView.estimatedRowHeight = 60.0
@@ -65,10 +72,20 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
         tableHeight.constant = tableView.contentSize.height
     }
     
+    // MARK: - 登录状态有更新
+    func loginStatusUpdate() {
+        getCourseDetailById()
+        getCourseClassHourByPage(pageNo: 1)
+    }
+    
     // MARK: - 获取课程详情
     func getCourseDetailById() {
         weak var weakSelf = self
-        AntManage.postRequest(path: "course/getCourseDetailById", params: ["token":AntManage.userModel!.token!, "courseId":courseId], successResult: { (response) in
+        var params = ["courseId":courseId] as [String : Any]
+        if AntManage.isLogin {
+            params["token"] = AntManage.userModel!.token!
+        }
+        AntManage.postRequest(path: "course/getCourseDetailById", params: params, successResult: { (response) in
             weakSelf?.courseModel = Mapper<CourseModel>().map(JSON: response)
             weakSelf?.refreshCourseInfo()
         }, failureResult: {
@@ -108,6 +125,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     
     // MARK: - 刷新课程信息
     func refreshCourseInfo() {
+        navigationItem.title = courseModel?.courseName
         if courseModel?.tag == 1 {
             buyBtn.setTitle("预约", for: .normal)
             outlineBtn.isHidden = true
@@ -168,21 +186,25 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             AntManage.showDelayToast(message: "请输入评论内容！")
             return
         }
-        weak var weakSelf = self
-        AntManage.postRequest(path: "comment/addComment", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "commentContent":commentTextView.text], successResult: { (response) in
-            AntManage.showDelayToast(message: "发布评论成功！")
-            weakSelf?.getCommentByPage()
-            weakSelf?.commentTextView.text = "我的评论：xxx"
-        }, failureResult: {})
+        if Common.checkIsOperation(controller: self) {
+            weak var weakSelf = self
+            AntManage.postRequest(path: "comment/addComment", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "commentContent":commentTextView.text], successResult: { (response) in
+                AntManage.showDelayToast(message: "发布评论成功！")
+                weakSelf?.getCommentByPage()
+                weakSelf?.commentTextView.text = "我的评论：xxx"
+            }, failureResult: {})
+        }
     }
     
     // MARK: - 收藏
     @IBAction func collectionClick(_ sender: HomeMenuButton) {
-        let path = sender.isSelected ? "collect/cancelCommentPraise" : "collect/addCourseCollect"
-        AntManage.postRequest(path: path, params: ["token":AntManage.userModel!.token!, "courseId":courseId], successResult: { (response) in
-            AntManage.showDelayToast(message: sender.isSelected ? "取消收藏成功！" : "收藏成功！")
-            sender.isSelected = !sender.isSelected
-        }, failureResult: {})
+        if Common.checkIsOperation(controller: self) {
+            let path = sender.isSelected ? "collect/cancelCommentPraise" : "collect/addCourseCollect"
+            AntManage.postRequest(path: path, params: ["token":AntManage.userModel!.token!, "courseId":courseId], successResult: { (response) in
+                AntManage.showDelayToast(message: sender.isSelected ? "取消收藏成功！" : "收藏成功！")
+                sender.isSelected = !sender.isSelected
+            }, failureResult: {})
+        }
     }
     
     // MARK: - 分享
@@ -201,10 +223,12 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             AntManage.showDelayToast(message: "您已购买过该课程,无需重复购买")
             return
         }
-        AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "number":1, "add":true], successResult: { (_) in
-            AntManage.showDelayToast(message: "加入购物车成功！")
-            NotificationCenter.default.post(name: NSNotification.Name(kAddShopCartSuccess), object: nil)
-        }, failureResult: {})
+        if Common.checkIsOperation(controller: self) {
+            AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "number":1, "add":true], successResult: { (_) in
+                AntManage.showDelayToast(message: "加入购物车成功！")
+                NotificationCenter.default.post(name: NSNotification.Name(kAddShopCartSuccess), object: nil)
+            }, failureResult: {})
+        }
     }
     
     // MARK: - 跳转
@@ -222,12 +246,14 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     func checkCourseOutline(section: Int) {
         let classHourModel = classHourArray[section]
         if classHourModel.buyFlag! {
-            
+            AntManage.showDelayToast(message: "您已购买过该课时,无需重复购买")
         } else {
-            AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "classHourId":classHourModel.id!, "number":1, "add":true], successResult: { (_) in
-                AntManage.showDelayToast(message: "加入购物车成功！")
-                NotificationCenter.default.post(name: NSNotification.Name(kAddShopCartSuccess), object: nil)
-            }, failureResult: {})
+            if Common.checkIsOperation(controller: self) {
+                AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "classHourId":classHourModel.id!, "number":1, "add":true], successResult: { (_) in
+                    AntManage.showDelayToast(message: "加入购物车成功！")
+                    NotificationCenter.default.post(name: NSNotification.Name(kAddShopCartSuccess), object: nil)
+                }, failureResult: {})
+            }
         }
     }
     
@@ -277,11 +303,16 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             } else {
                 cell.headPortrait.image = UIImage(named: "default_image")
             }
-            cell.nickName.text = comment.nickName
+            cell.nickName.text = comment.nickName?.removingPercentEncoding
             cell.commont.text = comment.content
             cell.time.text = comment.createTime?.components(separatedBy: " ").first
             return cell
         }
+    }
+    
+    // MARK: - UITextViewDelegate
+    func textViewDidChange(_ textView: UITextView) {
+        commentPlaceholder.isHidden = !textView.text.isEmpty
     }
     
     override func didReceiveMemoryWarning() {

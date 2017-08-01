@@ -14,7 +14,7 @@ class BannerModel : NSObject, NSCoding, Mappable{
 	var sort : Int?
 	var status : Int?
 	var title : String?
-
+    var courseId : Int?
 
 	class func newInstance(map: Map) -> Mappable?{
 		return BannerModel()
@@ -30,6 +30,7 @@ class BannerModel : NSObject, NSCoding, Mappable{
 		sort <- map["sort"]
 		status <- map["status"]
 		title <- map["title"]
+        courseId <- map["courseId"]
 		
 	}
 
@@ -45,6 +46,7 @@ class BannerModel : NSObject, NSCoding, Mappable{
          sort = aDecoder.decodeObject(forKey: "sort") as? Int
          status = aDecoder.decodeObject(forKey: "status") as? Int
          title = aDecoder.decodeObject(forKey: "title") as? String
+         courseId = aDecoder.decodeObject(forKey: "courseId") as? Int
 
 	}
 
@@ -72,6 +74,9 @@ class BannerModel : NSObject, NSCoding, Mappable{
 		if title != nil{
 			aCoder.encode(title, forKey: "title")
 		}
+        if courseId != nil{
+            aCoder.encode(courseId, forKey: "courseId")
+        }
 
 	}
 

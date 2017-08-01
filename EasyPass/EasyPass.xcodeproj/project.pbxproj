@@ -21,6 +21,8 @@
 		0F3838A11F0D25A5003C800A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F3838A01F0D25A5003C800A /* Login.storyboard */; };
 		0F3838A31F0D2639003C800A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838A21F0D2639003C800A /* LoginController.swift */; };
 		0F3838A51F0D2881003C800A /* PerfectInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838A41F0D2881003C800A /* PerfectInfoController.swift */; };
+		0F46F7071F30549300B0946C /* AntTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46F7061F30549300B0946C /* AntTabBarController.swift */; };
+		0F46F7091F30669700B0946C /* BannerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46F7081F30669700B0946C /* BannerDetailController.swift */; };
 		0F5FE0631F076D7F00B8DD09 /* CourseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE0621F076D7F00B8DD09 /* CourseListController.swift */; };
 		0F5FE0651F0770AC00B8DD09 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE0641F0770AC00B8DD09 /* CourseCell.swift */; };
 		0F5FE0671F0776CD00B8DD09 /* CourseMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE0661F0776CD00B8DD09 /* CourseMenuController.swift */; };
@@ -139,6 +141,8 @@
 		0F3838A01F0D25A5003C800A /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		0F3838A21F0D2639003C800A /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0F3838A41F0D2881003C800A /* PerfectInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfectInfoController.swift; sourceTree = "<group>"; };
+		0F46F7061F30549300B0946C /* AntTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntTabBarController.swift; sourceTree = "<group>"; };
+		0F46F7081F30669700B0946C /* BannerDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerDetailController.swift; sourceTree = "<group>"; };
 		0F5FE0621F076D7F00B8DD09 /* CourseListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseListController.swift; sourceTree = "<group>"; };
 		0F5FE0641F0770AC00B8DD09 /* CourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		0F5FE0661F0776CD00B8DD09 /* CourseMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMenuController.swift; sourceTree = "<group>"; };
@@ -425,6 +429,7 @@
 				0F6C62081EFFD4860079B2F2 /* AntDefault.swift */,
 				0F6C62091EFFD4860079B2F2 /* AntNavController.swift */,
 				0F6C620A1EFFD4860079B2F2 /* AntSingleton.swift */,
+				0F46F7061F30549300B0946C /* AntTabBarController.swift */,
 			);
 			path = Ant;
 			sourceTree = "<group>";
@@ -458,6 +463,7 @@
 				0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */,
 				0FE902F91F1A123700C84392 /* CourseTermController.swift */,
 				0FE4BD491F1F67BA006A2EB5 /* CommentListController.swift */,
+				0F46F7081F30669700B0946C /* BannerDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -834,6 +840,11 @@
 						DevelopmentTeam = G43HHTZUJ5;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -920,6 +931,7 @@
 				0F83A6481F00B7BA00088B5F /* HomeCourseCell.swift in Sources */,
 				0F5FE0671F0776CD00B8DD09 /* CourseMenuController.swift in Sources */,
 				0F8ABDBE1F17256800659962 /* MJRefreshBackNormalFooter.m in Sources */,
+				0F46F7091F30669700B0946C /* BannerDetailController.swift in Sources */,
 				0FAE0AE41F18A0CD00DF0892 /* CommentModel.swift in Sources */,
 				0F5FE0651F0770AC00B8DD09 /* CourseCell.swift in Sources */,
 				0F8ABDB71F17256800659962 /* MJRefreshComponent.m in Sources */,
@@ -976,6 +988,7 @@
 				0F5FE0631F076D7F00B8DD09 /* CourseListController.swift in Sources */,
 				0F6C620E1EFFD4860079B2F2 /* AntSingleton.swift in Sources */,
 				0F8ABDBC1F17256800659962 /* MJRefreshAutoStateFooter.m in Sources */,
+				0F46F7071F30549300B0946C /* AntTabBarController.swift in Sources */,
 				0F8ABDBF1F17256800659962 /* MJRefreshBackStateFooter.m in Sources */,
 				0F8ABDC21F17256800659962 /* MJRefreshStateHeader.m in Sources */,
 				0F8ABDC11F17256800659962 /* MJRefreshNormalHeader.m in Sources */,

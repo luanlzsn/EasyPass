@@ -20,8 +20,17 @@ class HomeHeaderCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
+    @IBAction func headImageClick(_ sender: UIButton) {
+        _ = Common.checkIsOperation(controller: viewController()!)
+    }
+    
     @IBAction func menuClick(_ sender: HomeMenuButton) {
         let identifier = menuIdentifierArray[sender.tag / 10 - 1]
+        if identifier == "MyCourse" || identifier == "Message" {
+            if !Common.checkIsOperation(controller: viewController()!) {
+                return
+            }
+        }
         let controller = UIStoryboard(name: "Mine", bundle: Bundle.main).instantiateViewController(withIdentifier: identifier)
         viewController()?.navigationController?.pushViewController(controller, animated: true)
     }

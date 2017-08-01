@@ -9,6 +9,7 @@
 import UIKit
 import AFNetworking
 import MBProgressHUD
+import MJExtension
 
 let kRequestTimeOut = 20.0
 let AntManage = AntSingleton.sharedInstance
@@ -17,10 +18,11 @@ class AntSingleton: NSObject {
     
     static let sharedInstance = AntSingleton()
     var manager = AFHTTPSessionManager()
-    var requestBaseUrl = "http://175.102.18.73:8083/easypass-app/"
+    var requestBaseUrl = "http://175.102.18.82:8083/easypass-app/"
+//    var requestBaseUrl = "http://10.58.177.192:8080/easypass-app/"
     var progress : MBProgressHUD?
     var progressCount = 0//转圈数量
-    var isLogin = false//是否登录
+    var isLogin = false//是否登录    
     var userModel: UserModel?
     var classifyList = [ClassifyModel]()//专业数组
     
@@ -49,28 +51,29 @@ class AntSingleton: NSObject {
         showMessage(message: "")
         
         let sarequestUrl = requestBaseUrl + "order/sumbitOrder?token=\(userModel!.token!)"
+        let formRequest = AFHTTPRequestSerializer().request(withMethod: "POST", urlString: sarequestUrl, parameters: nil, error: nil)
+        formRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        formRequest.timeoutInterval = kRequestTimeOut
+        formRequest.httpBody = (body! as NSDictionary).mj_JSONData()
         
-        let manager = AFURLSessionManager(sessionConfiguration: URLSessionConfiguration.default)
+        let manager = AFHTTPSessionManager()
         
-        let request = AFHTTPRequestSerializer.init().request(withMethod: "POST", urlString: sarequestUrl, parameters: nil, error: nil)
-        request.timeoutInterval = kRequestTimeOut
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = (body! as NSDictionary).mj_JSONData()
-        
-        let responseSerializer = AFHTTPResponseSerializer.init()
-        responseSerializer.acceptableContentTypes = Set(arrayLiteral: "application/json","text/json","text/javascript","text/html")
+        let responseSerializer = AFJSONResponseSerializer()
+        responseSerializer.acceptableContentTypes = Set(arrayLiteral: "application/json","text/json","text/javascript","text/html","text/plain")
         manager.responseSerializer = responseSerializer
         
         weak var weakSelf = self
-        manager.dataTask(with: request as URLRequest) { (response, nil, error) in
+        
+        let dataTask = manager.dataTask(with: formRequest as URLRequest) { (response, data, error) in
             if error == nil {
-                weakSelf?.requestSuccess(response: response, successResult: successResult, failureResult: failureResult)
+                weakSelf?.requestSuccess(response: data, successResult: successResult, failureResult: failureResult)
             } else {
                 weakSelf?.hideMessage()
                 weakSelf?.showDelayToast(message: "未知错误，请重试！")
                 failureResult()
             }
         }
+        dataTask.resume()
     }
     
     //MARK: - get请求
@@ -103,6 +106,20 @@ class AntSingleton: NSObject {
                 } else {
                     if status as! Int == 1, let msg = data["msg"] as? String {
                         showDelayToast(message: msg)
+                    } else if status as! Int == 2, let msg = data["msg"] as? String {
+                        showDelayToast(message: msg)
+                        isLogin = false
+                        userModel = nil
+                        ShareSDK.cancelAuthorize(SSDKPlatformType.typeWechat)
+                        UserDefaults.standard.removeObject(forKey: kUserInfo)
+                        UserDefaults.standard.synchronize()
+                        let delegate = UIApplication.shared.delegate as! AppDelegate
+                        if (delegate.window?.rootViewController?.isKind(of: UITabBarController.classForCoder()))! {
+                            let tabbar = delegate.window?.rootViewController as! UITabBarController
+                            let nav = tabbar.selectedViewController as! UINavigationController
+                            nav.popToRootViewController(animated: false)
+                            tabbar.selectedIndex = 0
+                        }
                     } else {
                         showDelayToast(message: "未知错误，请重试！")
                     }

@@ -28,11 +28,7 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
         UIApplication.shared.statusBarStyle = .lightContent
-        if !AntManage.isLogin {
-            present(UIStoryboard(name: "Login", bundle: Bundle.main).instantiateInitialViewController()!, animated: true, completion: nil)
-        } else {
-            collection.reloadData()
-        }
+        collection.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -96,12 +92,24 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
             let courseList = segue.destination as! CourseListController
             let model = sender as! ClassifyModel
             courseList.classifyModel = model
+        } else if segue.identifier == "CourseDetail" {
+            let courseDetail = segue.destination as! CourseDetailController
+            courseDetail.courseId = sender as! Int
+        } else if segue.identifier == "BannerDetail" {
+            let bannerDetail = segue.destination as! BannerDetailController
+            bannerDetail.navigationItem.title = (sender as! BannerModel).title
+            bannerDetail.bannerContent = ((sender as! BannerModel).content != nil) ? (sender as! BannerModel).content! : ""
         }
     }
     
     // MARK: - CycleScrollView_Delegate
     func didSelectBanner(index: Int) {
-        
+        let banner = bannerArray[index]
+        if banner.courseId != nil {
+            performSegue(withIdentifier: "CourseDetail", sender: banner.courseId!)
+        } else {
+            performSegue(withIdentifier: "BannerDetail", sender: banner)
+        }
     }
     
     // MARK: - UICollectionViewDelegate,UICollectionViewDataSource
@@ -121,7 +129,7 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
             } else {
                 cell.headImage.setImage(UIImage(named: "head_defaults"), for: .normal)
             }
-            cell.nickName.text = AntManage.userModel?.nickName
+            cell.nickName.text = AntManage.userModel?.nickName?.removingPercentEncoding
             cell.bannerView.delegate = self
             var imgArray = [String]()
             for model in self.bannerArray {

@@ -32,6 +32,7 @@ let kAppDownloadURL = "https://itunes.apple.com/cn/app/id1107512125"//下载地�
 
 let kUserInfo = "kUserInfo"//登录用户的信息
 
+let kLoginStatusUpdate = "kLoginStatusUpdate"//登录状态更新通知
 let kAddShopCartSuccess = "kAddShopCartSuccess"//添加购物车成功通知
 
 
