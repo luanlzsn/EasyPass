@@ -72,25 +72,20 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
     }
 
     @IBAction func menuClick(_ sender: UIButton) {
+        for btn in menuBtnArray {
+            btn.isSelected = sender == btn
+        }
         if sender == menuBtnArray[0] {
-            sender.isSelected = true
-            menuBtnArray[1].isSelected = false
             performSegue(withIdentifier: "CourseMenu", sender: nil)
         } else if sender == menuBtnArray[1] {
-            sender.isSelected = true
-            menuBtnArray[0].isSelected = false
             performSegue(withIdentifier: "CourseTerm", sender: nil)
         } else if sender == menuBtnArray[2] {
-            sender.isSelected = !sender.isSelected
             timeSort = sender.isSelected ? "asc" : "desc"
             priceSort = ""
-            menuBtnArray[3].isSelected = false
             getCourseByPage(pageNo: 1)
         } else if sender == menuBtnArray[3] {
-            sender.isSelected = !sender.isSelected
             priceSort = sender.isSelected ? "asc" : "desc"
             timeSort = ""
-            menuBtnArray[2].isSelected = false
             getCourseByPage(pageNo: 1)
         }
     }
@@ -142,7 +137,6 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
         cell.courseImage.sd_setImage(with: URL(string: model.photo!), placeholderImage: UIImage(named: "default_image"))
         cell.courseName.text = model.courseName
         cell.courseCredit.text = "学分\(model.credit!)"
-        cell.teacher.text = model.teacher! + model.teacherDesc!
         cell.money.text = "$" + "\(model.price!)"
         cell.classHour.text = "/\(model.classHour!)课时"
         for image in cell.starArray {

@@ -188,16 +188,16 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         cell.courseImage.sd_setImage(with: URL(string: shopCartModel.photo!), placeholderImage: UIImage(named: "default_image"))
         if shopCartModel.tag == 0 {
             if shopCartModel.courseHourId != nil {
-                cell.courseName.text = shopCartModel.gradeName! + "\n" + shopCartModel.courseName! + "\n" + shopCartModel.lessonPeriod! + " " + shopCartModel.classHourName!
+                cell.courseName.text = shopCartModel.gradeName! + "\n\n" + shopCartModel.lessonPeriod! + " " + shopCartModel.classHourName!
                 cell.money.text = "$" + "\(shopCartModel.courseHourPrice!)"
                 cell.numberTextField.text = "\(shopCartModel.quantity!)"
             } else {
-                cell.courseName.text = shopCartModel.gradeName! + "\n" + shopCartModel.courseName!
+                cell.courseName.text = shopCartModel.gradeName! + "\n\n" + shopCartModel.courseName!
                 cell.money.text = "$" + "\(shopCartModel.coursePrice!)"
                 cell.numberTextField.text = "\(shopCartModel.quantity!)"
             }
         } else {
-            cell.courseName.text = shopCartModel.gradeName! + "\n" + shopCartModel.courseName! + "\n线下预约 " + shopCartModel.teacher!
+            cell.courseName.text = shopCartModel.gradeName! + "\n\n预约课程 " + shopCartModel.teacher!
             cell.money.text = "$" + "\(shopCartModel.coursePrice!)"
             cell.numberTextField.text = "\(shopCartModel.quantity!)"
         }

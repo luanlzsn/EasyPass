@@ -118,7 +118,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
         weak var weakSelf = self
         AntManage.postRequest(path: "comment/getCommentByPage", params: ["pageNo":1, "pageSize":3, "courseId":courseId, "timeSort":"desc"], successResult: { (response) in
             weakSelf?.commentArray = Mapper<CommentModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
-            weakSelf?.commentNum.text = "\(response["total"] as! Int)"
+            weakSelf?.commentNum.text = "(\(response["total"] as! Int))"
             weakSelf?.tableView.reloadData()
         }, failureResult: {})
     }
@@ -130,6 +130,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             buyBtn.setTitle("预约", for: .normal)
             outlineBtn.isHidden = true
         }
+        courseName.isHidden = true
         courseName.text = courseModel?.courseName
         credit.text = "学分\(courseModel!.credit!)"
         for star in levelImageArray {
@@ -140,6 +141,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             }
         }
         money.text = "$\(courseModel!.price!)"
+        classHour.text = "/\(courseModel!.classHour!)课时"
         detailLabel.text = courseModel?.courseDetail
         suitableCrowd.text = courseModel?.forCrowd
         learningGoal.text = courseModel?.studyGoal
@@ -175,8 +177,16 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
 
     // MARK: - 购买课程
     @IBAction func buyCourseClick(_ sender: UIButton) {
-        //performSegue(withIdentifier: "PaymentResults", sender: nil)
-        addShopCartClick(sender)
+        if (courseModel?.buyFlag)! {
+            AntManage.showDelayToast(message: "您已购买过该课程,无需重复购买")
+            return
+        }
+        if Common.checkIsOperation(controller: self) {
+            AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "number":1, "add":true], successResult: { (_) in
+                AntManage.showDelayToast(message: "加入购物车成功！")
+                NotificationCenter.default.post(name: NSNotification.Name(kAddShopCartSuccess), object: nil)
+            }, failureResult: {})
+        }
     }
     
     // MARK: - 发布评论
@@ -219,15 +229,9 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     
     // MARK: - 加入购物车
     @IBAction func addShopCartClick(_ sender: UIButton) {
-        if (courseModel?.buyFlag)! {
-            AntManage.showDelayToast(message: "您已购买过该课程,无需重复购买")
-            return
-        }
         if Common.checkIsOperation(controller: self) {
-            AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "number":1, "add":true], successResult: { (_) in
-                AntManage.showDelayToast(message: "加入购物车成功！")
-                NotificationCenter.default.post(name: NSNotification.Name(kAddShopCartSuccess), object: nil)
-            }, failureResult: {})
+            tabBarController?.selectedIndex = 1
+            navigationController?.popToRootViewController(animated: false)
         }
     }
     

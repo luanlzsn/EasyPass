@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cdf-AH-y59">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cdf-AH-y59">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -58,12 +58,12 @@
                                     <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwz-4s-JyT">
                                         <rect key="frame" x="188" y="-1" width="94" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="65" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="25" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="55" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="时间" image="down_arrow_two_gray">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="down_arrow_two_blue">
+                                        <state key="selected" image="up_arrow_two_blue">
                                             <color key="titleColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -73,12 +73,12 @@
                                     <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPU-Dm-hb8">
                                         <rect key="frame" x="282" y="0.0" width="94" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="65" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="25" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="55" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="价格" image="down_arrow_two_gray">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="down_arrow_two_blue">
+                                        <state key="selected" image="up_arrow_two_blue">
                                             <color key="titleColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -150,7 +150,7 @@
                                                     <rect key="frame" x="166.5" y="27" width="41" height="19"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="难度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vO9-sW-F6a">
-                                                    <rect key="frame" x="168.5" y="29.5" width="25" height="14.5"/>
+                                                    <rect key="frame" x="170.5" y="29.5" width="25" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -235,7 +235,7 @@
                                                 <constraint firstItem="vO9-sW-F6a" firstAttribute="centerY" secondItem="Sot-ls-pa5" secondAttribute="centerY" id="KAS-47-CTW"/>
                                                 <constraint firstItem="H5W-vS-9Ap" firstAttribute="leading" secondItem="l6P-uK-xMe" secondAttribute="leading" id="OMt-Wf-7A8"/>
                                                 <constraint firstItem="nSa-Z4-0XY" firstAttribute="centerY" secondItem="EEu-VN-SAk" secondAttribute="centerY" id="Pd3-Jb-isI"/>
-                                                <constraint firstItem="vO9-sW-F6a" firstAttribute="leading" secondItem="Sot-ls-pa5" secondAttribute="leading" constant="2" id="Rk7-Mh-9cQ"/>
+                                                <constraint firstItem="vO9-sW-F6a" firstAttribute="leading" secondItem="Sot-ls-pa5" secondAttribute="leading" constant="4" id="Rk7-Mh-9cQ"/>
                                                 <constraint firstItem="0w1-yY-ohh" firstAttribute="leading" secondItem="EEu-VN-SAk" secondAttribute="trailing" constant="2" id="VrO-gf-7Z4"/>
                                                 <constraint firstItem="Rel-Dk-cDv" firstAttribute="centerY" secondItem="fad-AL-tAb" secondAttribute="centerY" multiplier="1.5" id="WSH-NO-fas"/>
                                                 <constraint firstItem="l6P-uK-xMe" firstAttribute="leading" secondItem="fad-AL-tAb" secondAttribute="trailing" constant="20" id="WYA-iG-Rcc"/>
@@ -265,6 +265,11 @@
                                             <outlet property="courseName" destination="l6P-uK-xMe" id="VOa-2E-Ngg"/>
                                             <outlet property="money" destination="oNV-ka-lcR" id="wyz-na-TwR"/>
                                             <outlet property="teacher" destination="UVH-T0-nZH" id="NnQ-YU-s7M"/>
+                                            <outletCollection property="starArray" destination="EEu-VN-SAk" collectionClass="NSMutableArray" id="omj-8L-ukK"/>
+                                            <outletCollection property="starArray" destination="0w1-yY-ohh" collectionClass="NSMutableArray" id="tNf-1E-ZhK"/>
+                                            <outletCollection property="starArray" destination="nSa-Z4-0XY" collectionClass="NSMutableArray" id="8DI-Ch-prr"/>
+                                            <outletCollection property="starArray" destination="sDP-S3-cFF" collectionClass="NSMutableArray" id="UVk-g5-caW"/>
+                                            <outletCollection property="starArray" destination="0FB-ao-BhD" collectionClass="NSMutableArray" id="HK9-Iw-C2Z"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -322,12 +327,12 @@
     <resources>
         <image name="difficulty_bg" width="41" height="19"/>
         <image name="down_arrow_one_blue" width="11" height="6"/>
-        <image name="down_arrow_two_blue" width="8" height="13"/>
         <image name="down_arrow_two_gray" width="8" height="13"/>
         <image name="reservation_icon" width="25" height="23"/>
         <image name="reservation_icon_select" width="25" height="23"/>
         <image name="star_select" width="17" height="16"/>
         <image name="star_unselect" width="17" height="16"/>
         <image name="up_arrow_one_gray" width="11" height="6"/>
+        <image name="up_arrow_two_blue" width="8" height="13"/>
     </resources>
 </document>

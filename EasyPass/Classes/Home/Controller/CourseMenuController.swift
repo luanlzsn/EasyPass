@@ -58,7 +58,11 @@ class CourseMenuController: AntController,UITableViewDelegate,UITableViewDataSou
             let cell: CourseTypeCell = tableView.dequeueReusableCell(withIdentifier: "CourseTypeCell", for: indexPath) as! CourseTypeCell
             let classify = AntManage.classifyList[indexPath.row]
             cell.courseType.text = classify.name
-            cell.courseType.textColor = (classify == selectClassify) ? MainColor : Common.colorWithHexString(colorStr: "969696")
+            if selectClassify != nil {
+                cell.courseType.textColor = (classify == selectClassify) ? MainColor : Common.colorWithHexString(colorStr: "969696")
+            } else {
+                cell.courseType.textColor = Common.colorWithHexString(colorStr: "969696")
+            }
             cell.arrowImage.isHidden = classify != selectClassify
             return cell
         } else {
