@@ -9,13 +9,16 @@
 import UIKit
 import ObjectMapper
 
-class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataSource {
+class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataSource,MyCollection_Delegate {
     
     @IBOutlet weak var allCourseBtn: UIButton!
     @IBOutlet weak var timeBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var collectArray = [CourseModel]()
     var collectPage = 1
+    var classifyModel: ClassifyModel?//选择的专业
+    var grade = 0//年级
+    var timeSort = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +40,17 @@ class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataS
     
     func getCourseCollectByPage(pageNo: Int) {
         weak var weakSelf = self
-        AntManage.postRequest(path: "collect/getCourseCollectByPage", params: ["token":AntManage.userModel!.token!, "pageNo":pageNo, "pageSize":20], successResult: { (response) in
+        var params = ["token":AntManage.userModel!.token!, "pageNo":pageNo, "pageSize":20] as [String : Any]
+        if classifyModel != nil {
+            params["classifyId"] = classifyModel!.id!
+        }
+        if grade != 0 {
+            params["grade"] = grade
+        }
+        if !timeSort.isEmpty {
+            params["timeSort"] = timeSort
+        }
+        AntManage.postRequest(path: "collect/getCourseCollectByPage", params:params , successResult: { (response) in
             weakSelf?.collectPage = response["pageNo"] as! Int
             if weakSelf?.collectPage == 1 {
                 weakSelf?.collectArray.removeAll()
@@ -55,14 +68,36 @@ class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataS
     
     @IBAction func allCourseClick(_ sender: UIButton) {
         sender.isSelected = true
-        timeBtn.isSelected = false
-        tableView.reloadData()
+        let courseMenu = UIStoryboard(name: "Home", bundle: Bundle.main).instantiateViewController(withIdentifier: "CourseMenu") as! CourseMenuController
+        courseMenu.modalPresentationStyle = .overCurrentContext
+        courseMenu.modalTransitionStyle = .crossDissolve
+        courseMenu.selectClassify = classifyModel
+        courseMenu.selectGrade = grade
+        weak var weakSelf = self
+        courseMenu.changeSelect = {(response) -> () in
+            weakSelf?.classifyModel = (response as! [String : Any])["Classify"] as? ClassifyModel
+            weakSelf?.grade = (response as! [String : Any])["Grade"] as! Int
+            weakSelf?.getCourseCollectByPage(pageNo: 1)
+        }
+        present(courseMenu, animated: true, completion: nil)
     }
     
     @IBAction func updateTimeClick(_ sender: UIButton) {
-        sender.isSelected = true
+        sender.isSelected = !sender.isSelected
+        timeSort = sender.isSelected ? "desc" : "asc"
         allCourseBtn.isSelected = false
-        tableView.reloadData()
+        getCourseCollectByPage(pageNo: 1)
+    }
+    
+    // MARK: - MyCollection_Delegate
+    func cancelCollection(row: Int) {
+        weak var weakSelf = self
+        let courseModel = collectArray[row]
+        AntManage.postRequest(path: "collect/cancelCourseCollect", params: ["token":AntManage.userModel!.token!, "courseId":courseModel.id!], successResult: { (response) in
+            AntManage.showDelayToast(message: "取消收藏成功！")
+            weakSelf?.collectArray.remove(at: row)
+            weakSelf?.tableView.reloadData()
+        }, failureResult: {})
     }
     
     // MARK: - UITableViewDelegate,UITableViewDataSource
@@ -84,6 +119,8 @@ class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MyCollectionCell = tableView.dequeueReusableCell(withIdentifier: "MyCollectionCell", for: indexPath) as! MyCollectionCell
+        cell.delegate = self
+        cell.tag = indexPath.row
         let courseModel = collectArray[indexPath.row]
         cell.courseImage.sd_setImage(with: URL(string: courseModel.photo!), placeholderImage: UIImage(named: "default_image"))
         cell.courseName.text = courseModel.courseName

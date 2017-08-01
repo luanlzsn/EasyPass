@@ -8,6 +8,10 @@
 
 import UIKit
 
+@objc protocol MyCollection_Delegate {
+    func cancelCollection(row: Int)
+}
+
 class MyCollectionCell: UITableViewCell {
 
     @IBOutlet weak var courseImage: UIImageView!
@@ -16,14 +20,15 @@ class MyCollectionCell: UITableViewCell {
     @IBOutlet var starArray: [UIImageView]!
     @IBOutlet weak var money: UILabel!
     @IBOutlet weak var classHour: UILabel!
-    @IBOutlet weak var buyBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
+    weak var delegate : MyCollection_Delegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    @IBAction func buyClick(_ sender: UIButton) {
-        
+    @IBAction func cancelCollectionClick(_ sender: UIButton) {
+        delegate?.cancelCollection(row: tag)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

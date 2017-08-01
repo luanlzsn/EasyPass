@@ -209,7 +209,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     // MARK: - 收藏
     @IBAction func collectionClick(_ sender: HomeMenuButton) {
         if Common.checkIsOperation(controller: self) {
-            let path = sender.isSelected ? "collect/cancelCommentPraise" : "collect/addCourseCollect"
+            let path = sender.isSelected ? "collect/cancelCourseCollect" : "collect/addCourseCollect"
             AntManage.postRequest(path: path, params: ["token":AntManage.userModel!.token!, "courseId":courseId], successResult: { (response) in
                 AntManage.showDelayToast(message: sender.isSelected ? "取消收藏成功！" : "收藏成功！")
                 sender.isSelected = !sender.isSelected

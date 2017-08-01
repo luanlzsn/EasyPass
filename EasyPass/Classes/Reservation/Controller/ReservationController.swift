@@ -48,7 +48,7 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
         if grade != 0 {
             params["grade"] = grade
         }
-        if hotSort.isEmpty {
+        if !hotSort.isEmpty {
             params["hotSort"] = hotSort
         }
         if !timeSort.isEmpty {
