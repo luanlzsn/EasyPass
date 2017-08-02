@@ -14,6 +14,7 @@ class CourseSearchController: AntController,UICollectionViewDelegate,UICollectio
     @IBOutlet weak var hotCollection: UICollectionView!
     @IBOutlet weak var historyCollection: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    var checkSearchCourse: ConfirmBlock?
     let hotArray = ["Java","计算机","化学","新闻"]
     
     override func viewDidLoad() {
@@ -29,6 +30,21 @@ class CourseSearchController: AntController,UICollectionViewDelegate,UICollectio
         UserDefaults.standard.synchronize()
         historyCollection.reloadData()
         tableView.reloadData()
+    }
+    
+    func searchCourse(courseName: String) {
+        let controller = navigationController?.viewControllers[navigationController!.viewControllers.count - 2]
+        if controller!.isKind(of: CourseListController.classForCoder()) {
+            if checkSearchCourse != nil {
+                checkSearchCourse!(courseName)
+                checkSearchCourse = nil
+            }
+            navigationController?.popViewController(animated: true)
+        } else {
+            let courseList = UIStoryboard(name: "Home", bundle: Bundle.main).instantiateViewController(withIdentifier: "CourseList") as! CourseListController
+            courseList.courseName = courseName
+            navigationController?.pushViewController(courseList, animated: true)
+        }
     }
     
     // MARK: - CourseSearch_Delegate
@@ -74,7 +90,21 @@ class CourseSearchController: AntController,UICollectionViewDelegate,UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if collectionView == hotCollection {
+            searchCourse(courseName: hotArray[indexPath.row])
+        } else {
+            var historyArray = [String]()
+            if let array = UserDefaults.standard.object(forKey: "SearchHistory") as? [String] {
+                historyArray += array
+            }
+            let courseName = historyArray.remove(at: indexPath.row)
+            historyArray.insert(courseName, at: 0)
+            UserDefaults.standard.set(historyArray, forKey: "SearchHistory")
+            UserDefaults.standard.synchronize()
+            historyCollection.reloadData()
+            tableView.reloadData()
+            searchCourse(courseName: courseName)
+        }
     }
     
     // MARK: - UITableViewDelegate,UITableViewDataSource
@@ -103,12 +133,6 @@ class CourseSearchController: AntController,UICollectionViewDelegate,UICollectio
     }
     
     //MARK: - UISearchBarDelegate
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.resignFirstResponder()
-        searchBar.text = ""
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
@@ -127,6 +151,7 @@ class CourseSearchController: AntController,UICollectionViewDelegate,UICollectio
         UserDefaults.standard.synchronize()
         historyCollection.reloadData()
         tableView.reloadData()
+        searchCourse(courseName: searchBar.text!)
     }
 
     override func didReceiveMemoryWarning() {

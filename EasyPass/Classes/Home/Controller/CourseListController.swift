@@ -18,6 +18,7 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
     var term = -1//学期
     var timeSort = ""//时间排序
     var priceSort = ""//价格排序
+    var courseName = ""//课程名称
     var courseArray = [CourseModel]()
     var pageNo = 1
     
@@ -36,12 +37,18 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
     }
     
     func searchClick() {
-        
+        let courseSearch = UIStoryboard(name: "Mine", bundle: Bundle.main).instantiateViewController(withIdentifier: "CourseSearch") as! CourseSearchController
+        weak var weakSelf = self
+        courseSearch.checkSearchCourse = { (searchStr) -> () in
+            weakSelf?.courseName = searchStr as! String
+            weakSelf?.getCourseByPage(pageNo: 1)
+        }
+        navigationController?.pushViewController(courseSearch, animated: true)
     }
     
     func getCourseByPage(pageNo: Int) {
         weak var weakSelf = self
-        var params = ["pageNo":pageNo, "pageSize":20] as [String : Any]
+        var params = ["pageNo":pageNo, "pageSize":20, "courseName":courseName] as [String : Any]
         if classifyModel != nil {
             params["classifyId"] = classifyModel!.id!
         }

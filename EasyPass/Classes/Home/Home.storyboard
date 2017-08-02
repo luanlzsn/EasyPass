@@ -267,7 +267,7 @@
         <!--课程-->
         <scene sceneID="M1O-gZ-JfV">
             <objects>
-                <viewController title="课程" hidesBottomBarWhenPushed="YES" id="k0a-u9-0nd" customClass="CourseListController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CourseList" title="课程" hidesBottomBarWhenPushed="YES" id="k0a-u9-0nd" customClass="CourseListController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uRw-Px-Fx7"/>
                         <viewControllerLayoutGuide type="bottom" id="8kf-fH-3Ex"/>

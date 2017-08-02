@@ -18,6 +18,7 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
     var hotSort = ""//hot排序
     var timeSort = ""//时间排序
     var priceSort = ""//价格排序
+    var courseName = ""//课程名称
     var reservationArray = [CourseModel]()
     var pageNo = 1
     
@@ -41,7 +42,7 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
     
     func getReservationByPage(pageNo: Int) {
         weak var weakSelf = self
-        var params = ["pageNo":pageNo, "pageSize":20, "tag":1] as [String : Any]
+        var params = ["pageNo":pageNo, "pageSize":20, "tag":1, "courseName":courseName] as [String : Any]
         if classifyModel != nil {
             params["classifyId"] = classifyModel!.id!
         }
