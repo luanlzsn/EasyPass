@@ -25,6 +25,7 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     // MARK: - 获取用户学习记录
@@ -79,7 +80,11 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 let cell: MineHeadCell = tableView.dequeueReusableCell(withIdentifier: "MineHeadCell", for: indexPath) as! MineHeadCell
-                cell.headImage.sd_setImage(with: URL(string: AntManage.userModel!.headImg!), placeholderImage: UIImage(named: "default_image"))
+                if AntManage.userModel?.headImg != nil {
+                    cell.headImage.sd_setImage(with: URL(string: AntManage.userModel!.headImg!), placeholderImage: UIImage(named: "default_image"))
+                } else {
+                    cell.headImage.image = UIImage(named: "head_defaults")
+                }
                 cell.nickName.text = AntManage.userModel?.nickName?.removingPercentEncoding
                 return cell
             } else {

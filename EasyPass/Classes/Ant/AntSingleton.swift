@@ -76,13 +76,30 @@ class AntSingleton: NSObject {
         dataTask.resume()
     }
     
-    //MARK: - get请求
+    // MARK: - get请求
     func getRequest(path:String, params:[String : Any]?, successResult:@escaping ([String : Any]) -> Void, failureResult:@escaping () -> Void) {
         AntLog(message: "请求接口：\(path),请求参数：\(String(describing: params))")
         showMessage(message: "")
         weak var weakSelf = self
         
         manager.get(requestBaseUrl + path, parameters: params, progress: nil, success: { (task, response) in
+            weakSelf?.requestSuccess(response: response, successResult: successResult, failureResult: failureResult)
+        }) { (task, error) in
+            weakSelf?.hideMessage()
+            weakSelf?.showDelayToast(message: "未知错误，请重试！")
+            failureResult()
+        }
+    }
+    
+    // MARK: - 上传图片
+    func uploadWithPath(path: String, params: [String : Any]?, file: Data, successResult:@escaping ([String : Any]) -> Void, failureResult:@escaping () -> Void) {
+        AntLog(message: "请求接口：\(path),请求参数：\(String(describing: params))")
+        showMessage(message: "")
+        weak var weakSelf = self
+        
+        manager.post(requestBaseUrl + path, parameters: params, constructingBodyWith: { (formData) in
+            formData.appendPart(withFileData: file, name: "file", fileName: "file.jpg", mimeType: "image/jpg")
+        }, progress: nil, success: { (task, response) in
             weakSelf?.requestSuccess(response: response, successResult: successResult, failureResult: failureResult)
         }) { (task, error) in
             weakSelf?.hideMessage()

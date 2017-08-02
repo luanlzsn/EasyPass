@@ -125,7 +125,11 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
         if indexPath.section == 0 {
             let cell: HomeHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeHeaderCell", for: indexPath) as! HomeHeaderCell
             if AntManage.isLogin {
-                cell.headImage.sd_setImage(with: URL(string: AntManage.userModel!.headImg!), for: .normal, placeholderImage: UIImage(named: "head_defaults"))
+                if AntManage.userModel?.headImg != nil {
+                    cell.headImage.sd_setImage(with: URL(string: AntManage.userModel!.headImg!), for: .normal, placeholderImage: UIImage(named: "head_defaults"))
+                } else {
+                    cell.headImage.setImage(UIImage(named: "head_defaults"), for: .normal)
+                }
             } else {
                 cell.headImage.setImage(UIImage(named: "head_defaults"), for: .normal)
             }

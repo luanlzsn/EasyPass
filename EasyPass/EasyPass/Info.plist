@@ -117,5 +117,9 @@
 		<string>mqqapi</string>
 		<string>timapi</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>我们需要访问您的摄像头进行拍照</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>我们需要访问您的相册获取您的图片</string>
 </dict>
 </plist>
