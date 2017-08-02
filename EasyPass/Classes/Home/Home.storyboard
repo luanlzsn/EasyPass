@@ -533,7 +533,7 @@
         <!--Banner详情-->
         <scene sceneID="odB-em-EmI">
             <objects>
-                <viewController title="Banner详情" hidesBottomBarWhenPushed="YES" id="Bda-0C-oEq" customClass="BannerDetailController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BannerDetail" title="Banner详情" hidesBottomBarWhenPushed="YES" id="Bda-0C-oEq" customClass="BannerDetailController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3yF-0Q-9iR"/>
                         <viewControllerLayoutGuide type="bottom" id="NZY-VH-Xzr"/>

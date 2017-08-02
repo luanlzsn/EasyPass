@@ -128,6 +128,7 @@
 		0FEAFB861F232D5D00ED29AE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEAFB851F232D5D00ED29AE /* StoreKit.framework */; };
 		0FEAFB881F234DA500ED29AE /* PaymentResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEAFB871F234DA500ED29AE /* PaymentResultsController.swift */; };
 		0FEAFB8A1F23551B00ED29AE /* MJExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEAFB891F23551B00ED29AE /* MJExtension.framework */; };
+		0FF491961F3210BC0000A2A0 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF491951F3210BC0000A2A0 /* MessageModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -283,6 +284,7 @@
 		0FEAFB851F232D5D00ED29AE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0FEAFB871F234DA500ED29AE /* PaymentResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentResultsController.swift; sourceTree = "<group>"; };
 		0FEAFB891F23551B00ED29AE /* MJExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJExtension.framework; path = Carthage/Build/iOS/MJExtension.framework; sourceTree = "<group>"; };
+		0FF491951F3210BC0000A2A0 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +366,7 @@
 		0F46F70A1F30B32F00B0946C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0FF491951F3210BC0000A2A0 /* MessageModel.swift */,
 				0FC08D5C1F31847F0035CAB3 /* UserRecordModel.swift */,
 				0F46F70B1F30B32F00B0946C /* OrderModel.swift */,
 			);
@@ -1012,6 +1015,7 @@
 				0F5FE0631F076D7F00B8DD09 /* CourseListController.swift in Sources */,
 				0F6C620E1EFFD4860079B2F2 /* AntSingleton.swift in Sources */,
 				0F8ABDBC1F17256800659962 /* MJRefreshAutoStateFooter.m in Sources */,
+				0FF491961F3210BC0000A2A0 /* MessageModel.swift in Sources */,
 				0F46F7071F30549300B0946C /* AntTabBarController.swift in Sources */,
 				0F8ABDBF1F17256800659962 /* MJRefreshBackStateFooter.m in Sources */,
 				0F8ABDC21F17256800659962 /* MJRefreshStateHeader.m in Sources */,
