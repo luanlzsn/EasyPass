@@ -11,6 +11,7 @@ import UIKit
 class CourseCell: UITableViewCell {
 
     @IBOutlet weak var courseImage: UIImageView!
+    @IBOutlet weak var typeImage: UIImageView!
     @IBOutlet weak var courseName: UILabel!
     @IBOutlet weak var courseCredit: UILabel!
     @IBOutlet weak var money: UILabel!

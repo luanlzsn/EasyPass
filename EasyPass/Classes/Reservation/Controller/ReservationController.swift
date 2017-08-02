@@ -137,6 +137,13 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
         cell.courseCredit.text = "学分\(model.credit!)"
         cell.teacher.text = model.teacher!
         cell.money.text = "$" + "\(model.price!)"
+        if model.tag == 0 {
+            cell.typeImage.image = UIImage(named: "video_course")
+        } else if model.tag == 1 {
+            cell.typeImage.image = UIImage(named: "reservation_course")
+        } else {
+            cell.typeImage.image = UIImage(named: "study_group")
+        }
         for image in cell.starArray {
             if model.difficulty! > image.tag - 100 {
                 image.image = UIImage(named: "star_select")

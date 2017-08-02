@@ -91,6 +91,7 @@
 		0FB34AB81F02613B00480E6C /* MineLearnRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */; };
 		0FB34ABA1F028D6E00480E6C /* ShopCartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB91F028D6E00480E6C /* ShopCartController.swift */; };
 		0FBA09981F0CB84200B544DC /* SystemSetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA09971F0CB84200B544DC /* SystemSetupController.swift */; };
+		0FC08D5D1F31847F0035CAB3 /* UserRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC08D5C1F31847F0035CAB3 /* UserRecordModel.swift */; };
 		0FC6635D1F161E8D00C06F0E /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC6635C1F161E8D00C06F0E /* ObjectMapper.framework */; };
 		0FC71A541F22111D00FAD254 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC71A321F22111D00FAD254 /* MOBFoundation.framework */; };
 		0FC71A551F22111D00FAD254 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC71A341F22111D00FAD254 /* ShareSDK.framework */; };
@@ -235,6 +236,7 @@
 		0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineLearnRecordCell.swift; sourceTree = "<group>"; };
 		0FB34AB91F028D6E00480E6C /* ShopCartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCartController.swift; sourceTree = "<group>"; };
 		0FBA09971F0CB84200B544DC /* SystemSetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemSetupController.swift; sourceTree = "<group>"; };
+		0FC08D5C1F31847F0035CAB3 /* UserRecordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRecordModel.swift; sourceTree = "<group>"; };
 		0FC6635C1F161E8D00C06F0E /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		0FC71A321F22111D00FAD254 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		0FC71A341F22111D00FAD254 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 		0F46F70A1F30B32F00B0946C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0FC08D5C1F31847F0035CAB3 /* UserRecordModel.swift */,
 				0F46F70B1F30B32F00B0946C /* OrderModel.swift */,
 			);
 			path = Model;
@@ -952,6 +955,7 @@
 				0F8ABDBA1F17256800659962 /* MJRefreshAutoGifFooter.m in Sources */,
 				0F8ABDB81F17256800659962 /* MJRefreshFooter.m in Sources */,
 				0F8ABDB91F17256800659962 /* MJRefreshHeader.m in Sources */,
+				0FC08D5D1F31847F0035CAB3 /* UserRecordModel.swift in Sources */,
 				0F83A6461F00B03800088B5F /* HomeHeaderCell.swift in Sources */,
 				0FE902F81F19F7C000C84392 /* ClassHourModel.swift in Sources */,
 				0F8ABDB61F17256800659962 /* MJRefreshBackFooter.m in Sources */,

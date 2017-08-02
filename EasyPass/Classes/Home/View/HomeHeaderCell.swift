@@ -21,7 +21,10 @@ class HomeHeaderCell: UICollectionViewCell {
     }
     
     @IBAction func headImageClick(_ sender: UIButton) {
-        _ = Common.checkIsOperation(controller: viewController()!)
+        if Common.checkIsOperation(controller: viewController()!) {
+            let controller = UIStoryboard(name: "Mine", bundle: Bundle.main).instantiateViewController(withIdentifier: "MyAccount")
+            viewController()?.navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     @IBAction func menuClick(_ sender: HomeMenuButton) {

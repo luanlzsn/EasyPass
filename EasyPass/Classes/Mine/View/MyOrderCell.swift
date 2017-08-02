@@ -15,6 +15,7 @@ import UIKit
 class MyOrderCell: UITableViewCell {
     
     @IBOutlet weak var courseImage: UIImageView!
+    @IBOutlet weak var typeImage: UIImageView!
     @IBOutlet weak var courseName: UILabel!
     @IBOutlet weak var courseCredit: UILabel!
     @IBOutlet var starArray: [UIImageView]!

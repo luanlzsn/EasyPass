@@ -127,6 +127,13 @@ class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataS
         cell.courseCredit.text = "学分\(courseModel.credit!)"
         cell.money.text = "$" + "\(courseModel.price!)"
         cell.classHour.text = "/\(courseModel.classHour!)课时"
+        if courseModel.tag == 0 {
+            cell.typeImage.image = UIImage(named: "video_course")
+        } else if courseModel.tag == 1 {
+            cell.typeImage.image = UIImage(named: "reservation_course")
+        } else {
+            cell.typeImage.image = UIImage(named: "study_group")
+        }
         for image in cell.starArray {
             if courseModel.difficulty! > image.tag - 100 {
                 image.image = UIImage(named: "star_select")

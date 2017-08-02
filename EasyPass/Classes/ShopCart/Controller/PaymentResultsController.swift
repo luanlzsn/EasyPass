@@ -34,7 +34,9 @@ class PaymentResultsController: AntController {
 
     @IBAction func oneBtnClick(_ sender: UIButton) {
         if resultsStatus {
-            
+            let nav = navigationController
+            nav?.popToRootViewController(animated: false)
+            perform(#selector(showMyOrder(nav:)), with: nav!, afterDelay: 0.01)
         } else {
             tabBarController?.selectedIndex = 0
             navigationController?.popToRootViewController(animated: false)
@@ -48,6 +50,10 @@ class PaymentResultsController: AntController {
         } else {
             navigationController?.popToRootViewController(animated: true)
         }
+    }
+    
+    func showMyOrder(nav: UINavigationController) {
+        nav.pushViewController(UIStoryboard(name: "Mine", bundle: Bundle.main).instantiateViewController(withIdentifier: "MyOrder"), animated: true)
     }
     
     override func didReceiveMemoryWarning() {

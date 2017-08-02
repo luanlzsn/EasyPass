@@ -115,7 +115,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="完成课程" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZK-GQ-jsY">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="完成课时" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZK-GQ-jsY">
                                                     <rect key="frame" x="162" y="8" width="49.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.57647058819999997" green="0.58431372550000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -303,6 +303,9 @@
                                                         <constraint firstAttribute="width" secondItem="wNb-Yb-qF1" secondAttribute="height" id="asG-Yb-nLu"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_course" translatesAutoresizingMaskIntoConstraints="NO" id="jLC-f7-JQJ">
+                                                    <rect key="frame" x="330" y="0.0" width="45" height="44"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大学一年级Mathematics Level One" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAo-4Z-ipH">
                                                     <rect key="frame" x="114.5" y="9.5" width="240.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -384,11 +387,14 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="DAo-4Z-ipH" secondAttribute="trailing" constant="20" id="4yh-sd-11c"/>
                                             <constraint firstItem="wNb-Yb-qF1" firstAttribute="leading" secondItem="B6G-Nv-VNq" secondAttribute="leading" constant="15" id="Uz4-xX-GGR"/>
+                                            <constraint firstItem="jLC-f7-JQJ" firstAttribute="top" secondItem="B6G-Nv-VNq" secondAttribute="top" id="bNl-OI-Z9v"/>
+                                            <constraint firstAttribute="trailing" secondItem="jLC-f7-JQJ" secondAttribute="trailing" id="tS8-LB-5eB"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="courseCredit" destination="MZ5-rl-5Fw" id="3ty-CQ-RtZ"/>
                                             <outlet property="courseImage" destination="wNb-Yb-qF1" id="TRb-5H-f3G"/>
                                             <outlet property="courseName" destination="DAo-4Z-ipH" id="t6U-Ec-pwd"/>
+                                            <outlet property="typeImage" destination="jLC-f7-JQJ" id="Ipr-wH-MX5"/>
                                             <outlet property="updateTime" destination="Dj9-WM-0hR" id="6ed-Rl-lnT"/>
                                             <outletCollection property="starArray" destination="eTz-kt-1Z0" collectionClass="NSMutableArray" id="Qqm-PZ-SdU"/>
                                             <outletCollection property="starArray" destination="mo8-9u-vDu" collectionClass="NSMutableArray" id="66X-bL-Eki"/>
@@ -550,6 +556,9 @@
                                                         <constraint firstAttribute="width" secondItem="K6J-9D-iPX" secondAttribute="height" id="31K-tI-CNI"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_course" translatesAutoresizingMaskIntoConstraints="NO" id="jaM-Ls-fzg">
+                                                    <rect key="frame" x="330" y="0.0" width="45" height="44"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大学一年级Mathematics Level One" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx2-Ij-DdQ">
                                                     <rect key="frame" x="114.5" y="9.5" width="240.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -660,6 +669,8 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="cx2-Ij-DdQ" secondAttribute="trailing" constant="20" id="Jaf-aQ-ebZ"/>
                                             <constraint firstItem="K6J-9D-iPX" firstAttribute="leading" secondItem="S67-6v-FLb" secondAttribute="leading" constant="15" id="LEN-Y8-Ozk"/>
+                                            <constraint firstItem="jaM-Ls-fzg" firstAttribute="top" secondItem="S67-6v-FLb" secondAttribute="top" id="dOt-I4-eTd"/>
+                                            <constraint firstAttribute="trailing" secondItem="jaM-Ls-fzg" secondAttribute="trailing" id="uHa-rY-uwk"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="cancelBtn" destination="71S-fT-78d" id="HVO-mh-6b9"/>
@@ -668,6 +679,7 @@
                                             <outlet property="courseImage" destination="K6J-9D-iPX" id="t5X-Hs-xdr"/>
                                             <outlet property="courseName" destination="cx2-Ij-DdQ" id="NDX-xB-W3y"/>
                                             <outlet property="money" destination="06c-M7-yIL" id="tQ5-7t-YAe"/>
+                                            <outlet property="typeImage" destination="jaM-Ls-fzg" id="15F-xj-TMV"/>
                                             <outletCollection property="starArray" destination="m3M-cV-0t1" collectionClass="NSMutableArray" id="Nue-Rg-nXA"/>
                                             <outletCollection property="starArray" destination="suL-6e-4ZA" collectionClass="NSMutableArray" id="JqJ-GG-L8L"/>
                                             <outletCollection property="starArray" destination="f5R-Fg-WHb" collectionClass="NSMutableArray" id="eJB-at-9HW"/>
@@ -1037,7 +1049,7 @@
         <!--我的订单-->
         <scene sceneID="4yR-NH-5hE">
             <objects>
-                <viewController title="我的订单" hidesBottomBarWhenPushed="YES" id="Z1I-Bv-Por" customClass="MyOrderController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyOrder" title="我的订单" hidesBottomBarWhenPushed="YES" id="Z1I-Bv-Por" customClass="MyOrderController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ovS-m2-pLh"/>
                         <viewControllerLayoutGuide type="bottom" id="Mgp-rK-QRt"/>
@@ -1120,8 +1132,11 @@
                                                         <constraint firstAttribute="width" secondItem="xU0-OC-ym1" secondAttribute="height" id="H4g-kF-3Ix"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_course" translatesAutoresizingMaskIntoConstraints="NO" id="Fqz-gC-QBU">
+                                                    <rect key="frame" x="330" y="0.0" width="45" height="44"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大学一年级Mathematics Level One" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVq-P4-gpR">
-                                                    <rect key="frame" x="114.5" y="9.5" width="250.5" height="17"/>
+                                                    <rect key="frame" x="114.5" y="9.5" width="240.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1157,7 +1172,7 @@
                                                     <rect key="frame" x="288.5" y="37.5" width="17" height="16"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QVa-Vy-wMU">
-                                                    <rect key="frame" x="115" y="60" width="250" height="0.5"/>
+                                                    <rect key="frame" x="115" y="60" width="240" height="0.5"/>
                                                     <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="ApD-Cx-w7d"/>
@@ -1176,7 +1191,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q53-hh-Il7">
-                                                    <rect key="frame" x="220.5" y="67.5" width="40" height="16"/>
+                                                    <rect key="frame" x="215.5" y="67.5" width="40" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="09C-fz-bzs"/>
                                                         <constraint firstAttribute="width" constant="40" id="VbY-ah-1EY"/>
@@ -1197,13 +1212,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOv-yP-ZzG">
-                                                    <rect key="frame" x="322" y="67" width="43" height="17"/>
+                                                    <rect key="frame" x="312" y="67" width="43" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.57647058819999997" green="0.58431372550000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgl-XR-RHU">
-                                                    <rect key="frame" x="295" y="64" width="70" height="22"/>
+                                                    <rect key="frame" x="285" y="64" width="70" height="22"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="eYy-f8-oI7"/>
@@ -1259,8 +1274,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
+                                            <constraint firstItem="Fqz-gC-QBU" firstAttribute="top" secondItem="DQe-d1-7S4" secondAttribute="top" id="21I-on-aVm"/>
+                                            <constraint firstAttribute="trailing" secondItem="Fqz-gC-QBU" secondAttribute="trailing" id="3sd-KS-HuY"/>
                                             <constraint firstItem="xU0-OC-ym1" firstAttribute="leading" secondItem="DQe-d1-7S4" secondAttribute="leading" constant="15" id="DWw-4m-c8X"/>
-                                            <constraint firstAttribute="trailing" secondItem="XVq-P4-gpR" secondAttribute="trailing" constant="10" id="Z5U-0z-e1c"/>
+                                            <constraint firstAttribute="trailing" secondItem="XVq-P4-gpR" secondAttribute="trailing" constant="20" id="Z5U-0z-e1c"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="alreadyPaid" destination="nOv-yP-ZzG" id="Yrf-Z4-RkY"/>
@@ -1271,6 +1288,7 @@
                                             <outlet property="courseName" destination="XVq-P4-gpR" id="3lb-9s-mzd"/>
                                             <outlet property="money" destination="ck4-IG-nHO" id="vlR-Vl-0lF"/>
                                             <outlet property="number" destination="q53-hh-Il7" id="eWm-x2-pDQ"/>
+                                            <outlet property="typeImage" destination="Fqz-gC-QBU" id="PB5-JR-kUt"/>
                                             <outletCollection property="starArray" destination="dHe-EJ-fak" collectionClass="NSMutableArray" id="TSi-qS-ZK0"/>
                                             <outletCollection property="starArray" destination="feH-9k-tyN" collectionClass="NSMutableArray" id="0yF-S4-EuW"/>
                                             <outletCollection property="starArray" destination="oHD-8r-kQf" collectionClass="NSMutableArray" id="DJz-K1-SZv"/>
@@ -1309,7 +1327,7 @@
         <!--我的账户-->
         <scene sceneID="Q7T-e7-vY8">
             <objects>
-                <viewController title="我的账户" hidesBottomBarWhenPushed="YES" id="Xdv-Nv-b7H" customClass="MyAccountController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyAccount" title="我的账户" hidesBottomBarWhenPushed="YES" id="Xdv-Nv-b7H" customClass="MyAccountController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e04-Gh-Ipf"/>
                         <viewControllerLayoutGuide type="bottom" id="RC8-aF-L4x"/>
@@ -1318,28 +1336,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8X-MA-6X1">
-                                <rect key="frame" x="35" y="604.5" width="305" height="42.5"/>
-                                <color key="backgroundColor" red="0.76862745099999996" green="0.086274509799999996" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42.5" id="clk-bM-RQa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="35" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="退出" image="logout"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="logoutClick" destination="sgZ-py-jYs" eventType="touchUpInside" id="guj-ra-oN8"/>
-                                    <action selector="logoutClick:" destination="Xdv-Nv-b7H" eventType="touchUpInside" id="ifq-Qw-fTL"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="75" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="U2M-q5-XVp">
-                                <rect key="frame" x="0.0" y="64" width="375" height="530.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyAccountHeadCell" rowHeight="75" id="fZr-Bf-SQg" customClass="MyAccountHeadCell" customModule="EasyPass" customModuleProvider="target">
@@ -1413,13 +1411,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="U2M-q5-XVp" firstAttribute="centerX" secondItem="LsS-g8-KNp" secondAttribute="centerX" id="2dU-58-paK"/>
-                            <constraint firstItem="U2M-q5-XVp" firstAttribute="width" secondItem="LsS-g8-KNp" secondAttribute="width" id="7qp-oE-Zpw"/>
-                            <constraint firstItem="U2M-q5-XVp" firstAttribute="top" secondItem="e04-Gh-Ipf" secondAttribute="bottom" id="Dgf-9f-EnE"/>
-                            <constraint firstItem="Y8X-MA-6X1" firstAttribute="width" secondItem="LsS-g8-KNp" secondAttribute="width" constant="-70" id="XLb-EE-Tc0"/>
-                            <constraint firstItem="Y8X-MA-6X1" firstAttribute="centerX" secondItem="LsS-g8-KNp" secondAttribute="centerX" id="XOe-6X-9p8"/>
-                            <constraint firstItem="Y8X-MA-6X1" firstAttribute="top" secondItem="U2M-q5-XVp" secondAttribute="bottom" constant="10" id="e4Q-Zh-x6V"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Y8X-MA-6X1" secondAttribute="bottom" constant="20" id="p0h-fo-ogv"/>
+                            <constraint firstItem="U2M-q5-XVp" firstAttribute="centerY" secondItem="LsS-g8-KNp" secondAttribute="centerY" id="UC9-1P-FIb"/>
+                            <constraint firstItem="U2M-q5-XVp" firstAttribute="centerX" secondItem="LsS-g8-KNp" secondAttribute="centerX" id="Vkz-OV-BzX"/>
+                            <constraint firstItem="U2M-q5-XVp" firstAttribute="width" secondItem="LsS-g8-KNp" secondAttribute="width" id="fbO-uP-PKH"/>
+                            <constraint firstItem="U2M-q5-XVp" firstAttribute="height" secondItem="LsS-g8-KNp" secondAttribute="height" id="sSS-ON-bYY"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1448,6 +1443,7 @@
         <image name="star_unselect" width="17" height="16"/>
         <image name="up_arrow_one_gray" width="11" height="6"/>
         <image name="up_arrow_two_blue" width="8" height="13"/>
+        <image name="video_course" width="45" height="44"/>
         <image name="weChat_icon" width="23" height="19"/>
     </resources>
 </document>

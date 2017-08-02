@@ -127,6 +127,13 @@ class MyCourseController: AntController,UITableViewDelegate,UITableViewDataSourc
                 }
             }
         }
+        if order.tag == 0 {
+            cell.typeImage.image = UIImage(named: "video_course")
+        } else if order.tag == 1 {
+            cell.typeImage.image = UIImage(named: "reservation_course")
+        } else {
+            cell.typeImage.image = UIImage(named: "study_group")
+        }
         cell.updateTime.text = "更新时间 \(order.payTime!.components(separatedBy: ".").first!)"
         return cell
     }

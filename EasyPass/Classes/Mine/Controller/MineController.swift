@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    var userRecord : UserRecordModel?
     let imageArray = ["mine_my_course","mine_my_collection","mine_my_order","mine_message_center","mine_common_problem","mine_about_us","mine_system_setup"]
     let identifierArray = ["MyCourse","MyCollection","MyOrder","Message","CommonProblem","AboutUs","SystemSetup"]
     let titleArray = ["我的课程","我的收藏","我的订单","消息中心","常见问题","关于我们","系统设置"]
@@ -19,6 +21,19 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    // MARK: - 获取用户学习记录
+    func getAppUserRecord() {
+        weak var weakSelf = self
+        AntManage.postRequest(path: "appuser/getAppUserRecord", params: ["token":AntManage.userModel!.token!], successResult: { (response) in
+            weakSelf?.userRecord = Mapper<UserRecordModel>().map(JSON: response)
+            weakSelf?.tableView.reloadData()
+        }, failureResult: {})
     }
 
     @IBAction func logoutClick() {
@@ -69,6 +84,9 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
                 return cell
             } else {
                 let cell: MineLearnRecordCell = tableView.dequeueReusableCell(withIdentifier: "MineLearnRecordCell", for: indexPath) as! MineLearnRecordCell
+                cell.studyDay.text = "\((userRecord?.studyDayNum != nil) ? userRecord!.studyDayNum! : 0)天"
+                cell.completeCourse.text = "\((userRecord?.finishCourseHour != nil) ? userRecord!.finishCourseHour! : 0)个"
+                cell.points.text = "\((userRecord?.score != nil) ? userRecord!.score! : 0)"
                 return cell
             }
         } else {

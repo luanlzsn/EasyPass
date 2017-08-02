@@ -159,6 +159,13 @@ class MyOrderController: AntController,UITableViewDelegate,UITableViewDataSource
                 }
             }
         }
+        if order.tag == 0 {
+            cell.typeImage.image = UIImage(named: "video_course")
+        } else if order.tag == 1 {
+            cell.typeImage.image = UIImage(named: "reservation_course")
+        } else {
+            cell.typeImage.image = UIImage(named: "study_group")
+        }
         cell.number.text = "x \(order.quantity!)"
         if order.orderStatus == 0 {
             cell.alreadyPaid.isHidden = true

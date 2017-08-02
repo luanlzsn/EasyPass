@@ -134,6 +134,9 @@
                                                         <constraint firstAttribute="width" secondItem="fad-AL-tAb" secondAttribute="height" id="roX-Kv-4xJ"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_course" translatesAutoresizingMaskIntoConstraints="NO" id="2YP-xQ-rHQ">
+                                                    <rect key="frame" x="330" y="0.0" width="45" height="44"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大学一年级Mathematics Level One" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6P-uK-xMe">
                                                     <rect key="frame" x="114.5" y="9" width="240.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -258,6 +261,8 @@
                                         <constraints>
                                             <constraint firstItem="fad-AL-tAb" firstAttribute="leading" secondItem="veW-zs-Vsi" secondAttribute="leading" constant="15" id="KgY-5Y-bHl"/>
                                             <constraint firstAttribute="trailing" secondItem="l6P-uK-xMe" secondAttribute="trailing" constant="20" id="SkA-Ba-DxW"/>
+                                            <constraint firstItem="2YP-xQ-rHQ" firstAttribute="top" secondItem="veW-zs-Vsi" secondAttribute="top" id="pKT-vc-ea4"/>
+                                            <constraint firstAttribute="trailing" secondItem="2YP-xQ-rHQ" secondAttribute="trailing" id="xEn-IC-1Zh"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="courseCredit" destination="H5W-vS-9Ap" id="hgK-kL-XbJ"/>
@@ -265,6 +270,7 @@
                                             <outlet property="courseName" destination="l6P-uK-xMe" id="VOa-2E-Ngg"/>
                                             <outlet property="money" destination="oNV-ka-lcR" id="wyz-na-TwR"/>
                                             <outlet property="teacher" destination="UVH-T0-nZH" id="NnQ-YU-s7M"/>
+                                            <outlet property="typeImage" destination="2YP-xQ-rHQ" id="Hkk-6b-qhk"/>
                                             <outletCollection property="starArray" destination="EEu-VN-SAk" collectionClass="NSMutableArray" id="omj-8L-ukK"/>
                                             <outletCollection property="starArray" destination="0w1-yY-ohh" collectionClass="NSMutableArray" id="tNf-1E-ZhK"/>
                                             <outletCollection property="starArray" destination="nSa-Z4-0XY" collectionClass="NSMutableArray" id="8DI-Ch-prr"/>
@@ -334,5 +340,6 @@
         <image name="star_unselect" width="17" height="16"/>
         <image name="up_arrow_one_gray" width="11" height="6"/>
         <image name="up_arrow_two_blue" width="8" height="13"/>
+        <image name="video_course" width="45" height="44"/>
     </resources>
 </document>
