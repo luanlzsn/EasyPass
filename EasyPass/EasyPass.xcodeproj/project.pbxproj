@@ -116,12 +116,14 @@
 		0FC71A6B1F22115600FAD254 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC71A6A1F22115600FAD254 /* libstdc++.tbd */; };
 		0FC71A6D1F22115E00FAD254 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC71A6C1F22115E00FAD254 /* JavaScriptCore.framework */; };
 		0FC71A6F1F22116800FAD254 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC71A6E1F22116800FAD254 /* ImageIO.framework */; };
+		0FCFB70B1F31CA8D00162AFC /* CourseSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFB70A1F31CA8D00162AFC /* CourseSearchTableViewCell.swift */; };
+		0FCFB70E1F31CA9E00162AFC /* CourseSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFB70C1F31CA9E00162AFC /* CourseSearchCollectionViewCell.swift */; };
+		0FCFB70F1F31CA9E00162AFC /* CourseSearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FCFB70D1F31CA9E00162AFC /* CourseSearchCollectionViewCell.xib */; };
 		0FD76B601F07E4D200A04F7A /* CourseCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD76B5E1F07E4D200A04F7A /* CourseCommentCell.swift */; };
 		0FD76B611F07E4D200A04F7A /* CourseCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD76B5F1F07E4D200A04F7A /* CourseCommentCell.xib */; };
 		0FD76B631F07F00700A04F7A /* CustomerServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */; };
 		0FE4BD4A1F1F67BA006A2EB5 /* CommentListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE4BD491F1F67BA006A2EB5 /* CommentListController.swift */; };
 		0FE902F81F19F7C000C84392 /* ClassHourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE902F71F19F7C000C84392 /* ClassHourModel.swift */; };
-		0FE902FA1F1A123700C84392 /* CourseTermController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE902F91F1A123700C84392 /* CourseTermController.swift */; };
 		0FEAFB841F2307F000ED29AE /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC71A701F22117600FAD254 /* libsqlite3.tbd */; };
 		0FEAFB861F232D5D00ED29AE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEAFB851F232D5D00ED29AE /* StoreKit.framework */; };
 		0FEAFB881F234DA500ED29AE /* PaymentResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEAFB871F234DA500ED29AE /* PaymentResultsController.swift */; };
@@ -269,12 +271,14 @@
 		0FC71A6C1F22115E00FAD254 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		0FC71A6E1F22116800FAD254 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		0FC71A701F22117600FAD254 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		0FCFB70A1F31CA8D00162AFC /* CourseSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseSearchTableViewCell.swift; sourceTree = "<group>"; };
+		0FCFB70C1F31CA9E00162AFC /* CourseSearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseSearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		0FCFB70D1F31CA9E00162AFC /* CourseSearchCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseSearchCollectionViewCell.xib; sourceTree = "<group>"; };
 		0FD76B5E1F07E4D200A04F7A /* CourseCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCommentCell.swift; sourceTree = "<group>"; };
 		0FD76B5F1F07E4D200A04F7A /* CourseCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseCommentCell.xib; sourceTree = "<group>"; };
 		0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerServiceController.swift; sourceTree = "<group>"; };
 		0FE4BD491F1F67BA006A2EB5 /* CommentListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListController.swift; sourceTree = "<group>"; };
 		0FE902F71F19F7C000C84392 /* ClassHourModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassHourModel.swift; sourceTree = "<group>"; };
-		0FE902F91F1A123700C84392 /* CourseTermController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTermController.swift; sourceTree = "<group>"; };
 		0FEAFB821F23076D00ED29AE /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
 		0FEAFB851F232D5D00ED29AE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0FEAFB871F234DA500ED29AE /* PaymentResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentResultsController.swift; sourceTree = "<group>"; };
@@ -474,7 +478,6 @@
 				0F5FE0661F0776CD00B8DD09 /* CourseMenuController.swift */,
 				0F5FE06C1F0785B600B8DD09 /* CourseDetailController.swift */,
 				0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */,
-				0FE902F91F1A123700C84392 /* CourseTermController.swift */,
 				0FE4BD491F1F67BA006A2EB5 /* CommentListController.swift */,
 				0F46F7081F30669700B0946C /* BannerDetailController.swift */,
 			);
@@ -536,6 +539,9 @@
 				0F85E0801F0A47D30084AA1B /* MessageCell.swift */,
 				0F3838961F0D09AB003C800A /* MyAccountHeadCell.swift */,
 				0F3838981F0D09BC003C800A /* MyAccountTextFieldCell.swift */,
+				0FCFB70A1F31CA8D00162AFC /* CourseSearchTableViewCell.swift */,
+				0FCFB70C1F31CA9E00162AFC /* CourseSearchCollectionViewCell.swift */,
+				0FCFB70D1F31CA9E00162AFC /* CourseSearchCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -896,6 +902,7 @@
 				0F6C61D41EFFCA800079B2F2 /* Main.storyboard in Resources */,
 				0FC71A5F1F22111E00FAD254 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				0F6C62041EFFD1F10079B2F2 /* ShopCart.storyboard in Resources */,
+				0FCFB70F1F31CA9E00162AFC /* CourseSearchCollectionViewCell.xib in Resources */,
 				0F6C61FE1EFFD1D40079B2F2 /* Home.storyboard in Resources */,
 				0FC71A641F22111E00FAD254 /* ShareSDK.bundle in Resources */,
 				0FC71A611F22111E00FAD254 /* WeiboSDK.bundle in Resources */,
@@ -936,7 +943,6 @@
 			files = (
 				0F2F811C1F035728005E68C0 /* ReservationCell.swift in Sources */,
 				0FB34AB41F02532300480E6C /* MineController.swift in Sources */,
-				0FE902FA1F1A123700C84392 /* CourseTermController.swift in Sources */,
 				0F85E0831F0A47E40084AA1B /* MessageController.swift in Sources */,
 				0F8ABDC01F17256800659962 /* MJRefreshGifHeader.m in Sources */,
 				0F85E0731F09D9F50084AA1B /* CourseOutlineCell.swift in Sources */,
@@ -944,6 +950,7 @@
 				0F8ABDBB1F17256800659962 /* MJRefreshAutoNormalFooter.m in Sources */,
 				0F83A6481F00B7BA00088B5F /* HomeCourseCell.swift in Sources */,
 				0F5FE0671F0776CD00B8DD09 /* CourseMenuController.swift in Sources */,
+				0FCFB70E1F31CA9E00162AFC /* CourseSearchCollectionViewCell.swift in Sources */,
 				0F8ABDBE1F17256800659962 /* MJRefreshBackNormalFooter.m in Sources */,
 				0F46F7091F30669700B0946C /* BannerDetailController.swift in Sources */,
 				0FAE0AE41F18A0CD00DF0892 /* CommentModel.swift in Sources */,
@@ -975,6 +982,7 @@
 				0F6C62141EFFD7730079B2F2 /* HomeController.swift in Sources */,
 				0F5FE06B1F077E6000B8DD09 /* CourseGradeCell.swift in Sources */,
 				0F85E0751F09E3CD0084AA1B /* MyCourseController.swift in Sources */,
+				0FCFB70B1F31CA8D00162AFC /* CourseSearchTableViewCell.swift in Sources */,
 				0FD76B631F07F00700A04F7A /* CustomerServiceController.swift in Sources */,
 				0F3838A51F0D2881003C800A /* PerfectInfoController.swift in Sources */,
 				0F07736F1F029FC300EF8EEF /* ReservationController.swift in Sources */,

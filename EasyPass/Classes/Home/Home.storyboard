@@ -264,10 +264,10 @@
             </objects>
             <point key="canvasLocation" x="516" y="120.98950524737631"/>
         </scene>
-        <!--Course List Controller-->
+        <!--课程-->
         <scene sceneID="M1O-gZ-JfV">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="k0a-u9-0nd" customClass="CourseListController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="课程" hidesBottomBarWhenPushed="YES" id="k0a-u9-0nd" customClass="CourseListController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uRw-Px-Fx7"/>
                         <viewControllerLayoutGuide type="bottom" id="8kf-fH-3Ex"/>
@@ -524,7 +524,6 @@
                         <outletCollection property="menuBtnArray" destination="oPd-9s-cXB" collectionClass="NSMutableArray" id="Oh1-Vb-t38"/>
                         <segue destination="Neu-yI-w6i" kind="presentation" identifier="CourseMenu" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="qMp-pS-vWv"/>
                         <segue destination="rHd-nQ-knA" kind="show" identifier="CourseDetail" id="w2h-Pv-rpH"/>
-                        <segue destination="56g-tW-iHX" kind="presentation" identifier="CourseTerm" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="33K-8Y-GaO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePf-r6-RX6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1371,152 +1370,6 @@
             </objects>
             <point key="canvasLocation" x="2481" y="862"/>
         </scene>
-        <!--Course Term Controller-->
-        <scene sceneID="E19-A9-MqS">
-            <objects>
-                <viewController id="56g-tW-iHX" customClass="CourseTermController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Rtw-68-Abd"/>
-                        <viewControllerLayoutGuide type="bottom" id="MyT-s1-P4p"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qES-I1-iOP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQD-lG-tP9">
-                                <rect key="frame" x="14.5" y="100" width="345" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fzh-8J-qBE">
-                                        <rect key="frame" x="30" y="10" width="74.5" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="Summer">
-                                            <color key="titleColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="selected">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="termClick:" destination="56g-tW-iHX" eventType="touchUpInside" id="dBw-9c-DYz"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdT-kQ-2n7">
-                                        <rect key="frame" x="119.5" y="15" width="1" height="20.5"/>
-                                        <color key="backgroundColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="0.5" id="fXl-Fq-4qu"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bz-KE-gGc">
-                                        <rect key="frame" x="135.5" y="10" width="74" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="Fall">
-                                            <color key="titleColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="selected">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="termClick:" destination="56g-tW-iHX" eventType="touchUpInside" id="7U4-I7-gNE"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQe-kR-X4E">
-                                        <rect key="frame" x="224.5" y="14.5" width="1" height="20.5"/>
-                                        <color key="backgroundColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qgp-Ez-yRw">
-                                        <rect key="frame" x="240.5" y="10" width="74.5" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="Winter">
-                                            <color key="titleColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="selected">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="termClick:" destination="56g-tW-iHX" eventType="touchUpInside" id="ucr-Ys-8de"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="iQe-kR-X4E" firstAttribute="height" secondItem="rdT-kQ-2n7" secondAttribute="height" id="2hn-ws-Dh3"/>
-                                    <constraint firstItem="Fzh-8J-qBE" firstAttribute="height" secondItem="8bz-KE-gGc" secondAttribute="height" id="2rc-TN-Oul"/>
-                                    <constraint firstAttribute="trailing" secondItem="Qgp-Ez-yRw" secondAttribute="trailing" constant="30" id="3ly-1k-vVe"/>
-                                    <constraint firstItem="Qgp-Ez-yRw" firstAttribute="centerY" secondItem="hQD-lG-tP9" secondAttribute="centerY" id="5JO-os-pAP"/>
-                                    <constraint firstItem="8bz-KE-gGc" firstAttribute="leading" secondItem="rdT-kQ-2n7" secondAttribute="trailing" constant="15" id="8MY-Vb-NII"/>
-                                    <constraint firstAttribute="height" constant="50" id="9va-sM-Vg4"/>
-                                    <constraint firstItem="rdT-kQ-2n7" firstAttribute="centerY" secondItem="hQD-lG-tP9" secondAttribute="centerY" id="AH4-jV-q3l"/>
-                                    <constraint firstItem="Qgp-Ez-yRw" firstAttribute="width" secondItem="8bz-KE-gGc" secondAttribute="width" id="DWG-Wx-t2N"/>
-                                    <constraint firstItem="Fzh-8J-qBE" firstAttribute="width" secondItem="8bz-KE-gGc" secondAttribute="width" id="Lge-c4-Vyn"/>
-                                    <constraint firstItem="8bz-KE-gGc" firstAttribute="centerY" secondItem="hQD-lG-tP9" secondAttribute="centerY" id="NUM-gD-nSA"/>
-                                    <constraint firstItem="iQe-kR-X4E" firstAttribute="leading" secondItem="8bz-KE-gGc" secondAttribute="trailing" constant="15" id="QW2-Uf-Swb"/>
-                                    <constraint firstItem="Fzh-8J-qBE" firstAttribute="centerY" secondItem="hQD-lG-tP9" secondAttribute="centerY" id="QlQ-v8-S1Z"/>
-                                    <constraint firstItem="8bz-KE-gGc" firstAttribute="centerX" secondItem="hQD-lG-tP9" secondAttribute="centerX" id="TIS-DW-j9O"/>
-                                    <constraint firstItem="rdT-kQ-2n7" firstAttribute="leading" secondItem="Fzh-8J-qBE" secondAttribute="trailing" constant="15" id="XVA-4h-1GC"/>
-                                    <constraint firstItem="Qgp-Ez-yRw" firstAttribute="height" secondItem="8bz-KE-gGc" secondAttribute="height" id="f3H-UP-AgL"/>
-                                    <constraint firstItem="Fzh-8J-qBE" firstAttribute="leading" secondItem="hQD-lG-tP9" secondAttribute="leading" constant="30" id="icH-jW-TDN"/>
-                                    <constraint firstItem="Qgp-Ez-yRw" firstAttribute="leading" secondItem="iQe-kR-X4E" secondAttribute="trailing" constant="15" id="lZL-fQ-bwQ"/>
-                                    <constraint firstItem="rdT-kQ-2n7" firstAttribute="height" secondItem="hQD-lG-tP9" secondAttribute="height" multiplier="0.4" constant="0.5" id="ooL-Of-TOa"/>
-                                    <constraint firstItem="iQe-kR-X4E" firstAttribute="width" secondItem="rdT-kQ-2n7" secondAttribute="width" id="sPP-4z-86z"/>
-                                    <constraint firstItem="8bz-KE-gGc" firstAttribute="height" secondItem="hQD-lG-tP9" secondAttribute="height" constant="-20" id="xOU-fG-HiI"/>
-                                    <constraint firstItem="iQe-kR-X4E" firstAttribute="centerY" secondItem="rdT-kQ-2n7" secondAttribute="centerY" id="zDr-Tt-xev"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.30435739439999998" colorSpace="custom" customColorSpace="displayP3"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="hQD-lG-tP9" firstAttribute="top" secondItem="Rtw-68-Abd" secondAttribute="bottom" constant="80" id="Il1-ge-oRl"/>
-                            <constraint firstItem="hQD-lG-tP9" firstAttribute="width" secondItem="qES-I1-iOP" secondAttribute="width" constant="-30" id="LEP-bn-Nk5"/>
-                            <constraint firstItem="hQD-lG-tP9" firstAttribute="centerX" secondItem="qES-I1-iOP" secondAttribute="centerX" id="Mz7-U8-Sei"/>
-                        </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="kfm-zH-HV5" appends="YES" id="nGS-Ww-7qe"/>
-                        </connections>
-                    </view>
-                    <connections>
-                        <outlet property="contentView" destination="hQD-lG-tP9" id="XaG-3X-q3l"/>
-                        <outletCollection property="termArray" destination="Fzh-8J-qBE" collectionClass="NSMutableArray" id="gDd-Og-6sp"/>
-                        <outletCollection property="termArray" destination="8bz-KE-gGc" collectionClass="NSMutableArray" id="xdx-Iv-E28"/>
-                        <outletCollection property="termArray" destination="Qgp-Ez-yRw" collectionClass="NSMutableArray" id="JEw-Rh-Prn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c5R-bZ-RQP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="kfm-zH-HV5">
-                    <connections>
-                        <action selector="dismissClick:" destination="56g-tW-iHX" id="ftj-lX-3gf"/>
-                        <outlet property="delegate" destination="56g-tW-iHX" id="Kpe-Sk-OAR"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="2481" y="-657"/>
-        </scene>
         <!--Course Menu Controller-->
         <scene sceneID="gRL-bw-1Ea">
             <objects>
@@ -1647,7 +1500,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.30435739436619719" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ftI-Xh-v4f" firstAttribute="width" secondItem="J3d-3H-YYs" secondAttribute="width" constant="-30" id="UgY-9t-mXj"/>
@@ -1708,6 +1561,6 @@
         <image name="video_course" width="45" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mmC-yy-PZZ"/>
+        <segue reference="w2h-Pv-rpH"/>
     </inferredMetricsTieBreakers>
 </document>

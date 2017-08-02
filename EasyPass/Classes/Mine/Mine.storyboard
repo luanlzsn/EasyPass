@@ -425,7 +425,6 @@
                         <outlet property="allCourseBtn" destination="z3y-ps-2dw" id="7JT-qr-Wo1"/>
                         <outlet property="tableView" destination="nkg-3z-Vbk" id="lXj-Nn-ZD4"/>
                         <outlet property="timeBtn" destination="V17-Eg-mAR" id="wuC-aV-ruD"/>
-                        <segue destination="qhv-kr-FZ0" kind="show" identifier="CourseSearch" id="mwJ-Ck-JsA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5G-gh-mIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -443,8 +442,164 @@
                     <view key="view" contentMode="scaleToFill" id="d0y-NL-aBU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I8b-kR-XIy">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="qhv-kr-FZ0" id="N4h-P6-YaE"/>
+                                </connections>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="热门搜索" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zih-lh-n0T">
+                                <rect key="frame" x="20" y="79" width="57.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.57647058819999997" green="0.58431372550000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nm8-TD-Yyw">
+                                <rect key="frame" x="20" y="106" width="335" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="dhR-CA-NPb"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tOw-k4-csP">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="qhv-kr-FZ0" id="xY3-d5-lZo"/>
+                                    <outlet property="delegate" destination="qhv-kr-FZ0" id="HEa-DQ-CMg"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜索历史" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYN-hW-n0O">
+                                <rect key="frame" x="20" y="156" width="57.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.57647058819999997" green="0.58431372550000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hQy-KF-ETL">
+                                <rect key="frame" x="20" y="183" width="335" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Bgd-zo-B68"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sEL-3Y-4RN">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="qhv-kr-FZ0" id="PIM-8f-jwU"/>
+                                    <outlet property="delegate" destination="qhv-kr-FZ0" id="k6x-ik-LDe"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜索历史" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMO-oE-yBB">
+                                <rect key="frame" x="20" y="278" width="57.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.57647058819999997" green="0.58431372550000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqC-SJ-viC">
+                                <rect key="frame" x="297" y="271.5" width="58" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="清除历史">
+                                    <color key="titleColor" red="0.57647058819999997" green="0.58431372550000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearHistoryClick:" destination="qhv-kr-FZ0" eventType="touchUpInside" id="ozS-ju-W9U"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Hcg-lU-AHY">
+                                <rect key="frame" x="20" y="305" width="335" height="362"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CourseSearchTableViewCell" id="D3I-h3-Ppd" customClass="CourseSearchTableViewCell" customModule="EasyPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="335" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D3I-h3-Ppd" id="FYy-mO-fb1">
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioC-dA-nha">
+                                                    <rect key="frame" x="0.0" y="-0.5" width="275" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.57647058819999997" green="0.58431372550000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiT-oS-GiH">
+                                                    <rect key="frame" x="290" y="0.0" width="30" height="43.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="plj-HX-42b"/>
+                                                    </constraints>
+                                                    <state key="normal" image="shopCart_cancel"/>
+                                                    <connections>
+                                                        <action selector="deleteSearchClick:" destination="D3I-h3-Ppd" eventType="touchUpInside" id="ZnO-OT-UOR"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xiT-oS-GiH" firstAttribute="height" secondItem="FYy-mO-fb1" secondAttribute="height" id="ZcV-LZ-1wo"/>
+                                                <constraint firstItem="xiT-oS-GiH" firstAttribute="centerY" secondItem="FYy-mO-fb1" secondAttribute="centerY" id="lJG-iY-vy5"/>
+                                                <constraint firstItem="xiT-oS-GiH" firstAttribute="leading" secondItem="ioC-dA-nha" secondAttribute="trailing" constant="15" id="rZj-Q2-00B"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="ioC-dA-nha" firstAttribute="height" secondItem="D3I-h3-Ppd" secondAttribute="height" id="2yL-sO-9mT"/>
+                                            <constraint firstAttribute="trailing" secondItem="xiT-oS-GiH" secondAttribute="trailing" constant="15" id="BWv-9f-jfW"/>
+                                            <constraint firstItem="ioC-dA-nha" firstAttribute="centerY" secondItem="D3I-h3-Ppd" secondAttribute="centerY" id="FTh-4w-YYo"/>
+                                            <constraint firstItem="ioC-dA-nha" firstAttribute="leading" secondItem="D3I-h3-Ppd" secondAttribute="leading" id="ofD-Lc-IPM"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="searchContent" destination="ioC-dA-nha" id="yHP-Et-qRA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="qhv-kr-FZ0" id="MB4-6H-lR4"/>
+                                    <outlet property="delegate" destination="qhv-kr-FZ0" id="7cX-kE-qBb"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qYN-hW-n0O" firstAttribute="top" secondItem="Nm8-TD-Yyw" secondAttribute="bottom" constant="15" id="1Ao-G6-rTI"/>
+                            <constraint firstItem="uMO-oE-yBB" firstAttribute="top" secondItem="hQy-KF-ETL" secondAttribute="bottom" constant="15" id="3gU-3w-Nyd"/>
+                            <constraint firstItem="Hcg-lU-AHY" firstAttribute="top" secondItem="uMO-oE-yBB" secondAttribute="bottom" constant="10" id="CGe-J4-h4E"/>
+                            <constraint firstItem="hQy-KF-ETL" firstAttribute="centerX" secondItem="d0y-NL-aBU" secondAttribute="centerX" id="EzK-yB-XYI"/>
+                            <constraint firstItem="qYN-hW-n0O" firstAttribute="leading" secondItem="zih-lh-n0T" secondAttribute="leading" id="Isu-CY-Arj"/>
+                            <constraint firstItem="Nm8-TD-Yyw" firstAttribute="top" secondItem="zih-lh-n0T" secondAttribute="bottom" constant="10" id="JnV-03-Hgm"/>
+                            <constraint firstItem="I8b-kR-XIy" firstAttribute="top" secondItem="ojn-Lv-chR" secondAttribute="bottom" id="LpF-Bs-OpN"/>
+                            <constraint firstItem="I8b-kR-XIy" firstAttribute="centerX" secondItem="d0y-NL-aBU" secondAttribute="centerX" id="Ltw-yd-aYj"/>
+                            <constraint firstItem="Nm8-TD-Yyw" firstAttribute="width" secondItem="d0y-NL-aBU" secondAttribute="width" constant="-40" id="Nli-Px-4zE"/>
+                            <constraint firstItem="Hcg-lU-AHY" firstAttribute="width" secondItem="hQy-KF-ETL" secondAttribute="width" id="OlX-DR-05s"/>
+                            <constraint firstItem="hQy-KF-ETL" firstAttribute="top" secondItem="qYN-hW-n0O" secondAttribute="bottom" constant="10" id="Qd8-du-7hc"/>
+                            <constraint firstItem="Nm8-TD-Yyw" firstAttribute="centerX" secondItem="d0y-NL-aBU" secondAttribute="centerX" id="YWX-W7-59M"/>
+                            <constraint firstItem="zih-lh-n0T" firstAttribute="top" secondItem="I8b-kR-XIy" secondAttribute="bottom" constant="15" id="Zlw-4x-GdT"/>
+                            <constraint firstItem="hQy-KF-ETL" firstAttribute="width" secondItem="Nm8-TD-Yyw" secondAttribute="width" id="cKT-AN-w4p"/>
+                            <constraint firstItem="8Dp-oB-TdE" firstAttribute="top" secondItem="Hcg-lU-AHY" secondAttribute="bottom" id="e8F-3m-9Kn"/>
+                            <constraint firstItem="zih-lh-n0T" firstAttribute="leading" secondItem="I8b-kR-XIy" secondAttribute="leading" constant="20" id="g6A-oy-hgr"/>
+                            <constraint firstItem="Hcg-lU-AHY" firstAttribute="centerX" secondItem="d0y-NL-aBU" secondAttribute="centerX" id="lf4-fn-MCa"/>
+                            <constraint firstItem="DqC-SJ-viC" firstAttribute="centerY" secondItem="uMO-oE-yBB" secondAttribute="centerY" id="u7R-Kq-WnZ"/>
+                            <constraint firstItem="I8b-kR-XIy" firstAttribute="width" secondItem="d0y-NL-aBU" secondAttribute="width" id="ufI-E1-By9"/>
+                            <constraint firstItem="DqC-SJ-viC" firstAttribute="trailing" secondItem="hQy-KF-ETL" secondAttribute="trailing" id="wo1-bd-vaw"/>
+                            <constraint firstItem="uMO-oE-yBB" firstAttribute="leading" secondItem="qYN-hW-n0O" secondAttribute="leading" id="wqQ-BT-qL9"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="historyCollection" destination="hQy-KF-ETL" id="gCW-du-IIz"/>
+                        <outlet property="hotCollection" destination="Nm8-TD-Yyw" id="AhO-Qf-17x"/>
+                        <outlet property="searchBar" destination="I8b-kR-XIy" id="L6U-Q6-wJg"/>
+                        <outlet property="tableView" destination="Hcg-lU-AHY" id="afy-Ge-gev"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1F-fX-mZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1438,6 +1593,7 @@
         <image name="mine_head_defaults" width="53" height="53"/>
         <image name="mine_icon" width="24" height="24"/>
         <image name="mine_icon_select" width="24" height="24"/>
+        <image name="shopCart_cancel" width="24" height="24"/>
         <image name="small_phone" width="19" height="19"/>
         <image name="star_select" width="17" height="16"/>
         <image name="star_unselect" width="17" height="16"/>

@@ -13,7 +13,7 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
 
     @IBOutlet var menuBtnArray: [UIButton]!
     @IBOutlet weak var tableView: UITableView!
-    var classifyModel: ClassifyModel!//选择的专业
+    var classifyModel: ClassifyModel?//选择的专业
     var grade = 0//年级
     var term = -1//学期
     var timeSort = ""//时间排序
@@ -24,7 +24,6 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = classifyModel.name
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search_icon")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .plain, target: self, action: #selector(searchClick))
         getCourseByPage(pageNo: pageNo)
         weak var weakSelf = self
@@ -42,7 +41,10 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
     
     func getCourseByPage(pageNo: Int) {
         weak var weakSelf = self
-        var params = ["pageNo":pageNo, "pageSize":20, "classifyId":classifyModel.id!, "tag":0] as [String : Any]
+        var params = ["pageNo":pageNo, "pageSize":20] as [String : Any]
+        if classifyModel != nil {
+            params["classifyId"] = classifyModel!.id!
+        }
         if grade != 0 {
             params["grade"] = grade
         }
@@ -78,7 +80,26 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
         if sender == menuBtnArray[0] {
             performSegue(withIdentifier: "CourseMenu", sender: nil)
         } else if sender == menuBtnArray[1] {
-            performSegue(withIdentifier: "CourseTerm", sender: nil)
+            let actionSheet = UIAlertController(title: "选择学期", message: nil, preferredStyle: .actionSheet)
+            weak var weakSelf = self
+            actionSheet.addAction(UIAlertAction(title: "Summer", style: .default, handler: { (_) in
+                weakSelf?.term = 0
+                weakSelf?.getCourseByPage(pageNo: 1)
+            }))
+            actionSheet.addAction(UIAlertAction(title: "Fall", style: .default, handler: { (_) in
+                weakSelf?.term = 1
+                weakSelf?.getCourseByPage(pageNo: 1)
+            }))
+            actionSheet.addAction(UIAlertAction(title: "Winter", style: .default, handler: { (_) in
+                weakSelf?.term = 2
+                weakSelf?.getCourseByPage(pageNo: 1)
+            }))
+            actionSheet.addAction(UIAlertAction(title: "All", style: .default, handler: { (_) in
+                weakSelf?.term = -1
+                weakSelf?.getCourseByPage(pageNo: 1)
+            }))
+            actionSheet.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+            present(actionSheet, animated: true, completion: nil)
         } else if sender == menuBtnArray[2] {
             timeSort = sender.isSelected ? "asc" : "desc"
             priceSort = ""
@@ -98,19 +119,15 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
             courseMenu.selectGrade = grade
             weak var weakSelf = self
             courseMenu.changeSelect = {(response) -> () in
-                weakSelf?.classifyModel = (response as! [String : Any])["Classify"] as? ClassifyModel
-                weakSelf?.grade = (response as! [String : Any])["Grade"] as! Int
+                if let dic = response as? [String : Any] {
+                    weakSelf?.classifyModel = dic["Classify"] as? ClassifyModel
+                    weakSelf?.grade = dic["Grade"] as! Int
+                } else {
+                    weakSelf?.classifyModel = nil
+                    weakSelf?.grade = 0
+                }
                 weakSelf?.getCourseByPage(pageNo: 1)
             }
-        } else if segue.identifier == "CourseTerm" {
-            let courseTerm = segue.destination as! CourseTermController
-            courseTerm.term = term
-            weak var weakSelf = self
-            courseTerm.changeTerm = {(response) -> () in
-                weakSelf?.term = response as! Int
-                weakSelf?.getCourseByPage(pageNo: 1)
-            }
-            
         } else if segue.identifier == "CourseDetail" {
             let courseDetail = segue.destination as! CourseDetailController
             let courseModel = sender as! CourseModel

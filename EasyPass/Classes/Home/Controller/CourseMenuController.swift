@@ -13,7 +13,7 @@ class CourseMenuController: AntController,UITableViewDelegate,UITableViewDataSou
     @IBOutlet weak var typeTableView: UITableView!
     @IBOutlet weak var gradeTableView: UITableView!
     var gradeArray = ["大学一年级","大学二年级","大学三年级","大学四年级"]
-    var selectClassify: ClassifyModel!
+    var selectClassify: ClassifyModel?
     var selectGrade = 0
     var changeSelect: ConfirmBlock?
     
@@ -26,7 +26,6 @@ class CourseMenuController: AntController,UITableViewDelegate,UITableViewDataSou
 
     @IBAction func dismissClick(_ sender: UITapGestureRecognizer) {
         if changeSelect != nil {
-            changeSelect!(["Classify":selectClassify, "Grade":selectGrade])
             changeSelect = nil
         }
         dismiss(animated: true, completion: nil)
@@ -75,17 +74,37 @@ class CourseMenuController: AntController,UITableViewDelegate,UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         if tableView == typeTableView {
-            selectClassify = AntManage.classifyList[indexPath.row]
-            tableView.reloadData()
-        } else {
-            selectGrade = indexPath.row + 1
-            tableView.reloadData()
-            if changeSelect != nil {
-                changeSelect!(["Classify":selectClassify, "Grade":selectGrade])
-                changeSelect = nil
+            if selectClassify == AntManage.classifyList[indexPath.row] {
+                selectClassify = nil
+                selectGrade = 0
+                gradeTableView.reloadData()
+                if changeSelect != nil {
+                    changeSelect!("")
+                    changeSelect = nil
+                }
+                dismiss(animated: true, completion: nil)
+            } else {
+                selectClassify = AntManage.classifyList[indexPath.row]
+                tableView.reloadData()
             }
-            dismiss(animated: true, completion: nil)
+        } else {
+            if selectClassify != nil {
+                if selectGrade == indexPath.row + 1 {
+                    selectGrade = 0
+                } else {
+                    selectGrade = indexPath.row + 1
+                }
+                tableView.reloadData()
+                if changeSelect != nil {
+                    changeSelect!(["Classify":selectClassify!, "Grade":selectGrade])
+                    changeSelect = nil
+                }
+                dismiss(animated: true, completion: nil)
+            } else {
+                AntManage.showDelayToast(message: "请选择专业")
+            }
         }
     }
     

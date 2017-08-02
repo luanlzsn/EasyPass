@@ -85,8 +85,13 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
             courseMenu.selectGrade = grade
             weak var weakSelf = self
             courseMenu.changeSelect = {(response) -> () in
-                weakSelf?.classifyModel = (response as! [String : Any])["Classify"] as? ClassifyModel
-                weakSelf?.grade = (response as! [String : Any])["Grade"] as! Int
+                if let dic = response as? [String : Any] {
+                    weakSelf?.classifyModel = dic["Classify"] as? ClassifyModel
+                    weakSelf?.grade = dic["Grade"] as! Int
+                } else {
+                    weakSelf?.classifyModel = nil
+                    weakSelf?.grade = 0
+                }
                 weakSelf?.getReservationByPage(pageNo: 1)
             }
             present(courseMenu, animated: true, completion: nil)
