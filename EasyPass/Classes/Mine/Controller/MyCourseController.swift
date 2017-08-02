@@ -108,13 +108,33 @@ class MyCourseController: AntController,UITableViewDelegate,UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MyCourseCell = tableView.dequeueReusableCell(withIdentifier: "MyCourseCell", for: indexPath) as! MyCourseCell
-        
+        let order = courseArray[indexPath.section]
+        cell.courseImage.sd_setImage(with: URL(string: (order.photo != nil) ? order.photo! : ""), placeholderImage: UIImage(named: "default_image"))
+        if order.courseHourId != nil {
+            cell.courseName.text = order.classHourName
+            cell.courseCredit.text = "学分0"
+            for image in cell.starArray {
+                image.image = UIImage(named: "star_unselect")
+            }
+        } else {
+            cell.courseName.text = order.courseName
+            cell.courseCredit.text = "学分\(order.credit!)"
+            for image in cell.starArray {
+                if order.difficulty! > image.tag - 100 {
+                    image.image = UIImage(named: "star_select")
+                } else {
+                    image.image = UIImage(named: "star_unselect")
+                }
+            }
+        }
+        cell.updateTime.text = "更新时间 \(order.payTime!.components(separatedBy: ".").first!)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let courseDetail = UIStoryboard(name: "Home", bundle: Bundle.main).instantiateViewController(withIdentifier: "CourseDetail") as! CourseDetailController
+        courseDetail.courseId = courseArray[indexPath.section].courseId!
         navigationController?.pushViewController(courseDetail, animated: true)
     }
 
