@@ -7,38 +7,91 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class MyCourseController: AntController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var allCourseBtn: UIButton!
     @IBOutlet weak var timeBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    var courseArray = [OrderModel]()
+    var coursePage = 1
+    var classifyModel: ClassifyModel?//选择的专业
+    var grade = 0//年级
+    var timeSort = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search_icon")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .plain, target: self, action: #selector(searchClick))
+        weak var weakSelf = self
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            weakSelf?.getMyCourseByPage(pageNo: 1)
+        })
+        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            weakSelf?.getMyCourseByPage(pageNo: weakSelf!.coursePage + 1)
+        })
+        getMyCourseByPage(pageNo: 1)
     }
     
     func searchClick() {
         
     }
     
+    func getMyCourseByPage(pageNo: Int) {
+        weak var weakSelf = self
+        var params = ["token":AntManage.userModel!.token!, "orderStatus":1, "pageNo":pageNo, "pageSize":20] as [String : Any]
+        if classifyModel != nil {
+            params["classifyId"] = classifyModel!.id!
+        }
+        if grade != 0 {
+            params["grade"] = grade
+        }
+        if !timeSort.isEmpty {
+            params["timeSort"] = timeSort
+        }
+        AntManage.postRequest(path: "order/getOrderList", params:params , successResult: { (response) in
+            weakSelf?.coursePage = response["pageNo"] as! Int
+            if weakSelf?.coursePage == 1 {
+                weakSelf?.courseArray.removeAll()
+            }
+            weakSelf?.courseArray += Mapper<OrderModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            weakSelf?.tableView.mj_header.endRefreshing()
+            weakSelf?.tableView.mj_footer.endRefreshing()
+            weakSelf?.tableView.mj_footer.isHidden = (weakSelf!.coursePage >= (response["totalPage"] as! Int))
+            weakSelf?.tableView.reloadData()
+        }, failureResult: {
+            weakSelf?.tableView.mj_header.endRefreshing()
+            weakSelf?.tableView.mj_footer.endRefreshing()
+        })
+    }
+    
     @IBAction func allCourseClick(_ sender: UIButton) {
         sender.isSelected = true
-        timeBtn.isSelected = false
-        tableView.reloadData()
+        let courseMenu = UIStoryboard(name: "Home", bundle: Bundle.main).instantiateViewController(withIdentifier: "CourseMenu") as! CourseMenuController
+        courseMenu.modalPresentationStyle = .overCurrentContext
+        courseMenu.modalTransitionStyle = .crossDissolve
+        courseMenu.selectClassify = classifyModel
+        courseMenu.selectGrade = grade
+        weak var weakSelf = self
+        courseMenu.changeSelect = {(response) -> () in
+            weakSelf?.classifyModel = (response as! [String : Any])["Classify"] as? ClassifyModel
+            weakSelf?.grade = (response as! [String : Any])["Grade"] as! Int
+            weakSelf?.getMyCourseByPage(pageNo: 1)
+        }
+        present(courseMenu, animated: true, completion: nil)
     }
     
     @IBAction func updateTimeClick(_ sender: UIButton) {
-        sender.isSelected = true
+        sender.isSelected = !sender.isSelected
+        timeSort = sender.isSelected ? "desc" : "asc"
         allCourseBtn.isSelected = false
-        tableView.reloadData()
+        getMyCourseByPage(pageNo: 1)
     }
     
     // MARK: - UITableViewDelegate,UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return courseArray.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,6 +108,7 @@ class MyCourseController: AntController,UITableViewDelegate,UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MyCourseCell = tableView.dequeueReusableCell(withIdentifier: "MyCourseCell", for: indexPath) as! MyCourseCell
+        
         return cell
     }
     

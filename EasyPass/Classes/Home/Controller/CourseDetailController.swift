@@ -130,7 +130,6 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             buyBtn.setTitle("预约", for: .normal)
             outlineBtn.isHidden = true
         }
-        courseName.isHidden = true
         courseName.text = courseModel?.courseName
         credit.text = "学分\(courseModel!.credit!)"
         for star in levelImageArray {
@@ -141,7 +140,11 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             }
         }
         money.text = "$\(courseModel!.price!)"
-        classHour.text = "/\(courseModel!.classHour!)课时"
+        if courseModel?.tag == 0 {
+            classHour.text = "/\(courseModel!.classHour!)课时"
+        } else {
+            classHour.text = "/小时"
+        }
         detailLabel.text = courseModel?.courseDetail
         suitableCrowd.text = courseModel?.forCrowd
         learningGoal.text = courseModel?.studyGoal
