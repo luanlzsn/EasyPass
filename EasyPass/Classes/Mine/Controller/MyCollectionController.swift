@@ -18,6 +18,7 @@ class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataS
     var collectPage = 1
     var classifyModel: ClassifyModel?//选择的专业
     var grade = 0//年级
+    var courseName = ""//课程名称
     var timeSort = ""
     
     override func viewDidLoad() {
@@ -35,12 +36,23 @@ class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataS
     }
     
     func searchClick() {
-        
+        let alert = UIAlertController(title: "提示", message: "输入搜索内容", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "请输入搜索内容"
+        }
+        weak var weakSelf = self
+        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: { (_) in
+            let textField = alert.textFields?.first
+            weakSelf?.courseName = textField!.text!
+            weakSelf?.getCourseCollectByPage(pageNo: 1)
+        }))
+        alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     func getCourseCollectByPage(pageNo: Int) {
         weak var weakSelf = self
-        var params = ["token":AntManage.userModel!.token!, "pageNo":pageNo, "pageSize":20] as [String : Any]
+        var params = ["token":AntManage.userModel!.token!, "pageNo":pageNo, "pageSize":20, "courseName":courseName] as [String : Any]
         if classifyModel != nil {
             params["classifyId"] = classifyModel!.id!
         }

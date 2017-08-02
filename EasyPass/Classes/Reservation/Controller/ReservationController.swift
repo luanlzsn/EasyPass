@@ -37,7 +37,18 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
     }
     
     func searchClick() {
-        
+        let alert = UIAlertController(title: "提示", message: "输入搜索内容", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "请输入搜索内容"
+        }
+        weak var weakSelf = self
+        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: { (_) in
+            let textField = alert.textFields?.first
+            weakSelf?.courseName = textField!.text!
+            weakSelf?.getReservationByPage(pageNo: 1)
+        }))
+        alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     func getReservationByPage(pageNo: Int) {
