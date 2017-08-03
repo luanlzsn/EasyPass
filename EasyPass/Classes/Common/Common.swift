@@ -193,6 +193,10 @@ class Common: NSObject {
         return false
     }
     
+    // MARK: - 获取token字符串
+    class func getDeviceTokenStringWithDeviceToken(deviceToken: Data) -> String {
+        return deviceToken.description.replacingOccurrences(of: "<", with: "").replacingOccurrences(of: ">", with: "").replacingOccurrences(of: " ", with: "")
+    }
 }
 
 extension UIView {

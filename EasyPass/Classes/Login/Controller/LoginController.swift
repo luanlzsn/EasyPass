@@ -38,6 +38,9 @@ class LoginController: AntController {
 //                AntManage.postRequest(path: "appAuth/login", params: ["loginType":1, "headImg":user!.icon, "nicName":user!.nickname.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!, "thirdId":user!.uid], successResult: { (response) in
 //                    AntManage.isLogin = true
 //                    AntManage.userModel = Mapper<UserModel>().map(JSON: response)
+//                    JPUSHService.setAlias("\(AntManage.userModel!.id!)", completion: { (_, nil, _) in
+//                        
+//                    }, seq: 1)
 //                    UserDefaults.standard.setValue(NSKeyedArchiver.archivedData(withRootObject: AntManage.userModel!), forKey: kUserInfo)
 //                    UserDefaults.standard.synchronize()
 //                    if AntManage.userModel?.email == nil, AntManage.userModel?.phone == nil {
@@ -52,6 +55,9 @@ class LoginController: AntController {
         AntManage.postRequest(path: "appAuth/login", params: ["loginType":1, "headImg":"http://wx.qlogo.cn/mmopen/icTdbqWNOwNS4cicyD29z54GIYibFvbgBicGuVh2axoBDRYXtnZkpZWEuibsQJ2IibtJibU9LhO8JibZEwUfsw5mBCumtQ/0", "nicName":"栾中三".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!, "thirdId":"opcH-wN7XF7WnJdbYEMG0vQPwQBM"], successResult: { (response) in
             AntManage.isLogin = true
             AntManage.userModel = Mapper<UserModel>().map(JSON: response)
+            JPUSHService.setAlias("\(AntManage.userModel!.id!)", completion: { (_, nil, _) in
+                
+            }, seq: 1)
             NotificationCenter.default.post(name: NSNotification.Name(kLoginStatusUpdate), object: nil)
             UserDefaults.standard.setValue(NSKeyedArchiver.archivedData(withRootObject: AntManage.userModel!), forKey: kUserInfo)
             UserDefaults.standard.synchronize()

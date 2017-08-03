@@ -43,6 +43,9 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
             AntManage.showDelayToast(message: "退出成功！")
             AntManage.isLogin = false
             AntManage.userModel = nil
+            JPUSHService.deleteAlias({ (_, nil, _) in
+                
+            }, seq: 1)
             NotificationCenter.default.post(name: NSNotification.Name(kLoginStatusUpdate), object: nil)
             ShareSDK.cancelAuthorize(SSDKPlatformType.typeWechat)
             UserDefaults.standard.removeObject(forKey: kUserInfo)

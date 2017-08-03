@@ -10,7 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate {
 
     var window: UIWindow?
 
@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.black]
         
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         
@@ -31,6 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         initializationShareSDK()
+        if UserDefaults.standard.object(forKey: "MessageSwitch") != nil {
+            if UserDefaults.standard.bool(forKey: "MessageSwitch") {
+                initializationJPush(launchOptions: launchOptions)
+            }
+        } else {
+            initializationJPush(launchOptions: launchOptions)
+        }
         
         return true
     }
@@ -64,6 +73,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
     }
 
+    func initializationJPush(launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
+        let entity = JPUSHRegisterEntity()
+        entity.types = Int(Int(JPAuthorizationOptions.alert.rawValue) | Int(JPAuthorizationOptions.badge.rawValue) | Int(JPAuthorizationOptions.sound.rawValue))
+        JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
+        JPUSHService.setup(withOption: launchOptions, appKey: "187ee03190fd324cb87ed70b", channel: "App Store", apsForProduction: false)
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        JPUSHService.registerDeviceToken(deviceToken)
+    }
+    
+    // MARK: - JPUSHRegisterDelegate
+    @available(iOS 10.0, *)
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
+        let userInfo = notification.request.content.userInfo;
+        if notification.request.trigger is UNPushNotificationTrigger {
+            JPUSHService.handleRemoteNotification(userInfo);
+        }
+        completionHandler(Int(UNNotificationPresentationOptions.alert.rawValue))
+    }
+    
+    @available(iOS 10.0, *)
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
+        let userInfo = response.notification.request.content.userInfo;
+        if response.notification.request.trigger is UNPushNotificationTrigger {
+            JPUSHService.handleRemoteNotification(userInfo);
+        }
+        completionHandler();
+        perform(#selector(checkPushInfo(_:)), with: userInfo as! [String : Any], afterDelay: 0.1)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        JPUSHService.handleRemoteNotification(userInfo)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        JPUSHService.handleRemoteNotification(userInfo)
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
+    
+    func checkPushInfo(_ userInfo: [String : Any]) {
+        if AntManage.isLogin {
+            let tabbar = window?.rootViewController as! UITabBarController
+            let nav = tabbar.selectedViewController as! UINavigationController
+            let message = UIStoryboard(name: "Mine", bundle: Bundle.main).instantiateViewController(withIdentifier: "Message") as! MessageController
+            nav.pushViewController(message, animated: true)
+        }
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -80,6 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
