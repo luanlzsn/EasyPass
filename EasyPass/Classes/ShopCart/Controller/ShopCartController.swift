@@ -145,13 +145,13 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         var orderItemList = ["shoppingCartId":shopCartModel.id! ,"courseId":shopCartModel.courseId!, "quantity":shopCartModel.quantity!] as [String : Any]
         var appleProductId = ""
         if shopCartModel.courseHourId == nil {
-            orderItemList["price"] = shopCartModel.coursePrice!
+            orderItemList["price"] = (shopCartModel.coursePrice != nil) ? shopCartModel.coursePrice! : 0.0
             orderItemList["onTax"] = shopCartModel.courseOnTax!
             totalPrice = shopCartModel.coursePrice! * Float.init(shopCartModel.quantity!)
             totalOnTax = shopCartModel.courseOnTax! * Float.init(shopCartModel.quantity!)
             appleProductId = shopCartModel.appleProductIdForCourse!
         } else {
-            orderItemList["price"] = shopCartModel.courseHourPrice!
+            orderItemList["price"] = (shopCartModel.courseHourPrice != nil) ? shopCartModel.courseHourPrice! : 0.0
             orderItemList["onTax"] = shopCartModel.courseHourOnTax!
             orderItemList["courseClassHourId"] = shopCartModel.courseHourId!
             appleProductId = shopCartModel.appleProductIdForCourseHour!
@@ -189,11 +189,11 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         if shopCartModel.tag == 0 {
             if shopCartModel.courseHourId != nil {
                 cell.courseName.text = shopCartModel.gradeName! + "\n\n" + shopCartModel.lessonPeriod! + " " + shopCartModel.classHourName!
-                cell.money.text = "$" + "\(shopCartModel.courseHourPrice!)"
+                cell.money.text = "$" + "\((shopCartModel.courseHourPrice != nil) ? shopCartModel.courseHourPrice! : 0.0)"
                 cell.numberTextField.text = "\(shopCartModel.quantity!)"
             } else {
                 cell.courseName.text = shopCartModel.gradeName! + "\n\n" + shopCartModel.courseName!
-                cell.money.text = "$" + "\(shopCartModel.coursePrice!)"
+                cell.money.text = "$" + "\((shopCartModel.coursePrice != nil) ? shopCartModel.coursePrice! : 0.0)"
                 cell.numberTextField.text = "\(shopCartModel.quantity!)"
             }
         } else {

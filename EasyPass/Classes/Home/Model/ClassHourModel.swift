@@ -16,6 +16,7 @@ class ClassHourModel : NSObject, NSCoding, Mappable{
 	var lessonPeriod : String?//课时章节
 	var modifyTime : String?//修改时间
 	var price : Float?//课时价格
+    var priceIos : Float?
 	var shoppingCartPrice : Float?//购物车总价格
 	var shoppingCartQuantity : Int?//购物车数量
 	var video : String?//课时视频
@@ -39,6 +40,7 @@ class ClassHourModel : NSObject, NSCoding, Mappable{
 		lessonPeriod <- map["lessonPeriod"]
 		modifyTime <- map["modifyTime"]
 		price <- map["price"]
+        priceIos <- map["priceIos"]
 		shoppingCartPrice <- map["shoppingCartPrice"]
 		shoppingCartQuantity <- map["shoppingCartQuantity"]
 		video <- map["video"]
@@ -61,6 +63,7 @@ class ClassHourModel : NSObject, NSCoding, Mappable{
          lessonPeriod = aDecoder.decodeObject(forKey: "lessonPeriod") as? String
          modifyTime = aDecoder.decodeObject(forKey: "modifyTime") as? String
          price = aDecoder.decodeObject(forKey: "price") as? Float
+         priceIos = aDecoder.decodeObject(forKey: "priceIos") as? Float
          shoppingCartPrice = aDecoder.decodeObject(forKey: "shoppingCartPrice") as? Float
          shoppingCartQuantity = aDecoder.decodeObject(forKey: "shoppingCartQuantity") as? Int
          video = aDecoder.decodeObject(forKey: "video") as? String
@@ -99,6 +102,9 @@ class ClassHourModel : NSObject, NSCoding, Mappable{
 		if price != nil{
 			aCoder.encode(price, forKey: "price")
 		}
+        if priceIos != nil {
+            aCoder.encode(priceIos, forKey: "priceIos")
+        }
 		if shoppingCartPrice != nil{
 			aCoder.encode(shoppingCartPrice, forKey: "shoppingCartPrice")
 		}

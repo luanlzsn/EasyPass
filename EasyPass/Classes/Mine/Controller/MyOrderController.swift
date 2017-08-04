@@ -156,24 +156,20 @@ class MyOrderController: AntController,UITableViewDelegate,UITableViewDataSource
         let order = orderArray[indexPath.section]
         cell.courseImage.sd_setImage(with: URL(string: (order.photo != nil) ? order.photo! : ""), placeholderImage: UIImage(named: "default_image"))
         if order.courseHourId != nil {
-            cell.courseName.text = order.classHourName
-            cell.courseCredit.text = "学分0"
+            cell.courseName.text = order.lessonPeriod! + " " + order.classHourName!
             cell.money.text = "$" + "\(order.courseHourPrice!)"
             cell.classHour.text = "/1课时"
-            for image in cell.starArray {
-                image.image = UIImage(named: "star_unselect")
-            }
         } else {
             cell.courseName.text = order.courseName
-            cell.courseCredit.text = "学分\(order.credit!)"
             cell.money.text = "$" + "\(order.coursePrice!)"
             cell.classHour.text = "/\(order.classHour!)课时"
-            for image in cell.starArray {
-                if order.difficulty! > image.tag - 100 {
-                    image.image = UIImage(named: "star_select")
-                } else {
-                    image.image = UIImage(named: "star_unselect")
-                }
+        }
+        cell.courseCredit.text = "学分\(order.credit!)"
+        for image in cell.starArray {
+            if order.difficulty! > image.tag - 100 {
+                image.image = UIImage(named: "star_select")
+            } else {
+                image.image = UIImage(named: "star_unselect")
             }
         }
         if order.tag == 0 {

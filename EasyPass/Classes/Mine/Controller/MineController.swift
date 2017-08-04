@@ -26,6 +26,7 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        getAppUserRecord()
     }
     
     // MARK: - 获取用户学习记录

@@ -161,7 +161,7 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
         cell.courseImage.sd_setImage(with: URL(string: model.photo!), placeholderImage: UIImage(named: "default_image"))
         cell.courseName.text = model.courseName
         cell.courseCredit.text = "学分\(model.credit!)"
-        cell.money.text = "$" + "\(model.price!)"
+        cell.money.text = "$" + ((model.price != nil) ? "\(model.price!)" : "0.0")
         cell.classHour.text = "/\(model.classHour!)课时"
         if model.tag == 0 {
             cell.typeImage.image = UIImage(named: "video_course")

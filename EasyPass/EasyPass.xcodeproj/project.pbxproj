@@ -14,6 +14,8 @@
 		0F07736F1F029FC300EF8EEF /* ReservationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F07736E1F029FC300EF8EEF /* ReservationController.swift */; };
 		0F258E241F20A5600044F272 /* ShopCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F258E231F20A5600044F272 /* ShopCartModel.swift */; };
 		0F2F0E3B1F33018B006DCE57 /* SystemSetupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2F0E3A1F33018B006DCE57 /* SystemSetupCell.swift */; };
+		0F2F0E3D1F3319D5006DCE57 /* PlayerVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2F0E3C1F3319D5006DCE57 /* PlayerVideoView.swift */; };
+		0F2F0E3F1F331C35006DCE57 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2F0E3E1F331C35006DCE57 /* AVFoundation.framework */; };
 		0F2F811C1F035728005E68C0 /* ReservationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2F811B1F035728005E68C0 /* ReservationCell.swift */; };
 		0F3838951F0D07B8003C800A /* MyAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838941F0D07B8003C800A /* MyAccountController.swift */; };
 		0F3838971F0D09AB003C800A /* MyAccountHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838961F0D09AB003C800A /* MyAccountHeadCell.swift */; };
@@ -87,6 +89,8 @@
 		0F9A8EC81F0149ED006B495D /* HomeMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A8EC71F0149ED006B495D /* HomeMenuButton.swift */; };
 		0F9A8ECA1F014E73006B495D /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A8EC91F014E73006B495D /* CycleScrollView.swift */; };
 		0FAE0AE41F18A0CD00DF0892 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE0AE31F18A0CD00DF0892 /* CommentModel.swift */; };
+		0FAF33311F34B8ED00367147 /* FullPlayerVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAF33301F34B8ED00367147 /* FullPlayerVideoController.swift */; };
+		0FAF33341F34BA3200367147 /* UIDevice+JWDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAF33331F34BA3200367147 /* UIDevice+JWDevice.m */; };
 		0FB34AB41F02532300480E6C /* MineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB31F02532300480E6C /* MineController.swift */; };
 		0FB34AB61F02611100480E6C /* MineHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB51F02611100480E6C /* MineHeadCell.swift */; };
 		0FB34AB81F02613B00480E6C /* MineLearnRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */; };
@@ -152,6 +156,8 @@
 		0F07736E1F029FC300EF8EEF /* ReservationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationController.swift; sourceTree = "<group>"; };
 		0F258E231F20A5600044F272 /* ShopCartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCartModel.swift; sourceTree = "<group>"; };
 		0F2F0E3A1F33018B006DCE57 /* SystemSetupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemSetupCell.swift; sourceTree = "<group>"; };
+		0F2F0E3C1F3319D5006DCE57 /* PlayerVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerVideoView.swift; sourceTree = "<group>"; };
+		0F2F0E3E1F331C35006DCE57 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0F2F811B1F035728005E68C0 /* ReservationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationCell.swift; sourceTree = "<group>"; };
 		0F3838941F0D07B8003C800A /* MyAccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountController.swift; sourceTree = "<group>"; };
 		0F3838961F0D09AB003C800A /* MyAccountHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountHeadCell.swift; sourceTree = "<group>"; };
@@ -248,6 +254,9 @@
 		0F9A8EC71F0149ED006B495D /* HomeMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMenuButton.swift; sourceTree = "<group>"; };
 		0F9A8EC91F014E73006B495D /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
 		0FAE0AE31F18A0CD00DF0892 /* CommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		0FAF33301F34B8ED00367147 /* FullPlayerVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullPlayerVideoController.swift; sourceTree = "<group>"; };
+		0FAF33321F34BA3200367147 /* UIDevice+JWDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+JWDevice.h"; sourceTree = "<group>"; };
+		0FAF33331F34BA3200367147 /* UIDevice+JWDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+JWDevice.m"; sourceTree = "<group>"; };
 		0FB34AB31F02532300480E6C /* MineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineController.swift; sourceTree = "<group>"; };
 		0FB34AB51F02611100480E6C /* MineHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeadCell.swift; sourceTree = "<group>"; };
 		0FB34AB71F02613B00480E6C /* MineLearnRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineLearnRecordCell.swift; sourceTree = "<group>"; };
@@ -320,6 +329,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F2F0E3F1F331C35006DCE57 /* AVFoundation.framework in Frameworks */,
 				0FF491B01F321ADD0000A2A0 /* libresolv.tbd in Frameworks */,
 				0FF491AE1F321ACD0000A2A0 /* UserNotifications.framework in Frameworks */,
 				0FF491AC1F321AB80000A2A0 /* Security.framework in Frameworks */,
@@ -448,6 +458,7 @@
 		0F6C61E11EFFCDA30079B2F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F2F0E3E1F331C35006DCE57 /* AVFoundation.framework */,
 				0FF491AF1F321ADD0000A2A0 /* libresolv.tbd */,
 				0FF491AD1F321ACD0000A2A0 /* UserNotifications.framework */,
 				0FF491AB1F321AB80000A2A0 /* Security.framework */,
@@ -534,6 +545,7 @@
 				0FD76B621F07F00700A04F7A /* CustomerServiceController.swift */,
 				0FE4BD491F1F67BA006A2EB5 /* CommentListController.swift */,
 				0F46F7081F30669700B0946C /* BannerDetailController.swift */,
+				0FAF33301F34B8ED00367147 /* FullPlayerVideoController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -550,6 +562,7 @@
 				0FD76B5E1F07E4D200A04F7A /* CourseCommentCell.swift */,
 				0FD76B5F1F07E4D200A04F7A /* CourseCommentCell.xib */,
 				0F85E0721F09D9F50084AA1B /* CourseOutlineCell.swift */,
+				0F2F0E3C1F3319D5006DCE57 /* PlayerVideoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -658,6 +671,8 @@
 		0F8ABD851F17256800659962 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				0FAF33321F34BA3200367147 /* UIDevice+JWDevice.h */,
+				0FAF33331F34BA3200367147 /* UIDevice+JWDevice.m */,
 				0FF491971F321A5D0000A2A0 /* JPush */,
 				0FC71A301F22111D00FAD254 /* ShareSDK */,
 				0F8ABD861F17256800659962 /* MJRefresh */,
@@ -1028,13 +1043,16 @@
 				0F07390D1F16263B00217CC6 /* UserModel.swift in Sources */,
 				0F85E07F1F09F1090084AA1B /* MyOrderCell.swift in Sources */,
 				0F6C620B1EFFD4860079B2F2 /* AntController.swift in Sources */,
+				0F2F0E3D1F3319D5006DCE57 /* PlayerVideoView.swift in Sources */,
 				0F8ABDBA1F17256800659962 /* MJRefreshAutoGifFooter.m in Sources */,
 				0F8ABDB81F17256800659962 /* MJRefreshFooter.m in Sources */,
 				0F8ABDB91F17256800659962 /* MJRefreshHeader.m in Sources */,
 				0FC08D5D1F31847F0035CAB3 /* UserRecordModel.swift in Sources */,
 				0F2F0E3B1F33018B006DCE57 /* SystemSetupCell.swift in Sources */,
 				0F83A6461F00B03800088B5F /* HomeHeaderCell.swift in Sources */,
+				0FAF33311F34B8ED00367147 /* FullPlayerVideoController.swift in Sources */,
 				0FE902F81F19F7C000C84392 /* ClassHourModel.swift in Sources */,
+				0FAF33341F34BA3200367147 /* UIDevice+JWDevice.m in Sources */,
 				0F8ABDB61F17256800659962 /* MJRefreshBackFooter.m in Sources */,
 				0FB34AB81F02613B00480E6C /* MineLearnRecordCell.swift in Sources */,
 				0F3838991F0D09BC003C800A /* MyAccountTextFieldCell.swift in Sources */,

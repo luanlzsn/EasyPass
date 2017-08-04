@@ -25,6 +25,7 @@ class CourseModel : NSObject, NSCoding, Mappable{
 	var onTax : Float?//税额
 	var photo : String?//课程封面图片
 	var price : Float?//价格
+    var priceIos : Float?//ios价格
 	var shoppingCartPrice : Float?//购物车总价格
 	var shoppingCartQuantity : Int?//购物车数量
 	var studyGoal : String?//学习目标
@@ -62,6 +63,7 @@ class CourseModel : NSObject, NSCoding, Mappable{
 		onTax <- map["onTax"]
 		photo <- map["photo"]
 		price <- map["price"]
+        priceIos <- map["priceIos"]
 		shoppingCartPrice <- map["shoppingCartPrice"]
 		shoppingCartQuantity <- map["shoppingCartQuantity"]
 		studyGoal <- map["studyGoal"]
@@ -99,6 +101,7 @@ class CourseModel : NSObject, NSCoding, Mappable{
          onTax = aDecoder.decodeObject(forKey: "onTax") as? Float
          photo = aDecoder.decodeObject(forKey: "photo") as? String
          price = aDecoder.decodeObject(forKey: "price") as? Float
+         priceIos = aDecoder.decodeObject(forKey: "priceIos") as? Float
          shoppingCartPrice = aDecoder.decodeObject(forKey: "shoppingCartPrice") as? Float
          shoppingCartQuantity = aDecoder.decodeObject(forKey: "shoppingCartQuantity") as? Int
          studyGoal = aDecoder.decodeObject(forKey: "studyGoal") as? String
@@ -170,6 +173,9 @@ class CourseModel : NSObject, NSCoding, Mappable{
 		if price != nil{
 			aCoder.encode(price, forKey: "price")
 		}
+        if priceIos != nil {
+            aCoder.encode(priceIos, forKey: "priceIos")
+        }
 		if shoppingCartPrice != nil{
 			aCoder.encode(shoppingCartPrice, forKey: "shoppingCartPrice")
 		}

@@ -22,3 +22,5 @@
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
     #import <UserNotifications/UserNotifications.h>
 #endif
+
+#import "UIDevice+JWDevice.h"

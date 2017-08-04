@@ -11,7 +11,8 @@ import ObjectMapper
 
 class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataSource,CourseOutline_Delegate,UITextViewDelegate {
 
-    @IBOutlet weak var playBtn: UIButton!//播放按钮
+    
+    @IBOutlet weak var playerView: PlayerVideoView!
     @IBOutlet weak var infoBtn: UIButton!//简介按钮
     @IBOutlet weak var outlineBtn: UIButton!//大纲按钮
     @IBOutlet weak var lineLeft: NSLayoutConstraint!
@@ -47,6 +48,9 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(loginStatusUpdate), name: NSNotification.Name(kLoginStatusUpdate), object: nil)
+        
+        playerView.superController = self
+        playerView.oldView = view
 
         tableView.register(UINib(nibName: "CourseCommentCell", bundle: Bundle.main), forCellReuseIdentifier: "CourseCommentCell")
         tableView.estimatedRowHeight = 60.0
@@ -65,6 +69,11 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
         
         getCourseDetailById()
         getCommentByPage()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        playerView.willDisappearController()
     }
     
     override func viewDidLayoutSubviews() {
@@ -126,6 +135,12 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     // MARK: - 刷新课程信息
     func refreshCourseInfo() {
         navigationItem.title = courseModel?.courseName
+        playerView.courseId = courseModel?.id
+        if courseModel?.video != nil, !(courseModel?.video?.isEmpty)! {
+            playerView.videoUrl = courseModel?.video
+        } else if courseModel?.videoHttpUrl != nil, !(courseModel?.videoHttpUrl?.isEmpty)! {
+            playerView.videoUrl = courseModel?.videoHttpUrl
+        }
         if courseModel?.tag == 1 {
             buyBtn.setTitle("预约", for: .normal)
             outlineBtn.isHidden = true
@@ -139,7 +154,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
                 star.image = UIImage(named: "star_unselect")
             }
         }
-        money.text = "$\(courseModel!.price!)"
+        money.text = "$" + ((courseModel?.price != nil) ? "\(courseModel!.price!)" : "0.0")
         if courseModel?.tag == 0 {
             classHour.text = "/\(courseModel!.classHour!)课时"
         } else {
@@ -149,11 +164,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
         suitableCrowd.text = courseModel?.forCrowd
         learningGoal.text = courseModel?.studyGoal
         collectionBtn.isSelected = (courseModel?.collectFlag)!
-    }
-    
-    // MARK: - 播放
-    @IBAction func playClick(_ sender: UIButton) {
-        
+        outlineTableView.reloadData()
     }
     
     // MARK: - 简介
@@ -252,8 +263,15 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     // MARK: - CourseOutline_Delegate
     func checkCourseOutline(section: Int) {
         let classHourModel = classHourArray[section]
-        if classHourModel.buyFlag! {
-            AntManage.showDelayToast(message: "您已购买过该课时,无需重复购买")
+        if (courseModel?.buyFlag)! || classHourModel.buyFlag! {
+            var videoUrl = ""
+            if classHourModel.video != nil, !classHourModel.video!.isEmpty {
+                videoUrl = classHourModel.video!
+            } else if classHourModel.videoHttpUrl != nil, !classHourModel.videoHttpUrl!.isEmpty {
+                videoUrl = classHourModel.videoHttpUrl!
+            }
+            playerView.courseHourId = classHourModel.id
+            playerView.playerCourseHourVideo(videoUrl)
         } else {
             if Common.checkIsOperation(controller: self) {
                 AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "classHourId":classHourModel.id!, "number":1, "add":true], successResult: { (_) in
@@ -289,13 +307,13 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             let classHourModel = classHourArray[indexPath.section]
             cell.name.text = classHourModel.lessonPeriod! + " " + classHourModel.classHourName!
             cell.info.text = classHourModel.content
-            if classHourModel.buyFlag! {
+            if (courseModel?.buyFlag)! || classHourModel.buyFlag! {
                 cell.money.isHidden = true
                 cell.classHour.isHidden = true
                 cell.watchBtn.backgroundColor = Common.colorWithHexString(colorStr: "f9bd53")
                 cell.watchBtn.setTitle("观看", for: .normal)
             } else {
-                cell.money.text = "$ \(classHourModel.price!)"
+                cell.money.text = "$ \((classHourModel.price != nil) ? classHourModel.price! : 0.0)"
                 cell.money.isHidden = false
                 cell.classHour.isHidden = false
                 cell.watchBtn.backgroundColor = MainColor

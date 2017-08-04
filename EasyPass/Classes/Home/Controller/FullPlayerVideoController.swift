@@ -1,22 +1,30 @@
 //
-//  LeomanController.swift
-//  MoFan
+//  FullPlayerVideoController.swift
+//  EasyPass
 //
-//  Created by luan on 2016/12/8.
-//  Copyright © 2016年 luan. All rights reserved.
+//  Created by luan on 2017/8/4.
+//  Copyright © 2017年 luan. All rights reserved.
 //
 
 import UIKit
 
-class AntController: UIViewController {
+class FullPlayerVideoController: AntController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        automaticallyAdjustsScrollViewInsets = false
+
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        kWindow?.endEditing(true)
+    override var shouldAutorotate : Bool {
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.all
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return UIInterfaceOrientation.landscapeRight
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,19 +32,7 @@ class AntController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // 视图是否自动旋转
-    override var shouldAutorotate : Bool {
-        return true
-    }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.portrait
-    }
-    
-    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return UIInterfaceOrientation.portrait
-    }
-    
+
     /*
     // MARK: - Navigation
 
