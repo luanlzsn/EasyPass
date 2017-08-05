@@ -89,6 +89,7 @@
 		0F9A8EC81F0149ED006B495D /* HomeMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A8EC71F0149ED006B495D /* HomeMenuButton.swift */; };
 		0F9A8ECA1F014E73006B495D /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A8EC91F014E73006B495D /* CycleScrollView.swift */; };
 		0FAE0AE41F18A0CD00DF0892 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE0AE31F18A0CD00DF0892 /* CommentModel.swift */; };
+		0FAEE85E1F35712900E52B6E /* PlayerVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEE85D1F35712900E52B6E /* PlayerVideoView.xib */; };
 		0FAF33311F34B8ED00367147 /* FullPlayerVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAF33301F34B8ED00367147 /* FullPlayerVideoController.swift */; };
 		0FAF33341F34BA3200367147 /* UIDevice+JWDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAF33331F34BA3200367147 /* UIDevice+JWDevice.m */; };
 		0FB34AB41F02532300480E6C /* MineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34AB31F02532300480E6C /* MineController.swift */; };
@@ -254,6 +255,7 @@
 		0F9A8EC71F0149ED006B495D /* HomeMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMenuButton.swift; sourceTree = "<group>"; };
 		0F9A8EC91F014E73006B495D /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
 		0FAE0AE31F18A0CD00DF0892 /* CommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		0FAEE85D1F35712900E52B6E /* PlayerVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerVideoView.xib; sourceTree = "<group>"; };
 		0FAF33301F34B8ED00367147 /* FullPlayerVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullPlayerVideoController.swift; sourceTree = "<group>"; };
 		0FAF33321F34BA3200367147 /* UIDevice+JWDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+JWDevice.h"; sourceTree = "<group>"; };
 		0FAF33331F34BA3200367147 /* UIDevice+JWDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+JWDevice.m"; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 				0FD76B5F1F07E4D200A04F7A /* CourseCommentCell.xib */,
 				0F85E0721F09D9F50084AA1B /* CourseOutlineCell.swift */,
 				0F2F0E3C1F3319D5006DCE57 /* PlayerVideoView.swift */,
+				0FAEE85D1F35712900E52B6E /* PlayerVideoView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 				0FC71A631F22111E00FAD254 /* README.txt in Resources */,
 				0FC71A591F22111E00FAD254 /* ShareSDKUI.bundle in Resources */,
 				0FC71A561F22111D00FAD254 /* ShareSDKConfigFile.bundle in Resources */,
+				0FAEE85E1F35712900E52B6E /* PlayerVideoView.xib in Resources */,
 				0F6C62021EFFD1E70079B2F2 /* Reservation.storyboard in Resources */,
 				0F6C61D41EFFCA800079B2F2 /* Main.storyboard in Resources */,
 				0FC71A5F1F22111E00FAD254 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,

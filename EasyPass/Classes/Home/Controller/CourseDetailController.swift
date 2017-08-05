@@ -12,7 +12,8 @@ import ObjectMapper
 class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataSource,CourseOutline_Delegate,UITextViewDelegate {
 
     
-    @IBOutlet weak var playerView: PlayerVideoView!
+    @IBOutlet weak var playerBg: UIView!
+    var playerView = Bundle.main.loadNibNamed("PlayerVideoView", owner: nil, options: nil)?.first as! PlayerVideoView
     @IBOutlet weak var infoBtn: UIButton!//简介按钮
     @IBOutlet weak var outlineBtn: UIButton!//大纲按钮
     @IBOutlet weak var lineLeft: NSLayoutConstraint!
@@ -49,8 +50,9 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
         
         NotificationCenter.default.addObserver(self, selector: #selector(loginStatusUpdate), name: NSNotification.Name(kLoginStatusUpdate), object: nil)
         
+        playerBg.addSubview(playerView)
         playerView.superController = self
-        playerView.oldView = view
+        playerView.oldView = playerBg
 
         tableView.register(UINib(nibName: "CourseCommentCell", bundle: Bundle.main), forCellReuseIdentifier: "CourseCommentCell")
         tableView.estimatedRowHeight = 60.0
@@ -79,6 +81,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableHeight.constant = tableView.contentSize.height
+        playerView.frame = playerBg.bounds
     }
     
     // MARK: - 登录状态有更新

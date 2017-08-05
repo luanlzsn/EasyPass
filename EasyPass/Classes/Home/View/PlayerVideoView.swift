@@ -31,7 +31,6 @@ class PlayerVideoView: UIView {
     weak var oldView: UIView?
     weak var superController: UIViewController?
     let fullController = FullPlayerVideoController()
-    var isLandscape = false//是否横屏
     var isFull = false
     
     deinit {
@@ -44,7 +43,7 @@ class PlayerVideoView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moviePlayDidEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
         NotificationCenter.default.addObserver(self, selector: #selector(appwillResignActive), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
         progressSlider.setThumbImage(UIImage(named: "player_slider"), for: .normal)
@@ -52,6 +51,9 @@ class PlayerVideoView: UIView {
     }
     
     func willDisappearController() {
+        if isFull {
+            return
+        }
         player?.pause()
         player?.currentItem?.cancelPendingSeeks()
         player?.currentItem?.asset.cancelLoading()
@@ -68,29 +70,26 @@ class PlayerVideoView: UIView {
     
     // MARK: - 转屏通知
     func deviceOrientationDidChange() {
-        if !Common.isVisibleWithController(viewController()!) {
+        if !Common.isVisibleWithController(viewController()!) || playerItem?.status != .readyToPlay {
             return
         }
         let orient = UIDevice.current.orientation
         weak var weakSelf = self
         if orient == .landscapeLeft || orient == .landscapeRight {
             if !isFull {
-                isLandscape = true
+                isFull = true
                 superController?.present(fullController, animated: false, completion: {
-                    weakSelf?.backgroundColor = UIColor.red
                     weakSelf?.fullController.view.addSubview(weakSelf!)
                     weakSelf?.landscapeLayout()
                 })
-                isFull = true
             }
         } else if orient == .portrait || orient == .portraitUpsideDown {
-            if !isFull {
-                isLandscape = false
+            if isFull {
+                isFull = false
                 fullController.dismiss(animated: false, completion: {
                     weakSelf?.oldView?.addSubview(weakSelf!)
                     weakSelf?.portraitLayout()
                 })
-                isFull = false
             }
         }
     }
@@ -108,15 +107,15 @@ class PlayerVideoView: UIView {
     }
     
     @IBAction func tapGestureClick() {
+        controlView.isHidden = !controlView.isHidden
+        if controlView.isHidden {
+            timer?.invalidate()
+            timer = nil
+        } else {
+            timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(hiddenControlView), userInfo: nil, repeats: false)
+        }
         if playBtn.isSelected {
-            controlView.isHidden = !controlView.isHidden
             playBtn.isHidden = controlView.isHidden
-            if controlView.isHidden {
-                timer?.invalidate()
-                timer = nil
-            } else {
-                timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(hiddenControlView), userInfo: nil, repeats: false)
-            }
         } else {
             playBtn.isHidden = false
         }
@@ -242,11 +241,11 @@ class PlayerVideoView: UIView {
     
     // MARK: - 缩放按钮点击事件
     @IBAction func zoomClick(_ sender: UIButton) {
-//        if isFull {
-//            UIDevice.setOrientation(.portrait)
-//        } else {
-//            UIDevice.setOrientation(.landscapeRight)
-//        }
+        if isFull {
+            UIDevice.setOrientation(.portrait)
+        } else {
+            UIDevice.setOrientation(.landscapeRight)
+        }
     }
     
     // MARK: - 视频播放完成
