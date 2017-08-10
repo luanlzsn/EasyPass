@@ -21,6 +21,9 @@ class ShopCartCell: UITableViewCell {
     @IBOutlet weak var courseName: UILabel!
     @IBOutlet weak var numberTextField: UITextField!
     @IBOutlet weak var money: UILabel!
+    @IBOutlet weak var reduceBtn: UIButton!
+    @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var checkOutBtn: UIButton!
     weak var delegate : ShopCart_Delegate?
     
     override func awakeFromNib() {

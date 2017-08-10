@@ -12,12 +12,23 @@ import StoreKit
 
 class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSource,ShopCart_Delegate,SKPaymentTransactionObserver,SKProductsRequestDelegate {
 
+    @IBOutlet weak var videoBtn: UIButton!
+    @IBOutlet weak var reservationBtn: UIButton!
+    @IBOutlet weak var lineLeft: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableBottom: NSLayoutConstraint!
+    @IBOutlet weak var checkOutView: UIView!
     @IBOutlet weak var totalMoney: UILabel!
     @IBOutlet weak var onTax: UILabel!
     @IBOutlet weak var orderMoney: UILabel!
-    var shopCartArray = [ShopCartModel]()
-    var pageNo = 1
+    let editBtn = UIButton(type: UIButtonType.custom)
+    var videoArray = [ShopCartModel]()//视频课程数据
+    var reservationArray = [ShopCartModel]()//预约课程数据
+    var reservationSelectArray = [Int]()//选中的预约课程
+    var videoPageNo = 1//视频课程分页信息
+    var reservationPageNo = 1//预约课程分页信息
+    var videoNoMoreData = false//视频课程是否加载完
+    var reservationNoMoreData = false//预约课程是否加载完
     var receipt = ""//支付凭证
     var orderNo = ""//支付订单号
     var orderNum = 0//订单商品的数量
@@ -32,27 +43,136 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
 
         NotificationCenter.default.addObserver(self, selector: #selector(refreshShopCart), name: NSNotification.Name(kAddShopCartSuccess), object: nil)
         SKPaymentQueue.default().add(self)
+        
+        editBtn.setTitle("编辑", for: .normal)
+        editBtn.setTitle("完成", for: .selected)
+        editBtn.setTitleColor(UIColor.black, for: .normal)
+        editBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        editBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 30)
+        editBtn.addTarget(self, action: #selector(editShopCartClick), for: .touchUpInside)
+        editBtn.isHidden = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: editBtn)
+        
+        tableView.allowsMultipleSelectionDuringEditing = true
+        
         weak var weakSelf = self
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { 
-            weakSelf?.getShoppingCartList(pageNo: 1)
+            weakSelf?.getShoppingCartList(pageNo: 1, tag: (weakSelf!.videoBtn.isSelected ? 0 : 1))
         })
         tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: { 
-            weakSelf?.getShoppingCartList(pageNo: weakSelf!.pageNo + 1)
+            weakSelf?.getShoppingCartList(pageNo: (weakSelf!.videoBtn.isSelected ? weakSelf!.videoPageNo : weakSelf!.reservationPageNo) + 1, tag: (weakSelf!.videoBtn.isSelected ? 0 : 1))
         })
-        getShoppingCartList(pageNo: 1)
+        getShoppingCartList(pageNo: 1, tag: 0)
     }
     
-    func getShoppingCartList(pageNo: Int) {
-        weak var weakSelf = self
-        AntManage.postRequest(path: "shoppingcart/getShoppingCartByPage", params: ["token":AntManage.userModel!.token!, "pageNo":pageNo, "pageSize":20, "tag":0], successResult: { (response) in
-            weakSelf?.pageNo = response["pageNo"] as! Int
-            if weakSelf?.pageNo == 1 {
-                weakSelf?.shopCartArray.removeAll()
+    // MARK: - 视频课程
+    @IBAction func videoCourseClick(_ sender: UIButton) {
+        sender.isSelected = true
+        reservationBtn.isSelected = false
+        editBtn.isHidden = true
+        lineLeft.constant = 0
+        tableBottom.constant = 0
+        checkOutView.isHidden = true
+        tableView.isEditing = false
+        tableView.mj_footer.isHidden = videoNoMoreData
+        tableView.reloadData()
+    }
+    
+    // MARK: - 预约课程
+    @IBAction func reservationCourseClick(_ sender: UIButton) {
+        sender.isSelected = true
+        videoBtn.isSelected = false
+        editBtn.isHidden = false
+        tableView.isEditing = editBtn.isSelected
+        lineLeft.constant = kScreenWidth / 2.0
+        tableBottom.constant = 135
+        checkOutView.isHidden = false
+        tableView.mj_footer.isHidden = reservationNoMoreData
+        tableView.reloadData()
+        if reservationArray.count == 0, !reservationNoMoreData {
+            getShoppingCartList(pageNo: 1, tag: 1)
+        }
+    }
+    
+    // MARK: - 预约课程提交订单
+    @IBAction func checkOutClick() {
+        if reservationArray.count == 0 || editBtn.isSelected, reservationSelectArray.count == 0 {
+            AntManage.showDelayToast(message: "请选择！")
+            return
+        }
+        var totalPrice: Float = 0.0//商品总价
+        var totalOnTax: Float = 0.0//商品总税务
+        var orderItemList = [[String : Any]]()
+        for shopCartModel in reservationArray {
+            if !editBtn.isSelected || reservationSelectArray.contains(shopCartModel.id!) {
+                var orderItem = ["shoppingCartId":shopCartModel.id! ,"courseId":shopCartModel.courseId!, "quantity":shopCartModel.quantity!] as [String : Any]
+                let quantity = (shopCartModel.quantity != nil) ? shopCartModel.quantity! : 0
+                var price: Float = 0.0//商品价格
+                var onTax: Float = 0.0//商品税务
+                
+                if shopCartModel.courseHourId == nil {
+                    if shopCartModel.tag == 0 {
+                        price = (shopCartModel.coursePriceIos != nil) ? shopCartModel.coursePriceIos! : 0.0
+                    } else {
+                        price = (shopCartModel.coursePrice != nil) ? shopCartModel.coursePrice! : 0.0
+                    }
+                    onTax = (shopCartModel.courseOnTax != nil) ? shopCartModel.courseOnTax! : 0.0
+                } else {
+                    price = (shopCartModel.courseHourPriceIos != nil) ? shopCartModel.courseHourPriceIos! : 0.0
+                    onTax = (shopCartModel.courseHourOnTax != nil) ? shopCartModel.courseHourOnTax! : 0.0
+                    orderItem["courseClassHourId"] = shopCartModel.courseHourId!
+                }
+                orderItem["price"] = price
+                orderItem["onTax"] = onTax
+                totalPrice += price * Float.init(quantity)
+                totalOnTax += onTax * Float.init(quantity)
+                orderItemList.append(orderItem)
             }
-            weakSelf?.shopCartArray += Mapper<ShopCartModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+        }
+        weak var weakSelf = self
+        AntManage.postSumbitOrder(body: ["orderItemList":orderItemList, "totalPrice":totalPrice, "totalOnTax":totalOnTax, "orderTotalPrice":totalPrice + totalOnTax], successResult: { (response) in
+            AntManage.showDelayToast(message: "订单提交成功！")
+            weakSelf?.orderNo = response["orderNo"] as! String
+            if weakSelf!.editBtn.isSelected {
+                weakSelf?.editShopCartClick()
+            }
+        }, failureResult: {})
+    }
+    
+    // MARK: - 编辑购物车
+    func editShopCartClick() {
+        editBtn.isSelected = !editBtn.isSelected
+        tableView.isEditing = editBtn.isSelected
+        if !tableView.isEditing {
+            reservationSelectArray.removeAll()
+        }
+        refreshReservationCheckOutView()
+        tableView.reloadData()
+    }
+    
+    // MARK: - 请求数据
+    func getShoppingCartList(pageNo: Int, tag: Int) {
+        weak var weakSelf = self
+        AntManage.postRequest(path: "shoppingcart/getShoppingCartByPage", params: ["token":AntManage.userModel!.token!, "pageNo":pageNo, "pageSize":20, "tag":tag], successResult: { (response) in
+            if tag == 0 {
+                weakSelf?.videoPageNo = response["pageNo"] as! Int
+                if weakSelf?.videoPageNo == 1 {
+                    weakSelf?.videoArray.removeAll()
+                }
+                weakSelf?.videoArray += Mapper<ShopCartModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+                weakSelf?.videoNoMoreData = (weakSelf!.videoPageNo >= (response["totalPage"] as! Int))
+            } else {
+                weakSelf?.reservationPageNo = response["pageNo"] as! Int
+                if weakSelf?.reservationPageNo == 1 {
+                    weakSelf?.reservationArray.removeAll()
+                }
+                weakSelf?.reservationArray += Mapper<ShopCartModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+                weakSelf?.reservationNoMoreData = (weakSelf!.reservationPageNo >= (response["totalPage"] as! Int))
+                weakSelf?.refreshReservationCheckOutView()
+            }
             weakSelf?.tableView.mj_header.endRefreshing()
             weakSelf?.tableView.mj_footer.endRefreshing()
-            weakSelf?.tableView.mj_footer.isHidden = (weakSelf!.pageNo >= (response["totalPage"] as! Int))
+            weakSelf?.tableView.mj_footer.isHidden = weakSelf!.videoBtn.isSelected ? weakSelf!.videoNoMoreData : weakSelf!.reservationNoMoreData
             weakSelf?.tableView.reloadData()
         }, failureResult: {
             weakSelf?.tableView.mj_header.endRefreshing()
@@ -60,8 +180,28 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         })
     }
     
+    // MARK: - 更新购物车数据
     func refreshShopCart() {
-        getShoppingCartList(pageNo: 1)
+        getShoppingCartList(pageNo: 1, tag: 0)
+        getShoppingCartList(pageNo: 1, tag: 1)
+    }
+    
+    // MARK: - 刷新预约课程选中信息
+    func refreshReservationCheckOutView() {
+        var totalPrice: Float = 0.0//商品总价
+        var totalOnTax: Float = 0.0//商品总税务
+        for model in reservationArray {
+            if !editBtn.isSelected || reservationSelectArray.contains(model.id!) {
+                let price: Float = (model.coursePrice != nil) ? model.coursePrice! : 0.0
+                let onTax: Float = (model.courseOnTax != nil) ? model.courseOnTax! : 0.0
+                let quantity = (model.quantity != nil) ? model.quantity! : 0
+                totalPrice += price * Float.init(quantity)
+                totalOnTax += onTax * Float.init(quantity)
+            }
+        }
+        totalMoney.text = "$\(totalPrice)"
+        onTax.text = "$\(totalOnTax)"
+        orderMoney.text = "$\(totalPrice + totalOnTax)"
     }
     
     // MARK: - 内购
@@ -86,10 +226,6 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
             weakSelf?.performSegue(withIdentifier: "PaymentResults", sender: false)
         })
     }
-
-    @IBAction func checkOutClick() {
-        
-    }
     
     // MARK: - 跳转
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,7 +238,7 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
     // MARK: - ShopCart_Delegate
     func reduceNumber(row: Int) {
         weak var weakSelf = self
-        let shopCartModel = shopCartArray[row]
+        let shopCartModel = reservationArray[row]
         if shopCartModel.quantity == 1 {
             return
         }
@@ -113,12 +249,15 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: params, successResult: { (_) in
             shopCartModel.quantity = shopCartModel.quantity! - 1
             weakSelf?.tableView.reloadData()
+            if weakSelf!.reservationBtn.isSelected {
+                weakSelf?.refreshReservationCheckOutView()
+            }
         }, failureResult: {})
     }
     
     func addNumber(row: Int) {
         weak var weakSelf = self
-        let shopCartModel = shopCartArray[row]
+        let shopCartModel = reservationArray[row]
         var params = ["token":AntManage.userModel!.token!, "courseId":shopCartModel.courseId!, "number":1, "add":false] as [String : Any]
         if shopCartModel.courseHourId != nil {
             params["classHourId"] = shopCartModel.courseHourId!
@@ -126,20 +265,31 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: params, successResult: { (_) in
             shopCartModel.quantity = shopCartModel.quantity! + 1
             weakSelf?.tableView.reloadData()
+            if weakSelf!.reservationBtn.isSelected {
+                weakSelf?.refreshReservationCheckOutView()
+            }
         }, failureResult: {})
     }
     
     func deleteShopCart(row: Int) {
         weak var weakSelf = self
-        let shopCartModel = shopCartArray[row]
+        let shopCartModel = videoBtn.isSelected ? videoArray[row] : reservationArray[row]
         AntManage.postRequest(path: "shoppingcart/deleteShoppingCart", params: ["token":AntManage.userModel!.token!, "ids":shopCartModel.id!], successResult: { (response) in
-            weakSelf?.shopCartArray.remove(at: row)
+            if weakSelf!.videoBtn.isSelected {
+                weakSelf?.videoArray.remove(at: row)
+            } else {
+                weakSelf?.reservationArray.remove(at: row)
+                if (weakSelf?.reservationSelectArray.contains(shopCartModel.id!))! {
+                    weakSelf?.reservationSelectArray.remove(at: weakSelf!.reservationSelectArray.index(of: shopCartModel.id!)!)
+                }
+                weakSelf?.refreshReservationCheckOutView()
+            }
             weakSelf?.tableView.reloadData()
         }, failureResult: {})
     }
     
     func checkOut(row: Int) {
-        let shopCartModel = shopCartArray[row]
+        let shopCartModel = videoArray[row]
         var orderItemList = ["shoppingCartId":shopCartModel.id! ,"courseId":shopCartModel.courseId!, "quantity":shopCartModel.quantity!] as [String : Any]
         var appleProductId = ""
         let quantity = (shopCartModel.quantity != nil) ? shopCartModel.quantity! : 0
@@ -171,15 +321,13 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
             AntManage.showDelayToast(message: "订单提交成功！")
             weakSelf?.orderNo = response["orderNo"] as! String
             weakSelf?.orderNum = quantity
-            weakSelf?.shopCartArray.remove(at: row)
-            weakSelf?.tableView.reloadData()
             weakSelf?.buyCourseWithIAP(appleProductId: appleProductId)
         }, failureResult: {})
     }
     
     // MARK: - UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shopCartArray.count
+        return videoBtn.isSelected ? videoArray.count : reservationArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -194,9 +342,12 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         let cell: ShopCartCell = tableView.dequeueReusableCell(withIdentifier: "ShopCartCell", for: indexPath) as! ShopCartCell
         cell.delegate = self
         cell.tag = indexPath.row
-        let shopCartModel = shopCartArray[indexPath.row]
+        let shopCartModel = videoBtn.isSelected ? videoArray[indexPath.row] : reservationArray[indexPath.row]
         cell.courseImage.sd_setImage(with: URL(string: shopCartModel.photo!), placeholderImage: UIImage(named: "default_image"))
         if shopCartModel.tag == 0 {
+            cell.reduceBtn.isHidden = true
+            cell.addBtn.isHidden = true
+            cell.checkOutBtn.isHidden = false
             if shopCartModel.courseHourId != nil {
                 cell.courseName.text = shopCartModel.gradeName! + "\n\n" + shopCartModel.lessonPeriod! + " " + shopCartModel.classHourName!
                 cell.money.text = "$" + "\((shopCartModel.courseHourPrice != nil) ? shopCartModel.courseHourPrice! : 0.0)"
@@ -207,6 +358,16 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
                 cell.numberTextField.text = "\(shopCartModel.quantity!)"
             }
         } else {
+            if tableView.isEditing {
+                if reservationSelectArray.contains(shopCartModel.id!) {
+                    tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+                } else {
+                    tableView.deselectRow(at: indexPath, animated: false)
+                }
+            }
+            cell.reduceBtn.isHidden = false
+            cell.addBtn.isHidden = false
+            cell.checkOutBtn.isHidden = true
             cell.courseName.text = shopCartModel.gradeName! + "\n\n预约课程 " + shopCartModel.teacher!
             cell.money.text = "$" + "\(shopCartModel.coursePrice!)"
             cell.numberTextField.text = "\(shopCartModel.quantity!)"
@@ -215,10 +376,28 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.isEditing {
+            let shopCartModel = reservationArray[indexPath.row]
+            if !reservationSelectArray.contains(shopCartModel.id!) {
+                reservationSelectArray.append(shopCartModel.id!)
+                refreshReservationCheckOutView()
+            }
+            return
+        }
         tableView.deselectRow(at: indexPath, animated: true)
         let courseDetail = UIStoryboard(name: "Home", bundle: Bundle.main).instantiateViewController(withIdentifier: "CourseDetail") as! CourseDetailController
-        courseDetail.courseId = shopCartArray[indexPath.row].courseId!
+        courseDetail.courseId = videoBtn.isSelected ? videoArray[indexPath.row].courseId! : reservationArray[indexPath.row].courseId!
         navigationController?.pushViewController(courseDetail, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if tableView.isEditing {
+            let shopCartModel = reservationArray[indexPath.row]
+            if reservationSelectArray.contains(shopCartModel.id!) {
+                reservationSelectArray.remove(at: reservationSelectArray.index(of: shopCartModel.id!)!)
+                refreshReservationCheckOutView()
+            }
+        }
     }
     
     // MARK: - SKProductsRequestDelegate

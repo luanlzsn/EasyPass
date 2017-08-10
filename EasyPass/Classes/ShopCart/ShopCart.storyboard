@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Bex-1o-My7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Bex-1o-My7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,8 +23,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOH-oE-tS9">
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqb-1B-0Az">
+                                        <rect key="frame" x="0.0" y="40" width="375" height="0.5"/>
+                                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="wc3-Od-NtZ"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kX7-r5-6iZ">
+                                        <rect key="frame" x="0.0" y="0.5" width="187.5" height="40"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <state key="normal" title="视频课程">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="videoCourseClick:" destination="zX6-yA-SnO" eventType="touchUpInside" id="wj9-Cm-3PI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0U-cu-DuR">
+                                        <rect key="frame" x="187.5" y="0.5" width="187.5" height="40"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <state key="normal" title="预约课程">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="reservationCourseClick:" destination="zX6-yA-SnO" eventType="touchUpInside" id="4Tx-VT-oCl"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UlZ-I5-ZaV">
+                                        <rect key="frame" x="0.0" y="38.5" width="187.5" height="2"/>
+                                        <color key="backgroundColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="tQI-yq-ffe"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="kX7-r5-6iZ" firstAttribute="centerX" secondItem="gOH-oE-tS9" secondAttribute="centerX" multiplier="0.5" id="0UB-Mg-OPH"/>
+                                    <constraint firstItem="gqb-1B-0Az" firstAttribute="centerX" secondItem="gOH-oE-tS9" secondAttribute="centerX" id="1Xw-Dq-7c6"/>
+                                    <constraint firstAttribute="bottom" secondItem="UlZ-I5-ZaV" secondAttribute="bottom" id="Gqi-pe-kSe"/>
+                                    <constraint firstAttribute="height" constant="40" id="IB5-I8-YXt"/>
+                                    <constraint firstAttribute="bottom" secondItem="gqb-1B-0Az" secondAttribute="bottom" id="IEE-0O-4K2"/>
+                                    <constraint firstItem="r0U-cu-DuR" firstAttribute="centerY" secondItem="gOH-oE-tS9" secondAttribute="centerY" id="RlL-cg-Kxn"/>
+                                    <constraint firstItem="kX7-r5-6iZ" firstAttribute="width" secondItem="gOH-oE-tS9" secondAttribute="width" multiplier="0.5" id="egy-WU-TvU"/>
+                                    <constraint firstItem="UlZ-I5-ZaV" firstAttribute="width" secondItem="gOH-oE-tS9" secondAttribute="width" multiplier="0.5" id="gZS-Mu-fee"/>
+                                    <constraint firstItem="r0U-cu-DuR" firstAttribute="leading" secondItem="kX7-r5-6iZ" secondAttribute="trailing" id="jms-Xn-cUd"/>
+                                    <constraint firstItem="kX7-r5-6iZ" firstAttribute="height" secondItem="gOH-oE-tS9" secondAttribute="height" id="lMd-NH-Yg7"/>
+                                    <constraint firstItem="gqb-1B-0Az" firstAttribute="width" secondItem="gOH-oE-tS9" secondAttribute="width" id="mu7-xc-pXM"/>
+                                    <constraint firstItem="UlZ-I5-ZaV" firstAttribute="leading" secondItem="gOH-oE-tS9" secondAttribute="leading" id="mwc-IF-8il"/>
+                                    <constraint firstItem="r0U-cu-DuR" firstAttribute="width" secondItem="kX7-r5-6iZ" secondAttribute="width" id="ntj-BC-e6m"/>
+                                    <constraint firstItem="kX7-r5-6iZ" firstAttribute="centerY" secondItem="gOH-oE-tS9" secondAttribute="centerY" id="vVa-ZT-ot8"/>
+                                    <constraint firstItem="r0U-cu-DuR" firstAttribute="height" secondItem="kX7-r5-6iZ" secondAttribute="height" id="zyq-wr-eE9"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="120" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mvd-7n-t2e">
-                                <rect key="frame" x="-0.5" y="64" width="375" height="554"/>
+                                <rect key="frame" x="-0.5" y="104" width="375" height="514"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShopCartCell" rowHeight="120" id="W2f-j5-jMs" customClass="ShopCartCell" customModule="EasyPass" customModuleProvider="target">
@@ -40,7 +104,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hob-fl-uHp">
-                                                    <rect key="frame" x="129.5" y="9" width="175.5" height="50.5"/>
+                                                    <rect key="frame" x="129.5" y="9" width="187.5" height="50.5"/>
                                                     <string key="text">大学二年级
 Mathematics Level Two
 线下预约 高老师</string>
@@ -89,7 +153,7 @@ Mathematics Level Two
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mrj-tr-qh5">
-                                                    <rect key="frame" x="320" y="46.5" width="25" height="25"/>
+                                                    <rect key="frame" x="332" y="46.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="4wK-s2-DN5"/>
                                                         <constraint firstAttribute="width" secondItem="Mrj-tr-qh5" secondAttribute="height" id="QDZ-VJ-P8C"/>
@@ -119,6 +183,7 @@ Mathematics Level Two
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="xRt-Fe-DmX" firstAttribute="height" secondItem="Qkm-Hl-WCt" secondAttribute="height" constant="-20" id="0fc-40-Gf5"/>
+                                                <constraint firstItem="xRt-Fe-DmX" firstAttribute="leading" secondItem="Qkm-Hl-WCt" secondAttribute="leadingMargin" constant="7" id="BOU-Sw-DWk"/>
                                                 <constraint firstItem="M6U-MH-kfv" firstAttribute="centerY" secondItem="lDH-Zj-KGY" secondAttribute="centerY" id="BTR-gv-3mC"/>
                                                 <constraint firstItem="Mrj-tr-qh5" firstAttribute="leading" secondItem="hob-fl-uHp" secondAttribute="trailing" constant="15" id="ENM-HY-IA9"/>
                                                 <constraint firstItem="IG0-c8-TyO" firstAttribute="centerY" secondItem="Aih-Il-KrL" secondAttribute="centerY" id="EgB-CA-VBb"/>
@@ -130,6 +195,7 @@ Mathematics Level Two
                                                 <constraint firstItem="j8E-Tp-yFo" firstAttribute="centerY" secondItem="Aih-Il-KrL" secondAttribute="centerY" id="Xy6-OB-JVk"/>
                                                 <constraint firstItem="IG0-c8-TyO" firstAttribute="height" secondItem="kzE-YY-FCu" secondAttribute="height" id="YHX-41-L3o"/>
                                                 <constraint firstItem="kzE-YY-FCu" firstAttribute="centerY" secondItem="Aih-Il-KrL" secondAttribute="centerY" id="bRr-5B-Dbu"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Mrj-tr-qh5" secondAttribute="trailing" constant="10" id="cRb-O3-XmY"/>
                                                 <constraint firstItem="lDH-Zj-KGY" firstAttribute="leading" secondItem="Aih-Il-KrL" secondAttribute="leading" id="jWh-XN-UIM"/>
                                                 <constraint firstItem="Aih-Il-KrL" firstAttribute="leading" secondItem="hob-fl-uHp" secondAttribute="leading" id="kvW-7q-CmS"/>
                                                 <constraint firstItem="lDH-Zj-KGY" firstAttribute="bottom" secondItem="xRt-Fe-DmX" secondAttribute="bottom" id="pg0-8G-naW"/>
@@ -140,15 +206,14 @@ Mathematics Level Two
                                                 <constraint firstItem="IG0-c8-TyO" firstAttribute="width" secondItem="kzE-YY-FCu" secondAttribute="width" id="zwz-ss-etT"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Mrj-tr-qh5" secondAttribute="trailing" constant="30" id="Mr3-KY-8o1"/>
-                                            <constraint firstItem="xRt-Fe-DmX" firstAttribute="leading" secondItem="W2f-j5-jMs" secondAttribute="leading" constant="15" id="lMy-Qh-qIQ"/>
-                                        </constraints>
                                         <connections>
+                                            <outlet property="addBtn" destination="IG0-c8-TyO" id="a0B-Mb-wmv"/>
+                                            <outlet property="checkOutBtn" destination="M6U-MH-kfv" id="tnW-5i-aBe"/>
                                             <outlet property="courseImage" destination="xRt-Fe-DmX" id="v0f-Xp-gh7"/>
                                             <outlet property="courseName" destination="hob-fl-uHp" id="RxJ-4j-mM5"/>
                                             <outlet property="money" destination="lDH-Zj-KGY" id="Iju-68-BjV"/>
                                             <outlet property="numberTextField" destination="j8E-Tp-yFo" id="CXW-za-2CN"/>
+                                            <outlet property="reduceBtn" destination="kzE-YY-FCu" id="LpT-II-7Ez"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -234,19 +299,27 @@ Mathematics Level Two
                         <constraints>
                             <constraint firstItem="CGk-gY-Uit" firstAttribute="top" secondItem="mvd-7n-t2e" secondAttribute="bottom" id="84F-mO-b9Y"/>
                             <constraint firstItem="CGk-gY-Uit" firstAttribute="top" secondItem="Aqk-Oc-RBo" secondAttribute="bottom" id="8sd-ya-U80"/>
+                            <constraint firstItem="mvd-7n-t2e" firstAttribute="top" secondItem="gOH-oE-tS9" secondAttribute="bottom" id="BZ5-Y1-10H"/>
                             <constraint firstItem="Aqk-Oc-RBo" firstAttribute="centerX" secondItem="vsR-Tt-OGc" secondAttribute="centerX" id="EHf-W3-R5T"/>
                             <constraint firstItem="mvd-7n-t2e" firstAttribute="width" secondItem="vsR-Tt-OGc" secondAttribute="width" id="OA7-D3-9pf"/>
+                            <constraint firstItem="gOH-oE-tS9" firstAttribute="width" secondItem="vsR-Tt-OGc" secondAttribute="width" id="Ug8-kk-gfz"/>
                             <constraint firstItem="Aqk-Oc-RBo" firstAttribute="width" secondItem="vsR-Tt-OGc" secondAttribute="width" id="VP7-C6-nbR"/>
-                            <constraint firstItem="mvd-7n-t2e" firstAttribute="top" secondItem="H8P-yK-ZAD" secondAttribute="bottom" id="VSr-kb-JPh"/>
+                            <constraint firstItem="gOH-oE-tS9" firstAttribute="top" secondItem="H8P-yK-ZAD" secondAttribute="bottom" id="ahu-H4-3lW"/>
+                            <constraint firstItem="gOH-oE-tS9" firstAttribute="centerX" secondItem="vsR-Tt-OGc" secondAttribute="centerX" id="i2Y-b7-vNQ"/>
                             <constraint firstItem="mvd-7n-t2e" firstAttribute="centerX" secondItem="vsR-Tt-OGc" secondAttribute="centerX" id="s6B-9C-9Bv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="购物车" id="pwr-Hg-6bZ"/>
                     <connections>
+                        <outlet property="checkOutView" destination="Aqk-Oc-RBo" id="oI1-n9-BvP"/>
+                        <outlet property="lineLeft" destination="mwc-IF-8il" id="t2E-Xf-UP7"/>
                         <outlet property="onTax" destination="A69-y9-fCh" id="l7w-Xm-Wxz"/>
                         <outlet property="orderMoney" destination="DwM-zl-rHR" id="b2e-IP-suU"/>
+                        <outlet property="reservationBtn" destination="r0U-cu-DuR" id="txO-dk-vTB"/>
+                        <outlet property="tableBottom" destination="84F-mO-b9Y" id="idS-8m-2hT"/>
                         <outlet property="tableView" destination="mvd-7n-t2e" id="IDQ-ZL-sk6"/>
                         <outlet property="totalMoney" destination="7go-fV-Vsg" id="GbP-dW-fUc"/>
+                        <outlet property="videoBtn" destination="kX7-r5-6iZ" id="R18-bg-xZi"/>
                         <segue destination="X3K-Fx-E6N" kind="show" identifier="PaymentResults" id="yhX-v3-j4l"/>
                     </connections>
                 </viewController>
@@ -359,7 +432,7 @@ Mathematics Level Two
         <image name="default_image" width="150" height="150"/>
         <image name="payment_successful" width="73" height="73"/>
         <image name="reduce_number" width="18" height="18"/>
-        <image name="shopCart_cancel" width="17" height="17"/>
+        <image name="shopCart_cancel" width="24" height="24"/>
         <image name="shopCart_icon" width="25" height="25"/>
         <image name="shopCart_icon_select" width="25" height="25"/>
     </resources>
