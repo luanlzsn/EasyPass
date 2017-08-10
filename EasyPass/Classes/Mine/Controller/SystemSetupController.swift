@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SystemSetupController: AntController,UITableViewDelegate,UITableViewDataSource,SystemSetup_Delegate {
 
     @IBOutlet weak var tableView: UITableView!
-    let titleArray = ["消息提醒","仅在Wi-Fi下观看"]
+    let titleArray = ["消息提醒","仅在Wi-Fi下观看","清除缓存"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,16 +60,31 @@ class SystemSetupController: AntController,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SystemSetupCell", for: indexPath) as! SystemSetupCell
-        cell.delegate = self
-        cell.tag = indexPath.row
-        cell.titleLabel.text = titleArray[indexPath.row]
-        if indexPath.row == 0 {
-            cell.switchBtn.isOn = UserDefaults.standard.bool(forKey: "MessageSwitch")
+        if indexPath.row == titleArray.count - 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+            cell.textLabel?.text = titleArray[indexPath.row]
+            cell.detailTextLabel?.text = String.init(format: "%.2fM", Double(SDImageCache.shared().getSize()) / 1000.0 / 1000.0)
+            return cell
         } else {
-            cell.switchBtn.isOn = UserDefaults.standard.bool(forKey: "WifiSwitch")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SystemSetupCell", for: indexPath) as! SystemSetupCell
+            cell.delegate = self
+            cell.tag = indexPath.row
+            cell.titleLabel.text = titleArray[indexPath.row]
+            if indexPath.row == 0 {
+                cell.switchBtn.isOn = UserDefaults.standard.bool(forKey: "MessageSwitch")
+            } else {
+                cell.switchBtn.isOn = UserDefaults.standard.bool(forKey: "WifiSwitch")
+            }
+            return cell
         }
-        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == titleArray.count - 1 {
+            SDImageCache.shared().clearDisk(onCompletion: nil)
+            tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {

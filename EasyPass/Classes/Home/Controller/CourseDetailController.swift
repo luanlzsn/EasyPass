@@ -26,7 +26,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     @IBOutlet var levelImageArray: [UIImageView]!//难度图片数组
     @IBOutlet weak var money: UILabel!//价格
     @IBOutlet weak var classHour: UILabel!//课时
-    @IBOutlet weak var buyBtn: UIButton!
+    @IBOutlet weak var buyBtn: UIButton!//购买按钮
     @IBOutlet weak var detailLabel: UILabel!//详情
     @IBOutlet weak var suitableCrowd: UILabel!//适合人群
     @IBOutlet weak var learningGoal: UILabel!//学习目标
@@ -147,6 +147,12 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
         if courseModel?.tag == 1 {
             buyBtn.setTitle("预约", for: .normal)
             outlineBtn.isHidden = true
+        } else {
+            if (courseModel?.buyFlag)! || (courseModel?.courseHourBuyFlag)! {
+                buyBtn.setTitle("查看课时", for: .normal)
+            } else {
+                buyBtn.setTitle("购买课程", for: .normal)
+            }
         }
         courseName.text = courseModel?.courseName
         credit.text = "学分\(courseModel!.credit!)"
@@ -157,10 +163,11 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
                 star.image = UIImage(named: "star_unselect")
             }
         }
-        money.text = "$" + ((courseModel?.price != nil) ? "\(courseModel!.price!)" : "0.0")
         if courseModel?.tag == 0 {
+            money.text = "$" + ((courseModel?.priceIos != nil) ? "\(courseModel!.priceIos!)" : "0.0")
             classHour.text = "/\(courseModel!.classHour!)课时"
         } else {
+            money.text = "$" + ((courseModel?.price != nil) ? "\(courseModel!.price!)" : "0.0")
             classHour.text = "/小时"
         }
         detailLabel.text = courseModel?.courseDetail
@@ -194,11 +201,9 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
 
     // MARK: - 购买课程
     @IBAction func buyCourseClick(_ sender: UIButton) {
-        if (courseModel?.buyFlag)! {
-            AntManage.showDelayToast(message: "您已购买过该课程,无需重复购买")
-            return
-        }
-        if Common.checkIsOperation(controller: self) {
+        if sender.currentTitle == "查看课时" {
+            outlineClick(outlineBtn)
+        } else if Common.checkIsOperation(controller: self) {
             AntManage.postRequest(path: "shoppingcart/addOrUpdateShoppingCart", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "number":1, "add":true], successResult: { (_) in
                 AntManage.showDelayToast(message: "加入购物车成功！")
                 NotificationCenter.default.post(name: NSNotification.Name(kAddShopCartSuccess), object: nil)
@@ -236,7 +241,24 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     
     // MARK: - 分享
     @IBAction func shareClick(_ sender: HomeMenuButton) {
-        
+        // 1.创建分享参数
+        let shareParames = NSMutableDictionary()
+        shareParames.ssdkSetupShareParams(byText: "分享内容 http://www.mob.com/",
+                                          images : UIImage(named: "shareImg.png"),
+                                          url : NSURL(string:"http://mob.com") as URL!,
+                                          title : "分享标题",
+                                          type : SSDKContentType.auto)
+        SSUIShareActionSheetStyle.setShareActionSheetStyle(.simple)
+        ShareSDK.showShareActionSheet(sender, items: [SSDKPlatformType.subTypeWechatSession.rawValue,SSDKPlatformType.subTypeWechatTimeline.rawValue], shareParams: shareParames) { (state, _, nil, entity, error, _) in
+            print("授权失败,错误描述:\(String(describing: error))")
+            switch state {
+                case SSDKResponseState.success: AntManage.showDelayToast(message: "分享成功")
+                case SSDKResponseState.fail:    AntManage.showDelayToast(message: "授权失败,错误描述:\(String(describing: error))")
+                case SSDKResponseState.cancel:  AntManage.showDelayToast(message: "取消分享")
+            default:
+                break
+            }
+        }
     }
     
     // MARK: - 客服
@@ -244,7 +266,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
         sender.isSelected = true
     }
     
-    // MARK: - 加入购物车
+    // MARK: - 显示购物车
     @IBAction func addShopCartClick(_ sender: UIButton) {
         if Common.checkIsOperation(controller: self) {
             tabBarController?.selectedIndex = 1
@@ -316,7 +338,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
                 cell.watchBtn.backgroundColor = Common.colorWithHexString(colorStr: "f9bd53")
                 cell.watchBtn.setTitle("观看", for: .normal)
             } else {
-                cell.money.text = "$ \((classHourModel.price != nil) ? classHourModel.price! : 0.0)"
+                cell.money.text = "$ \((classHourModel.priceIos != nil) ? classHourModel.priceIos! : 0.0)"
                 cell.money.isHidden = false
                 cell.classHour.isHidden = false
                 cell.watchBtn.backgroundColor = MainColor

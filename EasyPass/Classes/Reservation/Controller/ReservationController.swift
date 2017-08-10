@@ -156,10 +156,13 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
         cell.money.text = "$" + "\(model.price!)"
         if model.tag == 0 {
             cell.typeImage.image = UIImage(named: "video_course")
+            cell.money.text = "$" + ((model.priceIos != nil) ? "\(model.priceIos!)" : "0.0")
         } else if model.tag == 1 {
             cell.typeImage.image = UIImage(named: "reservation_course")
+            cell.money.text = "$" + ((model.price != nil) ? "\(model.price!)" : "0.0")
         } else {
             cell.typeImage.image = UIImage(named: "study_group")
+            cell.money.text = "$" + ((model.price != nil) ? "\(model.price!)" : "0.0")
         }
         for image in cell.starArray {
             if model.difficulty! > image.tag - 100 {

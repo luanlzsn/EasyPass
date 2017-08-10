@@ -157,11 +157,15 @@ class MyOrderController: AntController,UITableViewDelegate,UITableViewDataSource
         cell.courseImage.sd_setImage(with: URL(string: (order.photo != nil) ? order.photo! : ""), placeholderImage: UIImage(named: "default_image"))
         if order.courseHourId != nil {
             cell.courseName.text = order.lessonPeriod! + " " + order.classHourName!
-            cell.money.text = "$" + "\(order.courseHourPrice!)"
+            cell.money.text = "$" + ((order.courseHourPriceIos != nil) ? "\(order.courseHourPriceIos!)" : "0.0")
             cell.classHour.text = "/1课时"
         } else {
             cell.courseName.text = order.courseName
-            cell.money.text = "$" + "\(order.coursePrice!)"
+            if order.tag == 0 {
+                cell.money.text = "$" + ((order.coursePriceIos != nil) ? "\(order.coursePriceIos!)" : "0.0")
+            } else {
+                cell.money.text = "$" + ((order.coursePrice != nil) ? "\(order.coursePrice!)" : "0.0")
+            }
             cell.classHour.text = "/\(order.classHour!)课时"
         }
         cell.courseCredit.text = "学分\(order.credit!)"

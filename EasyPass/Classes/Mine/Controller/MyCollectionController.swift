@@ -142,14 +142,16 @@ class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataS
         cell.courseImage.sd_setImage(with: URL(string: courseModel.photo!), placeholderImage: UIImage(named: "default_image"))
         cell.courseName.text = courseModel.courseName
         cell.courseCredit.text = "学分\(courseModel.credit!)"
-        cell.money.text = "$" + "\(courseModel.price!)"
         cell.classHour.text = "/\(courseModel.classHour!)课时"
         if courseModel.tag == 0 {
             cell.typeImage.image = UIImage(named: "video_course")
+            cell.money.text = "$" + ((courseModel.priceIos != nil) ? "\(courseModel.priceIos!)" : "0.0")
         } else if courseModel.tag == 1 {
             cell.typeImage.image = UIImage(named: "reservation_course")
+            cell.money.text = "$" + ((courseModel.price != nil) ? "\(courseModel.price!)" : "0.0")
         } else {
             cell.typeImage.image = UIImage(named: "study_group")
+            cell.money.text = "$" + ((courseModel.price != nil) ? "\(courseModel.price!)" : "0.0")
         }
         for image in cell.starArray {
             if courseModel.difficulty! > image.tag - 100 {

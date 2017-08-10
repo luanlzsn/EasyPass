@@ -44,7 +44,7 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
     
     func getShoppingCartList(pageNo: Int) {
         weak var weakSelf = self
-        AntManage.postRequest(path: "shoppingcart/getShoppingCartByPage", params: ["token":AntManage.userModel!.token!, "pageNo":pageNo, "pageSize":20], successResult: { (response) in
+        AntManage.postRequest(path: "shoppingcart/getShoppingCartByPage", params: ["token":AntManage.userModel!.token!, "pageNo":pageNo, "pageSize":20, "tag":0], successResult: { (response) in
             weakSelf?.pageNo = response["pageNo"] as! Int
             if weakSelf?.pageNo == 1 {
                 weakSelf?.shopCartArray.removeAll()
@@ -140,27 +140,37 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
     
     func checkOut(row: Int) {
         let shopCartModel = shopCartArray[row]
-        var totalPrice: Float = 0.0
-        var totalOnTax: Float = 0.0
         var orderItemList = ["shoppingCartId":shopCartModel.id! ,"courseId":shopCartModel.courseId!, "quantity":shopCartModel.quantity!] as [String : Any]
         var appleProductId = ""
+        let quantity = (shopCartModel.quantity != nil) ? shopCartModel.quantity! : 0
+        var price: Float = 0.0//商品价格
+        var onTax: Float = 0.0//商品税务
+        var totalPrice: Float = 0.0//商品总价
+        var totalOnTax: Float = 0.0//商品总税务
+        
         if shopCartModel.courseHourId == nil {
-            orderItemList["price"] = (shopCartModel.coursePrice != nil) ? shopCartModel.coursePrice! : 0.0
-            orderItemList["onTax"] = shopCartModel.courseOnTax!
-            totalPrice = shopCartModel.coursePrice! * Float.init(shopCartModel.quantity!)
-            totalOnTax = shopCartModel.courseOnTax! * Float.init(shopCartModel.quantity!)
+            if shopCartModel.tag == 0 {
+                price = (shopCartModel.coursePriceIos != nil) ? shopCartModel.coursePriceIos! : 0.0
+            } else {
+                price = (shopCartModel.coursePrice != nil) ? shopCartModel.coursePrice! : 0.0
+            }
+            onTax = (shopCartModel.courseOnTax != nil) ? shopCartModel.courseOnTax! : 0.0
             appleProductId = shopCartModel.appleProductIdForCourse!
         } else {
-            orderItemList["price"] = (shopCartModel.courseHourPrice != nil) ? shopCartModel.courseHourPrice! : 0.0
-            orderItemList["onTax"] = shopCartModel.courseHourOnTax!
+            price = (shopCartModel.courseHourPriceIos != nil) ? shopCartModel.courseHourPriceIos! : 0.0
+            onTax = (shopCartModel.courseHourOnTax != nil) ? shopCartModel.courseHourOnTax! : 0.0
             orderItemList["courseClassHourId"] = shopCartModel.courseHourId!
             appleProductId = shopCartModel.appleProductIdForCourseHour!
         }
+        orderItemList["price"] = price
+        orderItemList["onTax"] = onTax
+        totalPrice = price * Float.init(quantity)
+        totalOnTax = onTax * Float.init(quantity)
         weak var weakSelf = self
         AntManage.postSumbitOrder(body: ["orderItemList":[orderItemList], "totalPrice":totalPrice, "totalOnTax":totalOnTax, "orderTotalPrice":totalPrice + totalOnTax], successResult: { (response) in
             AntManage.showDelayToast(message: "订单提交成功！")
             weakSelf?.orderNo = response["orderNo"] as! String
-            weakSelf?.orderNum = shopCartModel.quantity!
+            weakSelf?.orderNum = quantity
             weakSelf?.shopCartArray.remove(at: row)
             weakSelf?.tableView.reloadData()
             weakSelf?.buyCourseWithIAP(appleProductId: appleProductId)

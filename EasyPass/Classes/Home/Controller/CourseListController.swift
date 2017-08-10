@@ -161,14 +161,16 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
         cell.courseImage.sd_setImage(with: URL(string: model.photo!), placeholderImage: UIImage(named: "default_image"))
         cell.courseName.text = model.courseName
         cell.courseCredit.text = "学分\(model.credit!)"
-        cell.money.text = "$" + ((model.price != nil) ? "\(model.price!)" : "0.0")
         cell.classHour.text = "/\(model.classHour!)课时"
         if model.tag == 0 {
             cell.typeImage.image = UIImage(named: "video_course")
+            cell.money.text = "$" + ((model.priceIos != nil) ? "\(model.priceIos!)" : "0.0")
         } else if model.tag == 1 {
             cell.typeImage.image = UIImage(named: "reservation_course")
+            cell.money.text = "$" + ((model.price != nil) ? "\(model.price!)" : "0.0")
         } else {
             cell.typeImage.image = UIImage(named: "study_group")
+            cell.money.text = "$" + ((model.price != nil) ? "\(model.price!)" : "0.0")
         }
         for image in cell.starArray {
             if model.difficulty! > image.tag - 100 {

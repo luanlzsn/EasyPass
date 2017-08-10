@@ -154,9 +154,11 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectClassify = AntManage.classifyList[indexPath.row]
-        collectionView.reloadData()
-        performSegue(withIdentifier: "CourseList", sender: selectClassify)
+        if indexPath.section != 0 {
+            selectClassify = AntManage.classifyList[indexPath.row]
+            collectionView.reloadData()
+            performSegue(withIdentifier: "CourseList", sender: selectClassify)
+        }
     }
     
     override func didReceiveMemoryWarning() {

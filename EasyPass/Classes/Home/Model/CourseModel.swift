@@ -29,7 +29,7 @@ class CourseModel : NSObject, NSCoding, Mappable{
 	var shoppingCartPrice : Float?//购物车总价格
 	var shoppingCartQuantity : Int?//购物车数量
 	var studyGoal : String?//学习目标
-	var tag : Int?//标签（0：预约课程1：学习小组）
+	var tag : Int?//标签（0：视频课程 1：预约课程 2：学习小组）
 	var teacher : String?//课程老师
 	var teacherDesc : String?//老师描述
 	var term : Int?//学期
@@ -37,6 +37,7 @@ class CourseModel : NSObject, NSCoding, Mappable{
 	var videoHttpUrl : String?//视频外链
     var appleProductId : String?//苹果商店ID
     var buyFlag : Bool?//(ture:已购买flase：未购买)
+    var courseHourBuyFlag : Bool?//(ture:已购买课时flase：未购买课时)
 
 	class func newInstance(map: Map) -> Mappable?{
 		return CourseModel()
@@ -75,6 +76,7 @@ class CourseModel : NSObject, NSCoding, Mappable{
 		videoHttpUrl <- map["videoHttpUrl"]
         appleProductId <- map["appleProductId"]
         buyFlag <- map["buyFlag"]
+        courseHourBuyFlag <- map["courseHourBuyFlag"]
 		
 	}
 
@@ -113,6 +115,7 @@ class CourseModel : NSObject, NSCoding, Mappable{
          videoHttpUrl = aDecoder.decodeObject(forKey: "videoHttpUrl") as? String
          appleProductId = aDecoder.decodeObject(forKey: "appleProductId") as? String
          buyFlag = aDecoder.decodeObject(forKey: "buyFlag") as? Bool
+         courseHourBuyFlag = aDecoder.decodeObject(forKey: "courseHourBuyFlag") as? Bool
 
 	}
 
@@ -208,6 +211,9 @@ class CourseModel : NSObject, NSCoding, Mappable{
         }
         if buyFlag != nil{
             aCoder.encode(buyFlag, forKey: "buyFlag")
+        }
+        if courseHourBuyFlag != nil {
+            aCoder.encode(courseHourBuyFlag, forKey: "courseHourBuyFlag")
         }
 
 	}

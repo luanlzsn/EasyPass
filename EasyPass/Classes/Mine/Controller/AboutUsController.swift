@@ -17,12 +17,12 @@ class AboutUsController: AntController,UIWebViewDelegate {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "share_select")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .plain, target: self, action: #selector(shareClick))
         
-        weak var weakSelf = self
-        AntManage.postRequest(path: "setting/findBrochureByType", params: ["type":"aboutUs"], successResult: { (response) in
-            weakSelf?.webView.loadHTMLString("<div id=\"webview_content_wrapper\">\(response["data"] as! String)</div>", baseURL: nil)
-        }, failureResult: {
-            weakSelf?.navigationController?.popViewController(animated: true)
-        })
+//        weak var weakSelf = self
+//        AntManage.postRequest(path: "setting/findBrochureByType", params: ["type":"aboutUs"], successResult: { (response) in
+//            weakSelf?.webView.loadHTMLString("<div id=\"webview_content_wrapper\">\(response["data"] as! String)</div>", baseURL: nil)
+//        }, failureResult: {
+//            weakSelf?.navigationController?.popViewController(animated: true)
+//        })
     }
     
     func shareClick() {

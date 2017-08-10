@@ -15,10 +15,12 @@ class OrderModel : NSObject, NSCoding, Mappable{
 	var courseHourId : Int?
 	var courseHourOnTax : Float?
 	var courseHourPrice : Float?
+    var courseHourPriceIos : Float?
 	var courseId : Int?
 	var courseName : String?
 	var courseOnTax : Int?
 	var coursePrice : Int?
+    var coursePriceIos : Int?
 	var credit : Int?
 	var difficulty : Int?
 	var grade : Int?
@@ -51,10 +53,12 @@ class OrderModel : NSObject, NSCoding, Mappable{
 		courseHourId <- map["courseHourId"]
 		courseHourOnTax <- map["courseHourOnTax"]
 		courseHourPrice <- map["courseHourPrice"]
+        courseHourPriceIos <- map["courseHourPriceIos"]
 		courseId <- map["courseId"]
 		courseName <- map["courseName"]
 		courseOnTax <- map["courseOnTax"]
 		coursePrice <- map["coursePrice"]
+        coursePriceIos <- map["coursePriceIos"]
 		credit <- map["credit"]
 		difficulty <- map["difficulty"]
 		grade <- map["grade"]
@@ -86,10 +90,12 @@ class OrderModel : NSObject, NSCoding, Mappable{
          courseHourId = aDecoder.decodeObject(forKey: "courseHourId") as? Int
          courseHourOnTax = aDecoder.decodeObject(forKey: "courseHourOnTax") as? Float
          courseHourPrice = aDecoder.decodeObject(forKey: "courseHourPrice") as? Float
+         courseHourPriceIos = aDecoder.decodeObject(forKey: "courseHourPriceIos") as? Float
          courseId = aDecoder.decodeObject(forKey: "courseId") as? Int
          courseName = aDecoder.decodeObject(forKey: "courseName") as? String
          courseOnTax = aDecoder.decodeObject(forKey: "courseOnTax") as? Int
          coursePrice = aDecoder.decodeObject(forKey: "coursePrice") as? Int
+         coursePriceIos = aDecoder.decodeObject(forKey: "coursePriceIos") as? Int
          credit = aDecoder.decodeObject(forKey: "credit") as? Int
          difficulty = aDecoder.decodeObject(forKey: "difficulty") as? Int
          grade = aDecoder.decodeObject(forKey: "grade") as? Int
@@ -135,6 +141,9 @@ class OrderModel : NSObject, NSCoding, Mappable{
 		if courseHourPrice != nil{
 			aCoder.encode(courseHourPrice, forKey: "courseHourPrice")
 		}
+        if courseHourPriceIos != nil{
+            aCoder.encode(courseHourPriceIos, forKey: "courseHourPriceIos")
+        }
 		if courseId != nil{
 			aCoder.encode(courseId, forKey: "courseId")
 		}
@@ -147,6 +156,9 @@ class OrderModel : NSObject, NSCoding, Mappable{
 		if coursePrice != nil{
 			aCoder.encode(coursePrice, forKey: "coursePrice")
 		}
+        if coursePriceIos != nil{
+            aCoder.encode(coursePriceIos, forKey: "coursePriceIos")
+        }
 		if credit != nil{
 			aCoder.encode(credit, forKey: "credit")
 		}
