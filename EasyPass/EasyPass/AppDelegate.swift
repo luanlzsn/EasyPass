@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate {
     }
     
     func initializationShareSDK() {
-        ShareSDK.registerActivePlatforms([/*SSDKPlatformType.typeSinaWeibo.rawValue,*/SSDKPlatformType.typeWechat.rawValue/*,SSDKPlatformType.typeQQ.rawValue*/], onImport: {(platform : SSDKPlatformType) -> Void in
+        ShareSDK.registerActivePlatforms([/*SSDKPlatformType.typeSinaWeibo.rawValue,*/SSDKPlatformType.typeWechat.rawValue,SSDKPlatformType.typeQQ.rawValue], onImport: {(platform : SSDKPlatformType) -> Void in
                 switch platform {
                     case SSDKPlatformType.typeSinaWeibo:
                         ShareSDKConnector.connectWeibo(WeiboSDK.classForCoder())
@@ -67,9 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate {
                     case SSDKPlatformType.typeWechat:
                     //设置微信应用信息
                         appInfo?.ssdkSetupWeChat(byAppId: "wx8c30d0100c7d105e", appSecret: "63b7556c2808b26423e66d44c4c4d9f1")
-//                    case SSDKPlatformType.typeQQ:
-//                    //设置QQ应用信息
-//                        appInfo?.ssdkSetupQQ(byAppId: "100371282",  appKey: "aed9b0303e3ed1e27bae87c33761161d", authType: SSDKAuthTypeBoth)
+                    case SSDKPlatformType.typeQQ:
+                    //设置QQ应用信息
+                        appInfo?.ssdkSetupQQ(byAppId: "1106263260",  appKey: "SV4IKV9L2H3M7jm9", authType: SSDKAuthTypeBoth)
                     default:
                         break
                 }

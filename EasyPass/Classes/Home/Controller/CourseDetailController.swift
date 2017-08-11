@@ -241,24 +241,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     
     // MARK: - 分享
     @IBAction func shareClick(_ sender: HomeMenuButton) {
-        // 1.创建分享参数
-        let shareParames = NSMutableDictionary()
-        shareParames.ssdkSetupShareParams(byText: kShareContent,
-                                          images : UIImage(named: "share_icon"),
-                                          url : kShareUrl,
-                                          title : "Epass",
-                                          type : SSDKContentType.auto)
-        SSUIShareActionSheetStyle.setShareActionSheetStyle(.simple)
-        ShareSDK.showShareActionSheet(sender, items: [SSDKPlatformType.subTypeWechatSession.rawValue,SSDKPlatformType.subTypeWechatTimeline.rawValue], shareParams: shareParames) { (state, _, nil, entity, error, _) in
-            print("授权失败,错误描述:\(String(describing: error))")
-            switch state {
-                case SSDKResponseState.success: AntManage.showDelayToast(message: "分享成功")
-                case SSDKResponseState.fail:    AntManage.showDelayToast(message: "授权失败,错误描述:\(String(describing: error))")
-                case SSDKResponseState.cancel:  AntManage.showDelayToast(message: "取消分享")
-            default:
-                break
-            }
-        }
+        AntManage.shareInfo(view: sender)
     }
     
     // MARK: - 客服
