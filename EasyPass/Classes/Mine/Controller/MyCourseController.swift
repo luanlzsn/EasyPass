@@ -67,7 +67,9 @@ class MyCourseController: AntController,UITableViewDelegate,UITableViewDataSourc
             if weakSelf?.coursePage == 1 {
                 weakSelf?.courseArray.removeAll()
             }
-            weakSelf?.courseArray += Mapper<OrderModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            if response["list"] != nil, ((response["list"] as? [[String : Any]]) != nil) {
+                weakSelf?.courseArray += Mapper<OrderModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            }
             weakSelf?.tableView.mj_header.endRefreshing()
             weakSelf?.tableView.mj_footer.endRefreshing()
             weakSelf?.tableView.mj_footer.isHidden = (weakSelf!.coursePage >= (response["totalPage"] as! Int))

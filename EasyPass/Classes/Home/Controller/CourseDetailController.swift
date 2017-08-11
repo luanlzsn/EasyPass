@@ -243,10 +243,10 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     @IBAction func shareClick(_ sender: HomeMenuButton) {
         // 1.创建分享参数
         let shareParames = NSMutableDictionary()
-        shareParames.ssdkSetupShareParams(byText: "分享内容 http://www.mob.com/",
-                                          images : UIImage(named: "shareImg.png"),
+        shareParames.ssdkSetupShareParams(byText: "",
+                                          images : UIImage(named: "share_icon"),
                                           url : NSURL(string:"http://mob.com") as URL!,
-                                          title : "分享标题",
+                                          title : "Epass",
                                           type : SSDKContentType.auto)
         SSUIShareActionSheetStyle.setShareActionSheetStyle(.simple)
         ShareSDK.showShareActionSheet(sender, items: [SSDKPlatformType.subTypeWechatSession.rawValue,SSDKPlatformType.subTypeWechatTimeline.rawValue], shareParams: shareParames) { (state, _, nil, entity, error, _) in

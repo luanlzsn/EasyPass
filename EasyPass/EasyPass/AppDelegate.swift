@@ -41,6 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate {
             initializationJPush(launchOptions: launchOptions)
         }
         
+        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction:"AUMojnsuy-fD-a7eaYOmFrsLmakOE1t71PdeUTa17T6MbzVUpXvHt8kZeN8nqRK6DyRW-QXStSuKzr9n", PayPalEnvironmentSandbox:"AW5HC4HpB084o4zJUSBcVQmLDRk4AOCEplk529WbSaeuyxi0MdKMtfofVkaZkA7I2I21_6fkq10yydzj"])
+        PayPalMobile.preconnect(withEnvironment: PayPalEnvironmentSandbox)
+        
         return true
     }
     

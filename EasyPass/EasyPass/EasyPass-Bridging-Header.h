@@ -27,3 +27,5 @@
 #endif
 
 #import "UIDevice+JWDevice.h"
+
+#import "PayPalMobile.h"

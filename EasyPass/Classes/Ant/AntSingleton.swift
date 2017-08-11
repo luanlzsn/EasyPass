@@ -74,6 +74,36 @@ class AntSingleton: NSObject {
         dataTask.resume()
     }
     
+    func postCheckPaypal(body:[String : Any]?, orderNo:String, successResult:@escaping ([String : Any]) -> Void, failureResult:@escaping () -> Void) {
+        AntLog(message: "请求接口：paypal/checkPaypal,请求参数：\(String(describing: body)),订单号:\(orderNo)")
+        showMessage(message: "")
+        
+        let sarequestUrl = kRequestBaseUrl + "paypal/checkPaypal?token=\(userModel!.token!)&orderNo=\(orderNo)"
+        let formRequest = AFHTTPRequestSerializer().request(withMethod: "POST", urlString: sarequestUrl, parameters: nil, error: nil)
+        formRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        formRequest.timeoutInterval = kRequestTimeOut
+        formRequest.httpBody = (body! as NSDictionary).mj_JSONData()
+        
+        let manager = AFHTTPSessionManager()
+        
+        let responseSerializer = AFJSONResponseSerializer()
+        responseSerializer.acceptableContentTypes = Set(arrayLiteral: "application/json","text/json","text/javascript","text/html","text/plain")
+        manager.responseSerializer = responseSerializer
+        
+        weak var weakSelf = self
+        
+        let dataTask = manager.dataTask(with: formRequest as URLRequest) { (response, data, error) in
+            if error == nil {
+                weakSelf?.requestSuccess(response: data, successResult: successResult, failureResult: failureResult)
+            } else {
+                weakSelf?.hideMessage()
+                weakSelf?.showDelayToast(message: "未知错误，请重试！")
+                failureResult()
+            }
+        }
+        dataTask.resume()
+    }
+    
     // MARK: - get请求
     func getRequest(path:String, params:[String : Any]?, successResult:@escaping ([String : Any]) -> Void, failureResult:@escaping () -> Void) {
         AntLog(message: "请求接口：\(path),请求参数：\(String(describing: params))")

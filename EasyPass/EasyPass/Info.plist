@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>zh_CN</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -123,6 +123,9 @@
 		<string>mqq</string>
 		<string>mqqapi</string>
 		<string>timapi</string>
+		<string>com.paypal.ppclient.touch.v1</string>
+		<string>com.paypal.ppclient.touch.v2</string>
+		<string>org-appextension-feature-password-management</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>我们需要访问您的摄像头进行拍照</string>

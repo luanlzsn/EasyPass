@@ -103,8 +103,10 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         var totalPrice: Float = 0.0//商品总价
         var totalOnTax: Float = 0.0//商品总税务
         var orderItemList = [[String : Any]]()
+        var array = [ShopCartModel]()
         for shopCartModel in reservationArray {
             if !editBtn.isSelected || reservationSelectArray.contains(shopCartModel.id!) {
+                array.append(shopCartModel)
                 var orderItem = ["shoppingCartId":shopCartModel.id! ,"courseId":shopCartModel.courseId!, "quantity":shopCartModel.quantity!] as [String : Any]
                 let quantity = (shopCartModel.quantity != nil) ? shopCartModel.quantity! : 0
                 var price: Float = 0.0//商品价格
@@ -131,11 +133,12 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         }
         weak var weakSelf = self
         AntManage.postSumbitOrder(body: ["orderItemList":orderItemList, "totalPrice":totalPrice, "totalOnTax":totalOnTax, "orderTotalPrice":totalPrice + totalOnTax], successResult: { (response) in
-            AntManage.showDelayToast(message: "订单提交成功！")
             weakSelf?.orderNo = response["orderNo"] as! String
             if weakSelf!.editBtn.isSelected {
                 weakSelf?.editShopCartClick()
             }
+            weakSelf?.getShoppingCartList(pageNo: 1, tag: 1)
+            weakSelf?.performSegue(withIdentifier: "Paypal", sender: array)
         }, failureResult: {})
     }
     
@@ -232,6 +235,10 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         if segue.identifier == "PaymentResults" {
             let paymentResults = segue.destination as! PaymentResultsController
             paymentResults.resultsStatus = sender as! Bool
+        } else if segue.identifier == "Paypal" {
+            let paypal = segue.destination as! PaypalController
+            paypal.orderNo = orderNo
+            paypal.courseArray = sender as! [ShopCartModel]
         }
     }
     
@@ -321,6 +328,7 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
             AntManage.showDelayToast(message: "订单提交成功！")
             weakSelf?.orderNo = response["orderNo"] as! String
             weakSelf?.orderNum = quantity
+            weakSelf?.videoArray.remove(at: row)
             weakSelf?.buyCourseWithIAP(appleProductId: appleProductId)
         }, failureResult: {})
     }
@@ -368,7 +376,7 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
             cell.reduceBtn.isHidden = false
             cell.addBtn.isHidden = false
             cell.checkOutBtn.isHidden = true
-            cell.courseName.text = shopCartModel.gradeName! + "\n\n预约课程 " + shopCartModel.teacher!
+            cell.courseName.text = shopCartModel.gradeName! + "\n\(shopCartModel.courseName!)\n预约课程 " + shopCartModel.teacher!
             cell.money.text = "$" + "\(shopCartModel.coursePrice!)"
             cell.numberTextField.text = "\(shopCartModel.quantity!)"
         }

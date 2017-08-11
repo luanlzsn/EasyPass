@@ -67,7 +67,9 @@ class MyOrderController: AntController,UITableViewDelegate,UITableViewDataSource
             if weakSelf?.orderPage == 1 {
                 weakSelf?.orderArray.removeAll()
             }
-            weakSelf?.orderArray += Mapper<OrderModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            if response["list"] != nil, ((response["list"] as? [[String : Any]]) != nil) {
+                weakSelf?.orderArray += Mapper<OrderModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            }
             weakSelf?.tableView.mj_header.endRefreshing()
             weakSelf?.tableView.mj_footer.endRefreshing()
             weakSelf?.tableView.mj_footer.isHidden = (weakSelf!.orderPage >= (response["totalPage"] as! Int))
@@ -127,6 +129,7 @@ class MyOrderController: AntController,UITableViewDelegate,UITableViewDataSource
             AntManage.postRequest(path: "order/deleteOrder", params: ["token":AntManage.userModel!.token!, "orderNos":order!.orderNo!], successResult: { (response) in
                 weakSelf?.orderArray.remove(at: section)
                 weakSelf?.tableView.reloadData()
+                weakSelf?.getOrderByPage(pageNo: 1)
             }, failureResult: {})
         }))
         present(alert, animated: true, completion: nil)
