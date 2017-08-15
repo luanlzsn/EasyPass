@@ -329,6 +329,7 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
             weakSelf?.orderNo = response["orderNo"] as! String
             weakSelf?.orderNum = quantity
             weakSelf?.videoArray.remove(at: row)
+            weakSelf?.tableView.reloadData()
             weakSelf?.buyCourseWithIAP(appleProductId: appleProductId)
         }, failureResult: {})
     }
@@ -358,11 +359,11 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
             cell.checkOutBtn.isHidden = false
             if shopCartModel.courseHourId != nil {
                 cell.courseName.text = shopCartModel.gradeName! + "\n\n" + shopCartModel.lessonPeriod! + " " + shopCartModel.classHourName!
-                cell.money.text = "$" + "\((shopCartModel.courseHourPrice != nil) ? shopCartModel.courseHourPrice! : 0.0)"
+                cell.money.text = "$" + "\((shopCartModel.courseHourPriceIos != nil) ? shopCartModel.courseHourPriceIos! : 0.0)"
                 cell.numberTextField.text = "\(shopCartModel.quantity!)"
             } else {
                 cell.courseName.text = shopCartModel.gradeName! + "\n\n" + shopCartModel.courseName!
-                cell.money.text = "$" + "\((shopCartModel.coursePrice != nil) ? shopCartModel.coursePrice! : 0.0)"
+                cell.money.text = "$" + "\((shopCartModel.coursePriceIos != nil) ? shopCartModel.coursePriceIos! : 0.0)"
                 cell.numberTextField.text = "\(shopCartModel.quantity!)"
             }
         } else {

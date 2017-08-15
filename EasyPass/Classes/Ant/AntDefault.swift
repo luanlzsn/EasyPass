@@ -41,6 +41,7 @@ let kUserInfo = "kUserInfo"//登录用户的信息
 
 let kLoginStatusUpdate = "kLoginStatusUpdate"//登录状态更新通知
 let kAddShopCartSuccess = "kAddShopCartSuccess"//添加购物车成功通知
+let kPaypalPaymentSuccess = "kPaypalPaymentSuccess"//Paypal支付成功通知
 
 
 struct Platform {

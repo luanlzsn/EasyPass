@@ -14,7 +14,7 @@ class MyCourseController: AntController,UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var allCourseBtn: UIButton!
     @IBOutlet weak var timeBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    var courseArray = [OrderModel]()
+    var courseArray = [OrderItemModel]()
     var coursePage = 1
     var classifyModel: ClassifyModel?//选择的专业
     var grade = 0//年级
@@ -68,7 +68,7 @@ class MyCourseController: AntController,UITableViewDelegate,UITableViewDataSourc
                 weakSelf?.courseArray.removeAll()
             }
             if response["list"] != nil, ((response["list"] as? [[String : Any]]) != nil) {
-                weakSelf?.courseArray += Mapper<OrderModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+                weakSelf?.courseArray += Mapper<OrderItemModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
             }
             weakSelf?.tableView.mj_header.endRefreshing()
             weakSelf?.tableView.mj_footer.endRefreshing()

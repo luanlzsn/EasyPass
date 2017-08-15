@@ -11,7 +11,8 @@ import UIKit
 class PaypalController: AntController,PayPalPaymentDelegate {
     
     var orderNo = ""//订单号
-    var courseArray = [ShopCartModel]()
+    var courseArray = [ShopCartModel]()//购物车购买信息
+    var orderItemArray = [OrderItemModel]()//我的订单购买信息
     var payPalConfig = PayPalConfiguration()
 
     override func viewDidLoad() {
@@ -30,8 +31,14 @@ class PaypalController: AntController,PayPalPaymentDelegate {
         var items = [PayPalItem]()
         var tax: Float = 0.0
         for model in courseArray {
-            let price = (model.coursePrice != nil) ? model.coursePrice! : 0.0
-            let item = PayPalItem(name: model.courseName!, withQuantity: UInt(model.quantity!), withPrice: NSDecimalNumber(value: price), withCurrency: "USD", withSku: "\(model.courseId!)")
+            let price = String.init(format: "%.2f", (model.coursePrice != nil) ? model.coursePrice! : 0.0)
+            let item = PayPalItem(name: model.courseName!, withQuantity: UInt(model.quantity!), withPrice: NSDecimalNumber(string: price), withCurrency: "CAD", withSku: "\(model.courseId!)")
+            tax += (model.courseOnTax != nil) ? (model.courseOnTax! * Float.init(model.quantity!)) : 0.0
+            items.append(item)
+        }
+        for model in orderItemArray {
+            let price = String.init(format: "%.2f", (model.coursePrice != nil) ? model.coursePrice! : 0.0)
+            let item = PayPalItem(name: model.courseName!, withQuantity: UInt(model.quantity!), withPrice: NSDecimalNumber(string: price), withCurrency: "CAD", withSku: "\(model.courseId!)")
             tax += (model.courseOnTax != nil) ? (model.courseOnTax! * Float.init(model.quantity!)) : 0.0
             items.append(item)
         }
@@ -40,7 +47,7 @@ class PaypalController: AntController,PayPalPaymentDelegate {
         let taxNum = NSDecimalNumber(value: tax)
         let paymentDetails = PayPalPaymentDetails(subtotal: subtotal, withShipping: shipping, withTax: taxNum)
         let total = subtotal.adding(shipping).adding(taxNum)
-        let payment = PayPalPayment(amount: total, currencyCode: "USD", shortDescription: "课程购买", intent: .sale)
+        let payment = PayPalPayment(amount: total, currencyCode: "CAD", shortDescription: "课程购买", intent: .sale)
         
         payment.items = items
         payment.paymentDetails = paymentDetails
@@ -55,6 +62,7 @@ class PaypalController: AntController,PayPalPaymentDelegate {
         let createTime = (response["create_time"] as! String).replacingOccurrences(of: "T", with: " ").replacingOccurrences(of: "Z", with: "")
         let body = ["id":response["id"]!, "createTime":createTime, "intent":response["intent"]!, "state":response["state"]!, "amount":String.init(format: "%.2f", completedPayment.amount.doubleValue), "currencyCode":completedPayment.currencyCode] as [String : Any]
         AntManage.postCheckPaypal(body: body , orderNo: orderNo, successResult: { (_) in
+            NotificationCenter.default.post(name: NSNotification.Name(kPaypalPaymentSuccess), object: nil)
             weakSelf?.performSegue(withIdentifier: "PaymentResults", sender: true)
         }, failureResult: {
             weakSelf?.performSegue(withIdentifier: "PaymentResults", sender: false)

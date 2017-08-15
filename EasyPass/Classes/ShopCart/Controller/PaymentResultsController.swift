@@ -36,6 +36,12 @@ class PaymentResultsController: AntController {
         if resultsStatus {
             let nav = navigationController
             nav?.popToRootViewController(animated: false)
+            for controller in nav!.viewControllers {
+                if controller.isKind(of: MyOrderController.classForCoder()) {
+                    nav?.popToViewController(controller, animated: true)
+                    return
+                }
+            }
             perform(#selector(showMyOrder(nav:)), with: nav!, afterDelay: 0.01)
         } else {
             tabBarController?.selectedIndex = 0
@@ -48,7 +54,12 @@ class PaymentResultsController: AntController {
             tabBarController?.selectedIndex = 0
             navigationController?.popToRootViewController(animated: false)
         } else {
-            navigationController?.popToRootViewController(animated: true)
+            if tabBarController?.selectedIndex == 1 {
+                navigationController?.popToRootViewController(animated: true)
+            } else {
+                tabBarController?.selectedIndex = 1
+                navigationController?.popToRootViewController(animated: false)
+            }
         }
     }
     

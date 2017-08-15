@@ -153,7 +153,6 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
         cell.courseName.text = model.courseName
         cell.courseCredit.text = "学分\(model.credit!)"
         cell.teacher.text = model.teacher!
-        cell.money.text = "$" + "\(model.price!)"
         if model.tag == 0 {
             cell.typeImage.image = UIImage(named: "video_course")
             cell.money.text = "$" + ((model.priceIos != nil) ? "\(model.priceIos!)" : "0.0")

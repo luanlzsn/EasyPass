@@ -44,11 +44,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate {
         PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction:"AUMojnsuy-fD-a7eaYOmFrsLmakOE1t71PdeUTa17T6MbzVUpXvHt8kZeN8nqRK6DyRW-QXStSuKzr9n", PayPalEnvironmentSandbox:"AW5HC4HpB084o4zJUSBcVQmLDRk4AOCEplk529WbSaeuyxi0MdKMtfofVkaZkA7I2I21_6fkq10yydzj"])
         PayPalMobile.preconnect(withEnvironment: PayPalEnvironmentSandbox)
         
+//        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction:"ATARVfTl2EnD5XPvbpywK4OOE1DwGNNwu0dE-xCfH00RNj4LoX8olEOUHImUasTfJC67IjK8jE1ytCTu", PayPalEnvironmentSandbox:"AS3lKVXlHq5J_mP1xexcamcH87b_gvavP4Ark-_qfaSHNKhC3sY2uZ3Xa-gbHhX0pB0NAri15KgMZREo"])
+//        PayPalMobile.preconnect(withEnvironment: PayPalEnvironmentProduction)
+        
         return true
     }
     
     func initializationShareSDK() {
-        ShareSDK.registerActivePlatforms([/*SSDKPlatformType.typeSinaWeibo.rawValue,*/SSDKPlatformType.typeWechat.rawValue,SSDKPlatformType.typeQQ.rawValue], onImport: {(platform : SSDKPlatformType) -> Void in
+        ShareSDK.registerActivePlatforms([SSDKPlatformType.typeSinaWeibo.rawValue,SSDKPlatformType.typeWechat.rawValue,SSDKPlatformType.typeQQ.rawValue], onImport: {(platform : SSDKPlatformType) -> Void in
                 switch platform {
                     case SSDKPlatformType.typeSinaWeibo:
                         ShareSDKConnector.connectWeibo(WeiboSDK.classForCoder())
@@ -61,9 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate {
                 }
         }, onConfiguration: {(platform : SSDKPlatformType , appInfo : NSMutableDictionary?) -> Void in
                 switch platform {
-//                    case SSDKPlatformType.typeSinaWeibo:
-//                    //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
-//                        appInfo?.ssdkSetupSinaWeibo(byAppKey: "568898243", appSecret: "38a4f8204cc784f81f9f0daaf31e02e3", redirectUri: "http://www.sharesdk.cn", authType: SSDKAuthTypeBoth)
+                    case SSDKPlatformType.typeSinaWeibo:
+                    //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
+                        appInfo?.ssdkSetupSinaWeibo(byAppKey: "2547453928", appSecret: "a6a0aba64d10440192b86391c49f7114", redirectUri: "http://www.sharesdk.cn", authType: SSDKAuthTypeBoth)
                     case SSDKPlatformType.typeWechat:
                     //设置微信应用信息
                         appInfo?.ssdkSetupWeChat(byAppId: "wx8c30d0100c7d105e", appSecret: "63b7556c2808b26423e66d44c4c4d9f1")

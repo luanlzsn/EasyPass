@@ -1288,7 +1288,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QR_code" translatesAutoresizingMaskIntoConstraints="NO" id="fIG-ZE-dir">
-                                        <rect key="frame" x="91" y="130" width="134" height="135"/>
+                                        <rect key="frame" x="90.5" y="130" width="135" height="135"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="fIG-ZE-dir" secondAttribute="height" multiplier="1:1" id="6cQ-V3-dSB"/>
+                                            <constraint firstAttribute="width" constant="135" id="wVT-t1-e8w"/>
+                                        </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服二维码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oO9-Es-ifW">
                                         <rect key="frame" x="122" y="275" width="71.5" height="17"/>
@@ -1347,6 +1351,9 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="NOF-0N-9fd" id="nna-ft-BnH"/>
+                        <outlet property="email" destination="3ff-nv-Rla" id="k2e-cv-tPY"/>
+                        <outlet property="phone" destination="ayb-7o-B78" id="HA5-bd-1Oc"/>
+                        <outlet property="qrImage" destination="fIG-ZE-dir" id="EJW-96-nP2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZfU-Hp-VC7" userLabel="First Responder" sceneMemberID="firstResponder"/>

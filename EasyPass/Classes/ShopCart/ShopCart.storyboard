@@ -331,7 +331,7 @@ Mathematics Level Two
         <!--支付页面-->
         <scene sceneID="FFl-Zh-wAx">
             <objects>
-                <viewController title="支付页面" hidesBottomBarWhenPushed="YES" id="Jyc-DL-EdD" customClass="PaypalController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Paypal" title="支付页面" hidesBottomBarWhenPushed="YES" id="Jyc-DL-EdD" customClass="PaypalController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qKS-PW-lTj"/>
                         <viewControllerLayoutGuide type="bottom" id="64Y-69-jVS"/>
@@ -410,7 +410,7 @@ Mathematics Level Two
         <!--支付结果-->
         <scene sceneID="pa1-Pg-KX7">
             <objects>
-                <viewController title="支付结果" hidesBottomBarWhenPushed="YES" id="X3K-Fx-E6N" customClass="PaymentResultsController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaymentResults" title="支付结果" hidesBottomBarWhenPushed="YES" id="X3K-Fx-E6N" customClass="PaymentResultsController" customModule="EasyPass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="76H-zM-MwS"/>
                         <viewControllerLayoutGuide type="bottom" id="SeQ-f8-bNr"/>

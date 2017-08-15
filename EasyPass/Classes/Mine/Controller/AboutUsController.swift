@@ -7,37 +7,43 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class AboutUsController: AntController,UIWebViewDelegate {
+class AboutUsController: AntController {
 
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var iconImage: UIImageView!
+    @IBOutlet weak var descr: UILabel!
+    @IBOutlet weak var phone: UILabel!
+    @IBOutlet weak var weChat: UILabel!
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var qrImage: UIImageView!
+    var aboutUsModel: AboutUsModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "share_select")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .plain, target: self, action: #selector(shareClick))
         
-//        weak var weakSelf = self
-//        AntManage.postRequest(path: "setting/findBrochureByType", params: ["type":"aboutUs"], successResult: { (response) in
-//            weakSelf?.webView.loadHTMLString("<div id=\"webview_content_wrapper\">\(response["data"] as! String)</div>", baseURL: nil)
-//        }, failureResult: {
-//            weakSelf?.navigationController?.popViewController(animated: true)
-//        })
+        weak var weakSelf = self
+        AntManage.getRequest(path: "setting/getAppAboutUs", params: nil, successResult: { (response) in
+            weakSelf?.aboutUsModel = Mapper<AboutUsModel>().map(JSON: response)
+            weakSelf?.refreshView()
+        }, failureResult: {
+            weakSelf?.navigationController?.popViewController(animated: true)
+        })
     }
     
     func shareClick() {
         AntManage.shareInfo(view: view)
     }
     
-    // MARK: - UIWebViewDelegate
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        let jsStr = "function imgAutoFit() {var imgs = document.getElementsByTagName('img');for (var i = 0; i < imgs.length; ++i) {var img = imgs[i];img.style.maxWidth = \((kScreenWidth - 10));}}"
-        webView.stringByEvaluatingJavaScript(from: jsStr)
-        webView.stringByEvaluatingJavaScript(from: "imgAutoFit()")
-        
-        //获取内容实际高度（像素）
-        let height = ("document.getElementById('webview_content_wrapper').offsetHeight + parseInt(window.getComputedStyle(document.getElementsByTagName('body')[0]).getPropertyValue('margin-top'))  + parseInt(window.getComputedStyle(document.getElementsByTagName('body')[0]).getPropertyValue('margin-bottom'))" as NSString).floatValue
-        webView.scrollView.isScrollEnabled = CGFloat(height) > kScreenHeight - 64
+    func refreshView() {
+        iconImage.sd_setImage(with: URL(string: aboutUsModel!.logoImg!), placeholderImage: UIImage(named: "default_image"))
+        descr.text = aboutUsModel?.descriptionField
+        phone.text = aboutUsModel?.telephone
+        weChat.text = aboutUsModel?.wechatPublicNumber
+        email.text = aboutUsModel?.email
+        qrImage.sd_setImage(with: URL(string: aboutUsModel!.qrCodeImg!), placeholderImage: UIImage(named: "default_image"))
     }
 
     override func didReceiveMemoryWarning() {

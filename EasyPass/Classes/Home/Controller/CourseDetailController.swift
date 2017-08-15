@@ -145,7 +145,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             playerView.videoUrl = courseModel?.videoHttpUrl
         }
         if courseModel?.tag == 1 {
-            buyBtn.setTitle("预约", for: .normal)
+            buyBtn.setTitle("预约课程", for: .normal)
             outlineBtn.isHidden = true
         } else {
             if (courseModel?.buyFlag)! || (courseModel?.courseHourBuyFlag)! {

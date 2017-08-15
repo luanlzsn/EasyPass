@@ -220,7 +220,7 @@ class AntSingleton: NSObject {
                                           title : "Epass",
                                           type : SSDKContentType.auto)
         SSUIShareActionSheetStyle.setShareActionSheetStyle(.simple)
-        ShareSDK.showShareActionSheet(view, items: [SSDKPlatformType.subTypeWechatSession.rawValue,SSDKPlatformType.subTypeWechatTimeline.rawValue,SSDKPlatformType.subTypeQQFriend.rawValue,SSDKPlatformType.subTypeQZone.rawValue], shareParams: shareParames) { (state, _, nil, entity, error, _) in
+        ShareSDK.showShareActionSheet(view, items: [SSDKPlatformType.subTypeWechatSession.rawValue,SSDKPlatformType.subTypeWechatTimeline.rawValue,SSDKPlatformType.typeSinaWeibo.rawValue,SSDKPlatformType.subTypeQQFriend.rawValue,SSDKPlatformType.subTypeQZone.rawValue], shareParams: shareParames) { (state, _, nil, entity, error, _) in
             print("授权失败,错误描述:\(String(describing: error))")
             switch state {
             case SSDKResponseState.success: AntManage.showDelayToast(message: "分享成功")
