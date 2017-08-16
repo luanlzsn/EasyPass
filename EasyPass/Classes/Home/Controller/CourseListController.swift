@@ -82,7 +82,11 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
 
     @IBAction func menuClick(_ sender: UIButton) {
         for btn in menuBtnArray {
-            btn.isSelected = sender == btn
+            if sender == btn {
+                btn.isSelected = !sender.isSelected
+            } else {
+                btn.isSelected = false
+            }
         }
         if sender == menuBtnArray[0] {
             performSegue(withIdentifier: "CourseMenu", sender: nil)

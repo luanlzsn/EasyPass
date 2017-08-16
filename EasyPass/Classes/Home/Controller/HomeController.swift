@@ -50,10 +50,12 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     func getFamousAphorism() {
         weak var weakSelf = self
         AntManage.postRequest(path: "setting/findBrochureByType", params: ["type":"tags"], successResult: { (response) in
-            weakSelf?.famousAphorism = try! NSMutableAttributedString(data: (response["data"] as! String).data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
-            weakSelf?.famousAphorism.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSMakeRange(0, weakSelf!.famousAphorism.length))
-            weakSelf?.famousAphorism.addAttribute(NSForegroundColorAttributeName, value: MainColor, range: NSMakeRange(0, weakSelf!.famousAphorism.length))
-            weakSelf?.collection.reloadData()
+            if let famous = response["data"] as? String {
+                weakSelf?.famousAphorism = try! NSMutableAttributedString(data: (famous).data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
+                weakSelf?.famousAphorism.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSMakeRange(0, weakSelf!.famousAphorism.length))
+                weakSelf?.famousAphorism.addAttribute(NSForegroundColorAttributeName, value: MainColor, range: NSMakeRange(0, weakSelf!.famousAphorism.length))
+                weakSelf?.collection.reloadData()
+            }
         }, failureResult: {})
     }
     

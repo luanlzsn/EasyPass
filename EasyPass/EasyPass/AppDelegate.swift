@@ -41,11 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate {
             initializationJPush(launchOptions: launchOptions)
         }
         
-        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction:"AUMojnsuy-fD-a7eaYOmFrsLmakOE1t71PdeUTa17T6MbzVUpXvHt8kZeN8nqRK6DyRW-QXStSuKzr9n", PayPalEnvironmentSandbox:"AW5HC4HpB084o4zJUSBcVQmLDRk4AOCEplk529WbSaeuyxi0MdKMtfofVkaZkA7I2I21_6fkq10yydzj"])
-        PayPalMobile.preconnect(withEnvironment: PayPalEnvironmentSandbox)
+//        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction:"AUMojnsuy-fD-a7eaYOmFrsLmakOE1t71PdeUTa17T6MbzVUpXvHt8kZeN8nqRK6DyRW-QXStSuKzr9n", PayPalEnvironmentSandbox:"AW5HC4HpB084o4zJUSBcVQmLDRk4AOCEplk529WbSaeuyxi0MdKMtfofVkaZkA7I2I21_6fkq10yydzj"])
+//        PayPalMobile.preconnect(withEnvironment: PayPalEnvironmentSandbox)
         
-//        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction:"ATARVfTl2EnD5XPvbpywK4OOE1DwGNNwu0dE-xCfH00RNj4LoX8olEOUHImUasTfJC67IjK8jE1ytCTu", PayPalEnvironmentSandbox:"AS3lKVXlHq5J_mP1xexcamcH87b_gvavP4Ark-_qfaSHNKhC3sY2uZ3Xa-gbHhX0pB0NAri15KgMZREo"])
-//        PayPalMobile.preconnect(withEnvironment: PayPalEnvironmentProduction)
+        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction:"ATARVfTl2EnD5XPvbpywK4OOE1DwGNNwu0dE-xCfH00RNj4LoX8olEOUHImUasTfJC67IjK8jE1ytCTu", PayPalEnvironmentSandbox:"AS3lKVXlHq5J_mP1xexcamcH87b_gvavP4Ark-_qfaSHNKhC3sY2uZ3Xa-gbHhX0pB0NAri15KgMZREo"])
+        PayPalMobile.preconnect(withEnvironment: PayPalEnvironmentProduction)
         
         return true
     }

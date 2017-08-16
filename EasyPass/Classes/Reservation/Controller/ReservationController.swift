@@ -61,7 +61,7 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
             params["grade"] = grade
         }
         if !hotSort.isEmpty {
-            params["hotSort"] = hotSort
+            params["hot"] = hotSort
         }
         if !timeSort.isEmpty {
             params["timeSort"] = timeSort
@@ -87,7 +87,11 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
 
     @IBAction func sortClick(_ sender: UIButton) {
         for btn in sortBtnArray {
-            btn.isSelected = sender == btn
+            if sender == btn {
+                btn.isSelected = !sender.isSelected
+            } else {
+                btn.isSelected = false
+            }
         }
         if sender == sortBtnArray[0] {
             let courseMenu = UIStoryboard(name: "Home", bundle: Bundle.main).instantiateViewController(withIdentifier: "CourseMenu") as! CourseMenuController
@@ -108,14 +112,19 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
             }
             present(courseMenu, animated: true, completion: nil)
         } else if sender == sortBtnArray[1] {
-            
+            hotSort = sender.isSelected ? "asc" : "desc"
+            priceSort = ""
+            timeSort = ""
+            getReservationByPage(pageNo: 1)
         } else if sender == sortBtnArray[2] {
             timeSort = sender.isSelected ? "asc" : "desc"
             priceSort = ""
+            hotSort = ""
             getReservationByPage(pageNo: 1)
         } else if sender == sortBtnArray[3] {
             priceSort = sender.isSelected ? "asc" : "desc"
             timeSort = ""
+            hotSort = ""
             getReservationByPage(pageNo: 1)
         }
     }
