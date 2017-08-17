@@ -162,14 +162,18 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
                 if weakSelf?.videoPageNo == 1 {
                     weakSelf?.videoArray.removeAll()
                 }
-                weakSelf?.videoArray += Mapper<ShopCartModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+                if let list = response["list"] as? [[String : Any]] {
+                    weakSelf?.videoArray += Mapper<ShopCartModel>().mapArray(JSONArray: list)
+                }
                 weakSelf?.videoNoMoreData = (weakSelf!.videoPageNo >= (response["totalPage"] as! Int))
             } else {
                 weakSelf?.reservationPageNo = response["pageNo"] as! Int
                 if weakSelf?.reservationPageNo == 1 {
                     weakSelf?.reservationArray.removeAll()
                 }
-                weakSelf?.reservationArray += Mapper<ShopCartModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+                if let list = response["list"] as? [[String : Any]] {
+                    weakSelf?.reservationArray += Mapper<ShopCartModel>().mapArray(JSONArray: list)
+                }
                 weakSelf?.reservationNoMoreData = (weakSelf!.reservationPageNo >= (response["totalPage"] as! Int))
                 weakSelf?.refreshReservationCheckOutView()
             }

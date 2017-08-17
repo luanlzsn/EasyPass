@@ -67,7 +67,9 @@ class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataS
             if weakSelf?.collectPage == 1 {
                 weakSelf?.collectArray.removeAll()
             }
-            weakSelf?.collectArray += Mapper<CourseModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            if let list = response["list"] as? [[String : Any]] {
+                weakSelf?.collectArray += Mapper<CourseModel>().mapArray(JSONArray: list)
+            }
             weakSelf?.tableView.mj_header.endRefreshing()
             weakSelf?.tableView.mj_footer.endRefreshing()
             weakSelf?.tableView.mj_footer.isHidden = (weakSelf!.collectPage >= (response["totalPage"] as! Int))

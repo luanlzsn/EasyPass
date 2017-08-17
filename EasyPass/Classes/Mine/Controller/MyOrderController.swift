@@ -85,8 +85,8 @@ class MyOrderController: AntController,UITableViewDelegate,UITableViewDataSource
             if weakSelf?.orderPage == 1 {
                 weakSelf?.orderArray.removeAll()
             }
-            if response["list"] != nil, ((response["list"] as? [[String : Any]]) != nil) {
-                weakSelf?.orderArray += Mapper<OrderModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            if let list = response["list"] as? [[String : Any]] {
+                weakSelf?.orderArray += Mapper<OrderModel>().mapArray(JSONArray: list)
             }
             weakSelf?.tableView.mj_header.endRefreshing()
             weakSelf?.tableView.mj_footer.endRefreshing()

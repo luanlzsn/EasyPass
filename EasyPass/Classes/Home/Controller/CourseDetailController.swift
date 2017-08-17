@@ -114,7 +114,9 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             if weakSelf?.classHourPageNo == 1 {
                 weakSelf?.classHourArray.removeAll()
             }
-            weakSelf?.classHourArray += Mapper<ClassHourModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            if let list = response["list"] as? [[String : Any]]  {
+                weakSelf?.classHourArray += Mapper<ClassHourModel>().mapArray(JSONArray: list)
+            }
             weakSelf?.outlineTableView.mj_header.endRefreshing()
             weakSelf?.outlineTableView.mj_footer.endRefreshing()
             weakSelf?.outlineTableView.mj_footer.isHidden = weakSelf!.classHourPageNo >= (response["totalPage"] as! Int)
@@ -129,7 +131,9 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     func getCommentByPage() {
         weak var weakSelf = self
         AntManage.postRequest(path: "comment/getCommentByPage", params: ["pageNo":1, "pageSize":3, "courseId":courseId, "timeSort":"desc"], successResult: { (response) in
-            weakSelf?.commentArray = Mapper<CommentModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            if let list = response["list"] as? [[String : Any]] {
+                weakSelf?.commentArray = Mapper<CommentModel>().mapArray(JSONArray: list)
+            }
             weakSelf?.commentNum.text = "(\(response["total"] as! Int))"
             weakSelf?.tableView.reloadData()
         }, failureResult: {})

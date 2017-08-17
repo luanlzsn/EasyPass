@@ -41,7 +41,9 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     func findBannerList() {
         weak var weakSelf = self
         AntManage.postRequest(path: "advertise/findBannerList", params: nil, successResult: { (response) in
-            weakSelf?.bannerArray = Mapper<BannerModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            if let list = response["list"] as? [[String : Any]] {
+                weakSelf?.bannerArray = Mapper<BannerModel>().mapArray(JSONArray: list)
+            }
             weakSelf?.collection.reloadData()
         }, failureResult: {})
     }
@@ -63,7 +65,9 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     func findClassifyList() {
         weak var weakSelf = self
         AntManage.postRequest(path: "course/findClassifyList", params: nil, successResult: { (response) in
-            AntManage.classifyList = Mapper<ClassifyModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            if let list = response["list"] as? [[String : Any]] {
+                AntManage.classifyList = Mapper<ClassifyModel>().mapArray(JSONArray: list)
+            }
             weakSelf?.collection.reloadData()
         }, failureResult: {})
     }

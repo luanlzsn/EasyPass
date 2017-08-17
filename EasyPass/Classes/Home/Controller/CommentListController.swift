@@ -41,8 +41,8 @@ class CommentListController: AntController,UITableViewDelegate,UITableViewDataSo
             if weakSelf?.pageNo == 1 {
                 weakSelf?.commentArray.removeAll()
             }
-            if response["list"] != nil, ((response["list"] as? [[String : Any]]) != nil) {
-                weakSelf?.commentArray += Mapper<CommentModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            if let list = response["list"] as? [[String : Any]] {
+                weakSelf?.commentArray += Mapper<CommentModel>().mapArray(JSONArray: list)
             }
             weakSelf?.tableView.mj_header.endRefreshing()
             weakSelf?.tableView.mj_footer.endRefreshing()

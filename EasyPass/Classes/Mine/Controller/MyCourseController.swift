@@ -67,8 +67,8 @@ class MyCourseController: AntController,UITableViewDelegate,UITableViewDataSourc
             if weakSelf?.coursePage == 1 {
                 weakSelf?.courseArray.removeAll()
             }
-            if response["list"] != nil, ((response["list"] as? [[String : Any]]) != nil) {
-                weakSelf?.courseArray += Mapper<OrderItemModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            if let list = response["list"] as? [[String : Any]] {
+                weakSelf?.courseArray += Mapper<OrderItemModel>().mapArray(JSONArray: list)
             }
             weakSelf?.tableView.mj_header.endRefreshing()
             weakSelf?.tableView.mj_footer.endRefreshing()

@@ -37,7 +37,9 @@ class MessageController: AntController,UITableViewDelegate,UITableViewDataSource
             if weakSelf?.messagePageNo == 1 {
                 weakSelf?.messageArray.removeAll()
             }
-            weakSelf?.messageArray += Mapper<MessageModel>().mapArray(JSONArray: response["list"] as! [[String : Any]])
+            if let list = response["list"] as? [[String : Any]] {
+                 weakSelf?.messageArray += Mapper<MessageModel>().mapArray(JSONArray: list)
+            }
             weakSelf?.tableView.mj_header.endRefreshing()
             weakSelf?.tableView.mj_footer.endRefreshing()
             weakSelf?.tableView.mj_footer.isHidden = (weakSelf!.messagePageNo >= (response["totalPage"] as! Int))

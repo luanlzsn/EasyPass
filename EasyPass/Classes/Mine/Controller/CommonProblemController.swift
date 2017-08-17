@@ -17,7 +17,9 @@ class CommonProblemController: AntController,UIWebViewDelegate {
 
         weak var weakSelf = self
         AntManage.postRequest(path: "setting/findBrochureByType", params: ["type":"appHelp"], successResult: { (response) in
-            weakSelf?.webView.loadHTMLString("<div id=\"webview_content_wrapper\">\(response["data"] as! String)</div>", baseURL: nil)
+            if let str = response["data"] as? String {
+                weakSelf?.webView.loadHTMLString("<div id=\"webview_content_wrapper\">\(str)</div>", baseURL: nil)
+            }
         }, failureResult: {
             weakSelf?.navigationController?.popViewController(animated: true)
         })
