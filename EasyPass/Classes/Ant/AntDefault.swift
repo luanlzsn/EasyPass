@@ -28,7 +28,7 @@ let kIphone4 = kScreenHeight == 480
 let kIpad = UIDevice.current.userInterfaceIdiom == .pad
 let kAppDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
 //let kRequestBaseUrl = "http://175.102.18.82:8083/easypass-app/"
-let kRequestBaseUrl = "http://52.60.187.123:8080/easypass-app/"
+let kRequestBaseUrl = "http://epass.epassstudy.com:8080/easypass-app/"
 //let kRequestBaseUrl = "http://10.58.177.192:8080/easypass-app/"
 
 let kAppVersion_URL = "http://itunes.apple.com/lookup?id=1107512125"//获取版本信息

@@ -1242,25 +1242,25 @@
                                 <rect key="frame" x="30" y="262" width="315" height="325"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="small_phone" translatesAutoresizingMaskIntoConstraints="NO" id="jAv-2T-B2M">
-                                        <rect key="frame" x="50" y="40" width="19" height="19"/>
+                                        <rect key="frame" x="40" y="40" width="19" height="19"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_icon" translatesAutoresizingMaskIntoConstraints="NO" id="14t-l2-lnQ">
-                                        <rect key="frame" x="50" y="69" width="20" height="13"/>
+                                        <rect key="frame" x="40" y="69" width="20" height="13"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系电话" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCk-ci-jKt">
-                                        <rect key="frame" x="83.5" y="41" width="57.5" height="17"/>
+                                        <rect key="frame" x="73.5" y="41" width="57.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.35686274509803922" green="0.35686274509803922" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邮箱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUv-xI-gAN">
-                                        <rect key="frame" x="83.5" y="67" width="29" height="17"/>
+                                        <rect key="frame" x="73.5" y="67" width="29" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hf-pG-hqr">
-                                        <rect key="frame" x="151.5" y="44" width="1" height="12"/>
+                                        <rect key="frame" x="141.5" y="44" width="1" height="12"/>
                                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="0XJ-X9-Pa9"/>
@@ -1268,7 +1268,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aax-d2-GdL">
-                                        <rect key="frame" x="151.5" y="69.5" width="1" height="12"/>
+                                        <rect key="frame" x="141.5" y="69.5" width="1" height="12"/>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="MlM-MM-usR"/>
@@ -1276,13 +1276,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="647-xxxxxxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayb-7o-B78">
-                                        <rect key="frame" x="162.5" y="41" width="89.5" height="17"/>
+                                        <rect key="frame" x="152.5" y="41" width="89.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a123@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ff-nv-Rla">
-                                        <rect key="frame" x="162.5" y="67" width="109.5" height="17"/>
+                                        <rect key="frame" x="152.5" y="67" width="109.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -1313,7 +1313,7 @@
                                     <constraint firstItem="oO9-Es-ifW" firstAttribute="top" secondItem="fIG-ZE-dir" secondAttribute="bottom" constant="10" id="TKy-1U-3Qu"/>
                                     <constraint firstItem="GCk-ci-jKt" firstAttribute="leading" secondItem="jAv-2T-B2M" secondAttribute="trailing" constant="15" id="Tmu-ed-pUq"/>
                                     <constraint firstItem="5hf-pG-hqr" firstAttribute="leading" secondItem="GCk-ci-jKt" secondAttribute="trailing" constant="10" id="UJB-mA-gF9"/>
-                                    <constraint firstItem="jAv-2T-B2M" firstAttribute="leading" secondItem="NOF-0N-9fd" secondAttribute="leading" constant="50" id="aAG-T2-WWE"/>
+                                    <constraint firstItem="jAv-2T-B2M" firstAttribute="leading" secondItem="NOF-0N-9fd" secondAttribute="leading" constant="40" id="aAG-T2-WWE"/>
                                     <constraint firstItem="3ff-nv-Rla" firstAttribute="leading" secondItem="ayb-7o-B78" secondAttribute="leading" id="gZW-H2-bHQ"/>
                                     <constraint firstItem="oO9-Es-ifW" firstAttribute="centerX" secondItem="NOF-0N-9fd" secondAttribute="centerX" id="gZk-Fu-J8k"/>
                                     <constraint firstItem="aax-d2-GdL" firstAttribute="centerX" secondItem="5hf-pG-hqr" secondAttribute="centerX" id="hvV-KW-Wyi"/>
