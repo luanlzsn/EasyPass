@@ -109,7 +109,11 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     // MARK: - 获取课时列表
     func getCourseClassHourByPage(pageNo: Int) {
         weak var weakSelf = self
-        AntManage.postRequest(path: "course/getCourseClassHourByPage", params: ["pageNo":pageNo, "pageSize":20, "courseId":courseId], successResult: { (response) in
+        var params = ["pageNo":pageNo, "pageSize":20, "courseId":courseId] as [String : Any]
+        if AntManage.isLogin {
+            params["token"] = AntManage.userModel!.token!
+        }
+        AntManage.postRequest(path: "course/getCourseClassHourByPage", params: params, successResult: { (response) in
             weakSelf?.classHourPageNo = response["pageNo"] as! Int
             if weakSelf?.classHourPageNo == 1 {
                 weakSelf?.classHourArray.removeAll()

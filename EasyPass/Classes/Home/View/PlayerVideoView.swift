@@ -202,6 +202,9 @@ class PlayerVideoView: UIView {
             
             playBtn.isHidden = true
             playBtn.isSelected = true
+            activityView.isHidden = false
+            activityView.startAnimating()
+            
             countVideoClick()
         } else {
             AntManage.showDelayToast(message: "还没有视频")
@@ -255,7 +258,7 @@ class PlayerVideoView: UIView {
         player?.pause()
         player?.seek(to: CMTimeMake(0, 1))
         progressSlider.value = 0
-        playerTime.text = "00.00"
+        playerTime.text = "00:00"
         player?.removeTimeObserver(timeObserver!)
     }
     
@@ -314,6 +317,9 @@ class PlayerVideoView: UIView {
     func monitoringPlayback() {
         weak var weakSelf = self
         timeObserver = player?.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: nil, using: { (time) in
+            if weakSelf == nil {
+                return
+            }
             //当前进度
             weakSelf?.progressSlider.value = Float(CMTimeGetSeconds((weakSelf?.playerItem?.currentTime())!) / (TimeInterval((weakSelf?.playerItem?.duration.value)!) / TimeInterval((weakSelf?.playerItem?.duration.timescale)!)))
             //duration 总时长

@@ -44,7 +44,7 @@ class PaypalController: AntController,PayPalPaymentDelegate {
         }
         let subtotal = PayPalItem.totalPrice(forItems: items)
         let shipping = NSDecimalNumber(string: "0.00")
-        let taxNum = NSDecimalNumber(value: tax)
+        let taxNum = NSDecimalNumber(string: String.init(format: "%.2f", tax))
         let paymentDetails = PayPalPaymentDetails(subtotal: subtotal, withShipping: shipping, withTax: taxNum)
         let total = subtotal.adding(shipping).adding(taxNum)
         let payment = PayPalPayment(amount: total, currencyCode: "CAD", shortDescription: "课程购买", intent: .sale)

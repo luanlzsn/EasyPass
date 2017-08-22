@@ -1371,7 +1371,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyOrderCell" rowHeight="100" id="DQe-d1-7S4" customClass="MyOrderCell" customModule="EasyPass" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderCell" rowHeight="100" id="DQe-d1-7S4" customClass="MyOrderCell" customModule="EasyPass" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="100.5" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DQe-d1-7S4" id="gi6-Fu-6L3">

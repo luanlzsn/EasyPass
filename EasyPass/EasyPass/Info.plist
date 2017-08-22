@@ -141,8 +141,6 @@
 	<string>我们需要访问您的摄像头进行拍照</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>我们需要访问您的相册获取您的图片</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
