@@ -153,7 +153,7 @@ class MyOrderController: AntController,UITableViewDelegate,UITableViewDataSource
     // MARK: - 二次校验
     func checkReceiptIsValid() {
         weak var weakSelf = self
-        AntManage.postRequest(path: "applePay/setIapCertificate", params: ["token":AntManage.userModel!.token!, "orderNo":orderNo, "receipt":receipt, "chooseEnv":false], successResult: { (response) in
+        AntManage.postRequest(path: "applePay/setIapCertificate", params: ["token":AntManage.userModel!.token!, "orderNo":orderNo, "receipt":receipt, "chooseEnv":true], successResult: { (response) in
             weakSelf?.getOrderByPage(pageNo: 1)
             weakSelf?.showPaymentResults(true)
         }, failureResult: {

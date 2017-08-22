@@ -227,7 +227,7 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
     // MARK: - 二次校验
     func checkReceiptIsValid() {
         weak var weakSelf = self
-        AntManage.postRequest(path: "applePay/setIapCertificate", params: ["token":AntManage.userModel!.token!, "orderNo":orderNo, "receipt":receipt, "chooseEnv":false], successResult: { (response) in
+        AntManage.postRequest(path: "applePay/setIapCertificate", params: ["token":AntManage.userModel!.token!, "orderNo":orderNo, "receipt":receipt, "chooseEnv":true], successResult: { (response) in
             weakSelf?.performSegue(withIdentifier: "PaymentResults", sender: true)
         }, failureResult: {
             weakSelf?.performSegue(withIdentifier: "PaymentResults", sender: false)

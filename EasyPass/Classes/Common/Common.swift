@@ -8,6 +8,7 @@
 
 import UIKit
 import YYCategories
+import AFNetworking
 
 class Common: NSObject {
     
@@ -201,6 +202,31 @@ class Common: NSObject {
     // MARK: - 获取token字符串
     class func getDeviceTokenStringWithDeviceToken(deviceToken: Data) -> String {
         return deviceToken.description.replacingOccurrences(of: "<", with: "").replacingOccurrences(of: ">", with: "").replacingOccurrences(of: " ", with: "")
+    }
+    
+    // MARK: - 获取应用版本号
+    class func checkVersion() {
+        let infoDic = Bundle.main.infoDictionary!
+        let currentVersion = (infoDic["CFBundleShortVersionString"] as! String).replacingOccurrences(of: ".", with: "")
+        let manager = AFHTTPSessionManager.init()
+        manager.post(kAppVersion_URL, parameters: nil, progress: nil, success: { (task, response) in
+            if let dic = response as? [String : Any] {
+                if let results = dic["results"] {
+                    if let resultArray = results as? [[String : Any]] {
+                        if let result = resultArray.first {
+                            if var lastVersion = result["version"] as? String {
+                                lastVersion = lastVersion.replacingOccurrences(of: ".", with: "")
+                                if Int(currentVersion)! <= Int(lastVersion)! {
+                                    AntManage.isExamine = false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }) { (task, error) in
+            
+        }
     }
 }
 

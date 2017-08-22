@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate {
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         
+        Common.checkVersion()
+        
         if UserDefaults.standard.object(forKey: kUserInfo) != nil {
             AntManage.isLogin = true
             AntManage.userModel = NSKeyedUnarchiver.unarchiveObject(with: UserDefaults.standard.object(forKey: kUserInfo) as! Data) as? UserModel
