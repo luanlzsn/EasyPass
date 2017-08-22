@@ -29,3 +29,5 @@
 #import "UIDevice+JWDevice.h"
 
 #import "PayPalMobile.h"
+
+#import <SDWebImage/UIImageView+WebCache.h>

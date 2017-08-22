@@ -43,7 +43,6 @@
 		0F6C61E31EFFCDA30079B2F2 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6C61E21EFFCDA30079B2F2 /* AFNetworking.framework */; };
 		0F6C61E51EFFCDA80079B2F2 /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6C61E41EFFCDA80079B2F2 /* IQKeyboardManagerSwift.framework */; };
 		0F6C61E71EFFCDAC0079B2F2 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6C61E61EFFCDAC0079B2F2 /* MBProgressHUD.framework */; };
-		0F6C61EB1EFFCDB60079B2F2 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6C61EA1EFFCDB60079B2F2 /* SDWebImage.framework */; };
 		0F6C61ED1EFFCDB90079B2F2 /* YYCategories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6C61EC1EFFCDB90079B2F2 /* YYCategories.framework */; };
 		0F6C61FE1EFFD1D40079B2F2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C61FD1EFFD1D40079B2F2 /* Home.storyboard */; };
 		0F6C62001EFFD1DD0079B2F2 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C61FF1EFFD1DD0079B2F2 /* Mine.storyboard */; };
@@ -109,6 +108,7 @@
 		0FBD413C1F3D816F0001B539 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBD413B1F3D816F0001B539 /* MobileCoreServices.framework */; };
 		0FBD413E1F3D81810001B539 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBD413D1F3D81810001B539 /* SafariServices.framework */; };
 		0FBD41481F3D82F30001B539 /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBD41401F3D82F30001B539 /* libPayPalMobile.a */; };
+		0FBE70DA1F4C8A3200660AAB /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBE70D91F4C8A3200660AAB /* SDWebImage.framework */; };
 		0FC08D5D1F31847F0035CAB3 /* UserRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC08D5C1F31847F0035CAB3 /* UserRecordModel.swift */; };
 		0FC6635D1F161E8D00C06F0E /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC6635C1F161E8D00C06F0E /* ObjectMapper.framework */; };
 		0FC71A541F22111D00FAD254 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC71A321F22111D00FAD254 /* MOBFoundation.framework */; };
@@ -200,7 +200,6 @@
 		0F6C61E21EFFCDA30079B2F2 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
 		0F6C61E41EFFCDA80079B2F2 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = Carthage/Build/iOS/IQKeyboardManagerSwift.framework; sourceTree = "<group>"; };
 		0F6C61E61EFFCDAC0079B2F2 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
-		0F6C61EA1EFFCDB60079B2F2 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		0F6C61EC1EFFCDB90079B2F2 /* YYCategories.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYCategories.framework; path = Carthage/Build/iOS/YYCategories.framework; sourceTree = "<group>"; };
 		0F6C61FD1EFFD1D40079B2F2 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0F6C61FF1EFFD1DD0079B2F2 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
@@ -295,6 +294,7 @@
 		0FBD41451F3D82F30001B539 /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
 		0FBD41461F3D82F30001B539 /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPaymentViewController.h; sourceTree = "<group>"; };
 		0FBD41471F3D82F30001B539 /* PayPalProfileSharingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalProfileSharingViewController.h; sourceTree = "<group>"; };
+		0FBE70D91F4C8A3200660AAB /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		0FC08D5C1F31847F0035CAB3 /* UserRecordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRecordModel.swift; sourceTree = "<group>"; };
 		0FC6635C1F161E8D00C06F0E /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		0FC71A321F22111D00FAD254 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
@@ -370,6 +370,7 @@
 				0FBD41381F3D815F0001B539 /* CoreMedia.framework in Frameworks */,
 				0FBD41361F3D81550001B539 /* CoreLocation.framework in Frameworks */,
 				0F2F0E3F1F331C35006DCE57 /* AVFoundation.framework in Frameworks */,
+				0FBE70DA1F4C8A3200660AAB /* SDWebImage.framework in Frameworks */,
 				0FBD41341F3D812B0001B539 /* AudioToolbox.framework in Frameworks */,
 				0FBD41321F3D81220001B539 /* Accelerate.framework in Frameworks */,
 				0FF491B01F321ADD0000A2A0 /* libresolv.tbd in Frameworks */,
@@ -402,7 +403,6 @@
 				0FC6635D1F161E8D00C06F0E /* ObjectMapper.framework in Frameworks */,
 				0FC71A5D1F22111E00FAD254 /* WechatConnector.framework in Frameworks */,
 				0FF4919B1F321A5D0000A2A0 /* jcore-ios-1.1.5.a in Frameworks */,
-				0F6C61EB1EFFCDB60079B2F2 /* SDWebImage.framework in Frameworks */,
 				0FC71A5E1F22111E00FAD254 /* TencentOpenAPI.framework in Frameworks */,
 				0FC71A601F22111E00FAD254 /* libWeiboSDK.a in Frameworks */,
 				0FC71A581F22111E00FAD254 /* ShareSDKExtension.framework in Frameworks */,
@@ -501,6 +501,7 @@
 		0F6C61E11EFFCDA30079B2F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FBE70D91F4C8A3200660AAB /* SDWebImage.framework */,
 				0FBD413D1F3D81810001B539 /* SafariServices.framework */,
 				0FBD413B1F3D816F0001B539 /* MobileCoreServices.framework */,
 				0FBD41391F3D81670001B539 /* MessageUI.framework */,
@@ -530,7 +531,6 @@
 				0FC71A661F22114200FAD254 /* libicucore.tbd */,
 				0FC6635C1F161E8D00C06F0E /* ObjectMapper.framework */,
 				0F6C61EC1EFFCDB90079B2F2 /* YYCategories.framework */,
-				0F6C61EA1EFFCDB60079B2F2 /* SDWebImage.framework */,
 				0F6C61E61EFFCDAC0079B2F2 /* MBProgressHUD.framework */,
 				0F6C61E41EFFCDA80079B2F2 /* IQKeyboardManagerSwift.framework */,
 				0F6C61E21EFFCDA30079B2F2 /* AFNetworking.framework */,
@@ -1076,11 +1076,11 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/IQKeyboardManagerSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/YYCategories.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MJExtension.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
 			);
 			outputPaths = (
 			);
@@ -1319,6 +1319,7 @@
 					"$(PROJECT_DIR)/Classes/ThirdParty/ShareSDK/ShareSDK/Support/PlatformConnector",
 					"$(PROJECT_DIR)/Classes/ThirdParty/ShareSDK/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/Classes/ThirdParty/ShareSDK/ShareSDK/Support/Required",
+					"$(PROJECT_DIR)/Classes/ThirdParty",
 				);
 				INFOPLIST_FILE = EasyPass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1362,6 +1363,7 @@
 					"$(PROJECT_DIR)/Classes/ThirdParty/ShareSDK/ShareSDK/Support/PlatformConnector",
 					"$(PROJECT_DIR)/Classes/ThirdParty/ShareSDK/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/Classes/ThirdParty/ShareSDK/ShareSDK/Support/Required",
+					"$(PROJECT_DIR)/Classes/ThirdParty",
 				);
 				INFOPLIST_FILE = EasyPass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
