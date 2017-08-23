@@ -34,7 +34,7 @@ let kRequestBaseUrl = "http://epass.epassstudy.com:8080/easypass-app/"
 let kAppVersion_URL = "http://itunes.apple.com/lookup?id=1258792640"//获取版本信息
 let kAppDownloadURL = "https://itunes.apple.com/cn/app/id1258792640"//下载地址
 
-let kShareUrl = URL(string: "http://fir.im/elkr")!
+let kShareUrl = URL(string: "http://www.epassstudy.com/")!
 let kShareContent = "Epass致力于利用科学的学习方法和线上教育的优势，为学生打造一个在家就可以独立学习的机会，为广大学子的求学求职之路点一盏明灯。毕竟，行路，还是要靠行路人自己。"
 
 
