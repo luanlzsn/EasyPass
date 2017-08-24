@@ -323,6 +323,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             let classHourModel = classHourArray[indexPath.section]
             cell.name.text = classHourModel.lessonPeriod! + " " + classHourModel.classHourName!
             cell.info.text = classHourModel.content
+            cell.infoTop.constant = (classHourModel.content?.isEmpty)! ? -3 : 5
             if (courseModel?.buyFlag)! || classHourModel.buyFlag! {
                 cell.money.isHidden = true
                 cell.classHour.isHidden = true
@@ -336,7 +337,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
                 cell.watchBtn.setTitle("购买", for: .normal)
             }
             return cell
-        } else {
+        } else { 
             let cell: CourseCommentCell = tableView.dequeueReusableCell(withIdentifier: "CourseCommentCell", for: indexPath) as! CourseCommentCell
             let comment = commentArray[indexPath.row]
             if comment.headImg != nil {

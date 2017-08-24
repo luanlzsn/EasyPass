@@ -11,7 +11,7 @@ import ObjectMapper
 
 class CourseListController: AntController,UITableViewDelegate,UITableViewDataSource {
 
-    @IBOutlet var menuBtnArray: [UIButton]!
+    @IBOutlet var menuBtnArray: [MenuButton]!
     @IBOutlet weak var tableView: UITableView!
     var classifyModel: ClassifyModel?//选择的专业
     var grade = 0//年级

@@ -279,11 +279,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OT2-zP-Pry">
                                 <rect key="frame" x="0.0" y="64" width="375" height="35"/>
                                 <subviews>
-                                    <button opaque="NO" tag="10" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ni5-Ez-UmX">
+                                    <button opaque="NO" tag="10" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ni5-Ez-UmX" customClass="MenuButton" customModule="EasyPass" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="-0.5" width="94" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="25" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="75" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="全部课程" image="up_arrow_one_gray">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -294,11 +292,9 @@
                                             <action selector="menuClick:" destination="k0a-u9-0nd" eventType="touchUpInside" id="VSW-ql-7Yo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiF-fp-FNZ">
+                                    <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiF-fp-FNZ" customClass="MenuButton" customModule="EasyPass" customModuleProvider="target">
                                         <rect key="frame" x="94" y="0.0" width="93.5" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="25" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="类型" image="up_arrow_one_gray">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -309,11 +305,9 @@
                                             <action selector="menuClick:" destination="k0a-u9-0nd" eventType="touchUpInside" id="Cs5-bR-yJa"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZ8-l9-9JI">
+                                    <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZ8-l9-9JI" customClass="MenuButton" customModule="EasyPass" customModuleProvider="target">
                                         <rect key="frame" x="187.5" y="0.0" width="94" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="25" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="55" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="时间" image="down_arrow_two_gray">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -324,11 +318,9 @@
                                             <action selector="menuClick:" destination="k0a-u9-0nd" eventType="touchUpInside" id="kqF-I5-na6"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPd-9s-cXB">
+                                    <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPd-9s-cXB" customClass="MenuButton" customModule="EasyPass" customModuleProvider="target">
                                         <rect key="frame" x="281" y="0.0" width="93.5" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="25" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="55" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="价格" image="down_arrow_two_gray">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1061,7 +1053,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="课程01 平面向量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZC-Yt-mvs">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="课程01 平面向量" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZC-Yt-mvs">
                                                     <rect key="frame" x="20" y="10" width="202.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -1123,6 +1115,7 @@
                                         <connections>
                                             <outlet property="classHour" destination="s5x-VJ-uea" id="KF8-WL-NWu"/>
                                             <outlet property="info" destination="ajH-dH-VrS" id="bE7-BE-782"/>
+                                            <outlet property="infoTop" destination="Tt0-OY-32B" id="VJS-Gt-NZh"/>
                                             <outlet property="money" destination="zZC-4A-Z16" id="ilb-U2-gSf"/>
                                             <outlet property="name" destination="ZZC-Yt-mvs" id="41w-0g-h18"/>
                                             <outlet property="watchBtn" destination="I6N-1g-vrf" id="f3M-7e-hfQ"/>
@@ -1382,30 +1375,30 @@
                                 <rect key="frame" x="15" y="100" width="345" height="267"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="IOI-1Q-jU5">
-                                        <rect key="frame" x="0.0" y="0.0" width="155.5" height="267"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="172.5" height="267"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CourseTypeCell" id="sLm-Za-Tnz" customClass="CourseTypeCell" customModule="EasyPass" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="55.5" width="155.5" height="44"/>
+                                                <rect key="frame" x="0.0" y="55.5" width="172.5" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sLm-Za-Tnz" id="yOT-Gd-SqC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="155.5" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="172.5" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数学" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YG-gE-Knj">
-                                                            <rect key="frame" x="18" y="-0.5" width="33" height="44"/>
+                                                            <rect key="frame" x="8" y="-0.5" width="33" height="44"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="course_menu_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="RjJ-qi-0JP">
-                                                            <rect key="frame" x="53" y="16" width="2" height="12"/>
+                                                            <rect key="frame" x="43" y="16" width="2" height="12"/>
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="RjJ-qi-0JP" firstAttribute="leading" secondItem="9YG-gE-Knj" secondAttribute="trailing" constant="2" id="Apy-R1-gbY"/>
                                                         <constraint firstItem="9YG-gE-Knj" firstAttribute="centerY" secondItem="yOT-Gd-SqC" secondAttribute="centerY" id="hMI-az-nda"/>
-                                                        <constraint firstItem="9YG-gE-Knj" firstAttribute="leading" secondItem="yOT-Gd-SqC" secondAttribute="leadingMargin" constant="10" id="qSX-Sl-tre"/>
+                                                        <constraint firstItem="9YG-gE-Knj" firstAttribute="leading" secondItem="yOT-Gd-SqC" secondAttribute="leadingMargin" id="qSX-Sl-tre"/>
                                                         <constraint firstItem="RjJ-qi-0JP" firstAttribute="centerY" secondItem="yOT-Gd-SqC" secondAttribute="centerY" id="sqa-Ai-qcu"/>
                                                         <constraint firstItem="9YG-gE-Knj" firstAttribute="height" secondItem="yOT-Gd-SqC" secondAttribute="height" id="yAE-EI-cO6"/>
                                                     </constraints>
@@ -1422,25 +1415,25 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Nf-59-qk8">
-                                        <rect key="frame" x="155.5" y="-0.5" width="0.5" height="267"/>
+                                        <rect key="frame" x="172.5" y="-0.5" width="0.5" height="267"/>
                                         <color key="backgroundColor" red="0.38823529410000002" green="0.74509803919999995" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="KFH-W6-OSM"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="OMQ-rZ-wDy">
-                                        <rect key="frame" x="156" y="0.0" width="189" height="267"/>
+                                        <rect key="frame" x="173" y="0.0" width="172" height="267"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CourseGradeCell" id="vX7-2u-Iju" customClass="CourseGradeCell" customModule="EasyPass" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="55.5" width="189" height="44"/>
+                                                <rect key="frame" x="0.0" y="55.5" width="172" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vX7-2u-Iju" id="Mxh-4T-vgz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="189" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="172" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大学一年级" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQN-X3-b0q">
-                                                            <rect key="frame" x="25" y="5" width="139" height="34"/>
+                                                            <rect key="frame" x="25" y="5" width="122" height="34"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
@@ -1474,7 +1467,7 @@
                                     <constraint firstItem="4Nf-59-qk8" firstAttribute="leading" secondItem="IOI-1Q-jU5" secondAttribute="trailing" id="9NS-2a-n5B"/>
                                     <constraint firstItem="OMQ-rZ-wDy" firstAttribute="leading" secondItem="4Nf-59-qk8" secondAttribute="trailing" id="9jv-dA-FGh"/>
                                     <constraint firstAttribute="trailing" secondItem="OMQ-rZ-wDy" secondAttribute="trailing" id="9uX-13-zRN"/>
-                                    <constraint firstItem="IOI-1Q-jU5" firstAttribute="width" secondItem="ftI-Xh-v4f" secondAttribute="width" multiplier="0.45" id="Dpg-ZR-0Hw"/>
+                                    <constraint firstItem="IOI-1Q-jU5" firstAttribute="width" secondItem="ftI-Xh-v4f" secondAttribute="width" multiplier="0.5" id="Dpg-ZR-0Hw"/>
                                     <constraint firstItem="IOI-1Q-jU5" firstAttribute="centerY" secondItem="ftI-Xh-v4f" secondAttribute="centerY" id="FE4-kt-xT1"/>
                                     <constraint firstItem="OMQ-rZ-wDy" firstAttribute="centerY" secondItem="ftI-Xh-v4f" secondAttribute="centerY" id="GwS-eE-zfe"/>
                                     <constraint firstItem="IOI-1Q-jU5" firstAttribute="height" secondItem="ftI-Xh-v4f" secondAttribute="height" id="Kyv-1Y-pMQ"/>

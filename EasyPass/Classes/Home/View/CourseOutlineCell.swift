@@ -16,6 +16,7 @@ class CourseOutlineCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var info: UILabel!
+    @IBOutlet weak var infoTop: NSLayoutConstraint!
     @IBOutlet weak var watchBtn: UIButton!
     @IBOutlet weak var money: UILabel!
     @IBOutlet weak var classHour: UILabel!

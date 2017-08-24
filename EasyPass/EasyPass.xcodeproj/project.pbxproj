@@ -30,6 +30,7 @@
 		0F3838A51F0D2881003C800A /* PerfectInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3838A41F0D2881003C800A /* PerfectInfoController.swift */; };
 		0F46F7071F30549300B0946C /* AntTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46F7061F30549300B0946C /* AntTabBarController.swift */; };
 		0F46F7091F30669700B0946C /* BannerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46F7081F30669700B0946C /* BannerDetailController.swift */; };
+		0F5408C61F4E7FA400C05161 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5408C51F4E7FA400C05161 /* MenuButton.swift */; };
 		0F5FE0631F076D7F00B8DD09 /* CourseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE0621F076D7F00B8DD09 /* CourseListController.swift */; };
 		0F5FE0651F0770AC00B8DD09 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE0641F0770AC00B8DD09 /* CourseCell.swift */; };
 		0F5FE0671F0776CD00B8DD09 /* CourseMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE0661F0776CD00B8DD09 /* CourseMenuController.swift */; };
@@ -185,6 +186,7 @@
 		0F3838A41F0D2881003C800A /* PerfectInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfectInfoController.swift; sourceTree = "<group>"; };
 		0F46F7061F30549300B0946C /* AntTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntTabBarController.swift; sourceTree = "<group>"; };
 		0F46F7081F30669700B0946C /* BannerDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerDetailController.swift; sourceTree = "<group>"; };
+		0F5408C51F4E7FA400C05161 /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		0F5FE0621F076D7F00B8DD09 /* CourseListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseListController.swift; sourceTree = "<group>"; };
 		0F5FE0641F0770AC00B8DD09 /* CourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		0F5FE0661F0776CD00B8DD09 /* CourseMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMenuController.swift; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				0F6C62051EFFD47C0079B2F2 /* Common.swift */,
+				0F5408C51F4E7FA400C05161 /* MenuButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1123,6 +1126,7 @@
 				0F2F0E3B1F33018B006DCE57 /* SystemSetupCell.swift in Sources */,
 				0F83A6461F00B03800088B5F /* HomeHeaderCell.swift in Sources */,
 				0FAF33311F34B8ED00367147 /* FullPlayerVideoController.swift in Sources */,
+				0F5408C61F4E7FA400C05161 /* MenuButton.swift in Sources */,
 				0FE902F81F19F7C000C84392 /* ClassHourModel.swift in Sources */,
 				0FAF33341F34BA3200367147 /* UIDevice+JWDevice.m in Sources */,
 				0F8ABDB61F17256800659962 /* MJRefreshBackFooter.m in Sources */,
