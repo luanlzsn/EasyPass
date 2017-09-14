@@ -12,6 +12,7 @@ import MediaPlayer
 
 class PlayerVideoView: UIView {
     
+    @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var playBtn: UIButton!//播放按钮
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var playerTime: UILabel!
@@ -206,6 +207,7 @@ class PlayerVideoView: UIView {
             activityView.startAnimating()
             
             countVideoClick()
+            coverImg.isHidden = true
         } else {
             AntManage.showDelayToast(message: "还没有视频")
         }

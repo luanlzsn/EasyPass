@@ -14,6 +14,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_image" translatesAutoresizingMaskIntoConstraints="NO" id="qqD-1W-FWU">
+                    <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K97-F1-YHD">
                     <rect key="frame" x="162.5" y="308.5" width="50" height="50"/>
                     <state key="normal" image="player_play"/>
@@ -92,10 +95,14 @@
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.70284991200000002" colorSpace="calibratedRGB"/>
             <gestureRecognizers/>
             <constraints>
+                <constraint firstItem="qqD-1W-FWU" firstAttribute="height" secondItem="b6Y-HO-I28" secondAttribute="height" id="02c-Fp-gGt"/>
                 <constraint firstItem="F6h-Aq-Bge" firstAttribute="width" secondItem="b6Y-HO-I28" secondAttribute="width" id="1Eu-fv-MY3"/>
                 <constraint firstItem="Nhh-6c-ls7" firstAttribute="centerY" secondItem="b6Y-HO-I28" secondAttribute="centerY" id="6vG-sc-qP0"/>
+                <constraint firstItem="qqD-1W-FWU" firstAttribute="width" secondItem="b6Y-HO-I28" secondAttribute="width" id="Dt4-9k-Oxh"/>
+                <constraint firstItem="qqD-1W-FWU" firstAttribute="centerX" secondItem="b6Y-HO-I28" secondAttribute="centerX" id="Frv-Ug-kCW"/>
                 <constraint firstAttribute="bottom" secondItem="F6h-Aq-Bge" secondAttribute="bottom" id="IZg-D5-2ky"/>
                 <constraint firstItem="F6h-Aq-Bge" firstAttribute="centerX" secondItem="b6Y-HO-I28" secondAttribute="centerX" id="Tf0-3V-gTA"/>
+                <constraint firstItem="qqD-1W-FWU" firstAttribute="centerY" secondItem="b6Y-HO-I28" secondAttribute="centerY" id="cxa-KL-XIy"/>
                 <constraint firstItem="K97-F1-YHD" firstAttribute="centerX" secondItem="b6Y-HO-I28" secondAttribute="centerX" id="j7T-Nk-d6m"/>
                 <constraint firstItem="K97-F1-YHD" firstAttribute="centerY" secondItem="b6Y-HO-I28" secondAttribute="centerY" id="kqz-li-Lcj"/>
                 <constraint firstItem="Nhh-6c-ls7" firstAttribute="centerX" secondItem="b6Y-HO-I28" secondAttribute="centerX" id="oqr-Jd-72G"/>
@@ -103,6 +110,7 @@
             <connections>
                 <outlet property="activityView" destination="Nhh-6c-ls7" id="p9d-7m-r5n"/>
                 <outlet property="controlView" destination="F6h-Aq-Bge" id="qdA-It-LZc"/>
+                <outlet property="coverImg" destination="qqD-1W-FWU" id="Bg0-p7-31w"/>
                 <outlet property="playBtn" destination="K97-F1-YHD" id="kBG-d0-Ktc"/>
                 <outlet property="playerTime" destination="z54-No-bq5" id="yxi-yP-SPL"/>
                 <outlet property="progress" destination="UXL-ub-894" id="yd5-0T-sbq"/>
@@ -120,6 +128,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="default_image" width="150" height="150"/>
         <image name="player_enlarge" width="35" height="35"/>
         <image name="player_narrow" width="35" height="35"/>
         <image name="player_play" width="50" height="50"/>

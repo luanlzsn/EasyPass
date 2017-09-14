@@ -33,7 +33,9 @@ class AntSingleton: NSObject {
     //MARK: - post请求
     func postRequest(path:String, params:[String : Any]?, successResult:@escaping ([String : Any]) -> Void, failureResult:@escaping () -> Void) {
         AntLog(message: "请求接口：\(path),请求参数：\(String(describing: params))")
-        showMessage(message: "")
+        if path != "appuser/updateStudyDay" {
+            showMessage(message: "")
+        }
         weak var weakSelf = self
         
         manager.post(kRequestBaseUrl + path, parameters: params, progress: nil, success: { (task, response) in
@@ -150,9 +152,9 @@ class AntSingleton: NSObject {
                         successResult(data)
                     }
                 } else {
-                    if status as! Int == 1, let msg = data["msg"] as? String {
+                    if (status as! Int) == 1, let msg = data["msg"] as? String {
                         showDelayToast(message: msg)
-                    } else if status as! Int == 2, let msg = data["msg"] as? String {
+                    } else if (status as! Int) == 2, let msg = data["msg"] as? String {
                         showDelayToast(message: msg)
                         isLogin = false
                         userModel = nil
@@ -165,6 +167,9 @@ class AntSingleton: NSObject {
                             let nav = tabbar.selectedViewController as! UINavigationController
                             nav.popToRootViewController(animated: false)
                             tabbar.selectedIndex = 0
+                            let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+                            let login = storyboard.instantiateInitialViewController()
+                            tabbar.present(login!, animated: true, completion: nil)
                         }
                     } else {
                         showDelayToast(message: "未知错误，请重试！")

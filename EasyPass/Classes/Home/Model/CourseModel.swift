@@ -38,6 +38,7 @@ class CourseModel : NSObject, NSCoding, Mappable{
     var appleProductId : String?//苹果商店ID
     var buyFlag : Bool?//(ture:已购买flase：未购买)
     var courseHourBuyFlag : Bool?//(ture:已购买课时flase：未购买课时)
+    var coverImg : String?//视频预览图
 
 	class func newInstance(map: Map) -> Mappable?{
 		return CourseModel()
@@ -77,6 +78,7 @@ class CourseModel : NSObject, NSCoding, Mappable{
         appleProductId <- map["appleProductId"]
         buyFlag <- map["buyFlag"]
         courseHourBuyFlag <- map["courseHourBuyFlag"]
+        coverImg <- map["coverImg"]
 		
 	}
 
@@ -116,6 +118,7 @@ class CourseModel : NSObject, NSCoding, Mappable{
          appleProductId = aDecoder.decodeObject(forKey: "appleProductId") as? String
          buyFlag = aDecoder.decodeObject(forKey: "buyFlag") as? Bool
          courseHourBuyFlag = aDecoder.decodeObject(forKey: "courseHourBuyFlag") as? Bool
+         coverImg = aDecoder.decodeObject(forKey: "coverImg") as? String
 
 	}
 
@@ -214,6 +217,9 @@ class CourseModel : NSObject, NSCoding, Mappable{
         }
         if courseHourBuyFlag != nil {
             aCoder.encode(courseHourBuyFlag, forKey: "courseHourBuyFlag")
+        }
+        if coverImg != nil {
+            aCoder.encode(coverImg, forKey: "coverImg")
         }
 
 	}

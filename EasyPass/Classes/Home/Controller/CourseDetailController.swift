@@ -101,7 +101,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             weakSelf?.courseModel = Mapper<CourseModel>().map(JSON: response)
             weakSelf?.refreshCourseInfo()
         }, failureResult: {
-            AntManage.showDelayToast(message: "获取课程信息失败，请重试！")
+//            AntManage.showDelayToast(message: "获取课程信息失败，请重试！")
             weakSelf?.navigationController?.popViewController(animated: true)
         })
     }
@@ -152,6 +152,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
         } else if courseModel?.videoHttpUrl != nil, !(courseModel?.videoHttpUrl?.isEmpty)! {
             playerView.videoUrl = courseModel?.videoHttpUrl
         }
+        playerView.coverImg.setImageWith(URL(string: courseModel?.coverImg ?? "")!, placeholderImage: #imageLiteral(resourceName: "default_image"))
         if courseModel?.tag == 1 {
             buyBtn.setTitle("预约课程", for: .normal)
             outlineBtn.isHidden = true
@@ -178,7 +179,15 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             money.text = "$" + ((courseModel?.price != nil) ? "\(courseModel!.price!)" : "0.0")
             classHour.text = "/小时"
         }
-        detailLabel.text = courseModel?.courseDetail
+        if courseModel?.courseDetail != nil {
+            let attr = try! NSMutableAttributedString(data: (courseModel!.courseDetail!).data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
+            attr.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 12), range: NSMakeRange(0, attr.length))
+            attr.addAttribute(NSForegroundColorAttributeName, value: UIColor(rgb: 0x939598), range: NSMakeRange(0, attr.length))
+            detailLabel.attributedText = attr
+        } else {
+            detailLabel.text = ""
+        }
+        
         suitableCrowd.text = courseModel?.forCrowd
         learningGoal.text = courseModel?.studyGoal
         collectionBtn.isSelected = (courseModel?.collectFlag)!
