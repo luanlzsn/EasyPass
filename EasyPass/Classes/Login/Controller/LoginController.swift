@@ -58,6 +58,7 @@ class LoginController: AntController {
                         JPUSHService.setAlias("\(AntManage.userModel!.id!)", completion: { (_, nil, _) in
                             
                         }, seq: 1)
+                        NotificationCenter.default.post(name: NSNotification.Name(kLoginStatusUpdate), object: nil)
                         UserDefaults.standard.setValue(NSKeyedArchiver.archivedData(withRootObject: AntManage.userModel!), forKey: kUserInfo)
                         UserDefaults.standard.synchronize()
                         if AntManage.userModel?.email == nil, AntManage.userModel?.phone == nil {

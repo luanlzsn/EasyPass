@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 
-class PlayerVideoView: UIView {
+class PlayerVideoView: UIView,UIGestureRecognizerDelegate {
     
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var playBtn: UIButton!//播放按钮
@@ -333,6 +333,14 @@ class PlayerVideoView: UIView {
             let proSec = Int(CMTimeGetSeconds((weakSelf?.playerItem?.currentTime())!).truncatingRemainder(dividingBy: 60))
             weakSelf?.playerTime.text = NSString.init(format: "%02ld:%02ld", proMin, proSec) as String
         })
+    }
+    
+    // MARK: - UIGestureRecognizerDelegate
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view == controlView {
+            return false
+        }
+        return true
     }
 
     /*

@@ -40,7 +40,7 @@ class MyAccountController: AntController,UITableViewDelegate,UITableViewDataSour
     func saveAccountInfo() {
         kWindow?.endEditing(true)
         weak var weakSelf = self
-        var params = ["token":AntManage.userModel!.token!, "headImg":AntManage.userModel!.headImg!, "userName":AntManage.userModel!.userName!, "nickName":AntManage.userModel!.nickName!, "phone":contentArray[4], "email":contentArray[5]] as [String : Any]
+        var params = ["token":AntManage.userModel!.token!, "headImg":AntManage.userModel!.headImg!, "userName":AntManage.userModel?.userName ?? "", "nickName":AntManage.userModel!.nickName!, "phone":contentArray[4], "email":contentArray[5]] as [String : Any]
         if !contentArray[2].isEmpty {
             params["sex"] = (contentArray[2] == "男") ? 1 : 2
         }

@@ -152,7 +152,10 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
         } else if courseModel?.videoHttpUrl != nil, !(courseModel?.videoHttpUrl?.isEmpty)! {
             playerView.videoUrl = courseModel?.videoHttpUrl
         }
-        playerView.coverImg.setImageWith(URL(string: courseModel?.coverImg ?? "")!, placeholderImage: #imageLiteral(resourceName: "default_image"))
+        if courseModel?.coverImg != nil {
+            playerView.coverImg.setImageWith(URL(string: courseModel!.coverImg!)!, placeholderImage: #imageLiteral(resourceName: "default_image"))
+        }
+        
         if courseModel?.tag == 1 {
             buyBtn.setTitle("预约课程", for: .normal)
             outlineBtn.isHidden = true

@@ -216,8 +216,8 @@ class Common: NSObject {
                         if let result = resultArray.first {
                             if var lastVersion = result["version"] as? String {
                                 lastVersion = lastVersion.replacingOccurrences(of: ".", with: "")
-                                if Int(currentVersion)! <= Int(lastVersion)! {
-                                    AntManage.isExamine = false
+                                if Int(currentVersion)! > Int(lastVersion)! {
+                                    AntManage.isExamine = true
                                 }
                             }
                         }
