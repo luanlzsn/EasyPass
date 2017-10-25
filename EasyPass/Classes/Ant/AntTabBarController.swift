@@ -19,7 +19,7 @@ class AntTabBarController: UITabBarController,UITabBarControllerDelegate {
     
     // MARK: - UITabBarControllerDelegate
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if !AntManage.isLogin && (viewController == viewControllers?[1] || viewController == viewControllers?[3]) {
+        if (!AntManage.isLogin && viewController == viewControllers?[1]) || (AntManage.isLogin && (viewController == viewControllers?[3] && AntManage.isTourist)) {
             present(UIStoryboard(name: "Login", bundle: Bundle.main).instantiateInitialViewController()!, animated: true, completion: nil)
             return false
         }

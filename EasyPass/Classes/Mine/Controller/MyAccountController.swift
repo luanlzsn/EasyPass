@@ -20,19 +20,19 @@ class MyAccountController: AntController,UITableViewDelegate,UITableViewDataSour
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: .plain, target: self, action: #selector(saveAccountInfo))
         if AntManage.userModel?.nickName != nil {
-            contentArray.replaceSubrange(Range(1..<2), with: [(AntManage.userModel?.nickName?.removingPercentEncoding)!])
+            contentArray.replaceSubrange(Range(1..<2), with: [AntManage.userModel?.nickName?.removingPercentEncoding ?? ""])
         }
         if AntManage.userModel?.sexStr != nil {
-            contentArray.replaceSubrange(Range(2..<3), with: [(AntManage.userModel?.sexStr)!])
+            contentArray.replaceSubrange(Range(2..<3), with: [AntManage.userModel?.sexStr ?? ""])
         }
         if AntManage.userModel?.majorName != nil {
-            contentArray.replaceSubrange(Range(3..<4), with: [(AntManage.userModel?.majorName)!])
+            contentArray.replaceSubrange(Range(3..<4), with: [AntManage.userModel?.majorName ?? ""])
         }
         if AntManage.userModel?.phone != nil {
-            contentArray.replaceSubrange(Range(4..<5), with: [(AntManage.userModel?.phone)!])
+            contentArray.replaceSubrange(Range(4..<5), with: [AntManage.userModel?.phone ?? ""])
         }
         if AntManage.userModel?.email != nil {
-            contentArray.replaceSubrange(Range(5..<6), with: [(AntManage.userModel?.email)!])
+            contentArray.replaceSubrange(Range(5..<6), with: [AntManage.userModel?.email ?? ""])
         }
     }
 
@@ -40,7 +40,7 @@ class MyAccountController: AntController,UITableViewDelegate,UITableViewDataSour
     func saveAccountInfo() {
         kWindow?.endEditing(true)
         weak var weakSelf = self
-        var params = ["token":AntManage.userModel!.token!, "headImg":AntManage.userModel!.headImg!, "userName":AntManage.userModel?.userName ?? "", "nickName":AntManage.userModel!.nickName!, "phone":contentArray[4], "email":contentArray[5]] as [String : Any]
+        var params = ["token":AntManage.userModel!.token!, "headImg":AntManage.userModel?.headImg ?? "", "userName":AntManage.userModel?.userName ?? "", "nickName":AntManage.userModel?.nickName ?? "", "phone":contentArray[4], "email":contentArray[5]] as [String : Any]
         if !contentArray[2].isEmpty {
             params["sex"] = (contentArray[2] == "男") ? 1 : 2
         }

@@ -38,7 +38,7 @@ class CustomerServiceController: AntController,UIGestureRecognizerDelegate {
     func refreshView() {
         phone.text = aboutUsModel?.telephone
         email.text = aboutUsModel?.email
-        qrImage.sd_setImage(with: URL(string: aboutUsModel!.qrCodeImg!), placeholderImage: UIImage(named: "default_image"))
+        qrImage.sd_setImage(with: URL(string: aboutUsModel?.qrCodeImg ?? ""), placeholderImage: UIImage(named: "default_image"))
     }
     
     // MARK: - UIGestureRecognizerDelegate

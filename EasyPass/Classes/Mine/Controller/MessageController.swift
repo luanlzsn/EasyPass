@@ -68,7 +68,7 @@ class MessageController: AntController,UITableViewDelegate,UITableViewDataSource
         cell.accessoryView = UIImageView(image: UIImage(named: "message_arrow"))
         let model = messageArray[indexPath.row]
         cell.title.text = model.msgHeader
-        let attr = try! NSMutableAttributedString(data: (model.msgDetail!).data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
+        let attr = try! NSMutableAttributedString(data: (model.msgDetail ?? "").data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
         attr.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 12), range: NSMakeRange(0, attr.length))
         attr.addAttribute(NSForegroundColorAttributeName, value: UIColor(rgb: 0x939598), range: NSMakeRange(0, attr.length))
         cell.content.attributedText = attr

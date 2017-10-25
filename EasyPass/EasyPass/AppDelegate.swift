@@ -27,14 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate {
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         
-        Common.checkVersion()
+//        Common.checkVersion()
+        initializationShareSDK()
         
         if UserDefaults.standard.object(forKey: kUserInfo) != nil {
             AntManage.isLogin = true
+            AntManage.isTourist = UserDefaults.standard.bool(forKey: kIsTourist)
             AntManage.userModel = NSKeyedUnarchiver.unarchiveObject(with: UserDefaults.standard.object(forKey: kUserInfo) as! Data) as? UserModel
+        } else {
+            AntManage.touristLogin()
         }
         
-        initializationShareSDK()
         if UserDefaults.standard.object(forKey: "MessageSwitch") != nil {
             if UserDefaults.standard.bool(forKey: "MessageSwitch") {
                 initializationJPush(launchOptions: launchOptions)
@@ -122,7 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate {
     }
     
     func checkPushInfo(_ userInfo: [String : Any]) {
-        if AntManage.isLogin {
+        if AntManage.isLogin && !AntManage.isTourist {
             let tabbar = window?.rootViewController as! UITabBarController
             let nav = tabbar.selectedViewController as! UINavigationController
             let message = UIStoryboard(name: "Mine", bundle: Bundle.main).instantiateViewController(withIdentifier: "Message") as! MessageController
@@ -147,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         UIApplication.shared.applicationIconBadgeNumber = 0
-        if AntManage.isLogin {
+        if AntManage.isLogin && !AntManage.isTourist {
             AntManage.postRequest(path: "appuser/updateStudyDay", params: ["token":AntManage.userModel!.token!], successResult: { (_) in
                 
             }, failureResult: {})

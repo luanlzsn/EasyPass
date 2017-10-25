@@ -128,20 +128,27 @@ class MyCourseController: AntController,UITableViewDelegate,UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MyCourseCell = tableView.dequeueReusableCell(withIdentifier: "MyCourseCell", for: indexPath) as! MyCourseCell
         let order = courseArray[indexPath.section]
-        cell.courseImage.sd_setImage(with: URL(string: (order.photo != nil) ? order.photo! : ""), placeholderImage: UIImage(named: "default_image"))
+        cell.courseImage.sd_setImage(with: URL(string: order.photo ?? ""), placeholderImage: UIImage(named: "default_image"))
         if order.courseHourId != nil {
             cell.courseName.text = order.lessonPeriod! + " " + order.classHourName!
         } else {
             cell.courseName.text = order.courseName
         }
         cell.courseCredit.text = "学分\(order.credit!)"
-        for image in cell.starArray {
-            if order.difficulty! > image.tag - 100 {
-                image.image = UIImage(named: "star_select")
-            } else {
+        if order.difficulty != nil {
+            for image in cell.starArray {
+                if order.difficulty! > image.tag - 100 {
+                    image.image = UIImage(named: "star_select")
+                } else {
+                    image.image = UIImage(named: "star_unselect")
+                }
+            }
+        } else {
+            for image in cell.starArray {
                 image.image = UIImage(named: "star_unselect")
             }
         }
+        
         if order.tag == 0 {
             cell.typeImage.image = UIImage(named: "video_course")
         } else if order.tag == 1 {
@@ -149,7 +156,11 @@ class MyCourseController: AntController,UITableViewDelegate,UITableViewDataSourc
         } else {
             cell.typeImage.image = UIImage(named: "study_group")
         }
-        cell.updateTime.text = "更新时间 \(order.payTime!.components(separatedBy: ".").first!)"
+        if order.modifyTime != nil {
+            cell.updateTime.text = "更新时间 \(order.modifyTime!.components(separatedBy: ".").first ?? "")"
+        } else {
+            cell.updateTime.text = "更新时间"
+        }
         return cell
     }
     

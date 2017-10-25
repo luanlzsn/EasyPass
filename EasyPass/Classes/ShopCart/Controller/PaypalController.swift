@@ -31,15 +31,15 @@ class PaypalController: AntController,PayPalPaymentDelegate {
         var items = [PayPalItem]()
         var tax: Float = 0.0
         for model in courseArray {
-            let price = String.init(format: "%.2f", (model.coursePrice != nil) ? model.coursePrice! : 0.0)
-            let item = PayPalItem(name: model.courseName!, withQuantity: UInt(model.quantity!), withPrice: NSDecimalNumber(string: price), withCurrency: "CAD", withSku: "\(model.courseId!)")
-            tax += (model.courseOnTax != nil) ? (model.courseOnTax! * Float.init(model.quantity!)) : 0.0
+            let price = String.init(format: "%.2f", model.coursePrice ?? 0.0)
+            let item = PayPalItem(name: model.courseName ?? "", withQuantity: UInt(model.quantity ?? 0), withPrice: NSDecimalNumber(string: price), withCurrency: "CAD", withSku: "\(model.courseId ?? 0)")
+            tax += (model.courseOnTax != nil) ? (model.courseOnTax! * Float.init(model.quantity ?? 0)) : 0.0
             items.append(item)
         }
         for model in orderItemArray {
-            let price = String.init(format: "%.2f", (model.coursePrice != nil) ? model.coursePrice! : 0.0)
-            let item = PayPalItem(name: model.courseName!, withQuantity: UInt(model.quantity!), withPrice: NSDecimalNumber(string: price), withCurrency: "CAD", withSku: "\(model.courseId!)")
-            tax += (model.courseOnTax != nil) ? (model.courseOnTax! * Float.init(model.quantity!)) : 0.0
+            let price = String.init(format: "%.2f", model.coursePrice ?? 0.0)
+            let item = PayPalItem(name: model.courseName ?? "", withQuantity: UInt(model.quantity ?? 0), withPrice: NSDecimalNumber(string: price), withCurrency: "CAD", withSku: "\(model.courseId ?? 0)")
+            tax += (model.courseOnTax != nil) ? (model.courseOnTax! * Float.init(model.quantity ?? 0)) : 0.0
             items.append(item)
         }
         let subtotal = PayPalItem.totalPrice(forItems: items)

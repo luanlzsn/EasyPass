@@ -80,17 +80,21 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
     
     // MARK: - 预约课程
     @IBAction func reservationCourseClick(_ sender: UIButton) {
-        sender.isSelected = true
-        videoBtn.isSelected = false
-        editBtn.isHidden = false
-        tableView.isEditing = editBtn.isSelected
-        lineLeft.constant = kScreenWidth / 2.0
-        tableBottom.constant = 135
-        checkOutView.isHidden = false
-        tableView.mj_footer.isHidden = reservationNoMoreData
-        tableView.reloadData()
-        if reservationArray.count == 0, !reservationNoMoreData {
-            getShoppingCartList(pageNo: 1, tag: 1)
+        if Common.checkTouristIsOperation(controller: self) {
+            sender.isSelected = true
+            videoBtn.isSelected = false
+            editBtn.isHidden = false
+            tableView.isEditing = editBtn.isSelected
+            lineLeft.constant = kScreenWidth / 2.0
+            tableBottom.constant = 135
+            checkOutView.isHidden = false
+            tableView.mj_footer.isHidden = reservationNoMoreData
+            tableView.reloadData()
+            if reservationArray.count == 0, !reservationNoMoreData {
+                getShoppingCartList(pageNo: 1, tag: 1)
+            }
+        } else {
+            AntManage.showDelayToast(message: "请先登录")
         }
     }
     
@@ -107,32 +111,33 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         for shopCartModel in reservationArray {
             if !editBtn.isSelected || reservationSelectArray.contains(shopCartModel.id!) {
                 array.append(shopCartModel)
-                var orderItem = ["shoppingCartId":shopCartModel.id! ,"courseId":shopCartModel.courseId!, "quantity":shopCartModel.quantity!] as [String : Any]
-                let quantity = (shopCartModel.quantity != nil) ? shopCartModel.quantity! : 0
+                var orderItem = ["shoppingCartId":shopCartModel.id ?? 0 ,"courseId":shopCartModel.courseId ?? 0, "quantity":shopCartModel.quantity ?? 0] as [String : Any]
+                let quantity = shopCartModel.quantity ?? 0
                 var price: Float = 0.0//商品价格
                 var onTax: Float = 0.0//商品税务
                 
                 if shopCartModel.courseHourId == nil {
                     if shopCartModel.tag == 0 {
-                        price = (shopCartModel.coursePriceIos != nil) ? shopCartModel.coursePriceIos! : 0.0
+                        price = shopCartModel.coursePriceIos ?? 0.0
                     } else {
-                        price = (shopCartModel.coursePrice != nil) ? shopCartModel.coursePrice! : 0.0
+                        price = shopCartModel.coursePrice ?? 0.0
                     }
-                    onTax = (shopCartModel.courseOnTax != nil) ? shopCartModel.courseOnTax! : 0.0
+                    onTax = shopCartModel.courseOnTax ?? 0.0
                 } else {
-                    price = (shopCartModel.courseHourPriceIos != nil) ? shopCartModel.courseHourPriceIos! : 0.0
-                    onTax = (shopCartModel.courseHourOnTax != nil) ? shopCartModel.courseHourOnTax! : 0.0
+                    price = shopCartModel.courseHourPriceIos ?? 0.0
+                    onTax = shopCartModel.courseHourOnTax ?? 0.0
                     orderItem["courseClassHourId"] = shopCartModel.courseHourId!
                 }
-                orderItem["price"] = price
-                orderItem["onTax"] = onTax
+                orderItem["price"] = String(format: "%.2f", price)
+                orderItem["onTax"] = String(format: "%.2f", onTax)
                 totalPrice += price * Float.init(quantity)
                 totalOnTax += onTax * Float.init(quantity)
                 orderItemList.append(orderItem)
             }
         }
+        let orderTotalPrice = String(format: "%.2f", Float(String(format: "%.2f", totalPrice))! + Float(String(format: "%.2f", totalOnTax))!)
         weak var weakSelf = self
-        AntManage.postSumbitOrder(body: ["orderItemList":orderItemList, "totalPrice":totalPrice, "totalOnTax":totalOnTax, "orderTotalPrice":totalPrice + totalOnTax], successResult: { (response) in
+        AntManage.postSumbitOrder(body: ["orderItemList":orderItemList, "totalPrice":String(format: "%.2f", totalPrice), "totalOnTax":String(format: "%.2f", totalOnTax), "orderTotalPrice":orderTotalPrice], successResult: { (response) in
             weakSelf?.orderNo = response["orderNo"] as! String
             if weakSelf!.editBtn.isSelected {
                 weakSelf?.editShopCartClick()
@@ -199,9 +204,9 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
         var totalOnTax: Float = 0.0//商品总税务
         for model in reservationArray {
             if !editBtn.isSelected || reservationSelectArray.contains(model.id!) {
-                let price: Float = (model.coursePrice != nil) ? model.coursePrice! : 0.0
-                let onTax: Float = (model.courseOnTax != nil) ? model.courseOnTax! : 0.0
-                let quantity = (model.quantity != nil) ? model.quantity! : 0
+                let price: Float = model.coursePrice ?? 0.0
+                let onTax: Float = model.courseOnTax ?? 0.0
+                let quantity = model.quantity ?? 0
                 totalPrice += price * Float.init(quantity)
                 totalOnTax += onTax * Float.init(quantity)
             }
@@ -300,35 +305,53 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
     }
     
     func checkOut(row: Int) {
+        if AntManage.isTourist {
+            let alert = UIAlertController(title: "购买课程", message: "登录易Pass购买，可跨平台观看视频，直接购买，只能在当前设备上观看视频", preferredStyle: .alert)
+            weak var weakSelf = self
+            alert.addAction(UIAlertAction(title: "登录易Pass购买", style: .destructive, handler: { (_) in
+                _ = Common.checkTouristIsOperation(controller: weakSelf!)
+            }))
+            alert.addAction(UIAlertAction(title: "游客身份购买", style: .default, handler: { (_) in
+                weakSelf?.paymentVideoCourse(row: row)
+            }))
+            alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        } else {
+            paymentVideoCourse(row: row)
+        }
+    }
+    
+    // MARK: - 购买视频课程
+    func paymentVideoCourse(row: Int) {
         let shopCartModel = videoArray[row]
         var orderItemList = ["shoppingCartId":shopCartModel.id! ,"courseId":shopCartModel.courseId!, "quantity":shopCartModel.quantity!] as [String : Any]
         var appleProductId = ""
         let quantity = (shopCartModel.quantity != nil) ? shopCartModel.quantity! : 0
         var price: Float = 0.0//商品价格
         var onTax: Float = 0.0//商品税务
-        var totalPrice: Float = 0.0//商品总价
-        var totalOnTax: Float = 0.0//商品总税务
         
         if shopCartModel.courseHourId == nil {
             if shopCartModel.tag == 0 {
-                price = (shopCartModel.coursePriceIos != nil) ? shopCartModel.coursePriceIos! : 0.0
+                price = shopCartModel.coursePriceIos ?? 0.0
             } else {
-                price = (shopCartModel.coursePrice != nil) ? shopCartModel.coursePrice! : 0.0
+                price = shopCartModel.coursePrice ?? 0.0
             }
-            onTax = (shopCartModel.courseOnTax != nil) ? shopCartModel.courseOnTax! : 0.0
+            onTax = shopCartModel.courseOnTax ?? 0.0
             appleProductId = shopCartModel.appleProductIdForCourse!
         } else {
-            price = (shopCartModel.courseHourPriceIos != nil) ? shopCartModel.courseHourPriceIos! : 0.0
-            onTax = (shopCartModel.courseHourOnTax != nil) ? shopCartModel.courseHourOnTax! : 0.0
+            price = shopCartModel.courseHourPriceIos ?? 0.0
+            onTax = shopCartModel.courseHourOnTax ?? 0.0
             orderItemList["courseClassHourId"] = shopCartModel.courseHourId!
-            appleProductId = shopCartModel.appleProductIdForCourseHour!
+            appleProductId = shopCartModel.appleProductIdForCourseHour ?? ""
         }
-        orderItemList["price"] = price
-        orderItemList["onTax"] = onTax
-        totalPrice = price * Float.init(quantity)
-        totalOnTax = onTax * Float.init(quantity)
+        orderItemList["price"] = String(format: "%.2f", price)
+        orderItemList["onTax"] = String(format: "%.2f", onTax)
+        let totalPrice = String(format: "%.2f", price * Float.init(quantity))
+        let totalOnTax = String(format: "%.2f", onTax * Float.init(quantity))
+        let orderTotalPrice = String(format: "%.2f", Float(totalPrice)! + Float(totalOnTax)!)
+        
         weak var weakSelf = self
-        AntManage.postSumbitOrder(body: ["orderItemList":[orderItemList], "totalPrice":totalPrice, "totalOnTax":totalOnTax, "orderTotalPrice":totalPrice + totalOnTax], successResult: { (response) in
+        AntManage.postSumbitOrder(body: ["orderItemList":[orderItemList], "totalPrice":totalPrice, "totalOnTax":totalOnTax, "orderTotalPrice":orderTotalPrice], successResult: { (response) in
             AntManage.showDelayToast(message: "订单提交成功！")
             weakSelf?.orderNo = response["orderNo"] as! String
             weakSelf?.orderNum = quantity
@@ -362,13 +385,13 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
             cell.addBtn.isHidden = true
             cell.checkOutBtn.isHidden = false
             if shopCartModel.courseHourId != nil {
-                cell.courseName.text = shopCartModel.gradeName! + "\n\n" + shopCartModel.lessonPeriod! + " " + shopCartModel.classHourName!
-                cell.money.text = "$" + "\((shopCartModel.courseHourPriceIos != nil) ? shopCartModel.courseHourPriceIos! : 0.0)"
-                cell.numberTextField.text = "\(shopCartModel.quantity!)"
+                cell.courseName.text = (shopCartModel.gradeName ?? "") + "\n\n" + (shopCartModel.lessonPeriod ?? "") + " " + (shopCartModel.classHourName ?? "")
+                cell.money.text = "$" + "\(shopCartModel.courseHourPriceIos ?? 0.0)"
+                cell.numberTextField.text = "\(shopCartModel.quantity ?? 0)"
             } else {
-                cell.courseName.text = shopCartModel.gradeName! + "\n\n" + shopCartModel.courseName!
-                cell.money.text = "$" + "\((shopCartModel.coursePriceIos != nil) ? shopCartModel.coursePriceIos! : 0.0)"
-                cell.numberTextField.text = "\(shopCartModel.quantity!)"
+                cell.courseName.text = (shopCartModel.gradeName ?? "") + "\n\n" + (shopCartModel.courseName ?? "")
+                cell.money.text = "$" + "\(shopCartModel.coursePriceIos ?? 0.0)"
+                cell.numberTextField.text = "\(shopCartModel.quantity ?? 0)"
             }
         } else {
             if tableView.isEditing {
@@ -381,9 +404,9 @@ class ShopCartController: AntController,UITableViewDelegate,UITableViewDataSourc
             cell.reduceBtn.isHidden = false
             cell.addBtn.isHidden = false
             cell.checkOutBtn.isHidden = true
-            cell.courseName.text = shopCartModel.gradeName! + "\n\(shopCartModel.courseName!)\n预约课程 " + shopCartModel.teacher!
-            cell.money.text = "$" + "\(shopCartModel.coursePrice!)"
-            cell.numberTextField.text = "\(shopCartModel.quantity!)"
+            cell.courseName.text = (shopCartModel.gradeName ?? "") + "\n\(shopCartModel.courseName ?? "")\n预约课程 " + (shopCartModel.teacher ?? "")
+            cell.money.text = "$" + "\(shopCartModel.coursePrice ?? 0.0)"
+            cell.numberTextField.text = "\(shopCartModel.quantity ?? 0)"
         }
         return cell
     }

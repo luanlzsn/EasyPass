@@ -143,25 +143,32 @@ class MyCollectionController: AntController,UITableViewDelegate,UITableViewDataS
         let courseModel = collectArray[indexPath.row]
         cell.courseImage.sd_setImage(with: URL(string: courseModel.photo!), placeholderImage: UIImage(named: "default_image"))
         cell.courseName.text = courseModel.courseName
-        cell.courseCredit.text = "学分\(courseModel.credit!)"
-        cell.classHour.text = "/\(courseModel.classHour!)课时"
+        cell.courseCredit.text = "学分\(courseModel.credit ?? 0)"
+        cell.classHour.text = "/\(courseModel.classHour ?? 0)课时"
         if courseModel.tag == 0 {
             cell.typeImage.image = UIImage(named: "video_course")
-            cell.money.text = "$" + ((courseModel.priceIos != nil) ? "\(courseModel.priceIos!)" : "0.0")
+            cell.money.text = "$" + "\(courseModel.priceIos ?? 0.0)"
         } else if courseModel.tag == 1 {
             cell.typeImage.image = UIImage(named: "reservation_course")
-            cell.money.text = "$" + ((courseModel.price != nil) ? "\(courseModel.price!)" : "0.0")
+            cell.money.text = "$" + "\(courseModel.price ?? 0.0)"
         } else {
             cell.typeImage.image = UIImage(named: "study_group")
-            cell.money.text = "$" + ((courseModel.price != nil) ? "\(courseModel.price!)" : "0.0")
+            cell.money.text = "$" + "\(courseModel.price ?? 0.0)"
         }
-        for image in cell.starArray {
-            if courseModel.difficulty! > image.tag - 100 {
-                image.image = UIImage(named: "star_select")
-            } else {
+        if courseModel.difficulty != nil {
+            for image in cell.starArray {
+                if courseModel.difficulty! > image.tag - 100 {
+                    image.image = UIImage(named: "star_select")
+                } else {
+                    image.image = UIImage(named: "star_unselect")
+                }
+            }
+        } else {
+            for image in cell.starArray {
                 image.image = UIImage(named: "star_unselect")
             }
         }
+        
         return cell
     }
     

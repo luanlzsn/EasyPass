@@ -35,6 +35,11 @@ class PlayerVideoView: UIView,UIGestureRecognizerDelegate {
     var isFull = false
     
     deinit {
+        player?.currentItem?.cancelPendingSeeks()
+        player?.currentItem?.asset.cancelLoading()
+        if playerTime.text != "00:00" {
+            player?.removeTimeObserver(timeObserver!)
+        }
         playerItem?.removeObserver(self, forKeyPath: "status")
         playerItem?.removeObserver(self, forKeyPath: "loadedTimeRanges")
         playerItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
@@ -56,11 +61,9 @@ class PlayerVideoView: UIView,UIGestureRecognizerDelegate {
             return
         }
         player?.pause()
-        player?.currentItem?.cancelPendingSeeks()
-        player?.currentItem?.asset.cancelLoading()
-        if playerTime.text != "00:00" {
-            player?.removeTimeObserver(timeObserver!)
-        }
+        playBtn.isHidden = false
+        playBtn.isSelected = false
+        controlView.isHidden = true
     }
     
     override func layoutSubviews() {
@@ -129,6 +132,9 @@ class PlayerVideoView: UIView,UIGestureRecognizerDelegate {
     
     // MARK: - 播放课时视频
     func playerCourseHourVideo(_ courseHourVideoUrl: String) {
+        if videoUrl == courseHourVideoUrl {
+            return
+        }
         if playerItem == nil {
             videoUrl = courseHourVideoUrl
             playerVideo()
@@ -261,7 +267,6 @@ class PlayerVideoView: UIView,UIGestureRecognizerDelegate {
         player?.seek(to: CMTimeMake(0, 1))
         progressSlider.value = 0
         playerTime.text = "00:00"
-        player?.removeTimeObserver(timeObserver!)
     }
     
     // MARK: - 程序被挂起

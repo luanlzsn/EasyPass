@@ -23,7 +23,6 @@ let kScreenBounds = UIScreen.main.bounds
 let kScreenWidth = kScreenBounds.width
 let kScreenHeight = kScreenBounds.height
 let MainColor = Common.colorWithHexString(colorStr: "63BEB7")
-let LeomanManager = AntSingleton.sharedInstance
 let kIphone4 = kScreenHeight == 480
 let kIpad = UIDevice.current.userInterfaceIdiom == .pad
 let kAppDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -37,7 +36,7 @@ let kAppDownloadURL = "https://itunes.apple.com/cn/app/id1258792640"//下载地�
 let kShareUrl = URL(string: "http://www.epassstudy.com/")!
 let kShareContent = "Epass致力于利用科学的学习方法和线上教育的优势，为学生打造一个在家就可以独立学习的机会，为广大学子的求学求职之路点一盏明灯。毕竟，行路，还是要靠行路人自己。"
 
-
+let kIsTourist = "kIsTourist"//是否是游客
 let kUserInfo = "kUserInfo"//登录用户的信息
 
 let kLoginStatusUpdate = "kLoginStatusUpdate"//登录状态更新通知

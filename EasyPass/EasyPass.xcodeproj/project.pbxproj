@@ -110,6 +110,8 @@
 		0FBD413E1F3D81810001B539 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBD413D1F3D81810001B539 /* SafariServices.framework */; };
 		0FBD41481F3D82F30001B539 /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBD41401F3D82F30001B539 /* libPayPalMobile.a */; };
 		0FBE70DA1F4C8A3200660AAB /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBE70D91F4C8A3200660AAB /* SDWebImage.framework */; };
+		0FBECB091F9AE48700F2193B /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBECB061F9AE48700F2193B /* KeychainItemWrapper.m */; };
+		0FBECB0A1F9AE48700F2193B /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FBECB081F9AE48700F2193B /* KeychainAccessGroups.plist */; };
 		0FC08D5D1F31847F0035CAB3 /* UserRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC08D5C1F31847F0035CAB3 /* UserRecordModel.swift */; };
 		0FC6635D1F161E8D00C06F0E /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC6635C1F161E8D00C06F0E /* ObjectMapper.framework */; };
 		0FC71A541F22111D00FAD254 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC71A321F22111D00FAD254 /* MOBFoundation.framework */; };
@@ -297,6 +299,9 @@
 		0FBD41461F3D82F30001B539 /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPaymentViewController.h; sourceTree = "<group>"; };
 		0FBD41471F3D82F30001B539 /* PayPalProfileSharingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalProfileSharingViewController.h; sourceTree = "<group>"; };
 		0FBE70D91F4C8A3200660AAB /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
+		0FBECB061F9AE48700F2193B /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		0FBECB071F9AE48700F2193B /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		0FBECB081F9AE48700F2193B /* KeychainAccessGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeychainAccessGroups.plist; sourceTree = "<group>"; };
 		0FC08D5C1F31847F0035CAB3 /* UserRecordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRecordModel.swift; sourceTree = "<group>"; };
 		0FC6635C1F161E8D00C06F0E /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		0FC71A321F22111D00FAD254 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
@@ -727,6 +732,7 @@
 		0F8ABD851F17256800659962 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				0FBECB051F9AE48700F2193B /* KeychainItemWrapper */,
 				0FBD413F1F3D82F30001B539 /* PayPalMobile */,
 				0FAF33321F34BA3200367147 /* UIDevice+JWDevice.h */,
 				0FAF33331F34BA3200367147 /* UIDevice+JWDevice.m */,
@@ -845,6 +851,16 @@
 				0FBD41471F3D82F30001B539 /* PayPalProfileSharingViewController.h */,
 			);
 			path = PayPalMobile;
+			sourceTree = "<group>";
+		};
+		0FBECB051F9AE48700F2193B /* KeychainItemWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				0FBECB061F9AE48700F2193B /* KeychainItemWrapper.m */,
+				0FBECB071F9AE48700F2193B /* KeychainItemWrapper.h */,
+				0FBECB081F9AE48700F2193B /* KeychainAccessGroups.plist */,
+			);
+			path = KeychainItemWrapper;
 			sourceTree = "<group>";
 		};
 		0FC663591F161A4800C06F0E /* Model */ = {
@@ -1047,6 +1063,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FBECB0A1F9AE48700F2193B /* KeychainAccessGroups.plist in Resources */,
 				0F6C61D91EFFCA800079B2F2 /* LaunchScreen.storyboard in Resources */,
 				0F6C61D61EFFCA800079B2F2 /* Assets.xcassets in Resources */,
 				0FD76B611F07E4D200A04F7A /* CourseCommentCell.xib in Resources */,
@@ -1152,6 +1169,7 @@
 				0F6C61CF1EFFCA800079B2F2 /* AppDelegate.swift in Sources */,
 				0F8ABDC71F17256800659962 /* UIScrollView+MJRefresh.m in Sources */,
 				0F6C620C1EFFD4860079B2F2 /* AntDefault.swift in Sources */,
+				0FBECB091F9AE48700F2193B /* KeychainItemWrapper.m in Sources */,
 				0F3838971F0D09AB003C800A /* MyAccountHeadCell.swift in Sources */,
 				0F0739121F16420600217CC6 /* ClassifyModel.swift in Sources */,
 				0F37015F1F41CB6100C1999C /* OrderBuyTimeCell.swift in Sources */,
@@ -1308,7 +1326,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = EasyPass/EasyPass.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1352,7 +1369,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = EasyPass/EasyPass.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

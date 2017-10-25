@@ -241,33 +241,40 @@ class MyOrderController: AntController,UITableViewDelegate,UITableViewDataSource
         let order = orderArray[indexPath.section]
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderNumCell", for: indexPath)
-            cell.textLabel?.text = "订单编号:\((order.orderNo != nil) ? order.orderNo! : "")"
+            cell.textLabel?.text = "订单编号:\(order.orderNo ?? "")"
             return cell
         } else if indexPath.row <= order.orderDetail!.count {
             let cell: MyOrderCell = tableView.dequeueReusableCell(withIdentifier: "MyOrderCell", for: indexPath) as! MyOrderCell
             let orderItem = order.orderDetail![indexPath.row - 1]
-            cell.courseImage.sd_setImage(with: URL(string: (orderItem.photo != nil) ? orderItem.photo! : ""), placeholderImage: UIImage(named: "default_image"))
+            cell.courseImage.sd_setImage(with: URL(string: (orderItem.photo != nil) ? ("http://epass.epassstudy.com:8080/static/" + orderItem.photo!) : ""), placeholderImage: UIImage(named: "default_image"))
             if orderItem.courseHourId != nil {
                 cell.courseName.text = orderItem.lessonPeriod! + " " + orderItem.classHourName!
-                cell.money.text = "$" + ((orderItem.courseHourPriceIos != nil) ? "\(orderItem.courseHourPriceIos!)" : "0.0")
+                cell.money.text = "$" + "\(orderItem.courseHourPriceIos ?? 0.0)"
                 cell.classHour.text = "/1课时"
             } else {
                 cell.courseName.text = orderItem.courseName
                 if orderItem.tag == 0 {
-                    cell.money.text = "$" + ((orderItem.coursePriceIos != nil) ? "\(orderItem.coursePriceIos!)" : "0.0")
+                    cell.money.text = "$" + "\(orderItem.coursePriceIos ?? 0.0)"
                 } else {
-                    cell.money.text = "$" + ((orderItem.coursePrice != nil) ? "\(orderItem.coursePrice!)" : "0.0")
+                    cell.money.text = "$" + "\(orderItem.coursePrice ?? 0.0)"
                 }
-                cell.classHour.text = "/\(orderItem.classHour!)课时"
+                cell.classHour.text = "/\(orderItem.classHour ?? 0)课时"
             }
-            cell.courseCredit.text = "学分\(orderItem.credit!)"
-            for image in cell.starArray {
-                if orderItem.difficulty! > image.tag - 100 {
-                    image.image = UIImage(named: "star_select")
-                } else {
+            cell.courseCredit.text = "学分\(orderItem.credit ?? 0)"
+            if orderItem.difficulty != nil {
+                for image in cell.starArray {
+                    if orderItem.difficulty! > image.tag - 100 {
+                        image.image = UIImage(named: "star_select")
+                    } else {
+                        image.image = UIImage(named: "star_unselect")
+                    }
+                }
+            } else {
+                for image in cell.starArray {
                     image.image = UIImage(named: "star_unselect")
                 }
             }
+            
             if orderItem.tag == 0 {
                 cell.typeImage.image = UIImage(named: "video_course")
             } else if orderItem.tag == 1 {
@@ -275,7 +282,7 @@ class MyOrderController: AntController,UITableViewDelegate,UITableViewDataSource
             } else {
                 cell.typeImage.image = UIImage(named: "study_group")
             }
-            cell.number.text = "x \(orderItem.quantity!)"
+            cell.number.text = "x \(orderItem.quantity ?? 0)"
             return cell
         } else {
             let cell: OrderBuyTimeCell = tableView.dequeueReusableCell(withIdentifier: "OrderBuyTimeCell", for: indexPath) as! OrderBuyTimeCell

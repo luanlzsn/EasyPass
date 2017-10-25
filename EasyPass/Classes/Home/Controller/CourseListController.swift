@@ -164,27 +164,34 @@ class CourseListController: AntController,UITableViewDelegate,UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CourseCell = tableView.dequeueReusableCell(withIdentifier: "CourseCell", for: indexPath) as! CourseCell
         let model = courseArray[indexPath.row]
-        cell.courseImage.sd_setImage(with: URL(string: model.photo!), placeholderImage: UIImage(named: "default_image"))
+        cell.courseImage.sd_setImage(with: URL(string: model.photo ?? ""), placeholderImage: UIImage(named: "default_image"))
         cell.courseName.text = model.courseName
-        cell.courseCredit.text = "学分\(model.credit!)"
-        cell.classHour.text = "/\(model.classHour!)课时"
+        cell.courseCredit.text = "学分\(model.credit ?? 0)"
+        cell.classHour.text = "/\(model.classHour ?? 0)课时"
         if model.tag == 0 {
             cell.typeImage.image = UIImage(named: "video_course")
-            cell.money.text = "$" + ((model.priceIos != nil) ? "\(model.priceIos!)" : "0.0")
+            cell.money.text = "$" + "\(model.priceIos ?? 0.0)"
         } else if model.tag == 1 {
             cell.typeImage.image = UIImage(named: "reservation_course")
-            cell.money.text = "$" + ((model.price != nil) ? "\(model.price!)" : "0.0")
+            cell.money.text = "$" + "\(model.price ?? 0.0)"
         } else {
             cell.typeImage.image = UIImage(named: "study_group")
-            cell.money.text = "$" + ((model.price != nil) ? "\(model.price!)" : "0.0")
+            cell.money.text = "$" + "\(model.price ?? 0.0)"
         }
-        for image in cell.starArray {
-            if model.difficulty! > image.tag - 100 {
-                image.image = UIImage(named: "star_select")
-            } else {
+        if model.difficulty != nil {
+            for image in cell.starArray {
+                if model.difficulty! > image.tag - 100 {
+                    image.image = UIImage(named: "star_select")
+                } else {
+                    image.image = UIImage(named: "star_unselect")
+                }
+            }
+        } else {
+            for image in cell.starArray {
                 image.image = UIImage(named: "star_unselect")
             }
         }
+        
         return cell
     }
     

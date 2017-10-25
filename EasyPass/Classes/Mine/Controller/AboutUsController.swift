@@ -38,12 +38,12 @@ class AboutUsController: AntController {
     }
     
     func refreshView() {
-        iconImage.sd_setImage(with: URL(string: aboutUsModel!.logoImg!), placeholderImage: UIImage(named: "default_image"))
+        iconImage.sd_setImage(with: URL(string: aboutUsModel?.logoImg ?? ""), placeholderImage: UIImage(named: "default_image"))
         descr.text = aboutUsModel?.descriptionField
         phone.text = aboutUsModel?.telephone
         weChat.text = aboutUsModel?.wechatPublicNumber
         email.text = aboutUsModel?.email
-        qrImage.sd_setImage(with: URL(string: aboutUsModel!.qrCodeImg!), placeholderImage: UIImage(named: "default_image"))
+        qrImage.sd_setImage(with: URL(string: aboutUsModel?.qrCodeImg ?? ""), placeholderImage: UIImage(named: "default_image"))
     }
 
     override func didReceiveMemoryWarning() {

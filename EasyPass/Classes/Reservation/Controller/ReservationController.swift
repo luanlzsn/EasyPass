@@ -160,19 +160,19 @@ class ReservationController: AntController,UITableViewDelegate,UITableViewDataSo
         cell.delegate = self
         cell.tag = indexPath.row
         let model = reservationArray[indexPath.row]
-        cell.courseImage.sd_setImage(with: URL(string: model.photo!), placeholderImage: UIImage(named: "default_image"))
+        cell.courseImage.sd_setImage(with: URL(string: model.photo ?? ""), placeholderImage: UIImage(named: "default_image"))
         cell.courseName.text = model.courseName
-        cell.courseCredit.text = "学分\(model.credit!)"
+        cell.courseCredit.text = "学分\(model.credit ?? 0)"
         cell.teacher.text = model.teacher!
         if model.tag == 0 {
             cell.typeImage.image = UIImage(named: "video_course")
-            cell.money.text = "$" + ((model.priceIos != nil) ? "\(model.priceIos!)" : "0.0")
+            cell.money.text = "$" + "\(model.priceIos ?? 0.0)"
         } else if model.tag == 1 {
             cell.typeImage.image = UIImage(named: "reservation_course")
-            cell.money.text = "$" + ((model.price != nil) ? "\(model.price!)" : "0.0")
+            cell.money.text = "$" + "\(model.price ?? 0.0)"
         } else {
             cell.typeImage.image = UIImage(named: "study_group")
-            cell.money.text = "$" + ((model.price != nil) ? "\(model.price!)" : "0.0")
+            cell.money.text = "$" + "\(model.price ?? 0.0)"
         }
         for image in cell.starArray {
             if model.difficulty! > image.tag - 100 {

@@ -1643,7 +1643,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个人头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TvR-JK-o1a">
-                                                    <rect key="frame" x="15" y="29.5" width="57.5" height="17"/>
+                                                    <rect key="frame" x="20" y="29.5" width="57.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1662,10 +1662,10 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="fWP-MV-hzl" secondAttribute="trailing" constant="20" id="1hR-1R-d6t"/>
                                                 <constraint firstItem="fWP-MV-hzl" firstAttribute="centerY" secondItem="QQr-Jh-XCU" secondAttribute="centerY" id="GfW-Ks-1TG"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="fWP-MV-hzl" secondAttribute="trailing" constant="12" id="MjY-w8-Gjm"/>
                                                 <constraint firstItem="TvR-JK-o1a" firstAttribute="centerY" secondItem="QQr-Jh-XCU" secondAttribute="centerY" id="cEN-4l-6f8"/>
-                                                <constraint firstItem="TvR-JK-o1a" firstAttribute="leading" secondItem="QQr-Jh-XCU" secondAttribute="leadingMargin" constant="7" id="g66-ea-1ZN"/>
+                                                <constraint firstItem="TvR-JK-o1a" firstAttribute="leading" secondItem="QQr-Jh-XCU" secondAttribute="leading" constant="20" id="rRJ-HV-LK1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1686,7 +1686,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nOJ-tD-0GL">
-                                                    <rect key="frame" x="88" y="-0.5" width="267" height="45"/>
+                                                    <rect key="frame" x="90" y="-0.5" width="265" height="45"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -1698,10 +1698,10 @@
                                             <constraints>
                                                 <constraint firstItem="vel-6t-nu0" firstAttribute="centerY" secondItem="jbi-J8-82k" secondAttribute="centerY" id="2x7-8F-g5u"/>
                                                 <constraint firstItem="nOJ-tD-0GL" firstAttribute="centerY" secondItem="jbi-J8-82k" secondAttribute="centerY" id="8Cj-0S-131"/>
+                                                <constraint firstItem="vel-6t-nu0" firstAttribute="leading" secondItem="jbi-J8-82k" secondAttribute="leading" constant="20" id="Lfq-9V-YuY"/>
+                                                <constraint firstAttribute="trailing" secondItem="nOJ-tD-0GL" secondAttribute="trailing" constant="20" id="NmX-cV-msp"/>
+                                                <constraint firstItem="nOJ-tD-0GL" firstAttribute="leading" secondItem="jbi-J8-82k" secondAttribute="leading" constant="90" id="P7a-x9-LsL"/>
                                                 <constraint firstItem="nOJ-tD-0GL" firstAttribute="height" secondItem="jbi-J8-82k" secondAttribute="height" id="QyJ-3B-cS5"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="nOJ-tD-0GL" secondAttribute="trailing" constant="12" id="aPg-vo-2c2"/>
-                                                <constraint firstItem="nOJ-tD-0GL" firstAttribute="leading" secondItem="jbi-J8-82k" secondAttribute="leadingMargin" constant="80" id="dJy-ru-bC7"/>
-                                                <constraint firstItem="vel-6t-nu0" firstAttribute="leading" secondItem="jbi-J8-82k" secondAttribute="leadingMargin" constant="12" id="xzX-51-Olq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

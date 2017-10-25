@@ -1098,19 +1098,19 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="I6N-1g-vrf" secondAttribute="trailing" constant="12" id="1KG-7k-fLG"/>
+                                                <constraint firstItem="ZZC-Yt-mvs" firstAttribute="leading" secondItem="XqH-b4-Dc1" secondAttribute="leading" constant="20" id="5Zo-tU-rWl"/>
                                                 <constraint firstItem="ajH-dH-VrS" firstAttribute="width" secondItem="ZZC-Yt-mvs" secondAttribute="width" id="KCe-Au-uIj"/>
                                                 <constraint firstItem="s5x-VJ-uea" firstAttribute="leading" secondItem="zZC-4A-Z16" secondAttribute="trailing" id="LBB-Ug-UlU"/>
                                                 <constraint firstItem="zZC-4A-Z16" firstAttribute="centerY" secondItem="I6N-1g-vrf" secondAttribute="centerY" id="PQH-7Q-wNO"/>
-                                                <constraint firstItem="ZZC-Yt-mvs" firstAttribute="leading" secondItem="XqH-b4-Dc1" secondAttribute="leadingMargin" constant="12" id="ST0-WG-J7D"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ajH-dH-VrS" secondAttribute="bottom" constant="2" id="Tof-Vr-2Ca"/>
                                                 <constraint firstItem="ajH-dH-VrS" firstAttribute="top" secondItem="ZZC-Yt-mvs" secondAttribute="bottom" constant="5" id="Tt0-OY-32B"/>
                                                 <constraint firstItem="I6N-1g-vrf" firstAttribute="centerY" secondItem="XqH-b4-Dc1" secondAttribute="centerY" id="Xht-oO-hkt"/>
                                                 <constraint firstItem="I6N-1g-vrf" firstAttribute="leading" secondItem="s5x-VJ-uea" secondAttribute="trailing" constant="5" id="Xtw-kD-qGM"/>
+                                                <constraint firstAttribute="trailing" secondItem="I6N-1g-vrf" secondAttribute="trailing" constant="20" id="YIz-e3-XfC"/>
                                                 <constraint firstItem="zZC-4A-Z16" firstAttribute="leading" secondItem="ZZC-Yt-mvs" secondAttribute="trailing" constant="10" id="YWo-LX-Xbo"/>
+                                                <constraint firstItem="ZZC-Yt-mvs" firstAttribute="top" secondItem="XqH-b4-Dc1" secondAttribute="top" constant="10" id="cBn-Hj-4dH"/>
                                                 <constraint firstItem="ajH-dH-VrS" firstAttribute="leading" secondItem="ZZC-Yt-mvs" secondAttribute="leading" id="kR5-U4-vUX"/>
                                                 <constraint firstItem="s5x-VJ-uea" firstAttribute="centerY" secondItem="I6N-1g-vrf" secondAttribute="centerY" id="r0w-UA-sOU"/>
-                                                <constraint firstItem="ZZC-Yt-mvs" firstAttribute="top" secondItem="XqH-b4-Dc1" secondAttribute="top" constant="10" id="r70-BM-Fml"/>
+                                                <constraint firstAttribute="bottom" secondItem="ajH-dH-VrS" secondAttribute="bottom" constant="10" id="yAv-h7-QF0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

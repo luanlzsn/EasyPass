@@ -21,7 +21,7 @@ class HomeHeaderCell: UICollectionViewCell {
     }
     
     @IBAction func headImageClick(_ sender: UIButton) {
-        if Common.checkIsOperation(controller: viewController()!) {
+        if Common.checkTouristIsOperation(controller: viewController()!) {
             let controller = UIStoryboard(name: "Mine", bundle: Bundle.main).instantiateViewController(withIdentifier: "MyAccount")
             viewController()?.navigationController?.pushViewController(controller, animated: true)
         }
@@ -30,7 +30,7 @@ class HomeHeaderCell: UICollectionViewCell {
     @IBAction func menuClick(_ sender: HomeMenuButton) {
         let identifier = menuIdentifierArray[sender.tag / 10 - 1]
         if identifier == "MyCourse" || identifier == "Message" {
-            if !Common.checkIsOperation(controller: viewController()!) {
+            if !Common.checkTouristIsOperation(controller: viewController()!) {
                 return
             }
         }

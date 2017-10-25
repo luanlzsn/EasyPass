@@ -52,6 +52,7 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
             UserDefaults.standard.removeObject(forKey: kUserInfo)
             UserDefaults.standard.synchronize()
             weakSelf?.tabBarController?.selectedIndex = 0
+            AntManage.touristLogin()
         }, failureResult: {})
     }
     
@@ -93,9 +94,9 @@ class MineController: AntController,UITableViewDelegate,UITableViewDataSource {
                 return cell
             } else {
                 let cell: MineLearnRecordCell = tableView.dequeueReusableCell(withIdentifier: "MineLearnRecordCell", for: indexPath) as! MineLearnRecordCell
-                cell.studyDay.text = "\((userRecord?.studyDayNum != nil) ? userRecord!.studyDayNum! : 0)天"
-                cell.completeCourse.text = "\((userRecord?.finishCourseHour != nil) ? userRecord!.finishCourseHour! : 0)个"
-                cell.points.text = "\((userRecord?.score != nil) ? userRecord!.score! : 0)"
+                cell.studyDay.text = "\(userRecord?.studyDayNum ?? 0)天"
+                cell.completeCourse.text = "\(userRecord?.finishCourseHour ?? 0)个"
+                cell.points.text = "\(userRecord?.score ?? 0)"
                 return cell
             }
         } else {

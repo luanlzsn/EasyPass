@@ -10,6 +10,7 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 import MJExtension
+import ObjectMapper
 
 let kRequestTimeOut = 20.0
 let AntManage = AntSingleton.sharedInstance
@@ -23,7 +24,8 @@ class AntSingleton: NSObject {
     var isLogin = false//是否登录    
     var userModel: UserModel?
     var classifyList = [ClassifyModel]()//专业数组
-    var isExamine = false//是否是审核
+    var isExamine = true//是否是审核
+    var isTourist = true//是否是游客
     
     private override init () {
         manager.responseSerializer.acceptableContentTypes = Set(arrayLiteral: "application/json","text/json","text/javascript","text/html")
@@ -161,6 +163,10 @@ class AntSingleton: NSObject {
                         ShareSDK.cancelAuthorize(SSDKPlatformType.typeWechat)
                         UserDefaults.standard.removeObject(forKey: kUserInfo)
                         UserDefaults.standard.synchronize()
+                        if isTourist {//如果是游客模式,不弹出登录,自动游客模式登录
+                            touristLogin()
+                            return
+                        }
                         let delegate = UIApplication.shared.delegate as! AppDelegate
                         if (delegate.window?.rootViewController?.isKind(of: UITabBarController.classForCoder()))! {
                             let tabbar = delegate.window?.rootViewController as! UITabBarController
@@ -183,6 +189,36 @@ class AntSingleton: NSObject {
         } else {
             showDelayToast(message: "未知错误，请重试！")
             failureResult()
+        }
+    }
+    
+    // MARK: - 游客登录
+    func touristLogin() {
+        weak var weakSelf = self
+        
+        manager.post(kRequestBaseUrl + "appAuth/login", parameters: ["loginType":1, "headImg":"", "nicName":"", "thirdId":Common.getUniqueIdentification()], progress: nil, success: { (task, response) in
+            if let data = response as? [String : Any] {
+                if let status = data["status"] {
+                    if status as! Int == 0 {
+                        if let content = data["data"] as? [String : Any] {
+                            AntManage.isLogin = true
+                            AntManage.isTourist = true
+                            AntManage.userModel = Mapper<UserModel>().map(JSON: content)
+                            JPUSHService.setAlias("\(AntManage.userModel!.id!)", completion: { (_, nil, _) in
+                                
+                            }, seq: 1)
+                            NotificationCenter.default.post(name: NSNotification.Name(kLoginStatusUpdate), object: nil)
+                            UserDefaults.standard.setValue(NSKeyedArchiver.archivedData(withRootObject: AntManage.userModel!), forKey: kUserInfo)
+                            UserDefaults.standard.set(true, forKey: kIsTourist)
+                            UserDefaults.standard.synchronize()
+                            return
+                        }
+                    }
+                }
+            }
+            weakSelf?.touristLogin()
+        }) { (task, error) in
+            weakSelf?.touristLogin()
         }
     }
     

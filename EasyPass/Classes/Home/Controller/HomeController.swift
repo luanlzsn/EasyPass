@@ -18,6 +18,10 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11, *) {
+            collection.contentInsetAdjustmentBehavior = .never
+        }
 
         findBannerList()
         getFamousAphorism()
@@ -130,9 +134,9 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell: HomeHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeHeaderCell", for: indexPath) as! HomeHeaderCell
-            if AntManage.isLogin {
+            if AntManage.isLogin && !AntManage.isTourist {
                 if AntManage.userModel?.headImg != nil {
-                    cell.headImage.sd_setImage(with: URL(string: AntManage.userModel!.headImg!), for: .normal, placeholderImage: UIImage(named: "head_defaults"))
+                    cell.headImage.sd_setImage(with: URL(string: AntManage.userModel?.headImg ?? ""), for: .normal, placeholderImage: UIImage(named: "head_defaults"))
                 } else {
                     cell.headImage.setImage(UIImage(named: "head_defaults"), for: .normal)
                 }
@@ -143,7 +147,7 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
             cell.bannerView.delegate = self
             var imgArray = [String]()
             for model in self.bannerArray {
-                imgArray.append(model.img!)
+                imgArray.append(model.img ?? "")
             }
             cell.bannerView.setBannerWithUrlArry(urlArry: imgArray)
             cell.famousAphorism.attributedText = famousAphorism
@@ -152,7 +156,7 @@ class HomeController: AntController,UICollectionViewDelegate,UICollectionViewDat
         } else {
             let cell: HomeCourseCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCourseCell", for: indexPath) as! HomeCourseCell
             let model = AntManage.classifyList[indexPath.row]
-            cell.imgView.sd_setImage(with: URL(string: model.img!), placeholderImage: UIImage(named: "default_image"))
+            cell.imgView.sd_setImage(with: URL(string: model.img ?? ""), placeholderImage: UIImage(named: "default_image"))
             cell.courseTitle.text = model.name
             cell.selectImage.isHidden = (selectClassify != model)
             return cell

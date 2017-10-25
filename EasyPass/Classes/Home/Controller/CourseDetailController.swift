@@ -101,7 +101,6 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             weakSelf?.courseModel = Mapper<CourseModel>().map(JSON: response)
             weakSelf?.refreshCourseInfo()
         }, failureResult: {
-//            AntManage.showDelayToast(message: "获取课程信息失败，请重试！")
             weakSelf?.navigationController?.popViewController(animated: true)
         })
     }
@@ -176,14 +175,14 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             }
         }
         if courseModel?.tag == 0 {
-            money.text = "$" + ((courseModel?.priceIos != nil) ? "\(courseModel!.priceIos!)" : "0.0")
-            classHour.text = "/\(courseModel!.classHour!)课时"
+            money.text = "$" + "\(courseModel!.priceIos ?? 0.0)"
+            classHour.text = "/\(courseModel!.classHour ?? 0)课时"
         } else {
-            money.text = "$" + ((courseModel?.price != nil) ? "\(courseModel!.price!)" : "0.0")
+            money.text = "$" + "\(courseModel!.price ?? 0.0)"
             classHour.text = "/小时"
         }
         if courseModel?.courseDetail != nil {
-            let attr = try! NSMutableAttributedString(data: (courseModel!.courseDetail!).data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
+            let attr = try! NSMutableAttributedString(data: (courseModel?.courseDetail ?? "").data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
             attr.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 12), range: NSMakeRange(0, attr.length))
             attr.addAttribute(NSForegroundColorAttributeName, value: UIColor(rgb: 0x939598), range: NSMakeRange(0, attr.length))
             detailLabel.attributedText = attr
@@ -193,7 +192,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
         
         suitableCrowd.text = courseModel?.forCrowd
         learningGoal.text = courseModel?.studyGoal
-        collectionBtn.isSelected = (courseModel?.collectFlag)!
+        collectionBtn.isSelected = courseModel?.collectFlag ?? false
         outlineTableView.reloadData()
     }
     
@@ -238,7 +237,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
             AntManage.showDelayToast(message: "请输入评论内容！")
             return
         }
-        if Common.checkIsOperation(controller: self) {
+        if Common.checkTouristIsOperation(controller: self) {
             weak var weakSelf = self
             AntManage.postRequest(path: "comment/addComment", params: ["token":AntManage.userModel!.token!, "courseId":courseId, "commentContent":commentTextView.text], successResult: { (response) in
                 AntManage.showDelayToast(message: "发布评论成功！")
@@ -250,7 +249,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
     
     // MARK: - 收藏
     @IBAction func collectionClick(_ sender: HomeMenuButton) {
-        if Common.checkIsOperation(controller: self) {
+        if Common.checkTouristIsOperation(controller: self) {
             let path = sender.isSelected ? "collect/cancelCourseCollect" : "collect/addCourseCollect"
             AntManage.postRequest(path: path, params: ["token":AntManage.userModel!.token!, "courseId":courseId], successResult: { (response) in
                 AntManage.showDelayToast(message: sender.isSelected ? "取消收藏成功！" : "收藏成功！")
@@ -342,7 +341,7 @@ class CourseDetailController: AntController,UITableViewDelegate,UITableViewDataS
                 cell.watchBtn.backgroundColor = Common.colorWithHexString(colorStr: "f9bd53")
                 cell.watchBtn.setTitle("观看", for: .normal)
             } else {
-                cell.money.text = "$ \((classHourModel.priceIos != nil) ? classHourModel.priceIos! : 0.0)"
+                cell.money.text = "$ \(classHourModel.priceIos ?? 0.0)"
                 cell.money.isHidden = false
                 cell.classHour.isHidden = false
                 cell.watchBtn.backgroundColor = MainColor

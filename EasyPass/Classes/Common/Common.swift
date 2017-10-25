@@ -34,7 +34,7 @@ class Common: NSObject {
         let bIndex = cStr.index(cStr.endIndex, offsetBy: -2)
         let bStr = cStr.substring(from: bIndex)
         
-        color = UIColor.init(colorLiteralRed: Float(changeToInt(numStr: rStr)) / 255, green: Float(changeToInt(numStr: gStr)) / 255, blue: Float(changeToInt(numStr: bStr)) / 255, alpha: 1)
+        color = UIColor(red: CGFloat(changeToInt(numStr: rStr)) / 255.0, green: CGFloat(changeToInt(numStr: gStr)) / 255.0, blue: CGFloat(changeToInt(numStr: bStr)) / 255.0, alpha: 1)
         return color
     }
     
@@ -149,7 +149,19 @@ class Common: NSObject {
     
     //MARK: - 需要登录之后才能执行的操作判断是否可以操作，返回YES可以继续操作，否则自动跳转到登录
     class func checkIsOperation(controller : UIViewController) -> Bool {
-        if LeomanManager.isLogin {
+        if AntManage.isLogin {
+            return true
+        } else {
+            let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+            let login = storyboard.instantiateInitialViewController()
+            controller.present(login!, animated: true, completion: nil)
+            return false
+        }
+    }
+    
+    //MARK: - 游客需要登录之后才能执行的操作判断是否可以操作，返回YES可以继续操作，否则自动跳转到登录
+    class func checkTouristIsOperation(controller : UIViewController) -> Bool {
+        if AntManage.isLogin, !AntManage.isTourist {
             return true
         } else {
             let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
@@ -228,6 +240,23 @@ class Common: NSObject {
             
         }
     }
+    
+    // MARK: - 获取设备UUID
+    class func getUniqueIdentification() -> String {
+        if UIDevice.current.name == "iPhone Simulator" {
+            return "G43HHTZUJ5.com.bm.easypass"
+        } else {
+            let wrapper = KeychainItemWrapper(identifier: "UUID", accessGroup: "G43HHTZUJ5.com.bm.easypass")
+            var strUUID = wrapper?.object(forKey: kSecAttrAccount) as? String
+            if strUUID == nil || (strUUID?.isEmpty)! {
+                let uuidRef = CFUUIDCreate(kCFAllocatorDefault)
+                strUUID = CFBridgingRetain(CFUUIDCreateString(kCFAllocatorDefault, uuidRef)) as? String
+                wrapper?.setObject(strUUID, forKey: kSecAttrAccount)
+            }
+            return strUUID!
+        }
+    }
+    
 }
 
 extension UIView {
