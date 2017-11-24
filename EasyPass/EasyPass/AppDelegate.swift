@@ -52,6 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,JPUSHRegisterDelegate {
         PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction:"ATARVfTl2EnD5XPvbpywK4OOE1DwGNNwu0dE-xCfH00RNj4LoX8olEOUHImUasTfJC67IjK8jE1ytCTu", PayPalEnvironmentSandbox:"AS3lKVXlHq5J_mP1xexcamcH87b_gvavP4Ark-_qfaSHNKhC3sY2uZ3Xa-gbHhX0pB0NAri15KgMZREo"])
         PayPalMobile.preconnect(withEnvironment: PayPalEnvironmentProduction)
         
+        let config = BuglyConfig()
+        config.debugMode = true
+        config.viewControllerTrackingEnable = true
+        config.reportLogLevel = BuglyLogLevel.warn
+        Bugly.start(withAppId: "9896417537", config: config)
+        
         return true
     }
     

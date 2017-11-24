@@ -12,6 +12,8 @@
 		0F0739121F16420600217CC6 /* ClassifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0739111F16420600217CC6 /* ClassifyModel.swift */; };
 		0F07736D1F02998600EF8EEF /* ShopCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F07736C1F02998600EF8EEF /* ShopCartCell.swift */; };
 		0F07736F1F029FC300EF8EEF /* ReservationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F07736E1F029FC300EF8EEF /* ReservationController.swift */; };
+		0F077E151FA062A30021EDFA /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F077E141FA062A30021EDFA /* Bugly.framework */; };
+		0F077E171FA063030021EDFA /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F077E161FA063030021EDFA /* libc++.tbd */; };
 		0F258E241F20A5600044F272 /* ShopCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F258E231F20A5600044F272 /* ShopCartModel.swift */; };
 		0F2F0E3B1F33018B006DCE57 /* SystemSetupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2F0E3A1F33018B006DCE57 /* SystemSetupCell.swift */; };
 		0F2F0E3D1F3319D5006DCE57 /* PlayerVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2F0E3C1F3319D5006DCE57 /* PlayerVideoView.swift */; };
@@ -170,6 +172,8 @@
 		0F0739111F16420600217CC6 /* ClassifyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassifyModel.swift; sourceTree = "<group>"; };
 		0F07736C1F02998600EF8EEF /* ShopCartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCartCell.swift; sourceTree = "<group>"; };
 		0F07736E1F029FC300EF8EEF /* ReservationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationController.swift; sourceTree = "<group>"; };
+		0F077E141FA062A30021EDFA /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
+		0F077E161FA063030021EDFA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		0F258E231F20A5600044F272 /* ShopCartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCartModel.swift; sourceTree = "<group>"; };
 		0F2F0E3A1F33018B006DCE57 /* SystemSetupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemSetupCell.swift; sourceTree = "<group>"; };
 		0F2F0E3C1F3319D5006DCE57 /* PlayerVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerVideoView.swift; sourceTree = "<group>"; };
@@ -369,8 +373,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FBD413E1F3D81810001B539 /* SafariServices.framework in Frameworks */,
+				0FF491AC1F321AB80000A2A0 /* Security.framework in Frameworks */,
+				0F077E171FA063030021EDFA /* libc++.tbd in Frameworks */,
 				0FF491A41F321A930000A2A0 /* SystemConfiguration.framework in Frameworks */,
+				0FBD413E1F3D81810001B539 /* SafariServices.framework in Frameworks */,
 				0FBD413C1F3D816F0001B539 /* MobileCoreServices.framework in Frameworks */,
 				0FBD41481F3D82F30001B539 /* libPayPalMobile.a in Frameworks */,
 				0FBD413A1F3D81670001B539 /* MessageUI.framework in Frameworks */,
@@ -382,7 +388,6 @@
 				0FBD41321F3D81220001B539 /* Accelerate.framework in Frameworks */,
 				0FF491B01F321ADD0000A2A0 /* libresolv.tbd in Frameworks */,
 				0FF491AE1F321ACD0000A2A0 /* UserNotifications.framework in Frameworks */,
-				0FF491AC1F321AB80000A2A0 /* Security.framework in Frameworks */,
 				0FF491AA1F321AAF0000A2A0 /* UIKit.framework in Frameworks */,
 				0FF491A81F321AA70000A2A0 /* Foundation.framework in Frameworks */,
 				0FF491A61F321A9C0000A2A0 /* CoreGraphics.framework in Frameworks */,
@@ -399,6 +404,7 @@
 				0FC71A671F22114200FAD254 /* libicucore.tbd in Frameworks */,
 				0FC71A5A1F22111E00FAD254 /* ShareSDKUI.framework in Frameworks */,
 				0FC71A621F22111E00FAD254 /* libWeChatSDK.a in Frameworks */,
+				0F077E151FA062A30021EDFA /* Bugly.framework in Frameworks */,
 				0F6C61E31EFFCDA30079B2F2 /* AFNetworking.framework in Frameworks */,
 				0FC71A5B1F22111E00FAD254 /* QQConnector.framework in Frameworks */,
 				0FC71A571F22111D00FAD254 /* ShareSDKConfigFile.framework in Frameworks */,
@@ -508,6 +514,7 @@
 		0F6C61E11EFFCDA30079B2F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F077E161FA063030021EDFA /* libc++.tbd */,
 				0FBE70D91F4C8A3200660AAB /* SDWebImage.framework */,
 				0FBD413D1F3D81810001B539 /* SafariServices.framework */,
 				0FBD413B1F3D816F0001B539 /* MobileCoreServices.framework */,
@@ -732,6 +739,7 @@
 		0F8ABD851F17256800659962 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				0F077E141FA062A30021EDFA /* Bugly.framework */,
 				0FBECB051F9AE48700F2193B /* KeychainItemWrapper */,
 				0FBD413F1F3D82F30001B539 /* PayPalMobile */,
 				0FAF33321F34BA3200367147 /* UIDevice+JWDevice.h */,

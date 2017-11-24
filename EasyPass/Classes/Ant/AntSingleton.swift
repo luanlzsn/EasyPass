@@ -24,7 +24,7 @@ class AntSingleton: NSObject {
     var isLogin = false//是否登录    
     var userModel: UserModel?
     var classifyList = [ClassifyModel]()//专业数组
-    var isExamine = true//是否是审核
+    var isExamine = false//是否是审核
     var isTourist = true//是否是游客
     
     private override init () {
